@@ -50,6 +50,11 @@ return [
             'driver' => 'session',
             'provider' => 'trainers',
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -78,6 +83,11 @@ return [
          'trainers' => [
              'driver' => 'database',
              'table' => 'trainers',
+         ],
+
+        'admins' => [
+             'driver' => 'database',
+             'table' => 'admins',
          ],
     ],
 
