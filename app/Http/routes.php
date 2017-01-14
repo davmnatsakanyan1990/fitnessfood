@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/', 'HomeController@index');
+
+/**
+ * Trainer route part
+ */
+Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
+
+    Route::get('auth/login', 'Auth\AuthController@showLoginForm');
+    Route::post('auth/login', 'Auth\AuthController@postLogin');
+    Route::get('auth/logout', 'Auth\AuthController@logout');
+
+    Route::get('home', 'HomeController@index');
+
 });
