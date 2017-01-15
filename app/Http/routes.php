@@ -12,7 +12,10 @@
 */
 
 
+use Illuminate\Support\Facades\Event;
+
 Route::get('/', 'HomeController@index');
+Route::get('orders/new','OrderController@create');
 
 /**
  * Trainer route part
@@ -40,5 +43,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('products/{product_id}/images', 'ProductImageController@index');
 
     Route::get('products', 'ProductController@index');
+
+    Route::get('home',function(){
+        return view('admin.home');
+    });
+
+
 
 });

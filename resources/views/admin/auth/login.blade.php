@@ -1,64 +1,60 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin - Login</title>
+    <title>INSPINIA | Login</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/template/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="/template/css/animate.css" rel="stylesheet">
+    <link href="/template/css/style.css" rel="stylesheet">
 
 </head>
 
-<body>
+<body class="gray-bg">
 
-<div class="container">
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
 
-    <div class="col-md-4 col-md-offset-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading text-center"><p>Admin Login</p></div>
-            <div class="panel-body">
-                @if(count($errors)>0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <form action="{{ url('admin/login') }}" method="post">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="username" value="{{ old('username') }}" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="password" name="password" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" name="remember">Remember me
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success " type="submit">Log in</button>
-                    </div>
-                </form>
-            </div>
+            <h1 class="logo-name">IN+</h1>
+
         </div>
-    </div>
+        <h3>Admin Login</h3>
+        @if(count($errors) > 0)
+            <div class="alert alert-danger alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form class="m-t" role="form" action="{{ url('admin/login') }}" method="post">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <input name="username" type="username" class="form-control" placeholder="Username" required="">
+            </div>
+            <div class="form-group">
+                <input name="password" type="password" class="form-control" placeholder="Password" required="">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
-</div><!-- /.container -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            <a href="#"><small>Forgot password?</small></a>
+        </form>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="/template/js/jquery-2.1.1.js"></script>
+<script src="/template/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
