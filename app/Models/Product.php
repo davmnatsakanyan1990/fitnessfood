@@ -16,4 +16,8 @@ class Product extends Model
     public function images(){
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    public function thumb_image(){
+        return $this->morphOne(Image::class, 'imageable')->where('role', 1);
+    }
 }

@@ -36,7 +36,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('login', 'Auth\AuthController@postLogin');
     Route::get('logout', 'Auth\AuthController@logout');
 
-    Route::get('products/new', 'ProductController@create');
+    Route::post('products/{product_id}/images/create', 'ProductImageController@addImage');
     Route::get('products/{product_id}/images', 'ProductImageController@index');
+
+    Route::get('products', 'ProductController@index');
 
 });

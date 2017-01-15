@@ -10,12 +10,32 @@
     <noscript><link rel="stylesheet" href="/admin/fileupload/css/jquery.fileupload-noscript.css"></noscript>
     <noscript><link rel="stylesheet" href="/admin/fileupload/css/jquery.fileupload-ui-noscript.css"></noscript>
 
+    <link rel="stylesheet" href="/admin/css/images.css">
+
 @endsection
 
 @section('content')
+    <div class="container">
+        <h3 class="title"><strong>Images:</strong> {{ $product->title }}</h3>
+
+        <?php $i=0; ?>
+        @foreach($images as $k => $image)
+            @if($i == 0)
+            <div class="row image_container">
+            @endif
+                <?php $i++; ?>
+                <div class="col-sm-2"><img class="img-thumbnail image"  src="/images /productImages/{{ $image['name'] }}"></div>
+            @if($i == 6)
+            <?php $i = 0; ?>
+            </div>
+            @endif
+            @if(count($images) == $k+1)
+            </div>
+            @endif
+        @endforeach
 
         <!-- The file upload form used as target for the file upload widget -->
-        <form id="fileupload" action="{{ url('admin/products/add_image') }}" method="POST" enctype="multipart/form-data">
+        <form id="fileupload" action="{{ url('admin/products/'.$product->id.'/images/create') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
                     <!-- Redirect browsers with JavaScript disabled to the origin page -->
             <noscript><input type="hidden" name="redirect" value="https://blueimp.github.io/jQuery-File-Upload/"></noscript>
@@ -58,20 +78,24 @@
             <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
         </form>
 
-    </div>
-    <!-- The blueimp Gallery widget -->
-    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
-        <div class="slides"></div>
-        <h3 class="title"></h3>
-        <a class="prev">‹</a>
-        <a class="next">›</a>
-        <a class="close">×</a>
-        <a class="play-pause"></a>
-        <ol class="indicator"></ol>
+
+        <!-- The blueimp Gallery widget -->
+        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+        </div>
     </div>
     @endsection
     @section('scripts')
 
+    <script>
+        var product_id = '{{ $product->id}}'
+    </script>
             <!-- The template to display files available for upload -->
     <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}

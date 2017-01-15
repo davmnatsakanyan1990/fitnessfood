@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,21 +14,13 @@ class ProductController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function create(){
-        return view('admin.create_product');
+    public function index(){
+        $products = Product::with('thumb_image')->paginate(6);
+
+        return view('admin.products.index', compact('products'));
     }
 
+    public function create(){
 
-    public function addImage(Request $request){
-        foreach($request->file('files') as $image){
-
-                $destinationPath = 'images\productImages';
-                $randomNumber = str_random(5);
-                $ext = $image->getClientOriginalExtension();
-
-                $fileName = time().$randomNumber.'.'.$ext;
-
-                $image->move($destinationPath, $fileName);
-        }
     }
 }

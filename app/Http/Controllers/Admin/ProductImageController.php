@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Image;
 use App\Models\Product;
 
 use Illuminate\Http\Request;
@@ -20,12 +21,30 @@ class ProductImageController extends Controller
         $product = Product::find($product_id);
         if($product){
             $images = $product->images->toArray();
-            dd($images);
-            return view('admin.product_image', compact($images));
+
+            return view('admin.products.images', compact('images', 'product'));
         }
         else{
             abort(404);
         }
+
+    }
+
+    public function addImage(Request $request, $product_id){
+
+        foreach($request->file('files') as $image){
+
+            $destinationPath = 'images\productImages';
+            $randomNumber = str_random(5);
+            $ext = $image->getClientOriginalExtension();
+
+            $fileName = time().$randomNumber.'.'.$ext;
+
+            $image->move($destinationPath, $fileName);
+
+            Image::create(['name'=>$fileName, 'imageable_type'=>'products', 'imageable_id'=>$product_id, 'role'=>0]);
+        }
+
 
     }
 }
