@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->double('price', 11, 2);
+            $table->enum('status', [0,1]); //0: available; 1: not available
             $table->timestamps();
         });
     }

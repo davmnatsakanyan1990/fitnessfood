@@ -43,7 +43,7 @@
 
 <!-- Custom and plugin javascript -->
 <script src="/template/js/inspinia.js"></script>
-
+<script src="/template/js/plugins/pace/pace.min.js"></script>
 @yield('scripts')
 </body>
 
