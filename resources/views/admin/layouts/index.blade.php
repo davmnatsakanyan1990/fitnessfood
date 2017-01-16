@@ -14,6 +14,8 @@
     <link href="/template/css/animate.css" rel="stylesheet">
     <link href="/template/css/style.css" rel="stylesheet">
 
+    @yield('styles')
+
 </head>
 
 <body class="">
@@ -26,16 +28,7 @@
 
         @include('admin.layouts.header')
 
-        <div class="wrapper wrapper-content">
-            <div class="middle-box text-center animated fadeInRightBig">
-                <h3 class="font-bold">This is page content</h3>
-                <div class="error-desc">
-                    You can create here any grid layout you want. And any variation layout you imagine:) Check out
-                    main dashboard and other site. It use many different layout.
-                    <br/><a href="index.html" class="btn btn-primary m-t">Dashboard</a>
-                </div>
-            </div>
-        </div>
+        @yield('content')
 
         @include('admin.layouts.footer')
 
@@ -50,9 +43,8 @@
 
 <!-- Custom and plugin javascript -->
 <script src="/template/js/inspinia.js"></script>
-<script src="/template/js/plugins/pace/pace.min.js"></script>
 
-
+@yield('scripts')
 </body>
 
 </html>

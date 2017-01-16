@@ -10,10 +10,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ProductImageController extends Controller
+class ProductImageController extends AdminBaseController
 {
     public function __construct(){
         $this->middleware('auth:admin');
+        parent::__construct();
     }
 
     public function index($product_id){

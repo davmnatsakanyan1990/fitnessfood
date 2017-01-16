@@ -39,15 +39,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('login', 'Auth\AuthController@postLogin');
     Route::get('logout', 'Auth\AuthController@logout');
 
-    Route::post('products/{product_id}/images/create', 'ProductImageController@addImage');
-    Route::get('products/{product_id}/images', 'ProductImageController@index');
+    Route::get('home', 'HomeController@index');
+    
+    Route::get('orders', 'OrderController@index');
 
     Route::get('products', 'ProductController@index');
-
-    Route::get('home',function(){
-        return view('admin.home');
-    });
-
-
-
+    Route::post('products/delete', 'ProductController@delete');
+    Route::get('products/edit/{product_id}', 'ProductController@edit');
+    
+    Route::post('products/{product_id}/images/create', 'ProductImageController@addImage');
+    Route::get('products/{product_id}/images', 'ProductImageController@index');
+    
 });
