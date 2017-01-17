@@ -81,13 +81,13 @@ return [
         ],
 
          'trainers' => [
-             'driver' => 'database',
-             'table' => 'trainers',
+             'driver' => 'eloquent',
+             'model' => App\Models\Trainer::class,
          ],
 
         'admins' => [
-             'driver' => 'database',
-             'table' => 'admins',
+             'driver' => 'eloquent',
+             'model' => App\Models\Admin::class,
          ],
     ],
 
@@ -116,6 +116,13 @@ return [
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        
+        'admins' => [
+            'provider' => 'admins',
+            'email' => 'admin.auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 1,
         ],
     ],
 

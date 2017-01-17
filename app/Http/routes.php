@@ -39,6 +39,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('login', 'Auth\AuthController@postLogin');
     Route::get('logout', 'Auth\AuthController@logout');
 
+    Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+    Route::post('password/reset', 'Auth\PasswordController@reset');
+    Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+
     Route::get('home', 'HomeController@index');
     
     Route::get('orders', 'OrderController@index');
