@@ -2,6 +2,9 @@
 @section('styles')
     <link rel="stylesheet" href="/admin/css/products.css">
     <link href="/template/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <!-- Sweet Alert -->
+    <link href="/template/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -47,7 +50,7 @@
                                     <div class="btn-group">
                                         <a href="#"><button class="btn-white btn btn-xs">View</button></a>
                                         <a href="{{ url('admin/products/edit/'.$product->id) }}"><button class="btn-white btn btn-xs">Edit</button></a>
-                                        <a href="#modal-form" class="delete" data-toggle="modal" data-id="{{ $product->id }}"><button class="btn-white btn btn-xs">Delete</button></a>
+                                        <button style="color: #337ab7" data-id="{{ $product->id }}" class=" delete btn-white btn btn-xs">Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -67,25 +70,6 @@
             </div>
         </div>
     </div>
-    <div id="modal-form" class="modal fade" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="text-center">
-                            <h4>Delete this product?</h4>
-                            <form>
-                                {{ csrf_field() }}
-                                <input type="hidden" name="product_id">
-                                <button type="submit" class="btn btn-sm btn-primary yes">Yes</button>
-                                <button data-dismiss="modal" class="btn btn-sm btn-warning">Cancel</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     {{--{{ $products->links() }}--}}
 @endsection
 @section('scripts')
@@ -94,4 +78,48 @@
         var BASE_URL = '{{ url('/') }}'
     </script>
   <script src="/admin/js/products.js"></script>
+
+    <!-- Sweet alert -->
+    <script src="/template/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script>
+        var token = '{{ csrf_token() }}'
+
+        $(document).ready(function () {
+
+            $('.delete').click(function () {
+                var row = $(this);
+                swal({
+                            title: "Are you sure?",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#1ab394",
+                            confirmButtonText: "Yes, delete it!",
+                            cancelButtonText: "No, cancel plx!",
+                            closeOnConfirm: false,
+                            closeOnCancel: true },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                var product_id = row.data('id');
+                                $.ajax({
+                                     url: BASE_URL+'/admin/products/delete/'+product_id,
+                                     type: 'post',
+                                     data: {
+                                         _token: token
+                                     },
+                                     success: function(data){
+                                         row.closest('tr').remove();
+                                     }
+                                });
+                                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                            } else {
+//                                swal("Cancelled", "Your imaginary file is safe :)", "error");
+                            }
+                        });
+            });
+
+
+        });
+
+    </script>
 @endsection

@@ -95,11 +95,7 @@
         <div class="col-md-12">
             <div class="ibox-content">
 
-                <h2 class="font-bold">Forgot password</h2>
-
-                <p>
-                    Enter your email address and your password will be reset and emailed to you.
-                </p>
+                <h2 class="font-bold">Reset your password</h2>
 
                 <div class="row">
 
@@ -109,45 +105,36 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form class="m-t" role="form" method="POST" action="{{ url('admin/password/email') }}">
+                        <form class="m-t" role="form" method="POST" action="{{ url('admin/password/reset') }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="token" value="{{ $token }}">
                             <div class="form-group">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" placeholder="Email">
 
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email"
-                                           value="{{ $email or old('email') }}">
+                                @if ($errors->has('email'))
+                                    <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
+                                @endif
 
-                                    @if ($errors->has('email'))
-                                        <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
-                                    @endif
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="password" class="col-md-4 control-label">Password</label>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
 
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password">
+                                @if ($errors->has('password'))
+                                    <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span>
+                                @endif
 
-                                    @if ($errors->has('password'))
-                                        <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span>
-                                    @endif
-                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
 
-                                    @if ($errors->has('password_confirmation'))
-                                        <span class="help-block"><strong>{{ $errors->first('password_confirmation') }}</strong></span>
-                                    @endif
-                                </div>
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="help-block"><strong>{{ $errors->first('password_confirmation') }}</strong></span>
+                                @endif
+
                             </div>
 
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary block full-width m-b">
                                 <i class="fa fa-btn fa-refresh"></i> Reset Password
                             </button>
                         </form>

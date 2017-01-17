@@ -46,7 +46,7 @@
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
-            <a href="#"><small>Forgot password?</small></a>
+            <a href="{{ url('admin/password/reset') }}"><small>Forgot password?</small></a>
         </form>
     </div>
 </div>

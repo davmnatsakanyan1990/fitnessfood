@@ -4,6 +4,7 @@
     <link href="/template/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
 
     <link href="/template/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="/admin/css/products.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -19,12 +20,19 @@
                         <div id="tab-1" class="tab-pane active">
                             <div class="panel-body">
                                 @if(count($errors)>0)
-                                    <div class="alert alert-danger">
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
                                         <ul>
                                             @foreach($errors->all() as $error)
                                                 <li>{{ $error }}</li>
                                             @endforeach
                                         </ul>
+                                    </div>
+                                @endif
+                                @if(session('message'))
+                                    <div class="alert alert-success alert-dismissable">
+                                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
+                                        <p>{{ session('message') }}</p>
                                     </div>
                                 @endif
                                 <form class="form-horizontal" action="{{ url('admin/products/update') }}" method="post">
@@ -61,7 +69,11 @@
                         </div>
                         <div id="tab-2" class="tab-pane">
                             <div class="panel-body">
-
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <a href="{{ url('admin/products/'.$product->id.'/images/new') }}"><button class="btn btn-primary pull-right add_image"><i class="fa fa-plus" style="padding-right: 7px"></i> Add Image</button></a>
+                                    </div>
+                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-stripped">
                                         <thead>
@@ -81,20 +93,22 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach($product->images as $image)
                                         <tr>
                                             <td>
-                                                <img src="img/gallery/2s.jpg">
+                                                <img class="img-thumbnail" width="100" height="100" src="/images/productImages/{{ $image->name }}">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" disabled value="http://mydomain.com/images/image1.png">
+                                                <input type="text" class="form-control" disabled value="{{ url('images/productImages').'/'.$image->name }}">
                                             </td>
                                             <td>
-                                                <input type="radio" class="form-control">
+                                                <input name="thumb_image" type="radio" class="form-control">
                                             </td>
                                             <td>
                                                 <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
                                             </td>
                                         </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

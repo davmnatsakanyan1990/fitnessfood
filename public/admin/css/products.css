@@ -11,6 +11,10 @@
     max-width: 500px;
 }
 
+.add_image{
+    margin-bottom: 15px;
+}
+
 #modal-form{
     text-align: center;
 }
@@ -30,5 +34,10 @@
 @media screen and (max-width: 480px) {
     .title_td {
         min-width: auto;
+    }
+
+    .add_image{
+       width: 100%;
+        padding:  4px 10px;
     }
 }

@@ -54,7 +54,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('products/edit/{product_id}', 'ProductController@edit');
     Route::post('products/update', 'ProductController@update');
 
-    Route::post('products/{product_id}/images/create', 'ProductImageController@addImage');
-    Route::get('products/{product_id}/images', 'ProductImageController@index');
+    Route::get('products/{product_id}/images/new', 'ProductController@newImage');
+    Route::post('products/{product_id}/images/upload', 'ProductController@uploadImage');
     
 });
