@@ -147,7 +147,22 @@ class ProductController extends AdminBaseController
 
             Image::create(['name'=>$fileName, 'imageable_type'=>'products', 'imageable_id'=>$product_id, 'role'=>0]);
         }
+    }
 
+    public function deleteImage($id){
+        $image = Image::find($id);
 
+        unlink('images/productImages/'.$image->name);
+
+        $image->delete();
+
+    }
+
+    public function setThumbnail($product_id, $image_id){
+        $thum_img = Image::where('imageable_id', $product_id)->where('role', 1)->first();
+        if($thum_img){
+            Image::where('imageable_id', $product_id)->where('role', 1)->update(['role'=>0]);
+        }
+        Image::find($image_id)->update(['role'=>1]);
     }
 }

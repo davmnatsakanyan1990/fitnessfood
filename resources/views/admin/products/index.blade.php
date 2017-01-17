@@ -18,11 +18,12 @@
                             <p>{{ session('message') }}</p>
                         </div>
                         @endif
-                        <a href="{{ url('admin/products/create') }}"><button class="btn btn-xl btn-lg btn-sm btn-warning pull-right " type="button"><i class="fa fa-check"></i>&nbsp;Create Product</button></a>
+                        <a href="{{ url('admin/products/create') }}"><button class="btn btn-warning pull-right " type="button"><i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;Add Product</button></a>
                         <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="6">
                             <thead>
                             <tr>
 
+                                <th data-hide="phone">Image</th>
                                 <th data-toggle="true">Product Name</th>
                                 <th data-hide="phone">Description</th>
                                 <th data-hide="phone">Price</th>
@@ -35,6 +36,9 @@
                             @foreach($products as $product)
                             <tr>
                                 <td>
+                                    <img src="/images/productImages/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}" class="img-thumbnail" width="100">
+                                </td>
+                                <td>
                                     {{ $product->title }}
                                 </td>
                                 <td class="description">
@@ -44,11 +48,14 @@
                                     {{ $product->price }}
                                 </td>
                                 <td class="footable-visible">
+                                    @if($product->status == 0)
                                     <span class="label label-primary">Available</span>
+                                    @elseif($product->status == 1)
+                                        <span class="label label-warning">Not Available</span>
+                                    @endif
                                 </td>
                                 <td class="text-right action">
                                     <div class="btn-group">
-                                        <a href="#"><button class="btn-white btn btn-xs">View</button></a>
                                         <a href="{{ url('admin/products/edit/'.$product->id) }}"><button class="btn-white btn btn-xs">Edit</button></a>
                                         <button style="color: #337ab7" data-id="{{ $product->id }}" class=" delete btn-white btn btn-xs">Delete</button>
                                     </div>
@@ -74,10 +81,8 @@
 @endsection
 @section('scripts')
     <script src="/template/js/plugins/footable/footable.all.min.js"></script>
-    <script>
-        var BASE_URL = '{{ url('/') }}'
-    </script>
-  <script src="/admin/js/products.js"></script>
+
+    <script src="/admin/js/products.js"></script>
 
     <!-- Sweet alert -->
     <script src="/template/js/plugins/sweetalert/sweetalert.min.js"></script>
@@ -111,7 +116,7 @@
                                          row.closest('tr').remove();
                                      }
                                 });
-                                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                                swal("Deleted!", "Product has been deleted.", "success");
                             } else {
 //                                swal("Cancelled", "Your imaginary file is safe :)", "error");
                             }

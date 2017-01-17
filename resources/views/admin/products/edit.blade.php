@@ -5,6 +5,9 @@
 
     <link href="/template/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="/admin/css/products.css" rel="stylesheet">
+
+    <!-- Sweet Alert -->
+    <link href="/template/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -13,8 +16,8 @@
             <div class="col-lg-12">
                 <div class="tabs-container">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#tab-1"> Product info</a></li>
-                        <li class=""><a data-toggle="tab" href="#tab-2"> Images</a></li>
+                        <li class="tab active" id="tab1"><a data-toggle="tab" href="#tab-1"> Product info</a></li>
+                        <li class="tab" id="tab2"><a data-toggle="tab" href="#tab-2"> Images</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
@@ -71,7 +74,7 @@
                             <div class="panel-body">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <a href="{{ url('admin/products/'.$product->id.'/images/new') }}"><button class="btn btn-primary pull-right add_image"><i class="fa fa-plus" style="padding-right: 7px"></i> Add Image</button></a>
+                                        <a href="{{ url('admin/products/'.$product->id.'/images/new') }}"><button class="btn btn-warning pull-right add_image"><i class="fa fa-plus" style="padding-right: 7px"></i> Add Image</button></a>
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -102,10 +105,10 @@
                                                 <input type="text" class="form-control" disabled value="{{ url('images/productImages').'/'.$image->name }}">
                                             </td>
                                             <td>
-                                                <input name="thumb_image" type="radio" class="form-control">
+                                                <input data-product="{{ $product->id }}" name="thumb_image" {{ $image->role == 1 ? 'checked': '' }} type="radio" class="form-control" value="{{ $image->id }}">
                                             </td>
                                             <td>
-                                                <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
+                                                <button class = "delete_image" data-id="{{ $image->id }}" class="btn btn-white"><i class="fa fa-trash"></i> </button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -129,8 +132,85 @@
     <!-- Data picker -->
     <script src="/template/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
+    <!-- Sweet alert -->
+    <script src="/template/js/plugins/sweetalert/sweetalert.min.js"></script>
+
     <script>
+        var token = '{{ csrf_token() }}';
+
         $(document).ready(function(){
+            if(localStorage.getItem('selected_tab')){
+                switch (localStorage.getItem('selected_tab')){
+                    case 'tab1':
+                            if(!$('#tab1').hasClass('active')){
+                                $('#tab1').addClass('active')
+                                $('#tab2').removeClass('active')
+                                $('#tab-1').addClass('active')
+                                $('#tab-2').removeClass('active')
+                            }
+                        $('#tab1')
+                        break;
+                    case 'tab2':
+                        if(!$('#tab2').hasClass('active')){
+                            $('#tab2').addClass('active')
+                            $('#tab1').removeClass('active')
+                            $('#tab-2').addClass('active')
+                            $('#tab-1').removeClass('active')
+                        }
+                        break
+                }
+            }
+
+            $('.delete_image').click(function () {
+                var row = $(this);
+                swal({
+                            title: "Are you sure?",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#1ab394",
+                            confirmButtonText: "Yes, delete it!",
+                            cancelButtonText: "No, cancel plx!",
+                            closeOnConfirm: false,
+                            closeOnCancel: true },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                var image_id = row.data('id');
+                                $.ajax({
+                                    url: BASE_URL+'/admin/products/images/delete/'+image_id,
+                                    type: 'post',
+                                    data: {
+                                        _token: token
+                                    },
+                                    success: function(data){
+                                        row.closest('tr').remove();
+                                    }
+                                });
+                                swal({
+                                    title: "Deleted!",
+                                    text: 'Image has been deleted.',
+                                    type: "success",
+                                    confirmButtonColor: "#1ab394",
+                                });
+                            } else {
+//                                swal("Cancelled", "Your imaginary file is safe :)", "error");
+                            }
+                        });
+            });
+
+            $('input[name="thumb_image"]').on('click', function(){
+                var id = $(this).val();
+                var product_id = $(this).data('product');
+                $.ajax({
+                    url: BASE_URL+'/admin/products/'+product_id+'/images/set_thumbnail/'+id,
+                    type: 'post',
+                    data: {
+                        _token: token
+                    },
+                    success: function(data){
+
+                    }
+                })
+            });
 
             $('.summernote').summernote();
 
@@ -143,5 +223,11 @@
             });
 
         });
+    </script>
+    <script>
+        $('.tab').on('click', function(){
+            var id = $(this).attr('id');
+            localStorage.setItem('selected_tab', id);
+        })
     </script>
 @endsection
