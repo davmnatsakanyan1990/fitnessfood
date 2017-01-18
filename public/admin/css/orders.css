@@ -1,0 +1,13 @@
+.new_order{
+    background-color: #66cdaa;
+}
+
+.total_sum{
+    font-size: large;
+}
+
+.order_status{
+    width: 200px;
+    float: right;
+
+}

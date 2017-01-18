@@ -33,6 +33,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @if(count($products) > 0)
                             @foreach($products as $product)
                             <tr>
                                 <td>
@@ -62,6 +63,9 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @else
+                            <tr><td class="text-center" colspan="6">There aren't any products</td></tr>
+                            @endif
                             </tbody>
                             <tfoot>
                             <tr>

@@ -4,60 +4,11 @@
     <link href="/template/css/plugins/footable/footable.core.css" rel="stylesheet">
 
     <link href="/template/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="/admin/css/orders.css" rel="stylesheet">
 
 @endsection
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-
-
-        {{--<div class="ibox-content m-b-sm border-bottom">--}}
-            {{--<div class="row">--}}
-                {{--<div class="col-sm-4">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label class="control-label" for="order_id">Order ID</label>--}}
-                        {{--<input type="text" id="order_id" name="order_id" value="" placeholder="Order ID" class="form-control">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-sm-4">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label class="control-label" for="status">Order status</label>--}}
-                        {{--<input type="text" id="status" name="status" value="" placeholder="Status" class="form-control">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-sm-4">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label class="control-label" for="customer">Customer</label>--}}
-                        {{--<input type="text" id="customer" name="customer" value="" placeholder="Customer" class="form-control">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="row">--}}
-                {{--<div class="col-sm-4">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label class="control-label" for="date_added">Date added</label>--}}
-                        {{--<div class="input-group date">--}}
-                            {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_added" type="text" class="form-control" value="03/04/2014">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-sm-4">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label class="control-label" for="date_modified">Date modified</label>--}}
-                        {{--<div class="input-group date">--}}
-                            {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_modified" type="text" class="form-control" value="03/06/2014">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-sm-4">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label class="control-label" for="amount">Amount</label>--}}
-                        {{--<input type="text" id="amount" name="amount" value="" placeholder="Amount" class="form-control">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
-        {{--</div>--}}
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox">
@@ -71,9 +22,9 @@
                                 <th data-hide="phone">Customer Name</th>
                                 <th data-hide="phone">Customer Email</th>
                                 <th>Customer Phone</th>
+                                <th>Counselor</th>
                                 <th data-hide="phone">Amount</th>
                                 <th data-hide="phone">Date added</th>
-                                <th data-hide="phone,tablet" >Date modified</th>
                                 <th data-hide="phone">Status</th>
                                 <th class="text-right">Action</th>
 
@@ -82,7 +33,7 @@
                             <tbody>
                             @if(count($orders) > 0)
                                 @foreach($orders as $order)
-                                <tr>
+                                <tr class="{{ $order->is_seen == 0 ? 'new_order' : '' }}">
                                     <td>
                                         {{ $order->id }}
                                     </td>
@@ -96,22 +47,28 @@
                                         {{ $order->customer_phone }}
                                     </td>
                                     <td>
-                                        {{ $order-> }}
+                                        {{ $order->counselor->name }}
                                     </td>
                                     <td>
-                                        03/04/2015
+                                        {{ $order->amount }}
                                     </td>
                                     <td>
-                                        03/05/2015
+                                        {{ $order->created_at }}
                                     </td>
                                     <td>
-                                        <span class="label label-primary">Pending</span>
+                                        @if($order->status == 0)
+                                            <span class="label label-warning">Pending</span>
+                                        @elseif($order->status == 1)
+                                            <span class="label label-primary">Confirmed</span>
+                                        @elseif($order->status == 2)
+                                            <span class="label label-success">Shipping</span>
+                                        @elseif($order->status == 3)
+                                            <span class="label label-danger">Canceled</span>
+                                        @endif
                                     </td>
                                     <td class="text-right">
                                         <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">View</button>
-                                            <button class="btn-white btn btn-xs">Edit</button>
-                                            <button class="btn-white btn btn-xs">Delete</button>
+                                            <a href="{{ url('admin/orders/show/'.$order->id) }}"><button class="btn-white btn btn-xs">View</button></a>
                                         </div>
                                     </td>
                                 </tr>

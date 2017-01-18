@@ -9,8 +9,10 @@ class Order extends Model
     protected $fillable = [
         'customer_name',
         'customer_email',
+        'customer_phone',
         'status',
-        'trainer_id'
+        'trainer_id',
+        'is_seen'
     ];
     
     public function products(){

@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Event;
 class OrderController extends Controller
 {
     public function create(Request $request){
-        $customer_name = 'Jon';
-        $customer_email = 'Jon@gmail.com';
-        $products = [2,3,4];
+        $customer_name = 'Jonjjk';
+        $customer_email = 'Jjjjon@gmail.com';
+        $products = [5,6,4];
 
         $trainer_id = 1;
 

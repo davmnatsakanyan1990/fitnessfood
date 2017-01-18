@@ -46,6 +46,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('home', 'HomeController@index');
     
     Route::get('orders', 'OrderController@index');
+    Route::get('orders/show/{order_id}', 'OrderController@show');
+    Route::post('orders/{order_id}/status/update', 'OrderController@statusUpdate');
 
     Route::get('products', 'ProductController@index');
     Route::get('products/create', 'ProductController@create');

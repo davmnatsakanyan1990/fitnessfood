@@ -70,8 +70,10 @@ class ProductController extends AdminBaseController
      */
     public function edit($product_id){
         $product = Product::with('images')->find($product_id);
-        
-        return view('admin.products.edit', compact('product'));
+        if($product)
+            return view('admin.products.edit', compact('product'));
+        else
+            abort(404);
     }
 
     /**

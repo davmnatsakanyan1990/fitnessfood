@@ -12,7 +12,7 @@ class AdminBaseController extends Controller
 {
     public function __construct()
     {
-        $new_orders_count = Order::where('status', 0)->count();
+        $new_orders_count = Order::where('is_seen', 0)->count();
         view()->share('new_orders_count', $new_orders_count);
     }
 }

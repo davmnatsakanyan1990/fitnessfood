@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends AdminBaseController
 {
@@ -16,13 +17,34 @@ class OrderController extends AdminBaseController
     }
     
     public function index(){
-        $this->ordersSeen();
+
         $orders = Order::with('products', 'counselor')->get();
-        dd($orders->toArray());
+        foreach($orders as $order){
+            $order->amount = $order->products->sum('price');
+        }
+
+        $this->ordersSeen();
+
         return view('admin.orders.index', compact('orders'));
     }
 
+    public function show($order_id){
+        $order = Order::with(['products'=>function($products){
+            return $products->with('thumb_image');
+        }])->find($order_id);
+
+        $order->amount = $order->products->sum('price');
+        if($order)
+            return view('admin.orders.single', compact('order'));
+        else
+            abort(404);
+    }
+
+    public function statusUpdate(Request $request, $order_id){
+        Order::where('id', $order_id)->update(['status' => $request->status]);
+    }
+
     public function ordersSeen(){
-        Order::where('status', 0)->update(['status'=>1]);
+        Order::where('is_seen', 0)->update(['is_seen'=>1]);
     }
 }
