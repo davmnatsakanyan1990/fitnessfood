@@ -82,49 +82,14 @@
 @section('scripts')
     <script src="/template/js/plugins/footable/footable.all.min.js"></script>
 
-    <script src="/admin/js/products.js"></script>
 
     <!-- Sweet alert -->
     <script src="/template/js/plugins/sweetalert/sweetalert.min.js"></script>
 
     <script>
-        var token = '{{ csrf_token() }}'
-
-        $(document).ready(function () {
-
-            $('.delete').click(function () {
-                var row = $(this);
-                swal({
-                            title: "Are you sure?",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#1ab394",
-                            confirmButtonText: "Yes, delete it!",
-                            cancelButtonText: "No, cancel plx!",
-                            closeOnConfirm: false,
-                            closeOnCancel: true },
-                        function (isConfirm) {
-                            if (isConfirm) {
-                                var product_id = row.data('id');
-                                $.ajax({
-                                     url: BASE_URL+'/admin/products/delete/'+product_id,
-                                     type: 'post',
-                                     data: {
-                                         _token: token
-                                     },
-                                     success: function(data){
-                                         row.closest('tr').remove();
-                                     }
-                                });
-                                swal("Deleted!", "Product has been deleted.", "success");
-                            } else {
-//                                swal("Cancelled", "Your imaginary file is safe :)", "error");
-                            }
-                        });
-            });
-
-
-        });
-
+        var token = '{{ csrf_token() }}';
     </script>
+
+    <script src="/admin/js/products.js"></script>
+
 @endsection

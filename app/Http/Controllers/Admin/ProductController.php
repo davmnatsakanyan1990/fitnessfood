@@ -152,10 +152,10 @@ class ProductController extends AdminBaseController
     public function deleteImage($id){
         $image = Image::find($id);
 
-        unlink('images/productImages/'.$image->name);
-
         $image->delete();
 
+        if(file_exists('images/productImages/'.$image->name))
+            unlink('images/productImages/'.$image->name);
     }
 
     public function setThumbnail($product_id, $image_id){

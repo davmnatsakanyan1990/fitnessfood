@@ -41,3 +41,45 @@
         padding:  4px 10px;
     }
 }
+
+/* Active image selected */
+
+#gall .img_cont {
+    display: inline-block;
+}
+
+.tmb_img{
+    color: #fff;
+    font-size: 13px;
+    padding: 6px 0px;
+    position: relative;
+    top: -110px;
+    margin: 5px;
+    display: block;
+    background: rgba(0,0,0,.5);
+    visibility: hidden;
+}
+
+.show{
+    visibility: visible;
+}
+.hidden{
+    display: none;
+}
+
+#gall .tools{
+    top: -35px;
+    position: relative;
+    text-align: left;
+
+}
+
+.delete_image{
+    cursor: pointer;
+    color: #990000;
+}
+
+.set_thumb_image{
+    cursor: pointer;
+    color: #1ab394;
+}

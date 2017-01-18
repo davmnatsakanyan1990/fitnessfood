@@ -8,6 +8,10 @@
 
     <!-- Sweet Alert -->
     <link href="/template/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <link href="/template/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <link href="/template/css/plugins/blueimp/css/blueimp-gallery.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -50,7 +54,7 @@
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Description:</label>
                                             <div class="col-sm-10">
-                                                <textarea class="form-control" name="description">{{ $product->description }}</textarea>
+                                                <textarea rows="8" class="form-control" name="description">{{ $product->description }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Status:</label>
@@ -77,45 +81,35 @@
                                         <a href="{{ url('admin/products/'.$product->id.'/images/new') }}"><button class="btn btn-warning pull-right add_image"><i class="fa fa-plus" style="padding-right: 7px"></i> Add Image</button></a>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-stripped">
-                                        <thead>
-                                        <tr>
-                                            <th>
-                                                Image preview
-                                            </th>
-                                            <th>
-                                                Image url
-                                            </th>
-                                            <th>
-                                               Thumb Image
-                                            </th>
-                                            <th>
-                                                Actions
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($product->images as $image)
-                                        <tr>
-                                            <td>
-                                                <img class="img-thumbnail" width="100" height="100" src="/images/productImages/{{ $image->name }}">
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control" disabled value="{{ url('images/productImages').'/'.$image->name }}">
-                                            </td>
-                                            <td>
-                                                <input data-product="{{ $product->id }}" name="thumb_image" {{ $image->role == 1 ? 'checked': '' }} type="radio" class="form-control" value="{{ $image->id }}">
-                                            </td>
-                                            <td>
-                                                <button class = "delete_image" data-id="{{ $image->id }}" class="btn btn-white"><i class="fa fa-trash"></i> </button>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <div class="lightBoxGallery" id="gall">
+                                    @if(count($product->images) > 0)
+                                    @foreach($product->images as $image)
+                                        <div class="img_cont">
+                                            <img width="100" height="100" src="/images/productImages/{{ $image->name }}">
+                                            <span class="tmb_img {{ $image->role == 1 ? 'show' : ''}}">Thumb image</span>
+                                            <div class="tools">
+                                                <div class="delete_image" data-id="{{ $image->id }}" {!! $image->role == 1 ? 'style="margin-top: 23px"' : '' !!}><i style="margin-right: 5px" class="fa fa-trash"></i> remove</div>
 
+                                                <div class="set_thumb_image {{ $image->role == 1 ? 'hidden' : '' }}"   data-product="{{ $product->id }}" data-id="{{ $image->id }}"><i style="margin-right: 5px" class="fa fa-check"></i>set as thumb</div>
+
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    @else
+                                        <h2 class="text-center">There are no any images</h2>
+                                    @endif
+                                    <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+                                    <div id="blueimp-gallery" class="blueimp-gallery">
+                                        <div class="slides"></div>
+                                        <h3 class="title"></h3>
+                                        <a class="prev">‹</a>
+                                        <a class="next">›</a>
+                                        <a class="close">×</a>
+                                        <a class="play-pause"></a>
+                                        <ol class="indicator"></ol>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -126,6 +120,8 @@
     </div>
 @endsection
 @section('scripts')
+
+    <script src="/template/js/plugins/footable/footable.all.min.js"></script>
         <!-- SUMMERNOTE -->
     <script src="/template/js/plugins/summernote/summernote.min.js"></script>
 
@@ -137,97 +133,11 @@
 
     <script>
         var token = '{{ csrf_token() }}';
-
-        $(document).ready(function(){
-            if(localStorage.getItem('selected_tab')){
-                switch (localStorage.getItem('selected_tab')){
-                    case 'tab1':
-                            if(!$('#tab1').hasClass('active')){
-                                $('#tab1').addClass('active')
-                                $('#tab2').removeClass('active')
-                                $('#tab-1').addClass('active')
-                                $('#tab-2').removeClass('active')
-                            }
-                        $('#tab1')
-                        break;
-                    case 'tab2':
-                        if(!$('#tab2').hasClass('active')){
-                            $('#tab2').addClass('active')
-                            $('#tab1').removeClass('active')
-                            $('#tab-2').addClass('active')
-                            $('#tab-1').removeClass('active')
-                        }
-                        break
-                }
-            }
-
-            $('.delete_image').click(function () {
-                var row = $(this);
-                swal({
-                            title: "Are you sure?",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#1ab394",
-                            confirmButtonText: "Yes, delete it!",
-                            cancelButtonText: "No, cancel plx!",
-                            closeOnConfirm: false,
-                            closeOnCancel: true },
-                        function (isConfirm) {
-                            if (isConfirm) {
-                                var image_id = row.data('id');
-                                $.ajax({
-                                    url: BASE_URL+'/admin/products/images/delete/'+image_id,
-                                    type: 'post',
-                                    data: {
-                                        _token: token
-                                    },
-                                    success: function(data){
-                                        row.closest('tr').remove();
-                                    }
-                                });
-                                swal({
-                                    title: "Deleted!",
-                                    text: 'Image has been deleted.',
-                                    type: "success",
-                                    confirmButtonColor: "#1ab394",
-                                });
-                            } else {
-//                                swal("Cancelled", "Your imaginary file is safe :)", "error");
-                            }
-                        });
-            });
-
-            $('input[name="thumb_image"]').on('click', function(){
-                var id = $(this).val();
-                var product_id = $(this).data('product');
-                $.ajax({
-                    url: BASE_URL+'/admin/products/'+product_id+'/images/set_thumbnail/'+id,
-                    type: 'post',
-                    data: {
-                        _token: token
-                    },
-                    success: function(data){
-
-                    }
-                })
-            });
-
-            $('.summernote').summernote();
-
-            $('.input-group.date').datepicker({
-                todayBtn: "linked",
-                keyboardNavigation: false,
-                forceParse: false,
-                calendarWeeks: true,
-                autoclose: true
-            });
-
-        });
     </script>
-    <script>
-        $('.tab').on('click', function(){
-            var id = $(this).attr('id');
-            localStorage.setItem('selected_tab', id);
-        })
-    </script>
+
+        <script src="/admin/js/product_edit.js"></script>
+
+    <!-- blueimp gallery -->
+    <script src="/template/js/plugins/blueimp/jquery.blueimp-gallery.min.js"></script>
+
 @endsection

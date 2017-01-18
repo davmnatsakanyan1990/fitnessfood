@@ -19,6 +19,9 @@
             <li class="{{ url()->current() == url('admin/products') ? 'active' : ''  }}">
                 <a href="{{ url('admin/products') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Products</span></a>
             </li>
+            <li class="{{ url()->current() == url('admin/orders') ? 'active' : ''  }}">
+                <a href="{{ url('admin/orders') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Orders</span></a>
+            </li>
         </ul>
 
     </div>
