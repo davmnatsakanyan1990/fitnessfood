@@ -17,7 +17,9 @@ class OrderController extends AdminBaseController
     
     public function index(){
         $this->ordersSeen();
-        return view('admin.orders.index');
+        $orders = Order::with('products', 'counselor')->get();
+        dd($orders->toArray());
+        return view('admin.orders.index', compact('orders'));
     }
 
     public function ordersSeen(){

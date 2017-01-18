@@ -22,6 +22,8 @@ class CreateOrdersTable extends Migration
                                                            // 3: order submitted
             $table->integer('trainer_id')->unsigned()->nullable();
             $table->timestamps();
+
+            $table->foreign('trainer_id')->references('id')->on('trainers');
         });
     }
 

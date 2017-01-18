@@ -12,4 +12,12 @@ class Order extends Model
         'status',
         'trainer_id'
     ];
+    
+    public function products(){
+        return $this->belongsToMany(Product::class, 'order_products');
+    }
+
+    public function counselor(){
+        return $this->belongsTo(Trainer::class, 'trainer_id');
+    }
 }
