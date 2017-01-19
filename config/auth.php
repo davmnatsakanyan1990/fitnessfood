@@ -124,6 +124,13 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+        'trainers' => [
+            'provider' => 'trainers',
+            'email' => 'trainer.auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
     ],
 
 ];

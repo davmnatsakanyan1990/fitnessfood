@@ -16,9 +16,9 @@ class TrainerController extends AdminBaseController
     }
     
     public function index(){
-        $trainers = Trainer::with('orders')->get();
+        $trainers = Trainer::with('orders', 'image')->get();
 //        dd($trainers->toArray());
-        
+//        dd($trainers);
         return view('admin.trainers.index', compact('trainers'));
     }
 }

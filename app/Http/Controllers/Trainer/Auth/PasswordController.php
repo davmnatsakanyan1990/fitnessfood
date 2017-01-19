@@ -21,6 +21,16 @@ class PasswordController extends Controller
     use ResetsPasswords;
 
     /**
+     * The authentication guard that should be used.
+     *
+     * @var string
+     */
+    protected $guard = 'trainer';
+    protected $broker = 'trainers';
+    protected $linkRequestView = 'trainer.auth.passwords.email';
+    protected $resetView = 'trainer.auth.passwords.reset';
+
+    /**
      * Create a new password controller instance.
      *
      * @return void

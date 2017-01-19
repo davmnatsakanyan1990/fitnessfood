@@ -12,11 +12,12 @@ class Order extends Model
         'customer_phone',
         'status',
         'trainer_id',
-        'is_seen'
+        'is_seen',
+        'is_shipping'
     ];
     
     public function products(){
-        return $this->belongsToMany(Product::class, 'order_products');
+        return $this->belongsToMany(Product::class, 'order_products')->withPivot('count');
     }
 
     public function counselor(){

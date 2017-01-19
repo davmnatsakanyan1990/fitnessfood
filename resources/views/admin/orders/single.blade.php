@@ -14,7 +14,7 @@
 
                                     <dt>Ordered by:</dt> <dd>{{ $order->customer_name }}</dd>
                                     <dt>Phone:</dt> <dd>  {{ $order->customer_phone }}</dd>
-                                    <dt>E-mail:</dt> <dd>{{ $order->customer_email }} </dd>
+                                    <dt>Shipping:</dt> <dd>{{ $order->is_shipping ? 'YES' : 'NO' }} </dd>
                                     <dt>Counselor:</dt> <dd> 	{{ $order->counselor->name }} </dd>
                                     <dt>Order ID:</dt> <dd> 	{{ $order->id }} </dd>
                                 </dl>
@@ -37,7 +37,9 @@
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Product Name</th>
+                                <th>Count</th>
                                 <th>Product Price</th>
+                                <th>Amount</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -46,13 +48,15 @@
                                 <td>{{ $k+1 }}</td>
                                 <td><img width="70" class="img-thumbnail" src="/images/productImages/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}"> </td>
                                 <td>{{ $product->name }}</td>
+                                <td>{{ $product->pivot->count }}</td>
                                 <td> {{ $product->price }} AMD</td>
+                                <td> {{ $product->price * $product->pivot->count }} AMD</td>
                             </tr>
                            @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td class="text-right total_sum" colspan="4" ><strong>Total: </strong>{{ $order->amount }} AMD</td>
+                                    <td class="text-right total_sum" colspan="6" ><strong>Total: </strong>{{ $order->is_shipping ? $order->total.' + 600 = '.($order->total+600) : $order->total }} AMD</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -64,8 +68,8 @@
 @endsection
 @section('scripts')
     <script>
-        var order_id = '{{ $order->id }}'
-        var token = '{{ csrf_token() }}'
+        var order_id = '{{ $order->id }}';
+        var token = '{{ csrf_token() }}';
     </script>
     <script>
         $('select[name="status"]').on('change', function(){

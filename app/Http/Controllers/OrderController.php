@@ -15,19 +15,17 @@ class OrderController extends Controller
 {
     public function create(Request $request){
         $customer_name = 'Jonjjk';
-        $customer_email = 'Jjjjon@gmail.com';
         $products = [5,6,4];
 
         $trainer_id = 2;
 
         $order = DB::table('orders')->insertGetId([
             'customer_name' => $customer_name,
-            'customer_email' => $customer_email,
             'trainer_id' => $trainer_id
         ]);
 
         foreach($products as $product){
-            OrderProduct::create(['order_id' => $order, 'product_id' => $product]);
+            OrderProduct::create(['order_id' => $order, 'product_id' => $product, 'count'=>5]);
         }
 
         Event::fire(new NewOrderEvent($order));

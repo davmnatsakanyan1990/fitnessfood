@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Trainer\Auth;
 
+use App\Models\Trainer;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -28,10 +29,11 @@ class AuthController extends Controller
      *
      * @var string
      */
+    protected $registerView = 'trainer.auth.register';
     protected $redirectTo = 'trainer/home';
     protected $redirectAfterLogout = 'trainer/auth/login';
     protected $guard = 'trainer';
-    protected $loginView = 'trainer/auth/login';
+    protected $loginView = 'trainer.auth.login';
     protected $username = 'username';
 
     /**
@@ -42,6 +44,42 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+//            'name' => 'required|max:255',
+//            'email' => 'required|email|max:255|unique:users',
+//            'password' => 'required|min:6|confirmed',
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        return Trainer::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'address' => $data['address'],
+            'phone' => $data['phone'],
+            'workplace' => $data['workplace'],
+            'date_of_birth' => $data['date_of_birth'],
+            'username' => $data['username'],
+            'password' => bcrypt($data['password']),
+        ]);
     }
 
 }

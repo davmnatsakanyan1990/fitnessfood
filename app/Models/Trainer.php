@@ -6,16 +6,23 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Trainer extends Authenticatable
 {
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
-        'username',
+        'first_name',
+        'last_name',
         'email',
+        'address',
+        'phone',
+        'workplace',
+        'date_of_birth',
+        'username',
         'password',
+        'is_approved',
 
     ];
 

@@ -12,6 +12,7 @@
             <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-content">
+                        <h2 class="pull-left">Products</h2>
                         @if(session('message'))
                         <div class="alert alert-success alert-dismissable">
                             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>

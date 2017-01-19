@@ -15,7 +15,6 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('customer_name');
-            $table->string('customer_email');
             $table->string('customer_phone');
             $table->enum('status', [0,1,2,3])->default(0); // 0: pending;
                                                            // 1: order confirmed;
@@ -23,6 +22,7 @@ class CreateOrdersTable extends Migration
                                                            // 3: order canceled;
 
             $table->integer('trainer_id')->unsigned()->nullable();
+            $table->enum('is_shipping', [0,1]);
             $table->enum('is_seen', [0,1])->default(0);
             $table->timestamps();
 

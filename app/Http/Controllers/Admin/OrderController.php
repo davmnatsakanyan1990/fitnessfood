@@ -33,7 +33,12 @@ class OrderController extends AdminBaseController
             return $products->with('thumb_image');
         }])->find($order_id);
 
-        $order->amount = $order->products->sum('price');
+        $total = 0;
+        foreach($order->products as $product){
+            $total = $total + $product->price * $product->pivot->count;
+        }
+        $order->total = $total;
+
         if($order)
             return view('admin.orders.single', compact('order'));
         else

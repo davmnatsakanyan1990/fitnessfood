@@ -13,7 +13,7 @@
             <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-content">
-
+                        <h2 class="pull-left">Orders</h2>
                         <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
                             <thead>
                             <tr>
@@ -74,7 +74,7 @@
                                 </tr>
                                 @endforeach
                             @else
-                                <tr class="text-center">There aren't any orders</tr>
+                                <tr class="text-center"><td colspan="9">There aren't any orders</td></tr>
                             @endif
 
 
