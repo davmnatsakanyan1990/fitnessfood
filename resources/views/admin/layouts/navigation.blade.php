@@ -13,7 +13,7 @@
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+
                 </div>
             </li>
             <li class="{{ url()->current() == url('admin/products') ? 'active' : ''  }}">
@@ -21,6 +21,9 @@
             </li>
             <li class="{{ url()->current() == url('admin/orders') ? 'active' : ''  }}">
                 <a href="{{ url('admin/orders') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Orders</span></a>
+            </li>
+            <li class="{{ url()->current() == url('admin/trainers') ? 'active' : ''  }}">
+                <a href="{{ url('admin/trainers') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Trainers</span></a>
             </li>
         </ul>
 

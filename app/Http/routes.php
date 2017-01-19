@@ -61,4 +61,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('products/images/delete/{image_id}', 'ProductController@deleteImage');
     Route::post('products/{product_id}/images/set_thumbnail/{id}', 'ProductController@setThumbnail');
 
+    Route::get('trainers', 'TrainerController@index');
+
 });

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Login</title>
+    <title>Admin | Login</title>
 
     <link href="/template/css/bootstrap.min.css" rel="stylesheet">
     <link href="/template/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     <div>
         <div>
 
-            <h1 class="logo-name">IN+</h1>
+            <h1 class="logo-name"><img src="/images/logo.png"></h1>
 
         </div>
         <h3>Admin Login</h3>

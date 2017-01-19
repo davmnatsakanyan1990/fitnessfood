@@ -64,7 +64,7 @@
                 @if($new_orders_count)
                 <ul class="dropdown-menu dropdown-alerts">
                     <li>
-                        <a href="mailbox.html">
+                        <a>
                             <div>
                                 <i class="fa fa-envelope fa-fw"></i> You have {{ $new_orders_count }} new orders
                                 {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
@@ -74,7 +74,7 @@
                     <li class="divider"></li>
                     <li>
                         <div class="text-center link-block">
-                            <a href="notifications.html">
+                            <a href="{{ url('admin/orders') }}">
                                 <strong>See All Orders</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
