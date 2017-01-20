@@ -17,7 +17,11 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->double('price', 11, 2);
-            $table->enum('status', [0,1]); //0: available; 1: not available
+            $table->double('nutritional_value', 11, 2)->nullable();
+            $table->double('proteins', 11, 2)->nullable();
+            $table->double('carbs', 11, 2)->nullable();
+            $table->double('fats', 11, 2)->nullable();
+            $table->double('calories', 11, 2)->nullable();
             $table->timestamps();
         });
     }

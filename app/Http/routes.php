@@ -33,7 +33,7 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::get('register', 'Auth\AuthController@showRegistrationForm');
     Route::post('register', 'Auth\AuthController@register');
 
-    Route::get('home', 'HomeController@index');
+    Route::get('profile', 'ProfileController@index');
 
 });
 

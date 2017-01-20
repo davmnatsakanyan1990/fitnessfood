@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ url('trainer/auth/login') }}" method="post">
+                <form action="{{ url('trainer/login') }}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <input class="form-control" type="text" name="username" value="{{ old('username') }}" placeholder="Username">

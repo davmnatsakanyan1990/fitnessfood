@@ -10,8 +10,12 @@ class Product extends Model
     protected $fillable = [
         'title',
         'description',
+        'nutritional_value',
+        'proteins',
+        'carbs',
+        'fats',
+        'calories',
         'price',
-        'status'
     ];
 
     public function images(){

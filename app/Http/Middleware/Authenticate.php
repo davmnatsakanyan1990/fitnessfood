@@ -23,7 +23,7 @@ class Authenticate
             } else {
                 switch($guard){
                     case 'trainer' :
-                        return redirect()->guest('trainer/auth/login');
+                        return redirect()->guest('trainer/login');
                     break;
                     case 'admin' :
                         return redirect()->guest('admin/login');

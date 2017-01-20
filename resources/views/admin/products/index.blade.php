@@ -12,7 +12,8 @@
             <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-content">
-                        <h2 class="pull-left">Products</h2>
+                        <h4>All Products</h4>
+                        <div class="hr-line-dashed"></div>
                         @if(session('message'))
                         <div class="alert alert-success alert-dismissable">
                             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
@@ -24,11 +25,15 @@
                             <thead>
                             <tr>
 
-                                <th data-hide="phone">Image</th>
+                                <th data-sort-ignore="true">Image</th>
                                 <th data-toggle="true">Product Name</th>
-                                <th data-hide="phone">Description</th>
+                                <th data-hide="phone, tablet" data-sort-ignore="true">Description</th>
+                                <th data-hide="phone" data-sort-ignore="true">Nutritional</th>
+                                <th data-hide="phone" data-sort-ignore="true">Proteins</th>
+                                <th data-hide="phone" data-sort-ignore="true">Carbs</th>
+                                <th data-hide="phone" data-sort-ignore="true">Fats</th>
+                                <th data-hide="phone" data-sort-ignore="true">Calories</th>
                                 <th data-hide="phone">Price</th>
-                                <th data-hide="phone">Status</th>
                                 <th class="text-right" data-sort-ignore="true">Action</th>
 
                             </tr>
@@ -38,7 +43,7 @@
                             @foreach($products as $product)
                             <tr>
                                 <td>
-                                    <img src="/images/productImages/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}" class="img-thumbnail" width="100">
+                                    <img src="/images/productImages/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}" class="img-thumbnail img-responsive" width="100">
                                 </td>
                                 <td>
                                     {{ $product->title }}
@@ -47,14 +52,22 @@
                                     {{ $product->description }}
                                 </td>
                                 <td>
-                                    {{ $product->price }}
+                                    {{ $product->nutritional_value }}
                                 </td>
-                                <td class="footable-visible">
-                                    @if($product->status == 0)
-                                    <span class="label label-primary">Available</span>
-                                    @elseif($product->status == 1)
-                                        <span class="label label-warning">Not Available</span>
-                                    @endif
+                                <td>
+                                    {{ $product->proteins }}
+                                </td>
+                                <td>
+                                    {{ $product->carbs }}
+                                </td>
+                                <td>
+                                    {{ $product->fats }}
+                                </td>
+                                <td>
+                                    {{ $product->calories }}
+                                </td>
+                                <td>
+                                    {{ $product->price }}
                                 </td>
                                 <td class="text-right action">
                                     <div class="btn-group">

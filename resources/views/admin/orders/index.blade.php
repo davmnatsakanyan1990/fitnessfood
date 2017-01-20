@@ -13,7 +13,8 @@
             <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-content">
-                        <h2 class="pull-left">Orders</h2>
+                        <h4>Orders</h4>
+                        <div class="hr-line-dashed"></div>
                         <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
                             <thead>
                             <tr>

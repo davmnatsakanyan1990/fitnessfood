@@ -49,13 +49,33 @@
                                         <div class="form-group"><label class="col-sm-2 control-label">Name:</label>
                                             <div class="col-sm-10"><input name="name" value="{{ $product->title }}" type="text" class="form-control" ></div>
                                         </div>
-                                        <div class="form-group"><label class="col-sm-2 control-label">Price:</label>
-                                            <div class="col-sm-10"><input name="price" value="${{ $product->price }}" type="text" class="form-control" placeholder="$160.00"></div>
+                                        <div class="form-group"><label class="col-sm-2 control-label">Price: </label>
+                                            <div class="col-sm-10"><input name="price" value="{{ $product->price }}" type="text" class="form-control" placeholder="AMD"></div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Description:</label>
                                             <div class="col-sm-10">
                                                 <textarea rows="8" class="form-control" name="description">{{ $product->description }}</textarea>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Nutritional Value</label>
+                                            <div class="col-sm-10"><input name="nutritional_value" type="text" class="form-control" value="{{ old('nutritional_value') ? old('nutritional_value') : $product->nutritional_value }}" placeholder="kcal"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Proteins</label>
+                                            <div class="col-sm-10"><input name="proteins" type="text" class="form-control" value="{{ old('proteins') ? old('proteins') : $product->proteins }}" placeholder="gram"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Carbs</label>
+                                            <div class="col-sm-10"><input name="carbs" type="text" class="form-control" value="{{ old('carbs') ? old('carbs') : $product->carbs }}" placeholder="gram"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Fats</label>
+                                            <div class="col-sm-10"><input name="fats" type="text" class="form-control" value="{{ old('fats') ? old('fats') : $product->fats  }}" placeholder="gram"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Calories</label>
+                                            <div class="col-sm-10"><input name="calories" type="text" class="form-control" value="{{ old('calories') ? old('calories') : $product->calories }}" placeholder="gram"></div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Status:</label>
                                             <div class="col-sm-10">

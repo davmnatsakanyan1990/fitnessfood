@@ -30,8 +30,8 @@ class AuthController extends Controller
      * @var string
      */
     protected $registerView = 'trainer.auth.register';
-    protected $redirectTo = 'trainer/home';
-    protected $redirectAfterLogout = 'trainer/auth/login';
+    protected $redirectTo = 'trainer/profile';
+    protected $redirectAfterLogout = 'trainer/login';
     protected $guard = 'trainer';
     protected $loginView = 'trainer.auth.login';
     protected $username = 'username';
