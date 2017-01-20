@@ -17,7 +17,7 @@ class OrderController extends Controller
         $customer_name = 'Jonjjk';
         $products = [5,6,4];
 
-        $trainer_id = 2;
+        $trainer_id = 1;
 
         $order = DB::table('orders')->insertGetId([
             'customer_name' => $customer_name,

@@ -35,6 +35,8 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
 
     Route::get('profile', 'ProfileController@index');
 
+    Route::post('message/new', 'MessageController@create');
+
 });
 
 /**
@@ -69,5 +71,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('products/{product_id}/images/set_thumbnail/{id}', 'ProductController@setThumbnail');
 
     Route::get('trainers', 'TrainerController@index');
+
+    Route::get('messages', 'MessageController@index');
+    Route::get('messages/show/{message_id}', 'MessageController@show');
+
+    Route::get('payments', 'PaymentController@index');
 
 });

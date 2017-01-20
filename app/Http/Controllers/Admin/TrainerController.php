@@ -16,9 +16,18 @@ class TrainerController extends AdminBaseController
     }
     
     public function index(){
-        $trainers = Trainer::with('orders', 'image')->get();
-//        dd($trainers->toArray());
-//        dd($trainers);
+        $trainers = Trainer::with(['orders' => function($orders){
+            return $orders->with('products');
+        }, 'image'])->get();
+        foreach($trainers as $trainer){
+            $total = 0;
+            foreach($trainer->orders as $order){
+                $total = $total + $order->products->sum('price');
+            }
+            $trainer->total = $total;
+            $trainer->total_bonus = $total/10;
+        }
+
         return view('admin.trainers.index', compact('trainers'));
     }
 }

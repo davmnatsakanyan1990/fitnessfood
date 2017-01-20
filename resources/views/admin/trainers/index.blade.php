@@ -24,7 +24,7 @@
                         </address>
                         <div class="hr-line-dashed"></div>
                         <p>
-                            Bonus: 20.000 AMD<br>
+                            Bonus: {{ $trainer->total_bonus }} AMD<br>
                         </p>
                     </div>
                     <div class="clearfix"></div>

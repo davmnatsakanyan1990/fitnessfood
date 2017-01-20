@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Message;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,5 +15,8 @@ class AdminBaseController extends Controller
     {
         $new_orders_count = Order::where('is_seen', 0)->count();
         view()->share('new_orders_count', $new_orders_count);
+
+        $new_messages_count = Message::where('is_seen', 0)->count();
+        view()->share('new_messages_count', $new_messages_count);
     }
 }

@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NewOrderEvent' => [
             'App\Listeners\NewOrderListener',
         ],
+        'App\Events\NewMessageEvent' => [
+            'App\Listeners\NewMessageListener',
+        ],
     ];
 
     /**
