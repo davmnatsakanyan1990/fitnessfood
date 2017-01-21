@@ -22,7 +22,7 @@ class ProductsTableSeeder extends Seeder
                                     reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                     mollit anim id est laborum.',
-                'price'         =>15.2
+                'price'         =>650
             ],
             [
                 'title'        =>'product 2',
@@ -33,7 +33,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>20.5
+                'price'         =>500
             ],
             [
                 'title'        =>'product 3',
@@ -44,7 +44,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>14.25
+                'price'         =>400
             ],
             [
                 'title'        =>'product 4',
@@ -55,7 +55,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>45.25
+                'price'         =>300
             ],
             [
                 'title'        =>'product 5',
@@ -66,7 +66,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>24.25
+                'price'         =>550
             ],
             [
                 'title'        =>'product 6',
@@ -77,7 +77,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>14.25
+                'price'         =>450
             ],
             [
                 'title'        =>'product 7',
@@ -88,7 +88,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>14.15
+                'price'         =>350
             ],
             [
                 'title'        =>'product 8',
@@ -99,7 +99,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>24.25
+                'price'         =>780
             ],
             [
                 'title'        =>'product 9',
@@ -110,7 +110,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>24.25
+                'price'         =>800
             ],
             [
                 'title'        =>'product 10',
@@ -121,7 +121,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>24.25
+                'price'         =>850
             ],
             [
                 'title'        =>'product 11',
@@ -132,7 +132,7 @@ class ProductsTableSeeder extends Seeder
                                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                 mollit anim id est laborum.',
-                'price'         =>24.25
+                'price'         =>750
             ],
         ]);
     }

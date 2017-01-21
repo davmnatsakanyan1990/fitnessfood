@@ -2,8 +2,8 @@ $(document).ready(function(){
 
     $('.footable').footable();
 
-    if(localStorage.getItem('selected_tab')){
-        switch (localStorage.getItem('selected_tab')){
+    if(localStorage.getItem('product_edit_tab')){
+        switch (localStorage.getItem('product_edit_tab')){
             case 'tab1':
                 if(!$('#tab1').hasClass('active')){
                     $('#tab1').addClass('active');
@@ -108,7 +108,7 @@ $(document).ready(function(){
                                 text: 'Thumbnail picture has been changed',
                                 type: "success",
                                 confirmButtonColor: "#1ab394",
-                                timer: 2000,
+                                timer: 2000
                             });
                         }
                     });
@@ -132,5 +132,5 @@ $(document).ready(function(){
 
 $('.tab').on('click', function(){
     var id = $(this).attr('id');
-    localStorage.setItem('selected_tab', id);
+    localStorage.setItem('product_edit_tab', id);
 });

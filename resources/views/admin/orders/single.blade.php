@@ -25,8 +25,7 @@
                                     <select class="form-control" name="status">
                                         <option {{ $order->status == 0 ? 'selected' : '' }} value="0">Pending</option>
                                         <option {{ $order->status == 1 ? 'selected' : '' }} value="1">Confirmed</option>
-                                        <option {{ $order->status == 2 ? 'selected' : '' }} value="2">Shipping</option>
-                                        <option {{ $order->status == 3 ? 'selected' : '' }} value="3">Canceled</option>
+                                        <option {{ $order->status == 2 ? 'selected' : '' }} value="2">Canceled</option>
                                     </select>
                                 </div>
                             </div>
@@ -69,9 +68,23 @@
 @section('scripts')
     <script>
         var order_id = '{{ $order->id }}';
-        var token = '{{ csrf_token() }}';
-    </script>
-    <script>
+
+        $(document).ready(function(){
+            if('{{ $order->is_seen }}' == 0){
+                $.ajax({
+                    url: BASE_URL+'/admin/order/seen/'+order_id,
+                    type: 'get',
+                    success: function(){
+                        var new_orders_count = ($('.new_orders_count'))[0].innerHTML;
+                        if(new_orders_count-1 == 0)
+                            $('.new_orders_count').remove();
+                        else
+                            $('.new_orders_count').html(new_orders_count-1);
+                    }
+                });
+            }
+        });
+
         $('select[name="status"]').on('change', function(){
             var status = $(this).val();
 

@@ -57,6 +57,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('orders', 'OrderController@index');
     Route::get('orders/show/{order_id}', 'OrderController@show');
     Route::post('orders/{order_id}/status/update', 'OrderController@statusUpdate');
+    Route::get('order/seen/{id}', 'OrderController@orderSeen');
 
     Route::get('products', 'ProductController@index');
     Route::get('products/create', 'ProductController@create');
@@ -71,10 +72,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('products/{product_id}/images/set_thumbnail/{id}', 'ProductController@setThumbnail');
 
     Route::get('trainers', 'TrainerController@index');
-
-    Route::get('messages', 'MessageController@index');
-    Route::get('messages/show/{message_id}', 'MessageController@show');
+    Route::get('trainers/show/{id}', 'TrainerController@show');
+    Route::get('trainer/messages/seen/{trainer_id}', 'TrainerController@messagesSeen');
 
     Route::get('payments', 'PaymentController@index');
+    Route::post('payments/update/{id}', 'PaymentController@update');
+    Route::post('payments/new', 'PaymentController@create');
+    Route::post('payments/delete/{id}', 'PaymentController@delete');
 
 });

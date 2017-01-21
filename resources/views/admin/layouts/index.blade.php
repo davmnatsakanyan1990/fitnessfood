@@ -15,7 +15,9 @@
     <link href="/template/css/style.css" rel="stylesheet">
 
     <script>
-        var BASE_URL = '{{ url('/') }}'
+        var BASE_URL = '{{ url('/') }}';
+
+        var token = '{{ csrf_token() }}';
     </script>
 
     @yield('styles')

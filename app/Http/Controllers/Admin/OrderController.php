@@ -23,8 +23,6 @@ class OrderController extends AdminBaseController
             $order->amount = $order->products->sum('price');
         }
 
-        $this->ordersSeen();
-
         return view('admin.orders.index', compact('orders'));
     }
 
@@ -49,7 +47,7 @@ class OrderController extends AdminBaseController
         Order::where('id', $order_id)->update(['status' => $request->status]);
     }
 
-    public function ordersSeen(){
-        Order::where('is_seen', 0)->update(['is_seen'=>1]);
+    public function orderSeen($order_id){
+        Order::where('id', $order_id)->update(['is_seen'=>1]);
     }
 }

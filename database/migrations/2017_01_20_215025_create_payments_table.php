@@ -16,6 +16,7 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->integer('trainer_id')->unsigned();
             $table->double('amount');
+            $table->string('note');
             $table->timestamps();
 
             $table->foreign('trainer_id')->references('id')->on('trainers');

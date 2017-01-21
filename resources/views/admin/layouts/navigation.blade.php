@@ -25,8 +25,8 @@
             <li class="{{ url()->current() == url('admin/trainers') ? 'active' : ''  }}">
                 <a href="{{ url('admin/trainers') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Trainers</span></a>
             </li>
-            <li class="{{ url()->current() == url('admin/messages') ? 'active' : ''  }}">
-                <a href="{{ url('admin/messages') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Messages</span></a>
+            <li class="{{ url()->current() == url('admin/payments') ? 'active' : ''  }}">
+                <a href="{{ url('admin/payments') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Payments</span></a>
             </li>
         </ul>
 

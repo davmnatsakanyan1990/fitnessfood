@@ -16,7 +16,10 @@ class AdminBaseController extends Controller
         $new_orders_count = Order::where('is_seen', 0)->count();
         view()->share('new_orders_count', $new_orders_count);
 
-        $new_messages_count = Message::where('is_seen', 0)->count();
-        view()->share('new_messages_count', $new_messages_count);
+        $new_messages = Message::with(['sender' => function($sender){
+                return $sender->with('image');
+            }])->where('is_seen', 0)->groupBy('trainer_id')->get();
+
+        view()->share('new_messages', $new_messages);
     }
 }

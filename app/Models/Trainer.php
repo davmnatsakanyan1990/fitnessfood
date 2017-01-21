@@ -43,4 +43,12 @@ class Trainer extends Authenticatable
     public function image(){
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function payments(){
+        return $this->hasMany(Payment::class);
+    }
+
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
 }

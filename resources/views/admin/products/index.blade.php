@@ -12,16 +12,18 @@
             <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-content">
-                        <h4>All Products</h4>
-                        <div class="hr-line-dashed"></div>
+                        <h4 class="pull-left">All Products</h4>
+                        <a class="pull-right" href="{{ url('admin/products/create') }}"><button class="btn btn-warning pull-right " type="button"><i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;Add Product</button></a>
+                        <div style="border-top: none; border-bottom: 1px dashed #e7eaec; height: 25px" class="hr-line-dashed"></div>
                         @if(session('message'))
                         <div class="alert alert-success alert-dismissable">
                             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
                             <p>{{ session('message') }}</p>
                         </div>
                         @endif
-                        <a href="{{ url('admin/products/create') }}"><button class="btn btn-warning pull-right " type="button"><i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;Add Product</button></a>
-                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="6">
+                        <input type="text" class="form-control input-sm m-b-xs" id="filter"
+                               placeholder="Search in table">
+                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="6" data-filter=#filter>
                             <thead>
                             <tr>
 
@@ -103,10 +105,6 @@
 
     <!-- Sweet alert -->
     <script src="/template/js/plugins/sweetalert/sweetalert.min.js"></script>
-
-    <script>
-        var token = '{{ csrf_token() }}';
-    </script>
 
     <script src="/admin/js/products.js"></script>
 
