@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
+
 use App\User;
+use Illuminate\Support\Facades\App;
+use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -28,19 +31,27 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/products';
-    protected $redirectAfterLogout = 'admin/login';
+    protected $redirectTo;
+    protected $redirectAfterLogout;
     protected $guard = 'admin';
     protected $loginView = 'admin.auth.login';
     protected $username = 'username';
+    protected $locale;
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        if($request->route()->parameter('locale')){
+            $this->locale = $request->route()->parameter('locale');
+            App::setLocale($this->locale);
+        }
+
+        $this->redirectTo = 'admin/trainers/'.$this->locale;
+        $this->redirectAfterLogout = 'admin/login/'.$this->locale;
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 

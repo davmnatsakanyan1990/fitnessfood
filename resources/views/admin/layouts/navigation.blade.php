@@ -16,17 +16,17 @@
 
                 </div>
             </li>
+            <li class="{{ url()->current() == url('admin/trainers') ? 'active' : ''  }}">
+                <a href="{{ url('admin/trainers') }}"><i class="fa fa-users"></i> <span class="nav-label">Trainers</span></a>
+            </li>
+            <li class="{{ url()->current() == url('admin/orders') ? 'active' : ''  }}">
+                <a href="{{ url('admin/orders') }}"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Orders</span></a>
+            </li>
             <li class="{{ url()->current() == url('admin/products') ? 'active' : ''  }}">
                 <a href="{{ url('admin/products') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Products</span></a>
             </li>
-            <li class="{{ url()->current() == url('admin/orders') ? 'active' : ''  }}">
-                <a href="{{ url('admin/orders') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Orders</span></a>
-            </li>
-            <li class="{{ url()->current() == url('admin/trainers') ? 'active' : ''  }}">
-                <a href="{{ url('admin/trainers') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Trainers</span></a>
-            </li>
             <li class="{{ url()->current() == url('admin/payments') ? 'active' : ''  }}">
-                <a href="{{ url('admin/payments') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Payments</span></a>
+                <a href="{{ url('admin/payments') }}"><i class="fa fa-money"></i> <span class="nav-label">Payments</span></a>
             </li>
         </ul>
 

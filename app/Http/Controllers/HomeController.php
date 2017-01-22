@@ -10,8 +10,8 @@ use App\Http\Requests;
 class HomeController extends Controller
 {
     public function index(){
-        $products = Product::all()->toArray();
-
+        $products = Product::with('images', 'thumb_image')->get()->chunk(4);
+//dd($products);
         return view('home', compact('products'));
     }
 }

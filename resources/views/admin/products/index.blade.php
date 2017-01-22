@@ -45,7 +45,7 @@
                             @foreach($products as $product)
                             <tr>
                                 <td>
-                                    <img src="/images/productImages/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}" class="img-thumbnail img-responsive" width="100">
+                                    <img src="/images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}" class="img-thumbnail img-responsive" width="100">
                                 </td>
                                 <td>
                                     {{ $product->title }}

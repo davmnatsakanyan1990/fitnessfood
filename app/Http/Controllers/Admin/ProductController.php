@@ -56,6 +56,11 @@ class ProductController extends AdminBaseController
             'title' => $request->name,
             'price'=>$request->price,
             'description'=>$request->description,
+            'nutritional_value' => $request->nutritional_value,
+            'proteins' => $request->proteins,
+            'carbs' => $request->carbs,
+            'fats' => $request->fats,
+            'calories' => $request->calories,
             'status'=>$request->status
         ]);
 
@@ -93,6 +98,11 @@ class ProductController extends AdminBaseController
             'title'=>$request->name,
             'price'=>$request->price,
             'description'=>$request->description,
+            'nutritional_value' => $request->nutritional_value,
+            'proteins' => $request->proteins,
+            'carbs' => $request->carbs,
+            'fats' => $request->fats,
+            'calories' => $request->calories,
             'status'=>$request->status
         ]);
         
@@ -139,7 +149,7 @@ class ProductController extends AdminBaseController
 
         foreach($request->file('file') as $image){
 
-            $destinationPath = 'images\productImages';
+            $destinationPath = 'images\products';
             $randomNumber = str_random(5);
             $ext = $image->getClientOriginalExtension();
 
@@ -156,8 +166,8 @@ class ProductController extends AdminBaseController
 
         $image->delete();
 
-        if(file_exists('images/productImages/'.$image->name))
-            unlink('images/productImages/'.$image->name);
+        if(file_exists('images/products/'.$image->name))
+            unlink('images/products/'.$image->name);
     }
 
     public function setThumbnail($product_id, $image_id){

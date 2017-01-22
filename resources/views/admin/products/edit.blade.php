@@ -105,7 +105,7 @@
                                     @if(count($product->images) > 0)
                                     @foreach($product->images as $image)
                                         <div class="img_cont">
-                                            <img width="100" height="100" src="/images/productImages/{{ $image->name }}">
+                                            <img width="100" height="100" src="/images/products/{{ $image->name }}">
                                             <span class="tmb_img {{ $image->role == 1 ? 'show' : ''}}">Thumb image</span>
                                             <div class="tools">
                                                 <div class="delete_image" data-id="{{ $image->id }}" {!! $image->role == 1 ? 'style="margin-top: 23px"' : '' !!}><i style="margin-right: 5px" class="fa fa-trash"></i> remove</div>

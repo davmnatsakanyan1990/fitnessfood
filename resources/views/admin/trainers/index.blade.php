@@ -13,7 +13,7 @@
                             <div>
                                 <span class="label label-warning new_messages_count">{{ $trainer->new_messages ? $trainer->new_messages : '' }}</span>
                                 <img alt="image" class="img-circle m-t-xs img-responsive" src="{{ $trainer->image ? '/images/trainerImages/'.$trainer->image->name : '/images/profile-icon.png' }}">
-                                <div class="m-t-xs font-bold">Trainer</div>
+                                <div class="m-t-xs font-bold">@lang('admin_trainers.trainer')</div>
                             </div>
                         </a>
                     </div>
@@ -27,7 +27,7 @@
                         </address>
                         <div class="hr-line-dashed"></div>
                         <p>
-                            Bonus: {{ $trainer->total_bonus }} AMD<br>
+                            @lang('admin_trainers.active'): {{ $trainer->active }} AMD<br>
                         </p>
                     </div>
                     <div class="clearfix"></div>
