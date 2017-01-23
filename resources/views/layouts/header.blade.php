@@ -15,7 +15,7 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav main-nav" >
                         <li class="active"><a href="{{ url('/') }}">Ապրանքներ</a></li>
-                        <li><a href="{{ url('about').'/'.App::getLocale() }}">Մեր Մասին</a></li>
+                        <li><a href="{{ url('about') }}">Մեր Մասին</a></li>
                         <li><a href="coach.php">Ես մարզիչ եմ</a></li>
                         <li><a href="contact.php">Կապ</a></li>
                     </ul>

@@ -29,7 +29,11 @@
 <script src="/js/main.js"></script>
 <script>
     $(document).ready(function(){
-        var basket_count = (JSON.parse(localStorage.getItem('basket'))).length;
+        if(localStorage.getItem('basket'))
+            var basket_count = (JSON.parse(localStorage.getItem('basket'))).length;
+        else
+            var basket_count = 0;
+
         $('.basket_count').text(basket_count);
     });
 </script>

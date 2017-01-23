@@ -45,13 +45,13 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
  */
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
-    Route::get('login/{locale}', 'Auth\AuthController@getLogin');
-    Route::post('login/{locale}', 'Auth\AuthController@postLogin');
-    Route::get('logout/{locale}', 'Auth\AuthController@logout');
+    Route::get('login', 'Auth\AuthController@getLogin');
+    Route::post('login', 'Auth\AuthController@postLogin');
+    Route::get('logout', 'Auth\AuthController@logout');
 
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
-    Route::get('password/reset/{locale}/{token?}', 'Auth\PasswordController@showResetForm');
+    Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 
     Route::get('home', 'HomeController@index');
     
@@ -72,7 +72,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('products/images/delete/{image_id}', 'ProductController@deleteImage');
     Route::post('products/{product_id}/images/set_thumbnail/{id}', 'ProductController@setThumbnail');
 
-    Route::get('trainers/{locale}', 'TrainerController@index');
+    Route::get('trainers', 'TrainerController@index');
     Route::get('trainers/show/{id}', 'TrainerController@show');
     Route::get('trainer/messages/seen/{trainer_id}', 'TrainerController@messagesSeen');
 
@@ -83,8 +83,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
 });
 
-Route::get('about/{locale}', function($locale){
-    App::setLocale($locale);
+Route::get('about', function($locale){
+//    App::setLocale($locale);
     return view('about');
 });
 Route::get('basket', function(){

@@ -8,30 +8,31 @@
                     <div id="main-slider" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img src="images/slider/sl-1.png" alt="images/slider/sl-1.png">
+                                <img src="/images/slider/sl-1.png" alt="/images/slider/sl-1.png">
 
                             </div>
                             <div class="item">
-                                <img src="images/slider/sl-1.png" alt="images/slider/sl-1.png">
+                                <img src="/images/slider/sl-1.png" alt="/images/slider/sl-1.png">
                             </div>
                         </div>
-                        <a class="left carousel-control" href="#main-slider" data-slide="prev"><span><img src="images/slider/l-c.png" alt="lc"></span></a>
-                        <a class="right carousel-control" href="#main-slider" data-slide="next"><span><img src="images/slider/r-c.png" alt=""></span></a>
+                        <a class="left carousel-control" href="#main-slider" data-slide="prev"><span><img src="/images/slider/l-c.png" alt="lc"></span></a>
+                        <a class="right carousel-control" href="#main-slider" data-slide="next"><span><img src="/images/slider/r-c.png" alt=""></span></a>
                     </div>
                 </div>
             </div>
         </section><!-- Slider section end-->
 
         <section><!-- Products section -->
+            @if(count($products) > 0)
             @foreach($products as $row)
-            <div class="container home-product-cont">
-                <div class="row" style="margin-left: -30px; margin-right: -30px;">
+                <div class="container home-product-cont">
+                    <div class="row" style="margin-left: -30px; margin-right: -30px;">
                     @foreach($row as $product)
                     <!-- 1 -->
                     <div class="col-sm-6 col-md-3">
                         <div class="tumb-wrap ">
                             <div class="for-img">
-                                <img src="images/products/{{ $product->thumb_image->name }}" class="img-responsive" alt="images/products/{{ $product->thumb_image->name }}">
+                                <img src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" class="img-responsive" alt="">
                                 <div class="prod-inf">
                                     <p>{{ $product->title }}</p>
                                     <div class="clearfix">
@@ -318,7 +319,7 @@
                     </div><!-- Opening row -->
                 </div><!-- opening block end -->--}}
             @endforeach
-
+            @endif
 
         </section><!-- Products section -->
     </main><!-- Main sction end -->

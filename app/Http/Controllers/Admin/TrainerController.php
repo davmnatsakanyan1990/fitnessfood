@@ -21,10 +21,10 @@ class TrainerController extends AdminBaseController
     {
         parent::__construct();
 
-        if($request->route()->parameter('locale')){
-            $this->locale = $request->route()->parameter('locale');
-            App::setLocale($this->locale);
-        }
+//        if($request->route()->parameter('locale')){
+//            $this->locale = $request->route()->parameter('locale');
+//            App::setLocale($this->locale);
+//        }
 
     }
     

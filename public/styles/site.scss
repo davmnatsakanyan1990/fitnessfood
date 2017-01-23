@@ -43,6 +43,11 @@ footer, main:after{
 	height: 326px;
 }
 
+.no-padding{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
 .nav>li>a:focus, .nav>li>a:hover, .nav>li>a.active{
 	background: transparent;
 	color: $main-violet;
@@ -228,9 +233,16 @@ footer, main:after{
 				float: left;
 				margin-top: 34px;
 				li{
+					min-height: 50px;
 					a{
+						margin-top: 5px;
+						display: inline-block;
+						transition: all 0.3s;
 						img{
 							vertical-align: middle;
+						}
+						&:hover{
+							margin-top: -5px;
 						}
 					}
 				}
@@ -353,11 +365,16 @@ footer, main:after{
 			color: #fff;
 			border-radius: 20px;
 			border: none;
-			&:hover{
-				box-shadow: 0 0 3px 1px #892e6b;;
-			}
 			span{
+				transition: all 0.3s;
+				display: inline-block;
 				padding-right: 10px;
+			}
+			&:hover{
+				/* box-shadow: 0 0 3px 1px #892e6b; */
+				span{
+					transform: rotate(10deg); 
+				}
 			}
 		}
 	}
@@ -421,5 +438,363 @@ footer{
 }
  
 
+/* contact page  */
 
+.cols-3-row{
+	.col-sm-4{
+		margin-top: 60px;
+	}
+	p{
+		font-family: arial;
+		font-size: 24px;
+		line-height: 26px;
+		margin-top: 30px;
+		color: $light-gray;
+	}
+}
+
+.form-row{
+	h2{
+		margin-top: 90px;
+		font-family: ArialAMUbold;
+		font-size: 24px;
+		text-transform: uppercase;
+		text-align: center;
+		color: $main-violet;
+	}
+	ul{
+		margin-top: 40px;
+		margin-bottom: 50px;
+		img{
+			vertical-align: middle;
+		}
+	}
+}
+
+.contact-page-form{
+	.col-sm-6{
+		margin-top: 10px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}	
+	& > .col-sm-12{
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	div{
+		input{
+			font-size: 16px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			padding-left: 10px;
+		}
+		textarea{
+			border: 1px solid #ccc;
+			margin-top: 10px;
+			min-height: 220px;
+			padding-top: 20px;
+			padding-left: 10px;
+			width: 100%;
+		}
+	}
+	.submit-div{
+		text-align: right;
+		button{
+			width: 160px;
+			transition: all 0.3s;
+			margin-top: 20px;
+			margin-bottom: 54px;
+			color: #fff;
+			padding: 15px 20px;
+			background: $light-green;
+			border: none;
+			border-radius: 30px;
+			span{
+				width: 16px;
+				height: 16px;
+				transition: all 0.3s;
+				margin-left: 15px;
+			}
+			&:hover{
+				span{
+					transform: rotateY(180deg);
+				}
+			}
+		}
+	}
+}
+
+
+/* Settings */
+
+.settings-wrap{
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding: 20px 35px 30px;
+	max-width: 370px; 
+	background: #fff;
+}
+
+.user-prof{
+	position: relative;
+	margin: 0 auto;
+	width: 100px;
+	height: 100px;
+	img{
+		transition: all 0.3s;
+		border-radius: 100%;
+		max-width: 100%;
+	} 
+	.user-prof-inner{
+		transition: all 0.3s;
+		color: #fff;
+		display: block;
+		width: 100px;
+		height: 100px;
+		&:before{
+			content: '\f030';
+		    position: absolute;
+		    font-family: FontAwesome;
+		    z-index: 5;
+		    top: 35px;
+		    left: 35px;
+		    font-size: 29px;
+		    opacity: 0;
+	       transition: opacity .25s ease-in-out;
+	       -moz-transition: opacity .25s ease-in-out;
+	       -webkit-transition: opacity .25s ease-in-out;
+		}
+		&:hover{
+			&:before{
+				opacity: 1;
+			}
+			img{
+				-webkit-filter: brightness(60%);
+				-moz-filter: brightness(60%);
+					filter: brightness(60%);
+			}
+		}
+	}
+}
+
+#profile-form{
+	input{
+		border-radius: 4px;
+		font-size: 18px;
+		color: $main-gray;
+	}
+	label{
+		line-height: 22px;
+		color: #979797;
+		font-family: ArialAMUbold;
+	}
+	.buttons-cont{
+		div{
+			width: 50%;
+			float: left;
+			button{
+				transition: all 0.3s;
+				border-radius: 32px;
+				display: block;
+				width: 100%;
+				min-height: 40px;
+				margin-top: 20px;
+				font-size: 18px;
+				color: #fff;
+				border: none;
+				font-family: ArialAMUbold;
+				
+			}
+		}
+		div:first-child{
+			padding-right: 5px;
+			button{
+				background: #ccc;
+				&:hover{
+					box-shadow: inset 0 0 10px 1px $main-black;
+				}
+			}
+		}
+		div:nth-child(2){
+			padding-left: 5px;
+			button{
+				background: $main-violet;
+				&:hover{
+					box-shadow: inset 0 0 10px 1px #fff;
+				}
+			}
+		}
+	}
+	.pass-change-cont{
+		margin-top: 20px;
+		div{ 
+			margin-top: 10px;
+		}
+	}
+	.form-top{
+		& > div{
+			margin-top: 20px;
+		}
+	}
+}
+
+
+/* PRofile  */
+
+.profile-top{
+	margin: 30px auto;
+	max-width: 370px;
+	background: #fff;
+	padding: 10px 10px 20px;
+	a{
+		border-radius: 100%;
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		float: right;
+		transition: all 0.5s;
+		img{
+			transition: all 0.5s;
+		}
+		&:hover{
+			transform: rotate(180deg);
+			img{
+				transform: scale(1.2);
+			}
+		}
+
+		& + div{
+			margin-top: 20px;
+			text-align: center;
+			h2{
+				color: $main-black;
+				font-size: 24px;
+				margin-top: 20px;
+			}
+			img{
+				width: 100px;
+				height: 100px;
+				border-radius: 100%;
+			}
+		}
+	}
+}
+
+
+.for-table{
+	border: 1px solid #ccc;
+	background: #fff; 
+	.col-sm-6{
+		padding-top: 20px;
+		padding-right: 30px;
+		padding-left: 0;
+	}
+	.buyer-name-head{
+		h3{
+		padding-left: 30px;
+		color: $light-gray;
+		font-size: 18px;		
+		}
+	}
+	.buyer-name{
+		h3{
+			padding: 30px;
+			color: $main-violet;
+			font-size: 18px;
+			font-family: ArialAMUbold;	
+		}	
+	}
+	.info-head{
+		ul{
+			text-align: center;
+			float: right;
+			li{
+				min-width: 130px;
+				text-align: center;
+				font-size: 18px;
+				color: $light-gray;
+			}
+		}
+	}
+	 .main-inf{
+	 	ul{
+	 		padding-top: 30px;
+	 		padding-bottom: 30px;
+	 		text-align: center;
+	 		float: right;
+	 		li{
+	 			min-width: 130px;
+	 			text-align: center;
+	 			font-family: ArialAMUbold;
+	 			font-size: 20px;
+	 			color: $main-black;
+	 		}		
+	 	}
+	 }
+}
+
+.stanal-info{
+	padding-right: 30px; 
+	padding-left: 30px;
+	hr{
+		border: 1px solid #ccc;
+	}
+	ul{
+		&:first-child{
+			margin-top: 30px;
+			li{
+				font-size: 18px;
+				&:nth-child(2){
+					text-align: right;
+					color: $main-violet;
+					font-family: ArialAMUbold;
+					float: right;
+				}	
+			}
+		}
+		&:nth-child(2){
+			margin-top: 20px;
+			li{
+				&:first-child{
+					font-size: 18px;
+				}
+				&:nth-child(2){
+					text-align: right;
+					color: $main-violet;
+					font-size: 24px;
+					font-family: ArialAMUbold;
+					float: right;
+				}
+			}
+		}	
+	}
+
+	.kkapnvenq{
+		input{
+		    width: 100%;
+		    border: none;
+		    border-radius: 6px;
+		    padding: 15px;
+		    font-size: 18px;
+		}
+		& + p{
+			color: $main-black;
+			text-align: center;
+			margin-top: 20px;
+			line-height: 26px;
+			font-size: 18px;
+			& + div button{
+				width: 250px;
+				margin: 20px auto;
+				padding: 15px;
+				font-size: 18px;
+				background: $main-violet;
+				border: none;
+				border-radius: 30px;
+				color: #fff;
+			}
+		}
+	}
+}
 
