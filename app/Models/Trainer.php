@@ -35,6 +35,8 @@ class Trainer extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected $table = 'trainers';
     
     public function orders(){
         return $this->hasMany(Order::class);

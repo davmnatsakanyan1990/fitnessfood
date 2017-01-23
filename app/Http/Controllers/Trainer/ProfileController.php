@@ -26,7 +26,7 @@ class ProfileController extends Controller
             return $orders->with('products');
         }])->find($this->trainer->id);
 
-dd($trainer->toArray());
+
         
         return view('trainer.profile', compact('trainer'));
     }

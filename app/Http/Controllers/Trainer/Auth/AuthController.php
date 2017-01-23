@@ -34,7 +34,7 @@ class AuthController extends Controller
     protected $redirectAfterLogout = 'trainer/login';
     protected $guard = 'trainer';
     protected $loginView = 'trainer.auth.login';
-    protected $username = 'username';
+//    protected $username = 'username';
 
     /**
      * Create a new authentication controller instance.

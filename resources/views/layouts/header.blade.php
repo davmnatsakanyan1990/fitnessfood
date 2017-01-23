@@ -16,12 +16,12 @@
                     <ul class="nav navbar-nav main-nav" >
                         <li class="active"><a href="{{ url('/') }}">Ապրանքներ</a></li>
                         <li><a href="{{ url('about') }}">Մեր Մասին</a></li>
-                        <li><a href="coach.php">Ես մարզիչ եմ</a></li>
-                        <li><a href="contact.php">Կապ</a></li>
+                        <li><a href="{{ url('trainer/login') }}">Ես մարզիչ եմ</a></li>
+                        <li><a href="{{ url('contact') }}">Կապ</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">
+                            <a href="{{ url('basket') }}">
                                 <img src="/images/zambyux.png" style="vertical-align: middle;" alt="images/zambyux.png">
                                 Զամբյուղ(<span  class="basket_count"></span>)
                             </a>

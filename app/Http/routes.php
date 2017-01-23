@@ -36,6 +36,9 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
 
     Route::get('profile', 'ProfileController@index');
 
+    Route::get('settings', 'SettingsController@index');
+    Route::post('settings/update', 'SettingsController@update');
+
     Route::post('message/new', 'MessageController@create');
 
 });
@@ -83,13 +86,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
 });
 
-Route::get('about', function($locale){
+Route::get('about', function(){
 //    App::setLocale($locale);
     return view('about');
 });
-Route::get('basket', function(){
-    return view('basket');
-});
+Route::get('basket', 'BasketController@index');
+Route::get('contact', 'ContactUsController@index');
+
+// Ajax call
 Route::post('basket/products', 'BasketController@products');
 
 Route::get('welcome/{locale}', function ($locale) {

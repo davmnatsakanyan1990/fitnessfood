@@ -9,6 +9,10 @@ use App\Http\Requests;
 
 class BasketController extends Controller
 {
+    public function index(){
+        return view('basket');
+    }
+
     public function products(Request $request){
         $pds = $request->products;
 

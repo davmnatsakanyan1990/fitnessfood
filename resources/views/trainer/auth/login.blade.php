@@ -7,17 +7,27 @@
         <div class="login-marzich">
             <h3>Ես մարզիչ եմ</h3>
             <p>ՄՈՒՏՔ</p>
-            <form action="#">
-            	<input type="mail" placeholder="Էլ-հասցե">
-            	<input type="password" placeholder="Գաղտնաբառ">
+			@if(count($errors) > 0)
+				<div class="alert alert-danger">
+					<ul>
+						@foreach($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
+            <form action="{{ url('trainer/login') }}" method="post">
+				{{ csrf_field() }}
+            	<input type="email" placeholder="Էլ-հասցե" name="email">
+            	<input type="password" placeholder="Գաղտնաբառ" name="password">
             	<div class="check-box">
-            		<input type="checkbox">
+            		<input type="checkbox" name="remember">
             		<label for="#"></label>
             		<span for="#">Հիշել ինձ</span>
             	</div>
-            	<a href="#">Մոռացել եմ գաղտնաբառը</a>
+            	<a href="{{ url('trainer/password/reset') }}">Մոռացել եմ գաղտնաբառը</a>
             	<div>
-            		<button>Մուտք</button>
+            		<button type="submit">Մուտք</button>
             	</div>
             	
             </form>

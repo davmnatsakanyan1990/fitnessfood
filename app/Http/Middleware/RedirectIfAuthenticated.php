@@ -19,7 +19,14 @@ class RedirectIfAuthenticated
     {
 
         if (Auth::guard($guard)->check()) {
-            return redirect('/');
+            switch ($guard) {
+                case 'admin' :
+                    return redirect('/');
+                    break;
+                case 'trainer' :
+                    return redirect('trainer/profile');
+                    break;
+            }
         }
 
         return $next($request);
