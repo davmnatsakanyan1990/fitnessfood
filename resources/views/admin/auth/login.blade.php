@@ -36,7 +36,7 @@
                 </ul>
             </div>
         @endif
-        <form class="m-t" role="form" action="{{ url('admin/login/'.App::getLocale()) }}" method="post">
+        <form class="m-t" role="form" action="{{ url('admin/login/') }}" method="post">
             {{ csrf_field() }}
             <div class="form-group">
                 <input name="username" type="username" class="form-control" placeholder="@lang('auth.username')" required="">

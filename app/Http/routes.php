@@ -97,3 +97,7 @@ Route::get('welcome/{locale}', function ($locale) {
 
     echo  App::getLocale();
 });
+
+Route::get('info', function(){
+    phpinfo();
+});

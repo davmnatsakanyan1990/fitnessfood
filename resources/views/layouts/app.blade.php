@@ -13,6 +13,8 @@
     <script>
         var BASE_URL = '{{ url('/') }}'
     </script>
+
+    @yield('styles')
 </head>
 <body>
 

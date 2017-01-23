@@ -798,3 +798,102 @@ footer{
 	}
 }
 
+/* Login */
+
+
+.login-marzich{
+	max-width: 300px;
+	margin: 50px auto;
+	h3{
+		color: $main-violet;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 24px;
+		font-family: ArialAMUbold;
+	}
+	input{
+		width: 100%;
+		margin-top: 10px;
+		padding: 15px 10px 10px 10px;
+		font-size: 18px;
+		color: $light-gray;
+		border: 1px solid $light-gray;
+		border-radius: 4px;
+	}
+	input[type="checkbox"]{
+		width: inherit;
+	}
+	p{
+		font-size: 18px;
+		margin-top: 30px; 
+		margin-bottom: 10px;
+		font-family: ArialAMUbold;
+		color: $main-black;
+	}
+	.check-box{
+		margin-top: 20px;
+		padding-left: 10px;
+		> input {
+		padding-right: 10px;
+        float: left;
+        background-color: #ffffff;
+        border: 0;
+        cursor: pointer;
+        margin: 0;
+        width: 17px;
+        height: 17px;
+        display: inline-block;
+        opacity: 0;
+        position: relative;
+        z-index: 1;
+        &:checked + label {
+          position: relative;
+        }
+
+        &:checked + label:after {
+          position: absolute;
+          top: -1px;
+          left: 1px;
+          content: '✔';
+          font-size: 14px;
+        }
+      }
+
+      > label {
+        float: left;
+        cursor: pointer;
+        margin: 0 10px 0 -17px; 
+        width: 17px;
+        height: 17px;
+        background-color: #ffffff;
+        display: inline-block;
+        border: 1px solid $main-violet;
+		border-radius: 4px;
+      }
+      span{
+      	color: $main-black;
+      	font-size: 18px;
+      }
+      & + a{
+      	padding-left: 10px;
+      	display: inline-block;
+      	margin-top: 20px;      
+      	color: #3c44ef;
+      	font-size: 16px;
+      	& + div{
+      		text-align: center;
+      		margin-top: 30px;
+			button{
+				border-radius: 30px;
+				font-size: 18px;
+				color: #fff;
+				background: $main-violet;
+				border: none; 
+				padding: 15px;
+				width: 250px;
+			}
+      	}	
+      }
+	}
+}
+
