@@ -31,8 +31,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo;
-    protected $redirectAfterLogout;
+    protected $redirectTo = 'admin/trainers';
+    protected $redirectAfterLogout = 'admin/login';
     protected $guard = 'admin';
     protected $loginView = 'admin.auth.login';
     protected $username = 'username';
@@ -45,13 +45,14 @@ class AuthController extends Controller
      */
     public function __construct(Request $request)
     {
-        if($request->route()->parameter('locale')){
-            $this->locale = $request->route()->parameter('locale');
-            App::setLocale($this->locale);
-        }
 
-        $this->redirectTo = 'admin/trainers/'.$this->locale;
-        $this->redirectAfterLogout = 'admin/login/'.$this->locale;
+//        if($request->route()->parameter('locale')){
+//            $this->locale = $request->route()->parameter('locale');
+//            App::setLocale($this->locale);
+//        }
+//
+//        $this->redirectTo = 'admin/trainers/'.$this->locale;
+//        $this->redirectAfterLogout = 'admin/login/'.$this->locale;
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
