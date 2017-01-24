@@ -1,5 +1,5 @@
 @charset "UTF-8";
-a, abbr, acronym, address, applet, article, aside, audio, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+a, abbr, acronym, address, applet, article, aside, audio, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, tbody, td, tfoot, th, thead, time, tt, u, ul, var, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -669,9 +669,9 @@ footer .all-rights {
 }
 
 .user-prof img {
-  transition: all 0.3s;
+  width: 100px;
+  height: 100px;
   border-radius: 100%;
-  max-width: 100%;
 }
 
 .user-prof .user-prof-inner {
@@ -680,6 +680,20 @@ footer .all-rights {
   display: block;
   width: 100px;
   height: 100px;
+}
+
+.user-prof .user-prof-inner label {
+  position: absolute;
+  display: block;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.user-prof .user-prof-inner input {
+  height: 0;
+  visibility: hidden;
 }
 
 .user-prof .user-prof-inner:before {
@@ -819,54 +833,42 @@ footer .all-rights {
 }
 
 .for-table {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   background: #fff;
 }
 
-.for-table .col-sm-6 {
-  padding-top: 20px;
-  padding-right: 30px;
-  padding-left: 0;
-}
-
-.for-table .buyer-name-head h3 {
-  padding-left: 30px;
-  color: #999999;
-  font-size: 18px;
-}
-
-.for-table .buyer-name h3 {
-  padding: 30px;
+.for-table table .name-td {
   color: #892E6B;
-  font-size: 18px;
   font-family: ArialAMUbold;
-}
-
-.for-table .info-head ul {
-  text-align: center;
-  float: right;
-}
-
-.for-table .info-head ul li {
-  min-width: 130px;
-  text-align: center;
   font-size: 18px;
+}
+
+.for-table thead tr th {
   color: #999999;
+  font-family: ArialAMU;
+  font-size: 18px;
 }
 
-.for-table .main-inf ul {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  text-align: center;
-  float: right;
+.for-table thead tr th:first-child {
+  padding-left: 35px;
 }
 
-.for-table .main-inf ul li {
-  min-width: 130px;
-  text-align: center;
-  font-family: ArialAMUbold;
-  font-size: 20px;
+.for-table thead tr th:last-child {
+  padding-right: 35px;
+}
+
+.for-table tbody td {
+  padding-top: 25px !important;
+  font-size: 18px;
   color: #333333;
+}
+
+.for-table tbody td:first-child {
+  padding-left: 35px;
+}
+
+.for-table tbody td:last-child {
+  padding-right: 35px;
 }
 
 .stanal-info {
@@ -965,6 +967,7 @@ footer .all-rights {
 }
 
 .login-marzich p {
+  text-align: center;
   font-size: 18px;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -1031,10 +1034,16 @@ footer .all-rights {
 
 .login-marzich .check-box + a + div {
   text-align: center;
-  margin-top: 30px;
 }
 
-.login-marzich .check-box + a + div button {
+.login-reg-button {
+  text-align: center;
+}
+
+.login-reg-button button {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-left: auto;
   border-radius: 30px;
   font-size: 18px;
   color: #fff;
@@ -1168,6 +1177,25 @@ footer .all-rights {
   }
   #profile-form .buttons-cont div button {
     font-size: 16px;
+  }
+  .for-table table * {
+    font-size: 16px !important;
+  }
+  .for-table thead tr th:first-child {
+    padding-left: 15px;
+  }
+  .for-table thead tr th:last-child {
+    padding-right: 15px;
+  }
+  .for-table tbody td:first-child {
+    padding-left: 15px;
+  }
+  .for-table tbody td:last-child {
+    padding-right: 15px;
+  }
+  .stanal-info {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 

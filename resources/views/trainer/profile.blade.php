@@ -14,35 +14,28 @@
                 </div><!-- Profile top end -->
             </div><!-- Row end -->
 
-            <div class="row for-table"><!--Row For table -->
-
-                <div class="col-sm-6 no-padding">
-                    <div class="buyer-name-head">
-                        <h3>Գնորդի Անունը</h3>
-                    </div>
-                    <div class="buyer-name">
-                        <h3>Աննա</h3>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="info-head">
-                        <ul class="list-inline">
-                            <li>%</li>
-                            <li>Քանակը</li>
-                            <li style="text-align: right;">Ընդհանուր</li>
-                        </ul>
-                    </div>
-                    <div class="main-inf">
-                        <ul class="list-inline">
-                            <li>10%</li>
-                            <li>8</li>
-                            <li style="text-align: right;">5600դր</li>
-                        </ul>
-                    </div>
-                </div>
-
+            <div class="row for-table"><!--Row For table -->           
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Գնորդի Անունը</th>
+                      <th class="text-center">%</th>
+                      <th class="text-center">Քանակը</th>
+                      <th class="text-right">Ընդհանուր</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="name-td">Աննա</td>
+                      <td class="text-center">10 %</td>
+                      <td class="text-center">8</td>
+                      <td class="text-right">5600դր</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
             </div><!-- Row For table end -->
+           
 
             <div class="row stanal"><!-- Stanal row -->
                 <div class="col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6 stanal-info"><!-- Stanal info -->

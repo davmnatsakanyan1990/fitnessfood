@@ -12,8 +12,8 @@
             <form method="POST" action="{{ url('trainer/password/email') }}">
                 {{ csrf_field() }}
                 <input name="email" value="{{ old('email') }}" type="email" placeholder="Էլ-հասցե">
-                <div>
-                    <button type="submit" class="login-reg-button">Ողարկել</button>
+                <div class="login-reg-button">
+                    <button type="submit">Ողարկել</button>
                 </div>
 
             </form>

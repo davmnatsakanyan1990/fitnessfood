@@ -26,7 +26,7 @@
             		<span for="#">Հիշել ինձ</span>
             	</div>
             	<a href="{{ url('trainer/password/reset') }}">Մոռացել եմ գաղտնաբառը</a>
-            	<div>
+            	<div class="login-reg-button">
             		<button type="submit">Մուտք</button>
             	</div>
             	

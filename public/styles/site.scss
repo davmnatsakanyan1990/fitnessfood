@@ -542,9 +542,9 @@ footer{
 	width: 100px;
 	height: 100px;
 	img{
-		transition: all 0.3s;
+		width: 100px;
+		height: 100px;
 		border-radius: 100%;
-		max-width: 100%;
 	} 
 	.user-prof-inner{
 		transition: all 0.3s;
@@ -552,6 +552,18 @@ footer{
 		display: block;
 		width: 100px;
 		height: 100px;
+		label{
+			position: absolute;
+			display: block;
+			width: 100px;
+			height: 100px;
+			z-index: 10;
+			cursor: pointer;
+		}
+		input{
+			height: 0;
+			visibility: hidden;
+		}
 		&:before{
 			content: '\f030';
 		    position: absolute;
@@ -683,56 +695,46 @@ footer{
 
 
 .for-table{
-	border: 1px solid #ccc;
-	background: #fff; 
-	.col-sm-6{
-		padding-top: 20px;
-		padding-right: 30px;
-		padding-left: 0;
-	}
-	.buyer-name-head{
-		h3{
-		padding-left: 30px;
-		color: $light-gray;
-		font-size: 18px;		
+	border: 1px solid #cccccc;
+	background: #fff;
+	table{
+		.name-td{
+			color: $main-violet;
+			font-family: ArialAMUbold;
+			font-size: 18px;
 		}
 	}
-	.buyer-name{
-		h3{
-			padding: 30px;
-			color: $main-violet;
-			font-size: 18px;
-			font-family: ArialAMUbold;	
-		}	
-	}
-	.info-head{
-		ul{
-			text-align: center;
-			float: right;
-			li{
-				min-width: 130px;
-				text-align: center;
-				font-size: 18px;
+	thead{
+		tr{
+			th{
 				color: $light-gray;
+				font-family: ArialAMU;
+				font-size: 18px;
+				&:first-child{
+					padding-left: 35px;
+				}
+				&:last-child{
+					padding-right: 35px;
+				}
 			}
 		}
 	}
-	 .main-inf{
-	 	ul{
-	 		padding-top: 30px;
-	 		padding-bottom: 30px;
-	 		text-align: center;
-	 		float: right;
-	 		li{
-	 			min-width: 130px;
-	 			text-align: center;
-	 			font-family: ArialAMUbold;
-	 			font-size: 20px;
-	 			color: $main-black;
-	 		}		
-	 	}
-	 }
+	tbody{
+		td{
+			padding-top: 25px !important;
+			font-size: 18px;
+			color: $main-black;
+			&:first-child{
+				padding-left: 35px;
+			}
+			&:last-child{
+				padding-right: 35px;
+			}
+		}
+	}
 }
+
+
 
 .stanal-info{
 	padding-right: 30px; 
@@ -824,6 +826,7 @@ footer{
 		width: inherit;
 	}
 	p{
+		text-align: center;
 		font-size: 18px;
 		margin-top: 30px; 
 		margin-bottom: 10px;
@@ -881,19 +884,25 @@ footer{
       	color: #3c44ef;
       	font-size: 16px;
       	& + div{
-      		text-align: center;
-      		margin-top: 30px;
-			button{
-				border-radius: 30px;
-				font-size: 18px;
-				color: #fff;
-				background: $main-violet;
-				border: none; 
-				padding: 15px;
-				width: 250px;
-			}
+      		text-align: center;			
       	}	
       }
 	}
 }
+.login-reg-button{
+	text-align: center;
+	button{
+		margin-top: 30px;
+		margin-left: auto;
+		margin-left: auto;
+		border-radius: 30px;
+		font-size: 18px;
+		color: #fff;
+		background: #892E6B;
+		border: none;
+		padding: 15px;
+		width: 250px;
+	}
+}
 
+ 

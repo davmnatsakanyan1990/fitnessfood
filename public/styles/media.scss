@@ -160,6 +160,40 @@
 			}		
 		}
 	}
+	.for-table{
+		table{
+			& *{
+				font-size: 16px !important;
+			}
+		}
+		thead{
+			tr{
+				th{
+					&:first-child{
+						padding-left: 15px;
+					}
+					&:last-child{
+						padding-right: 15px;
+					}
+				}
+			}
+		}
+		tbody{
+			td{
+				&:first-child{
+					padding-left: 15px;
+				}
+				&:last-child{
+					padding-right: 15px;
+				}
+			}
+		}
+	}
+	.stanal-info{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
 }
 
 @media screen and(max-width: 360px){

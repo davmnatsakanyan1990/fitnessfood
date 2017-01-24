@@ -3,9 +3,12 @@
     <main>
         <div class="settings-wrap">
             <div class="user-prof">
-                <a href="#" class="user-prof-inner">
-                    <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image : 'profile-icon.png' }}" alt="settings/face.png">
-                </a><!-- user prof inner/ -->
+                <form action="upload-script-url" class="user-prof-inner" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" id="imgInp">
+                    <label for="imgInp"></label>
+                    <img id="blah" src="/images/trainerImages/{{ $trainer->image ? $trainer->image : 'profile-icon.png' }}" alt="settings/face.png">
+                <!-- user prof inner/ -->
+                </form>
             </div><!-- user Prof/ -->
             @if(count($errors) > 0)
             <div class="alert alert-danger">
@@ -83,4 +86,23 @@
 
         </div><!-- Settings wrap/ -->
     </main>
+@endsection
+@section('scripts')
+    <script>
+        function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+                    
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            
+            $("#imgInp").change(function(){
+                readURL(this);
+            });
+    </script>
 @endsection
