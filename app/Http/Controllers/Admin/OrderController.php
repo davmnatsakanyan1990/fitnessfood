@@ -20,7 +20,9 @@ class OrderController extends AdminBaseController
 
         $orders = Order::with('products', 'counselor')->get();
         foreach($orders as $order){
-            $order->amount = $order->products->sum('price');
+            foreach($order->products as $product){
+                $order->amount += $product->price * $product->pivot->count;
+            }
         }
 
         return view('admin.orders.index', compact('orders'));

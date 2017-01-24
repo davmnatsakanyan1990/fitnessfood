@@ -13,9 +13,9 @@ class OrdersTableSeeder extends Seeder
     public function run()
     {
         DB::table('orders')->insert([
-            ['customer_name' => 'Jon', 'trainer_id' => 1],
-            ['customer_name' => 'Mark', 'trainer_id' => 1],
-            ['customer_name' => 'Anton', 'trainer_id' => 1]
+            ['customer_name' => 'Jon', 'trainer_id' => 1, 'created_at' => date("Y-m-d H:i:s")],
+            ['customer_name' => 'Mark', 'trainer_id' => 1,  'created_at' => date("Y-m-d H:i:s")],
+            ['customer_name' => 'Anton', 'trainer_id' => 1,  'created_at' => date("Y-m-d H:i:s")]
         ]);
 
         DB::table('order_products')->insert([

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Models\Trainer;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,16 +23,18 @@ class SettingsController extends Controller
     }
 
     public function index(){
-        $trainer = $this->trainer;
+        $trainer = Trainer::with('image')->find($this->trainer->id);
         return view('trainer.settings', compact('trainer'));
     }
 
     public function update(Request $request){
+
         if(empty($request->current_password) && empty($request->password) && empty($request->password_conformation)){
             $this->validate($request, [
                 'first_name' => 'required',
                 'last_name' => 'required',
-                'email' => 'required'
+                'email' => 'required',
+                'image' => 'image'
             ]);
 
             Trainer::where('id', $this->trainer->id)->update([
@@ -40,6 +43,17 @@ class SettingsController extends Controller
                 'email' => $request->email
             ]);
 
+            if($request->hasFile('image')){
+
+                $destinationPath = 'images/trainerImages';
+                $ext = $request->file('image')->clientExtension();
+                $fileName = time().'.'.$ext;
+
+                $request->file('image')->move($destinationPath, $fileName);
+
+                Image::create(['name' => $fileName, 'imageable_type' => 'trainers', 'imageable_id' => $this->trainer->id, 'role' => 0]);
+            }
+
             return redirect()->back()->with('message', 'Changes was saved');
         }
         else{
@@ -47,6 +61,7 @@ class SettingsController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'email' => 'required',
+                'image' => 'image',
                 'current_password' => 'required',
                 'password' => 'required|confirmed'
             ]);
@@ -56,9 +71,20 @@ class SettingsController extends Controller
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'email' => $request->email,
-                    'password' => $request->password
+                    'password' => bcrypt($request->password)
 
                 ]);
+
+                if($request->hasFile('image')){
+
+                    $destinationPath = 'images/trainerImages';
+                    $ext = $request->file('image')->clientExtension();
+                    $fileName = time().'.'.$ext;
+
+                    $request->file('image')->move($destinationPath, $fileName);
+
+                    Image::create(['name' => $fileName, 'imageable_type' => 'trainers', 'imageable_id' => $this->trainer->id, 'role' => 0]);
+                }
 
                 return redirect()->back()->with('message', 'Changes was saved');
             }

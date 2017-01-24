@@ -8,7 +8,7 @@
                         <img src="/images/profile/astxik.png" alt="profile/astxik.png">
                     </a>
                     <div>
-                        <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image : 'profile-icon.png' }}" alt="profile/face.png">
+                        <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">
                         <h2>{{ $trainer->first_name }} {{ $trainer->last_name }}</h2>
                     </div>
                 </div><!-- Profile top end -->
@@ -25,38 +25,47 @@
                     </tr>
                   </thead>
                   <tbody>
+                  @foreach($orders as $order)
                     <tr>
-                      <td class="name-td">Աննա</td>
+                      <td class="name-td">{{ $order->customer_name }}</td>
                       <td class="text-center">10 %</td>
-                      <td class="text-center">8</td>
-                      <td class="text-right">5600դր</td>
+                      <td class="text-center">{{ $order->products->count() }}</td>
+                      <td class="text-right">{{ $order->amount }}դր</td>
                     </tr>
-                    
+                    @endforeach
                   </tbody>
                 </table>
             </div><!-- Row For table end -->
-           
+            {{ $orders->links() }}
 
             <div class="row stanal"><!-- Stanal row -->
                 <div class="col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6 stanal-info"><!-- Stanal info -->
                     <ul class="list-inline">
                         <li>Ընդհանուր</li>
-                        <li>5600դր</li>
+                        <li>{{ $total }}դր</li>
                     </ul>
                     <ul class="list-inline">
                         <li>Տոկոսագումարը</li>
-                        <li>560դր</li>
+                        <li>{{ $total/10 }}դր</li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li>Վճարված է</li>
+                        <li>{{ $paid }}դր</li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li>Ակտիվ</li>
+                        <li>{{ $active }}դր</li>
                     </ul>
                     <hr>
-                    <form action="#" class="kkapnvenq">
-                        <input type="number" placeholder="Հեռ.">
+                    <form action="{{ url('trainer/message/new') }}" method="post" class="kkapnvenq" id="message">
+                        {{ csrf_field() }}
+                        <input type="number" name="amount" placeholder="Գումար">
                     </form>
-                    <p>
-                        Ձեզ հետ կկապնվի մեր օպերատորը
-                        գումարի փոախանցման հարցով
-                    </p>
+                    @if(session('message'))
+                        <p>{{ session('message') }}</p>
+                    @endif
                     <div class="text-center">
-                        <button>ՍՏԱՆԱԼ</button>
+                        <button type="submit" form="message">ՍՏԱՆԱԼ</button>
                     </div>
 
                 </div><!-- Stanal info end-->

@@ -2,40 +2,38 @@
 @section('content')
     <main>
         <div class="settings-wrap">
-            <div class="user-prof">
-                <form action="upload-script-url" class="user-prof-inner" method="post" enctype="multipart/form-data">
-                    <input type="file" name="file" id="imgInp">
+            <form class="form-horizontal"  id="profile-form" method="post" action="{{ url('trainer/settings/update') }}" enctype="multipart/form-data">
+                <div class="user-prof">
+                    <input type="file" name="image" id="imgInp">
                     <label for="imgInp"></label>
-                    <img id="blah" src="/images/trainerImages/{{ $trainer->image ? $trainer->image : 'profile-icon.png' }}" alt="settings/face.png">
-                <!-- user prof inner/ -->
-                </form>
-            </div><!-- user Prof/ -->
-            @if(count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-            @if(session('error'))
+                    <img id="blah" src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="settings/face.png">
+                    <!-- user prof inner/ -->
+                </div><!-- user Prof/ -->
+                @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                @if(session('error'))
                 <div class="alert alert-danger">
                     <ul>
                         <li>{{ session('error') }}</li>
 
                     </ul>
                 </div>
-            @endif
-            @if(session('message'))
+                @endif
+                @if(session('message'))
                 <div class="alert alert-success">
                     <ul>
                         <li>{{ session('message') }}</li>
 
                     </ul>
                 </div>
-            @endif
-            <form class="form-horizontal" id="profile-form" method="post" action="{{ url('trainer/settings/update') }}">
+                @endif
                 {{ csrf_field() }}
                 <div class="form-top"><!-- Form top -->
                     <div>
@@ -80,10 +78,7 @@
                         <button type="submit">Հաստատել</button>
                     </div>
                 </div>
-
             </form>
-
-
         </div><!-- Settings wrap/ -->
     </main>
 @endsection
@@ -95,7 +90,7 @@
                     
                     reader.onload = function (e) {
                         $('#blah').attr('src', e.target.result);
-                    }
+                    };
                     
                     reader.readAsDataURL(input.files[0]);
                 }

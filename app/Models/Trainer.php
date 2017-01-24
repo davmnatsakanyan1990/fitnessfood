@@ -39,7 +39,7 @@ class Trainer extends Authenticatable
     protected $table = 'trainers';
     
     public function orders(){
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class)->where('status', 1);
     }
 
     public function image(){

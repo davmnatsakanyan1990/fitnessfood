@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Trainer;
 
+use App\Models\Order;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 
@@ -22,13 +23,28 @@ class ProfileController extends Controller
     }
 
     public function index(){
-        $trainer = Trainer::with(['orders' => function($orders){
-            return $orders->with('products');
-        }])->find($this->trainer->id);
+        $trainer = Trainer::with('image')->find($this->trainer->id);
 
+        $os = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->get();
+        foreach($os as $order){
+            foreach($order->products as $product){
+                $order->amount += $product->price * $product->pivot->count;
+            }
+        }
 
-        
-        return view('trainer.profile', compact('trainer'));
+        $total = $os->sum('amount');
+
+        $orders = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->orderBy('created_at', 'desc')->simplePaginate(10);
+        foreach($orders->items() as $order){
+            foreach($order->products as $product){
+                $order->amount += $product->price * $product->pivot->count;
+            }
+        }
+
+        $paid = $trainer->payments->sum('amount');
+        $active = $total/10-$paid;
+
+        return view('trainer.profile', compact('trainer', 'orders', 'total', 'paid', 'active'));
     }
 }
 

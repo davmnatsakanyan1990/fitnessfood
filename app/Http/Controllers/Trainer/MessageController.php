@@ -22,5 +22,6 @@ class MessageController extends Controller
 
     public function create(Request $request){
         Message::create(['trainer_id' => $this->trainer->id, 'amount' => $request->amount]);
+        return redirect()->back()->with('message', 'Ձեզ հետ կկապնվի մեր օպերատորը գումարի փոախանցման հարցով');
     }
 }
