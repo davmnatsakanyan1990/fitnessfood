@@ -30,6 +30,14 @@ body{
 	background: #f5f5f5;
 }
 
+.show-prod{
+	display: block !important;
+}
+
+.show-open{
+	display: block !important;
+}
+
 main{
 	min-height: 100%;
 	margin-bottom: -326px;
@@ -182,6 +190,7 @@ footer, main:after{
 	position: relative;
 	margin-top: 10px; 
 	border-radius: 8px; 
+	display: none;
 	
 	.reapeating-block{
 		position: absolute;
@@ -189,6 +198,7 @@ footer, main:after{
 		padding: 20px 5px; 
 		border-radius: 20px;
 		background: #fff;
+		display: none;
 	}
 	.col-sm-8{
 		h2{
@@ -905,4 +915,25 @@ footer{
 	}
 }
 
+.basket-table{
+	margin-top: 50px;
+	.name-td{
+		img{
+			width: 60px;
+			height: 60px;
+			vertical-align: middle;
+			border-radius: 100%;
+		}
+	}
+	td{
+		vertical-align: middle !important;
+	}
+}
  
+.basket-title{
+		margin-top: 50px;
+		text-align: center;
+		font-size: 24px;
+		font-family: ArialAMUbold;
+		color: $main-violet;
+	}

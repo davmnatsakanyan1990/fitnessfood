@@ -154,6 +154,14 @@ body {
   background: #f5f5f5;
 }
 
+.show-prod {
+  display: block !important;
+}
+
+.show-open {
+  display: block !important;
+}
+
 main {
   min-height: 100%;
   margin-bottom: -326px;
@@ -289,6 +297,7 @@ footer, main:after {
   position: relative;
   margin-top: 10px;
   border-radius: 8px;
+  display: none;
 }
 
 .opening-block .reapeating-block {
@@ -297,6 +306,7 @@ footer, main:after {
   padding: 20px 5px;
   border-radius: 20px;
   background: #fff;
+  display: none;
 }
 
 .opening-block .col-sm-8 h2 {
@@ -1051,6 +1061,29 @@ footer .all-rights {
   border: none;
   padding: 15px;
   width: 250px;
+}
+
+.basket-table {
+  margin-top: 50px;
+}
+
+.basket-table .name-td img {
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  border-radius: 100%;
+}
+
+.basket-table td {
+  vertical-align: middle !important;
+}
+
+.basket-title {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 24px;
+  font-family: ArialAMUbold;
+  color: #892E6B;
 }
 
 @media screen and (max-width: 1024px) {
