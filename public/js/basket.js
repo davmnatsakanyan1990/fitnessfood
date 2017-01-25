@@ -8,7 +8,7 @@ $(document).ready(function(){
             _token: token
         },
         success: function(data){
-            $('.content').html(data);
+            $('.table').find('tbody').html(data);
         }
     })
 });
@@ -19,6 +19,7 @@ $(document).on('click','.remove', function(){
     var basket = JSON.parse(localStorage.getItem('basket'));
     var new_basket = [];
     $.each(basket, function(key, product){
+        
         if(product.product_id != product_id){
             new_basket.push(product);
         }

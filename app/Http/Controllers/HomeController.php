@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index(){
         $products = Product::with('images', 'thumb_image')->get()->chunk(4);
-//dd($products);
+//dd($products->toArray());
         return view('home', compact('products'));
     }
 }
