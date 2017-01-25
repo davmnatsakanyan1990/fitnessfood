@@ -91,6 +91,12 @@ $(document).ready(function(){
         $('.basket_count').text(basket_count);
 
         $(this).closest('.quantity-wrap').find('input[name="quantity"]').val(1)
+    });
+
+    // click to product
+    $('.product').on('click', function(){
+        var id = $(this).data('id');
+        $('#'+id).css('z-index', 1);
     })
 });/*Document Ready*/
  
