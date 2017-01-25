@@ -47,17 +47,30 @@
                     </ul>
                 </div>
 
-                <form class="contact-page-form">
+                @if(session('message'))
+                    <div class="alert alert-success">
+                        <p>{{ session('message') }}</p>
+                    </div>
+                @endif
+                @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                @endif
+                <form class="contact-page-form" method="post" action="{{ url('contact/send') }}">
+                    {{ csrf_field() }}
                     <div class="col-sm-6">
-                        <input class="form-control" type="text" placeholder="Անուն">
+                        <input name="name" value="{{ old('name') }}" class="form-control" type="text" placeholder="Անուն">
                     </div>
 
                     <div class="col-sm-6">
-                        <input class="form-control" type="text" placeholder="Էլ. հասցե">
+                        <input name="email" value="{{ old('email') }}" class="form-control" type="text" placeholder="Էլ. հասցե">
                     </div>
 
                     <div class="col-sm-12">
-                        <textarea name="nam" id="" placeholder="Հաղորդագրություն"></textarea>
+                        <textarea name="text" id="" placeholder="Հաղորդագրություն">{{ old('text') }}</textarea>
                     </div>
                     <div class="submit-div col-sm-12">
                         <button type="submit">ՈՒՂԱՐԿԵԼ<span class="fa fa-envelope"></span></button>

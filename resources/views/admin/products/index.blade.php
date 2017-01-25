@@ -48,10 +48,14 @@
                                     <img src="/images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}" class="img-thumbnail img-responsive" width="100">
                                 </td>
                                 <td>
-                                    {{ $product->title }}
+                                    {{ $product->title ? json_decode($product->title)->am : '' }}<br>
+                                    {{ $product->title ? json_decode($product->title)->ru : '' }}<br>
+                                    {{ $product->title ? json_decode($product->title)->en : '' }}<br>
                                 </td>
                                 <td class="description">
-                                    {{ $product->description }}
+                                    {{$product->description ? json_decode($product->description)->am : '' }} <br>
+                                    {{$product->description ? json_decode($product->description)->ru : '' }} <br>
+                                    {{$product->description ? json_decode($product->description)->en : '' }} <br>
                                 </td>
                                 <td>
                                     {{ $product->nutritional_value }}
