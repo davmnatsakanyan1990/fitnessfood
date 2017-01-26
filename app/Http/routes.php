@@ -92,6 +92,7 @@ Route::get('about', function(){
 });
 Route::get('basket', 'BasketController@index');
 Route::get('contact', 'ContactUsController@index');
+Route::post('contact/send', 'ContactUsController@send');
 
 // Ajax call
 Route::post('basket/products', 'BasketController@products');
