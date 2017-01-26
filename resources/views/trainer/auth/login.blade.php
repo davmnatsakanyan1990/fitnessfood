@@ -5,8 +5,8 @@
 @section('content')
     <main>
         <div class="login-marzich">
-            <h3>Ես մարզիչ եմ</h3>
-            <p>ՄՈՒՏՔ</p>
+            <h3>@lang('global.I am trainer')</h3>
+            <p>@lang('auth.login')</p>
 			@if(count($errors) > 0)
 				<div class="alert alert-danger">
 					<ul>
@@ -18,16 +18,16 @@
 			@endif
             <form action="{{ url('trainer/login') }}" method="post">
 				{{ csrf_field() }}
-            	<input type="email" placeholder="Էլ-հասցե" name="email">
-            	<input type="password" placeholder="Գաղտնաբառ" name="password">
+            	<input type="email" placeholder="@lang('auth.email')" name="email">
+            	<input type="password" placeholder="@lang('auth.password')" name="password">
             	<div class="check-box">
             		<input type="checkbox" name="remember">
             		<label for="#"></label>
-            		<span for="#">Հիշել ինձ</span>
+            		<span for="#">@lang('auth.remember me')</span>
             	</div>
-            	<a href="{{ url('trainer/password/reset') }}">Մոռացել եմ գաղտնաբառը</a>
+            	<a href="{{ url('trainer/password/reset') }}">@lang('auth.forgot password')</a>
             	<div class="login-reg-button">
-            		<button type="submit">Մուտք</button>
+            		<button type="submit">@lang('auth.login')</button>
             	</div>
             	
             </form>

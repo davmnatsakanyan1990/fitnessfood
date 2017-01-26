@@ -10,14 +10,14 @@
 
                 <div class="col-sm-4 text-center">
                     <div class="cont-for-img">
-                        <img src="images/contact/1.png" alt="">
+                        <img src="/images/contact/1.png" alt="">
                     </div>
                     <p>Т: 077 700323</p>
                 </div>
 
                 <div class="col-sm-4 text-center">
                     <div class="cont-for-img">
-                        <img src="images/contact/2.png" alt="">
+                        <img src="/images/contact/2.png" alt="">
                     </div>
                     <p>
                         4/1 Автозаводский проезд 1,
@@ -28,22 +28,22 @@
 
                 <div class="col-sm-4 text-center">
                     <div class="cont-for-img">
-                        <img src="images/contact/3.png" alt="">
+                        <img src="/images/contact/3.png" alt="">
                     </div>
                     <p>contact@fitnesscook.am</p>
                 </div>
             </div><!-- 3 cols row -->
 
             <div class="row form-row"><!-- Form row -->
-                <h2>Միացեք մեզ</h2>
+                <h2>@lang('global.contact us')</h2>
                 <div class="text-center">
                     <ul class="list-inline">
-                        <li><a href="#"><img src="images/social/share.png" alt="share.png"></a></li>
-                        <li><a href="#"><img src="images/social/1.png" alt="social/1.png"></a></li>
-                        <li><a href="#"><img src="images/social/2.png" alt="social/2.png"></a></li>
-                        <li><a href="#"><img src="images/social/3.png" alt="social/3.png"></a></li>
-                        <li><a href="#"><img src="images/social/4.png" alt="social/4.png"></a></li>
-                        <li><a href="#"><img src="images/social/5.png" alt="social/4.png"></a></li>
+                        <li><a href="#"><img src="/images/social/share.png" alt="share.png"></a></li>
+                        <li><a href="#"><img src="/images/social/1.png" alt="social/1.png"></a></li>
+                        <li><a href="#"><img src="/images/social/2.png" alt="social/2.png"></a></li>
+                        <li><a href="#"><img src="/images/social/3.png" alt="social/3.png"></a></li>
+                        <li><a href="#"><img src="/images/social/4.png" alt="social/4.png"></a></li>
+                        <li><a href="#"><img src="/images/social/5.png" alt="social/4.png"></a></li>
                     </ul>
                 </div>
 
@@ -62,18 +62,18 @@
                 <form class="contact-page-form" method="post" action="{{ url('contact/send') }}">
                     {{ csrf_field() }}
                     <div class="col-sm-6">
-                        <input name="name" value="{{ old('name') }}" class="form-control" type="text" placeholder="Անուն">
+                        <input name="name" value="{{ old('name') }}" class="form-control" type="text" placeholder="@lang('global.name')">
                     </div>
 
                     <div class="col-sm-6">
-                        <input name="email" value="{{ old('email') }}" class="form-control" type="text" placeholder="Էլ. հասցե">
+                        <input name="email" value="{{ old('email') }}" class="form-control" type="text" placeholder="@lang('auth.email')">
                     </div>
 
                     <div class="col-sm-12">
-                        <textarea name="text" id="" placeholder="Հաղորդագրություն">{{ old('text') }}</textarea>
+                        <textarea name="text" id="" placeholder="@lang('global.message')">{{ old('text') }}</textarea>
                     </div>
                     <div class="submit-div col-sm-12">
-                        <button type="submit">ՈՒՂԱՐԿԵԼ<span class="fa fa-envelope"></span></button>
+                        <button type="submit">@lang('global.send')<span class="fa fa-envelope"></span></button>
                     </div>
                 </form>
             </div><!-- Form row end-->

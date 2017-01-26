@@ -13,14 +13,23 @@ return [
     |
     */
 
+    'name' => 'Имя',
+    'surname' => 'Отчество',
+    'change_pass' => 'Поменят Пороль',
+    'current_pass' => 'Текуши пороль',
+    'new_pass' => 'Новый Пороль',
+    'save' => 'Сохранить',
+    'cancel' => 'Отмена',
     'failed' => 'привет всем',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'password' => 'Пароль',
     'username' => 'Логин',
+    'email' => 'Ваш Email',
     'login' => 'Вход',
     'logout' => 'Выйти',
     'forgot password?' => 'Забыли пароль ?',
     'forgot password' => 'Забыли пароль',
+    'remember me' => 'Запомнит',
     'admin login' => 'Админ вход'
 
 ];

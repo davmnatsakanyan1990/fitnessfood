@@ -36,8 +36,8 @@
                                     <div class="prod-inf">
                                         <p>{{ $product->title }}</p>
                                         <div class="clearfix">
-                                            <div class="p-kkal">{{ $product->nutritional_value }} կկալ </div>
-                                            <div class="p-price">{{ $product->price }}<sub>դր</sub></div>
+                                            <div class="p-kkal">{{ $product->nutritional_value }} @lang('product.kkal') </div>
+                                            <div class="p-price">{{ $product->price }}<sub>@lang('product.amd')</sub></div>
                                         </div>
                                         <div class="quantity-wrap clearfix">
                                             <div>
@@ -52,7 +52,7 @@
                                                 </form>
                                             </div>
                                             <div class="add-to-card-wrap">
-                                                <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>Ավելացնել</button>
+                                                <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>
                                             </div>
                                         </div>
                                     </div>
@@ -82,15 +82,15 @@
                             <div class="col-sm-8">
                                 <h2>{{ $product->title }}</h2>
                                 <p>{{ $product->description }}</p>
-                                <h3>Սննդային Արժեք - {{ $product->nutritional_value }}g.</h3>
+                                <h3>@lang('product.nutritional value') - {{ $product->nutritional_value }}@lang('product.g').</h3>
                                 <div class="sp-ch-k">
                                     <div>
-                                        <p>Սպիտակուցներ<span>{{ $product->proteins }}գ</span></p>
-                                        <p>Ճարպեր<span>{{ $product->carbs }}գ</span></p>
+                                        <p>@lang('product.proteins')<span>{{ $product->proteins }}@lang('product.g')</span></p>
+                                        <p>@lang('product.carbs')<span>{{ $product->carbs }}@lang('product.g')</span></p>
                                     </div>
                                     <div>
-                                        <p>Ածխաջրեր<span>{{ $product->fats }}գ</span></p>
-                                        <p>Կալորիաներ<span>{{ $product->calories }}k</span></p>
+                                        <p>@lang('product.fats')<span>{{ $product->fats }}@lang('product.g')</span></p>
+                                        <p>@lang('product.calories')<span>{{ $product->calories }}@lang('product.g')</span></p>
                                     </div>
                                 </div>
 

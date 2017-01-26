@@ -5,10 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 
 class ContactUsController extends Controller
 {
+    public $locale;
+
+    public function __construct(Request $request){
+        if($request->route()->parameter('locale')){
+            $this->locale = $request->route()->parameter('locale');
+            App::setLocale($this->locale);
+        }
+    }
+
    public function  index(){
        return view('contact');
    }

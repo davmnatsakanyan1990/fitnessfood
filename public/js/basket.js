@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var products = JSON.parse(localStorage.getItem('basket'));
     $.ajax({
-        url: BASE_URL+'/basket/products',
+        url: BASE_URL+'/basket/products/'+locale,
         type: 'post',
         data: {
             products: products,

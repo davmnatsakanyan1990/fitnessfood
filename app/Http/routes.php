@@ -15,7 +15,7 @@
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 
-Route::get('/', 'HomeController@index');
+Route::get('/{locale?}', 'HomeController@index');
 Route::get('orders/new','OrderController@create');
 
 /**
@@ -23,7 +23,7 @@ Route::get('orders/new','OrderController@create');
  */
 Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
 
-    Route::get('login', 'Auth\AuthController@showLoginForm');
+    Route::get('login/{locale}', 'Auth\AuthController@showLoginForm');
     Route::post('login', 'Auth\AuthController@login');
     Route::get('logout', 'Auth\AuthController@logout');
 
@@ -34,9 +34,9 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::get('register', 'Auth\AuthController@showRegistrationForm');
     Route::post('register', 'Auth\AuthController@register');
 
-    Route::get('profile', 'ProfileController@index');
+    Route::get('profile/{locale}', 'ProfileController@index');
 
-    Route::get('settings', 'SettingsController@index');
+    Route::get('settings/{locale}', 'SettingsController@index');
     Route::post('settings/update', 'SettingsController@update');
 
     Route::post('message/new', 'MessageController@create');
@@ -86,23 +86,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
 });
 
-Route::get('about', function(){
-//    App::setLocale($locale);
+Route::get('about/{locale}', function($locale){
+    App::setLocale($locale);
     return view('about');
 });
-Route::get('basket', 'BasketController@index');
-Route::get('contact', 'ContactUsController@index');
+Route::get('basket/{locale}', 'BasketController@index');
+Route::get('contact/{locale}', 'ContactUsController@index');
 Route::post('contact/send', 'ContactUsController@send');
 
 // Ajax call
-Route::post('basket/products', 'BasketController@products');
-
-Route::get('welcome/{locale}', function ($locale) {
-    App::setLocale($locale);
-
-    echo  App::getLocale();
-});
-
-Route::get('info', function(){
-    phpinfo();
-});
+Route::post('basket/products/{locale}', 'BasketController@products');

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    if((localStorage.getItem('basket')).length > 0)
+    if(localStorage.getItem('basket') && (localStorage.getItem('basket')).length > 0)
         var basket_count = (JSON.parse(localStorage.getItem('basket'))).length;
     else
         var basket_count = 0;
@@ -54,7 +54,7 @@ $(document).ready(function(){
         var product_id = $(this).data('id');
         var count = $(this).closest('.quantity-wrap').find('input[name="quantity"]').val();
 
-        if((localStorage.getItem('basket')).length > 0){
+        if(localStorage.getItem('basket') && (localStorage.getItem('basket')).length > 0){
             var basket = JSON.parse(localStorage.getItem('basket'));
         }
         else{

@@ -8,14 +8,21 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
     
     protected $trainer;
+    public $locale;
     
-    public function __construct(){
+    public function __construct(Request $request){
+        if($request->route()->parameter('locale')){
+            $this->locale = $request->route()->parameter('locale');
+            App::setLocale($this->locale);
+        }
+
         $this->middleware('auth:trainer');
         
         if(Auth::guard('trainer')->check())
@@ -23,6 +30,7 @@ class ProfileController extends Controller
     }
 
     public function index(){
+        $locale = $this->locale;
         $trainer = Trainer::with('image')->find($this->trainer->id);
 
         $os = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->get();

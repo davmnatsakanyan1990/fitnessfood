@@ -37,19 +37,19 @@
                 {{ csrf_field() }}
                 <div class="form-top"><!-- Form top -->
                     <div>
-                        <label for="name" class="control-label">Անուն</label>
+                        <label for="name" class="control-label">@lang('auth.name')</label>
                         <div>
                             <input type="text" value="{{ old('first_name') ? old('first_name') : $trainer->first_name }}" class="form-control" name="first_name">
                         </div>
                     </div>
                     <div>
-                        <label for="" class="control-label">Ազգանուն</label>
+                        <label for="" class="control-label">@lang('auth.surname')</label>
                         <div>
                             <input type="text" value="{{ old('last_name') ? old('last_name') : $trainer->last_name }}" class="form-control" name="last_name" id="">
                         </div>
                     </div>
                     <div>
-                        <label for="email"  class="control-label">Էլ-հասցե</label>
+                        <label for="email"  class="control-label">@lang('auth.email')</label>
                         <div>
                             <input type="text" class="form-control" value="{{ old('email') ? old('email') : $trainer->email }}" name="email" id="email">
                         </div>
@@ -57,25 +57,25 @@
                 </div><!-- Form top end -->
 
                 <div class="pass-change-cont"><!-- Poxel gaxtnabary  -->
-                    <label for="" class="control-label">Փոխել Գաղտնաբառը</label>
+                    <label for="" class="control-label">@lang('auth.change_pass')</label>
                     <div>
-                        <input name="current_password" type="password" class="form-control" placeholder="Ընթացիկ Գաղտնաբառը">
+                        <input name="current_password" type="password" class="form-control" placeholder="@lang('auth.current_pass')">
                     </div>
                     <div>
-                        <input type="password" class="form-control" name="password" id="" placeholder="Նոր Գաղտնաբառը">
+                        <input type="password" class="form-control" name="password" id="" placeholder="@lang('auth.new_pass')">
                     </div>
                     <div>
-                        <input type="password" class="form-control" name="password_confirmation" id="" placeholder="Նոր Գաղտնաբառը">
+                        <input type="password" class="form-control" name="password_confirmation" id="" placeholder="@lang('auth.new_pass')">
                     </div>
                 </div>
 
                 <div class="buttons-cont">
                     <div>
-                        <a style="text-decoration: none" href="{{ url('trainer/profile') }}"><button type="button">Չեղարկել</button></a>
+                        <a style="text-decoration: none" href="{{ url('trainer/profile') }}"><button type="button">@lang('auth.cancel')</button></a>
                     </div>
 
                     <div>
-                        <button type="submit">Հաստատել</button>
+                        <button type="submit">@lang('auth.save')</button>
                     </div>
                 </div>
             </form>

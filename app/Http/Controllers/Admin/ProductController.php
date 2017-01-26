@@ -91,6 +91,7 @@ class ProductController extends AdminBaseController
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request){
+
         $this->validate($request, [
 //            'name'  => 'required',
             'price' =>'required',
@@ -98,7 +99,7 @@ class ProductController extends AdminBaseController
         ]);
 
         Product::find($request->product_id)->update([
-            'title'=>$request->name,
+            'title'=>json_encode($request->name),
             'price'=>$request->price,
             'description'=>json_encode($request->description),
             'nutritional_value' => $request->nutritional_value,
@@ -108,7 +109,7 @@ class ProductController extends AdminBaseController
             'calories' => $request->calories,
             'status'=>$request->status
         ]);
-        
+
         return redirect()->back()->with('message', 'Product was successfully updated');
     }
 

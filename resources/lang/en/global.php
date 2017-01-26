@@ -13,19 +13,15 @@ return [
     |
     */
 
-    'kkal' => 'կկալ',
-    'g' => 'գ',
-    'add to cart' => 'Ավելացնել',
-    'amd' => 'դր',
-    'nutritional value' => 'Սննդային Արժեք',
-    'proteins' => 'Սպիտակուցներ',
-    'carbs' => 'Ածխաջրեր',
-    'fats' => 'Ճարպեր',
-    'calories' => 'Կալորիաներ',
-    'name' => 'Անվանում',
-    'price' => 'Գինը',
-    'count' => 'Քանակը',
-    'total' => 'Ընդհանուր',
-
+    'products' => 'Products',
+    'about us' => 'About Us',
+    'I am trainer' => 'I Am Trainer',
+    'contact' => 'Contact',
+    'basket' => 'Basket',
+    'contact us' => 'Contact Us',
+    'name' => 'Name',
+    'message' => 'Message',
+    'send' => 'Send',
+    'buyer' => 'Buyer'
 
 ];

@@ -14,16 +14,16 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav main-nav" >
-                        <li class="active"><a href="{{ url('/') }}">Ապրանքներ</a></li>
-                        <li><a href="{{ url('about') }}">Մեր Մասին</a></li>
-                        <li><a href="{{ url('trainer/login') }}">Ես մարզիչ եմ</a></li>
-                        <li><a href="{{ url('contact') }}">Կապ</a></li>
+                        <li class="active"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.products')</a></li>
+                        <li><a href="{{ url('about/'.App::getLocale()) }}">@lang('global.about us')</a></li>
+                        <li><a href="{{ url('trainer/login/'.App::getLocale()) }}">@lang('global.I am trainer')</a></li>
+                        <li><a href="{{ url('contact/'.App::getLocale()) }}">@lang('global.contact')</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="{{ url('basket') }}">
+                            <a href="{{ url('basket/'.App::getLocale()) }}">
                                 <img src="/images/zambyux.png" style="vertical-align: middle;" alt="images/zambyux.png">
-                                Զամբյուղ(<span  class="basket_count"></span>)
+                                @lang('global.basket')(<span  class="basket_count"></span>)
                             </a>
                         </li>
                     </ul>
