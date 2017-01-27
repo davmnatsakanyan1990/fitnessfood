@@ -27,9 +27,11 @@ class HomeController extends Controller
             $locale = 'am';
 
         $products = Product::with('images', 'thumb_image')->get();
-        foreach($products as $product){
-            $product->description = json_decode($product->description)->$locale;
-            $product->title = json_decode($product->title)->$locale;
+        if(count($products)>0) {
+            foreach ($products as $product) {
+                $product->description = json_decode($product->description)->$locale;
+                $product->title = json_decode($product->title)->$locale;
+            }
         }
         $products = $products->chunk(4);
 

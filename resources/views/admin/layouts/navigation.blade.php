@@ -6,11 +6,13 @@
                             <img alt="image" class="img-circle" src="/images/profile-icon.png" />
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
-                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="{{ url('admin/logout') }}">Logout</a></li>
-                    </ul>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong></span>
+                                {{--<span class="text-muted text-xs block">Trainer <b class="caret"></b></span> --}}
+                            </span>
+                    </a>
+                    {{--<ul class="dropdown-menu animated fadeInRight m-t-xs">--}}
+                        {{--<li><a href="{{ url('admin/logout') }}">Logout</a></li>--}}
+                    {{--</ul>--}}
                 </div>
                 <div class="logo-element">
 

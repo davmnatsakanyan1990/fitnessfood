@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             switch ($guard) {
                 case 'admin' :
-                    return redirect('/');
+                    return redirect('admin/products');
                     break;
                 case 'trainer' :
                     return redirect('trainer/profile/'.App::getLocale());
