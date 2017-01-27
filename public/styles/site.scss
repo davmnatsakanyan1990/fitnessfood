@@ -720,6 +720,7 @@ footer{
 	thead{
 		tr{
 			th{
+				border-bottom: none;
 				color: $light-gray;
 				font-family: ArialAMU;
 				font-size: 18px;
@@ -741,7 +742,9 @@ footer{
 				padding-left: 35px;
 			}
 			&:last-child{
-				padding-right: 35px;
+				padding-right: 20px;
+				padding-left: 0;
+				max-width: 25px;
 			}
 		}
 	}
@@ -961,9 +964,12 @@ footer{
 			border-radius: 100%;
 		}
 	}
-	td{
+	td{ 
 		vertical-align: middle !important;
 		padding-bottom: 20px !important;
+	}
+	.td-prc{
+		padding-right: 35px;
 	}
 	.prod-inf{
 		.quantity-wrap{
@@ -979,7 +985,7 @@ footer{
 	thead{
 		tr{
 			th:last-child{
-				padding-right: 0;
+				padding-right: 35px;
 			}
 		} 
 	}  
@@ -1053,5 +1059,70 @@ footer{
 					}
 				}
 			}
+		}
+		.universal-buton{
+			min-width: 250px;
+			margin-left: auto;
+			margin-right: auto;
+
+		}
+	}
+
+	.basket-form{
+		margin-right: 99px;
+		margin-top: 30px;
+		max-width: 300px;
+		float: right;
+		hr{
+			margin-bottom: 10px;
+			border: 1px solid #ccc;
+		}
+		ul{
+			li{
+				&:first-child{
+					font-size: 18px;
+					color: $main-black;
+				}
+				&:nth-child(2){
+					font-size: 24px;
+					color: $main-violet;
+					float: right;
+				}
+			}
+		}
+	}
+	.close-prod{
+		max-width: 44px;
+		border-left: 1px solid #CCCCCC;
+	}
+	.basket-first-inps{
+		input{
+			font-size: 24px;
+			margin-top: 10px;
+			border: none;
+			border-radius: 4px;
+			width: 100%;
+			padding: 15px 10px 10px;
+		}
+	}
+
+	.remove-trainer{
+			margin-top: 20px;
+		input{
+			color: #fff;
+			font-size: 18px;
+			border: 1px solid $main-violet;
+			background: $main-violet;
+			border-top-left-radius: 6px;
+			border-bottom-left-radius: 6px;
+			padding: 10px 15px;
+		}
+		span{
+			border-top-right-radius: 6px;
+			border-bottom-right-radius: 6px;
+			background: $main-violet;
+			color: #fff;
+			padding: 10px 15px;
+			font-size: 18px;
 		}
 	}

@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </td>
-            <td class="text-right">{{ $product['price'] * $product['count'] }}@lang('product.amd')</td>
-            <td class="text-right"><a class="remove" data-id="{{ $product['id'] }}">&#10005;</a></td>
+            <td class="text-right td-prc">{{ $product['price'] * $product['count'] }}@lang('product.amd')</td>
+            <td class="text-right close-prod"><a style="cursor: pointer; text-decoration: none;" class="remove" data-id="{{ $product['id'] }}">&#10005;</a></td>
         </tr>
     @endforeach
