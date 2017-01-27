@@ -4,11 +4,8 @@
             <div class="footer-social">
                 <ul class="list-inline">
                     <li><a href="#"><img src="/images/social/share.png" alt="share.png"></a></li>
-                    <li><span class="fbShare"><img src="/images/social/1.png" alt="social/1.png"></span></li>
-                    <a class="twitter-share-button"
-                       href="https://twitter.com/intent/tweet">
-                        Tweet</a>
-                    <li><a class="twitter-share-button" href="#"><img src="/images/social/2.png" alt="social/2.png"></a></li>
+                    <li><span ><img src="/images/social/1.png" alt="social/1.png"></span></li>
+                    <li><a href="#"><img src="/images/social/2.png" alt="social/2.png"></a></li>
                     <li><a href="#"><img src="/images/social/3.png" alt="social/3.png"></a></li>
                     <li><a href="#"><img src="/images/social/4.png" alt="social/4.png"></a></li>
                     <li><a href="#"><img src="/images/social/5.png" alt="social/4.png"></a></li>

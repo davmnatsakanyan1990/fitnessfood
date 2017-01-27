@@ -38,7 +38,7 @@
             </div><!-- Row For table end -->
             {{ $orders->links() }}
 
-            <div class="row stanal"><!-- Stanal row -->
+            <div class="row stanal" id="info"><!-- Stanal row -->
                 <div class="col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6 stanal-info"><!-- Stanal info -->
                     <ul class="list-inline">
                         <li>Ընդհանուր</li>
@@ -62,7 +62,7 @@
                             <p>{{ session('error') }}</p>
                         </div>
                     @endif
-                    <form action="{{ url('trainer/message/new') }}" method="post" class="kkapnvenq" id="message">
+                    <form action="{{ url('trainer/message/new').'#info' }}" method="post" class="kkapnvenq" id="message">
                         {{ csrf_field() }}
                         <input type="number" name="amount" placeholder="Գումար">
                     </form>
