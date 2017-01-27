@@ -70,7 +70,7 @@
                         <p>{{ session('message') }}</p>
                     @endif
                     <div class="text-center">
-                        <button type="submit" form="message">ՍՏԱՆԱԼ</button>
+                        <button type="submit" form="message" class="universal-buton">ՍՏԱՆԱԼ</button>
                     </div>
 
                 </div><!-- Stanal info end-->

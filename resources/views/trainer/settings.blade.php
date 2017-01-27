@@ -3,11 +3,14 @@
     <main>
         <div class="settings-wrap">
             <form class="form-horizontal"  id="profile-form" method="post" action="{{ url('trainer/settings/update') }}" enctype="multipart/form-data">
+                
                 <div class="user-prof">
+                <div class="user-prof-inner">
                     <input type="file" name="image" id="imgInp">
-                    <label for="imgInp"></label>
+                    <label for="imgInp" id="uplod-img-label"></label>
                     <img id="blah" src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="settings/face.png">
-                    <!-- user prof inner/ -->
+                    
+                </div><!-- user prof inner/ -->
                 </div><!-- user Prof/ -->
                 @if(count($errors) > 0)
                 <div class="alert alert-danger">

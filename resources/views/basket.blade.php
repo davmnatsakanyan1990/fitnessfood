@@ -20,7 +20,52 @@
                   </tbody>
                 </table>
             </div>
-    	</div>
+            <div class="row"><!-- basket-form row-->
+              <div class="col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6 basket-form">
+                <ul class="list-inline">
+                  <li>Ընդհանուր</li>
+                  <li>5600դր</li>
+              </ul>
+              <hr>
+              <div class="basket-form-div">
+                <form action="#">
+                  <input type="name" placeholder="Անուն">
+                  <input type="number" placeholder="Հեռ.">
+
+                  <div class="check-box">
+                    <input type="checkbox" name="xorhurd">
+                    <label for="#"></label>
+                    <span for="#">Ինձ խորհուրդ է տվել մարզիչը</span>
+                  </div>
+
+                  <div class="marzich-search">
+                    <input type="search" placeholder="Մարզիչի Անունը">
+                  </div>
+
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <img src="/images/basket-marzich.png" alt="b-marzich">
+                        <span>Ալեքսանդր Հարությունյան</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#"></a>
+                    </li>
+                  </ul>
+                  <input type="button" value="Ալեքսանդր Հարությունյան">
+                  <span>&#10006;</span>
+                    <div class="check-box">
+                      <input type="checkbox" name="xorhurd">
+                      <label for="#"></label>
+                      <span>Առաքում</span>
+                      <span>(600դր)</span>
+                    </div>
+                </form>
+              </div><!-- basket-form-div end -->
+            </div><!-- basket-form -->
+          </div><!-- Row -->
+    	</div><!-- Container -->
     </main>
 @endsection
 
