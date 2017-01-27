@@ -8,15 +8,22 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
     protected $trainer;
+    protected $locale;
 
-    public function __construct(){
+    public function __construct(Request $request){
         $this->middleware('auth:trainer');
+
+        if($request->route()->parameter('locale')){
+            $this->locale = $request->route()->parameter('locale');
+            App::setLocale($this->locale);
+        }
 
         if(Auth::guard('trainer')->check())
             $this->trainer = Auth::guard('trainer')->user();

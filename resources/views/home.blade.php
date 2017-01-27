@@ -29,15 +29,15 @@
                     <div class="row" style="margin-left: -30px; margin-right: -30px;">
                         @foreach($row as $product)
                         <!-- 1 -->
-                        <div class="col-sm-6 col-md-3 product" data-id="{{ $product->id }}">
+                        <div class="col-sm-6 col-md-3" >
                             <div class="tumb-wrap ">
                                 <div class="for-img">
-                                    <img src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" class="img-responsive" alt="">
+                                    <img src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" data-id="{{ $product->id }}" class="img-responsive product" alt="">
                                     <div class="prod-inf">
                                         <p>{{ $product->title }}</p>
                                         <div class="clearfix">
-                                            <div class="p-kkal">{{ $product->nutritional_value }} կկալ </div>
-                                            <div class="p-price">{{ $product->price }}<sub>դր</sub></div>
+                                            <div class="p-kkal">{{ $product->nutritional_value }} @lang('product.kkal') </div>
+                                            <div class="p-price">{{ $product->price }}<sub>@lang('product.amd')</sub></div>
                                         </div>
                                         <div class="quantity-wrap clearfix">
                                             <div>
@@ -52,7 +52,7 @@
                                                 </form>
                                             </div>
                                             <div class="add-to-card-wrap">
-                                                <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>Ավելացնել</button>
+                                                <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>
                                             </div>
                                         </div>
                                     </div>
@@ -69,26 +69,28 @@
                         <div class="reapeating-block" id="{{ $product->id }}"><!-- * 1 * -->
                             <div class="col-md-4">
                                 <div class="gall-big">
-                                    <img src="images/products/gal/1.png" class="img-responsive" alt="opened1.png">
+                                    <img src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" class="img-responsive" alt="">
                                 </div>
                                 <ul class="sm-gallery-ul list-inline text-center">
-                                    <li><a href="javascript:;"><img src="images/products/gal/sm1.png" data-big-src="images/products/gal/1.png" alt="pr4.png"></a></li>
-                                    <li><a href="javascript:;"><img src="images/products/gal/sm2.png" alt="pr4.png" data-big-src="images/products/gal/2.png"></a></li>
-                                    <li><a href="javascript:;"><img src="images/products/gal/sm3.png" alt="pr4.png" data-big-src="images/products/gal/3.png"></a></li>
+                                    @if(count($product->images) > 0)
+                                        @foreach($product->images as $image)
+                                        <li><a href="javascript:;"><img src="images/products/{{ $image->name }}" data-big-src="images/products/{{ $image->name }}" alt=""></a></li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                             <div class="col-sm-8">
                                 <h2>{{ $product->title }}</h2>
                                 <p>{{ $product->description }}</p>
-                                <h3>Սննդային Արժեք - 100g.</h3>
+                                <h3>@lang('product.nutritional value') - {{ $product->nutritional_value }}@lang('product.g').</h3>
                                 <div class="sp-ch-k">
                                     <div>
-                                        <p>Սպիտակուցներ<span>9.2գ</span></p>
-                                        <p>Ճարպեր<span>7.8գ</span></p>
+                                        <p>@lang('product.proteins')<span>{{ $product->proteins }}@lang('product.g')</span></p>
+                                        <p>@lang('product.carbs')<span>{{ $product->carbs }}@lang('product.g')</span></p>
                                     </div>
                                     <div>
-                                        <p>Ածխաջրեր<span>8.4գ</span></p>
-                                        <p>Կալորիաներ<span>185k</span></p>
+                                        <p>@lang('product.fats')<span>{{ $product->fats }}@lang('product.g')</span></p>
+                                        <p>@lang('product.calories')<span>{{ $product->calories }}@lang('product.g')</span></p>
                                     </div>
                                 </div>
 
@@ -105,13 +107,13 @@
                                     <div class="sided-to-social">
                                         <div class="prod-inf">
                                             <div class="clearfix">
-                                                <div class="p-price">700<sub>դր</sub></div>
+                                                <div class="p-price">{{ $product->price }}<sub>դր</sub></div>
                                             </div>
                                             <div class="quantity-wrap clearfix">
                                                 <div>
                                                     <form class="quantity-form" method="POST" action="#">
                                                         <div>
-                                                            <input type="text" name="quantity" value="0" class="qty">
+                                                            <input type="text" name="quantity" value="1" class="qty">
                                                         </div>
                                                         <div>
                                                             <input type="button" value="+" class="qtyplus" field="quantity">
@@ -120,7 +122,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="add-to-card-wrap">
-                                                    <button class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>Ավելացնել</button>
+                                                    <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>Ավելացնել</button>
                                                 </div>
                                             </div>
                                         </div><!-- prod-info end in opening block -->

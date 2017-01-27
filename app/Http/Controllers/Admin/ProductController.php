@@ -25,6 +25,9 @@ class ProductController extends AdminBaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
+//        $product = Product::find(21);
+//        dd($product);
+//        dd(json_decode($product->description)->en);
         $products = Product::with('thumb_image')->orderBy('created_at', 'desc')->get();
 
         return view('admin.products.index', compact('products'));
@@ -47,15 +50,15 @@ class ProductController extends AdminBaseController
      */
     public function save(Request $request){
         $this->validate($request, [
-            'name'=>'required',
+//            'name'=>'required',
             'price'=>'required',
             'status'=>'required'
         ]);
 
         Product::create([
-            'title' => $request->name,
+            'title' => json_encode($request->name),
             'price'=>$request->price,
-            'description'=>$request->description,
+            'description'=>json_encode($request->description),
             'nutritional_value' => $request->nutritional_value,
             'proteins' => $request->proteins,
             'carbs' => $request->carbs,
@@ -88,16 +91,17 @@ class ProductController extends AdminBaseController
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request){
+
         $this->validate($request, [
-            'name'  => 'required',
+//            'name'  => 'required',
             'price' =>'required',
             'status'=>'required'
         ]);
 
         Product::find($request->product_id)->update([
-            'title'=>$request->name,
+            'title'=>json_encode($request->name),
             'price'=>$request->price,
-            'description'=>$request->description,
+            'description'=>json_encode($request->description),
             'nutritional_value' => $request->nutritional_value,
             'proteins' => $request->proteins,
             'carbs' => $request->carbs,
@@ -105,7 +109,7 @@ class ProductController extends AdminBaseController
             'calories' => $request->calories,
             'status'=>$request->status
         ]);
-        
+
         return redirect()->back()->with('message', 'Product was successfully updated');
     }
 

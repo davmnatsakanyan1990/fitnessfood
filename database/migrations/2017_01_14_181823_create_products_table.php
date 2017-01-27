@@ -14,7 +14,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->longText('title');
             $table->longText('description');
             $table->double('price', 11, 2);
             $table->double('nutritional_value', 11, 2)->nullable();

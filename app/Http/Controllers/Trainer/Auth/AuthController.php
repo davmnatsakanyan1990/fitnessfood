@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Trainer\Auth;
 
 use App\Models\Trainer;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -30,20 +32,29 @@ class AuthController extends Controller
      * @var string
      */
     protected $registerView = 'trainer.auth.register';
-    protected $redirectTo = 'trainer/profile';
-    protected $redirectAfterLogout = 'trainer/login';
+    protected $redirectTo;
+    protected $redirectAfterLogout;
     protected $guard = 'trainer';
     protected $loginView = 'trainer.auth.login';
 //    protected $username = 'username';
+    public $locale;
 
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        if($request->route()->parameter('locale')){
+            $this->locale = $request->route()->parameter('locale');
+            App::setLocale($this->locale);
+        }
+
+        $this->redirectTo = 'trainer/profile/'.$this->locale;
+        $this->redirectAfterLogout = 'trainer/login/'.$this->locale;
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+
     }
 
     /**

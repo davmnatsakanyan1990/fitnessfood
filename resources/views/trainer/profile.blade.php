@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="profile-top">
-                    <a href="{{ url('trainer/settings') }}">
+                    <a href="{{ url('trainer/settings/'.App::getLocale()) }}">
                         <img src="/images/profile/astxik.png" alt="profile/astxik.png">
                     </a>
                     <div>
@@ -18,10 +18,10 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>Գնորդի Անունը</th>
+                      <th>@lang('global.buyer')</th>
                       <th class="text-center">%</th>
-                      <th class="text-center">Քանակը</th>
-                      <th class="text-right">Ընդհանուր</th>
+                      <th class="text-center">@lang('product.count')</th>
+                      <th class="text-right">@lang('product.total')</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -57,6 +57,11 @@
                         <li>{{ $active }}դր</li>
                     </ul>
                     <hr>
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            <p>{{ session('error') }}</p>
+                        </div>
+                    @endif
                     <form action="{{ url('trainer/message/new') }}" method="post" class="kkapnvenq" id="message">
                         {{ csrf_field() }}
                         <input type="number" name="amount" placeholder="Գումար">
