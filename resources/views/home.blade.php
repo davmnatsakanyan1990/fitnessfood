@@ -107,7 +107,7 @@
                                     <div class="sided-to-social">
                                         <div class="prod-inf">
                                             <div class="clearfix">
-                                                <div class="p-price">{{ $product->price }}<sub>դր</sub></div>
+                                                <div class="p-price">{{ $product->price }}<sub>@lang('product.amd')</sub></div>
                                             </div>
                                             <div class="quantity-wrap clearfix">
                                                 <div>
@@ -122,7 +122,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="add-to-card-wrap">
-                                                    <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>Ավելացնել</button>
+                                                    <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>
                                                 </div>
                                             </div>
                                         </div><!-- prod-info end in opening block -->

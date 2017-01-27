@@ -21,7 +21,6 @@
 
                                 <th>Order ID</th>
                                 <th data-hide="phone">Customer Name</th>
-                                <th data-hide="phone">Customer Email</th>
                                 <th>Customer Phone</th>
                                 <th>Counselor</th>
                                 <th data-hide="phone">Amount</th>
@@ -42,13 +41,10 @@
                                         {{ $order->customer_name }}
                                     </td>
                                     <td>
-                                        {{ $order->customer_email }}
-                                    </td>
-                                    <td>
                                         {{ $order->customer_phone }}
                                     </td>
                                     <td>
-                                        {{ $order->counselor->name }}
+                                        {{ $order->counselor->first_name }} {{ $order->counselor->last_name }}
                                     </td>
                                     <td>
                                         {{ $order->amount }}

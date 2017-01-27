@@ -16,7 +16,7 @@
 					</ul>
 				</div>
 			@endif
-            <form action="{{ url('trainer/login') }}" method="post">
+            <form action="{{ url('trainer/login/'.App::getLocale()) }}" method="post">
 				{{ csrf_field() }}
             	<input type="email" placeholder="@lang('auth.email')" name="email">
             	<input type="password" placeholder="@lang('auth.password')" name="password">

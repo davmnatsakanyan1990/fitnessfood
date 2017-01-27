@@ -24,12 +24,12 @@ Route::get('orders/new','OrderController@create');
 Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
 
     Route::get('login/{locale}', 'Auth\AuthController@showLoginForm');
-    Route::post('login', 'Auth\AuthController@login');
-    Route::get('logout', 'Auth\AuthController@logout');
+    Route::post('login/{locale}', 'Auth\AuthController@login');
+    Route::get('logout/{locale}', 'Auth\AuthController@logout');
 
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
-    Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+    Route::get('password/reset/{locale}/{token?}', 'Auth\PasswordController@getReset');
 
     Route::get('register', 'Auth\AuthController@showRegistrationForm');
     Route::post('register', 'Auth\AuthController@register');

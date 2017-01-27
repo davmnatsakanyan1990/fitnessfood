@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/styles/fitness.css">
+
+    <meta property="og:url"           content="{{ url()->current() }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Fitness Cook" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="{{ url('/').'/images/logo.png' }}" />
 
     <script>
         var BASE_URL = '{{ url('/') }}'
@@ -39,6 +46,54 @@
         $('.basket_count').text(basket_count);
     });
 </script>
+
+<script>
+    $(document).ready(function(){
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '{{ env('FB_APP_ID') }}',
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        $('.fbShare').on('click', function(){
+            FB.ui({
+                method: 'share',
+                display: 'iframe',
+                href: '{{ url()->current() }}'
+            }, function(response){});
+        })
+    });
+</script>
+
+<script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+
+        return t;
+    }(document, "script", "twitter-wjs"));</script>
+
 @yield('scripts')
 </body>
 </html>
