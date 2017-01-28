@@ -117,7 +117,7 @@
                                                 @endforeach
                                             @else
                                                 <tr>
-                                                    <td class="text-center" colspan="3">There aren't any payments</td>
+                                                    <td class="text-center" colspan="4">There aren't any payments</td>
                                                 </tr>
                                             @endif
                                             </tbody>

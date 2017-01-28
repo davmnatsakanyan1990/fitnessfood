@@ -44,7 +44,9 @@ class TrainerController extends AdminBaseController
         foreach($trainers as $trainer){
             $total = 0;
             foreach($trainer->orders as $order){
-                $total = $total + $order->products->sum('price');
+                foreach($order->products as $product) {
+                    $total = $total + ($product->price * $product->pivot->count);
+                }
             }
             $trainer->total = $total;
             $trainer->total_bonus = $total/10;
@@ -68,7 +70,9 @@ class TrainerController extends AdminBaseController
 
         $total  = 0;
         foreach($trainer->orders as $order){
-            $total = $total + $order->products->sum('price');
+            foreach($order->products as $product) {
+                $total = $total + ($product->price * $product->pivot->count);
+            }
         }
         $trainer->total = $total;
         $trainer->bonus = $total/10;

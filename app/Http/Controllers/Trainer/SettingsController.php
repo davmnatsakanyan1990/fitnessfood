@@ -58,7 +58,13 @@ class SettingsController extends Controller
 
                 $request->file('image')->move($destinationPath, $fileName);
 
-                Image::create(['name' => $fileName, 'imageable_type' => 'trainers', 'imageable_id' => $this->trainer->id, 'role' => 0]);
+                if($this->trainer->image) {
+                    unlink('images/trainerImages/' . $this->trainer->image->name);
+                    $this->trainer->image->update(['name' => $fileName]);
+                }
+                else {
+                    Image::create(['name' => $fileName, 'imageable_type' => 'trainers', 'imageable_id' => $this->trainer->id, 'role' => 0]);
+                }
             }
 
             return redirect()->back()->with('message', 'Changes was saved');

@@ -25,7 +25,7 @@
             		<label for="#"></label>
             		<span for="#">@lang('auth.remember me')</span>
             	</div>
-            	<a href="{{ url('trainer/password/reset') }}">@lang('auth.forgot password')</a>
+            	<a href="{{ url('trainer/password/reset/'.App::getLocale()) }}">@lang('auth.forgot password')</a>
             	<div class="login-reg-button">
             		<button type="submit">@lang('auth.login')</button>
             	</div>

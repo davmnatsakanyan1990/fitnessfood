@@ -25,7 +25,7 @@
             <h1 class="logo-name"><img src="/images/logo.png"></h1>
 
         </div>
-        <h3>@lang('auth.admin login')</h3>
+        <h3>Admin Login</h3>
         @if(count($errors) > 0)
             <div class="alert alert-danger alert-dismissable">
                 <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
@@ -39,14 +39,14 @@
         <form class="m-t" role="form" action="{{ url('admin/login') }}" method="post">
             {{ csrf_field() }}
             <div class="form-group">
-                <input name="username" type="username" class="form-control" placeholder="@lang('auth.username')" required="">
+                <input name="username" type="text" class="form-control" placeholder="Username" required="">
             </div>
             <div class="form-group">
-                <input name="password" type="password" class="form-control" placeholder="@lang('auth.password')" required="">
+                <input name="password" type="password" class="form-control" placeholder="Password" required="">
             </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">@lang('auth.login')</button>
+            <button type="submit" class="btn btn-primary block full-width m-b">Log in</button>
 
-            <a href="{{ url('admin/password/reset?local='.App::getLocale()) }}"><small>@lang('auth.forgot password?')</small></a>
+            <a href="{{ url('admin/password/reset') }}"><small>Forgot password</small></a>
         </form>
     </div>
 </div>

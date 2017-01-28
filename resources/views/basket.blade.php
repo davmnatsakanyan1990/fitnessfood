@@ -145,7 +145,9 @@
                     }
 
                     $(document).find('.basket-table tbody').html('');
+                    $('#total').html(0);
                     $('.basket_count').text(0);
+
                 },
                 error: function(errors){
                     var allErrors = errors.responseJSON;
