@@ -63,7 +63,7 @@
                       <input type="checkbox" name="xorhurd">
                       <label for="#"></label>
                       <span>Առաքում</span>
-                      <span>(600դր)</span>
+                      <span style="color: #999999;">(600դր)</span>
                     </div>
                     <button class="universal-buton">Պատվիրել</button>
                 </form>

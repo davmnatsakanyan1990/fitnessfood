@@ -164,12 +164,10 @@ body {
 
 main {
   min-height: 100%;
-  margin-bottom: -326px;
 }
 
-main:after {
-  content: "";
-  display: block;
+.home-main {
+  margin-top: 62px;
 }
 
 footer, main:after {
@@ -249,6 +247,8 @@ footer, main:after {
 }
 
 .navbar {
+  position: fixed;
+  width: 100%;
   z-index: 2;
   background: #fff;
   border-radius: 0;
@@ -506,6 +506,7 @@ footer, main:after {
   background: #892E6B;
   color: #fff;
   border-radius: 20px;
+  box-shadow: 0 3px 0 0 #561D43;
   border: none;
 }
 
@@ -515,12 +516,32 @@ footer, main:after {
   padding-right: 10px;
 }
 
-.prod-inf .quantity-wrap .addToCard-button:hover {
-  /* box-shadow: 0 0 3px 1px #892e6b; */
+.prod-inf .quantity-wrap .addToCard-button:active {
+  -webkit-transform: translate(0px, 3px);
+  transform: translate(0px, 3px);
+  box-shadow: 0px 1px 0px 0px;
 }
 
-.prod-inf .quantity-wrap .addToCard-button:hover span {
-  transform: rotate(10deg);
+.prod-inf .quantity-wrap .addToCard-button:active:after {
+  border-radius: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0.9;
+  transition: 0s;
+}
+
+.prod-inf .quantity-wrap .addToCard-button:after {
+  content: "";
+  pointer-events: none;
+  background: #892E6B;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  padding: 100%;
+  margin-top: -100%;
+  margin-left: -100%;
+  opacity: 0;
+  transition: all 0.5s;
 }
 
 .sided-to-social .prod-inf {
@@ -565,7 +586,7 @@ footer .all-rights {
 /* About page */
 .about-main > div {
   text-align: center;
-  margin-top: 45px;
+  margin-top: 107px;
 }
 
 .about-main p {
@@ -577,6 +598,10 @@ footer .all-rights {
 }
 
 /* contact page  */
+.contact-main {
+  margin-top: 62px;
+}
+
 .cols-3-row .col-sm-4 {
   margin-top: 60px;
 }
@@ -665,7 +690,7 @@ footer .all-rights {
 .settings-wrap {
   overflow: hidden;
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 92px;
   padding: 20px 35px 30px;
   max-width: 370px;
   background: #fff;
@@ -798,7 +823,7 @@ footer .all-rights {
 
 /* PRofile  */
 .profile-top {
-  margin: 30px auto;
+  margin: 92px auto 30px auto;
   max-width: 370px;
   background: #fff;
   padding: 10px 10px 20px;
@@ -990,7 +1015,7 @@ footer .all-rights {
 /* Login */
 .login-marzich {
   max-width: 300px;
-  margin: 50px auto;
+  margin: 112px auto 50px auto;
 }
 
 .login-marzich h3 {
@@ -1071,6 +1096,10 @@ footer .all-rights {
 .login-marzich .check-box span {
   color: #333333;
   font-size: 18px;
+}
+
+.login-marzich .check-box span#delivery-price {
+  color: red;
 }
 
 .login-marzich .check-box + a {
