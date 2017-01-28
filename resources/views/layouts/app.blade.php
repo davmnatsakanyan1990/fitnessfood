@@ -17,9 +17,6 @@
     <meta property="og:description"   content="Your description" />
     <meta property="og:image"         content="{{ url('/').'/images/logo.png' }}" />
 
-    <!-- select2 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-
 
     <script>
         var BASE_URL = '{{ url('/') }}'
@@ -40,10 +37,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-<script type="text/javascript">
-    $(".js-example-basic-multiple").select2();
-</script>
+
 <script>
     $(document).ready(function(){
         if(localStorage.getItem('basket'))

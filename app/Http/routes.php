@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 
 Route::get('/{locale?}', 'HomeController@index');
-Route::get('orders/new','OrderController@create');
+Route::post('orders/new','OrderController@create');
 
 /**
  * Trainer route part
