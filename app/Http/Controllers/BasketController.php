@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,7 +21,10 @@ class BasketController extends Controller
     }
 
     public function index(){
-        return view('basket');
+
+        $trainers = Trainer::with('image')->get();
+
+        return view('basket', compact('trainers'));
     }
 
     public function products(Request $request){
@@ -28,14 +32,17 @@ class BasketController extends Controller
         $pds = $request->products;
 
         $products = array();
+        $total = 0;
         foreach($pds as $item){
+
             $product = Product::with('thumb_image')->find($item['product_id'])->toArray();
             $product['count'] = $item['count'];
+            $total += $item['count'] * $product['price'];
             $product['title'] = json_decode($product['title'])->$locale;
             array_push($products, $product);
         }
 
-        return view('ajax.basket', compact('products'));
+        return view('ajax.basket', compact('products', 'total'));
 
     }
 }

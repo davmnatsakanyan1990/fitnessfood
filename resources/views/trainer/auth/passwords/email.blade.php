@@ -9,6 +9,15 @@
                     {{ session('status') }}
                 </div>
             @endif
+            @if (count($errors)> 0)
+                <div class="alert alert-success">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method="POST" action="{{ url('trainer/password/email') }}">
                 {{ csrf_field() }}
                 <input name="email" value="{{ old('email') }}" type="email" placeholder="Էլ-հասցե">

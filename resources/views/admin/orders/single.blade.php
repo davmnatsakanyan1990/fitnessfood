@@ -45,8 +45,8 @@
                             @foreach($order->products as $k=>$product)
                             <tr>
                                 <td>{{ $k+1 }}</td>
-                                <td><img width="70" class="img-thumbnail" src="/images/productImages/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}"> </td>
-                                <td>{{ $product->name }}</td>
+                                <td><img width="70" class="img-thumbnail" src="/images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}"> </td>
+                                <td>{{ $product->title }}</td>
                                 <td>{{ $product->pivot->count }}</td>
                                 <td> {{ $product->price }} AMD</td>
                                 <td> {{ $product->price * $product->pivot->count }} AMD</td>

@@ -84,7 +84,7 @@
                             </tr>
                             @endforeach
                             @else
-                            <tr><td class="text-center" colspan="6">There aren't any products</td></tr>
+                            <tr><td class="text-center" colspan="10">There aren't any products</td></tr>
                             @endif
                             </tbody>
                             <tfoot>

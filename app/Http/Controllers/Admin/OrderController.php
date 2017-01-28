@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends AdminBaseController
 {
+    public $locale;
+
     public function __construct(){
+        $this->locale = App::getLocale();
         $this->middleware('auth:admin');
         parent::__construct();
     }
@@ -29,6 +33,7 @@ class OrderController extends AdminBaseController
     }
 
     public function show($order_id){
+        $locale = $this->locale;
         $order = Order::with(['products'=>function($products){
             return $products->with('thumb_image');
         }])->find($order_id);
@@ -36,6 +41,7 @@ class OrderController extends AdminBaseController
         $total = 0;
         foreach($order->products as $product){
             $total = $total + $product->price * $product->pivot->count;
+            $product->title = json_decode($product->title)->$locale;
         }
         $order->total = $total;
 

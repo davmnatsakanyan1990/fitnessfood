@@ -17,6 +17,7 @@
     <meta property="og:description"   content="Your description" />
     <meta property="og:image"         content="{{ url('/').'/images/logo.png' }}" />
 
+
     <script>
         var BASE_URL = '{{ url('/') }}'
     </script>
@@ -36,6 +37,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
+
 <script>
     $(document).ready(function(){
         if(localStorage.getItem('basket'))
