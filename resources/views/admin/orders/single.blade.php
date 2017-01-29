@@ -75,11 +75,17 @@
                     url: BASE_URL+'/admin/order/seen/'+order_id,
                     type: 'get',
                     success: function(){
-                        var new_orders_count = ($('.new_orders_count'))[0].innerHTML;
-                        if(new_orders_count-1 == 0)
-                            $('.new_orders_count').remove();
-                        else
-                            $('.new_orders_count').html(new_orders_count-1);
+                        var new_orders_count = ($('.notifications_count'))[0].innerHTML;
+                        if(new_orders_count-1 == 0) {
+                            $('.notifications_count').remove();
+                        }
+                        else {
+                            $('.notifications_count').html(new_orders_count - 1);
+                            $('#order_'+order_id).next('li').remove();
+                            $('#order_'+order_id).remove();
+
+                        }
+
                     }
                 });
             }

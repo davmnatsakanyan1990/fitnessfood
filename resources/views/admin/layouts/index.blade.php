@@ -52,35 +52,8 @@
 @yield('scripts')
 
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
-<script>
+<script src="/admin/js/broadcasting.js"></script>
 
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('f099d8275bf3d94c6bf9', {
-        encrypted: true
-    });
-
-    var channel = pusher.subscribe('new-message');
-    channel.bind('App\\Events\\NewMessageEvent', function(data) {
-        alert('new message');
-    });
-
-    var channel = pusher.subscribe('new-order');
-    channel.bind('App\\Events\\NewOrderEvent', function(data) {
-        if($('.new_orders_count').length > 0){
-            var count = $(document).find('.new_orders_count')[0].innerText;
-            $(document).find('.new_orders_count').text(parseInt(count)+1);
-        }
-        else{
-            $(document).find('.order_notifi').append('<span class="label label-warning new_messages_count">1</span>');
-        }
-    });
-    var channel = pusher.subscribe('new-trainer');
-    channel.bind('App\\Events\\NewTrainerEvent', function(data) {
-        alert('new trainer');
-    });
-</script>
 </body>
 
 </html>

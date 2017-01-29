@@ -3,6 +3,8 @@ $(document).ready(function() {
     $('.footable').footable();
     $('.footable2').footable();
 
+
+
     $('.edit_payment').on('click', function(){
         var payment_id = $(this).data('id');
         var amount = $(this).data('amount');

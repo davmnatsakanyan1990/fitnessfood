@@ -8,6 +8,7 @@
     <main class="basket-main">
     	<div class="container">
     		<h3 class="basket-title">@lang('global.basket')</h3>
+            <div class="not_empty">
     		<div class="row for-table basket-table"><!--Row For table -->    
                 <table class="table">
                   <thead>
@@ -79,6 +80,12 @@
               </div><!-- basket-form-div end -->
             </div><!-- basket-form -->
           </div><!-- Row -->
+            </div>
+            <div class="empty hidden">
+                <div style="margin-top: 50px; font-size: larger" class="row text-center">
+                    <h1>@lang('global.basket is empty')</h1>
+                </div>
+            </div>
     	</div><!-- Container -->
     </main>
 @endsection

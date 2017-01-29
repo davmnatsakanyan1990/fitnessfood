@@ -8,7 +8,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#">
+                    <a href="{{ url('/'.App::getLocale()) }}">
                         <img src="/images/logo.png" alt="/images/logo.png">
                     </a>
                 </div>
@@ -21,9 +21,9 @@
                     </ul>
                     <div class="droshakner-parent">
                         <select name="lang" id="">
-                            <option value="AM">AM</option>
-                            <option value="RU">RU</option>
-                            <option value="US">US</option>
+                            <option {{ App::getLocale() == 'am' ? 'selected' : '' }} value="am">AM</option>
+                            <option {{ App::getLocale() == 'ru' ? 'selected' : '' }} value="ru">RU</option>
+                            <option {{ App::getLocale() == 'en' ? 'selected' : '' }} value="en">EN</option>
                         </select>
                     </div>
                     <ul class="nav navbar-nav navbar-right">

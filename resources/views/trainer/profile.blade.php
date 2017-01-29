@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="profile-top">
-                    <span>Log-out</span>
+                    <a>@lang('auth.logout')</a>
                     <a href="{{ url('trainer/settings/'.App::getLocale()) }}">
                         <img src="/images/profile/astxik.png" alt="profile/astxik.png">
                     </a>
@@ -31,7 +31,7 @@
                       <td class="name-td">{{ $order->customer_name }}</td>
                       <td class="text-center">10 %</td>
                       <td class="text-center">{{ $order->products->count() }}</td>
-                      <td class="text-right">{{ $order->amount }}դր</td>
+                      <td class="text-right">{{ $order->amount }}@lang('product.amd')</td>
                     </tr>
                     @endforeach
                   </tbody>
@@ -42,20 +42,20 @@
             <div class="row stanal" id="info"><!-- Stanal row -->
                 <div class="col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6 stanal-info"><!-- Stanal info -->
                     <ul class="list-inline">
-                        <li>Ընդհանուր</li>
-                        <li>{{ $total }}դր</li>
+                        <li>@lang('product.total')</li>
+                        <li>{{ $total }}@lang('product.amd')</li>
                     </ul>
                     <ul class="list-inline">
-                        <li>Տոկոսագումարը</li>
-                        <li>{{ $total/10 }}դր</li>
+                        <li>@lang('product.bonus')</li>
+                        <li>{{ $total/10 }}@lang('product.amd')</li>
                     </ul>
                     <ul class="list-inline">
-                        <li>Վճարված է</li>
-                        <li>{{ $paid }}դր</li>
+                        <li>@lang('product.paid')</li>
+                        <li>{{ $paid }}@lang('product.amd')</li>
                     </ul>
                     <ul class="list-inline">
-                        <li>Ակտիվ</li>
-                        <li>{{ $active }}դր</li>
+                        <li>@lang('product.active')</li>
+                        <li>{{ $active }}@lang('product.amd')</li>
                     </ul>
                     <hr>
                     @if(session('error'))
@@ -65,13 +65,13 @@
                     @endif
                     <form action="{{ url('trainer/message/new').'#info' }}" method="post" class="kkapnvenq" id="message">
                         {{ csrf_field() }}
-                        <input type="number" name="amount" placeholder="Գումար">
+                        <input type="number" name="amount" placeholder="@lang('product.amount')">
                     </form>
                     @if(session('message'))
                         <p>{{ session('message') }}</p>
                     @endif
                     <div class="text-center">
-                        <button type="submit" form="message" class="universal-buton">ՍՏԱՆԱԼ</button>
+                        <button type="submit" form="message" class="universal-buton">@lang('product.get')</button>
                     </div>
 
                 </div><!-- Stanal info end-->

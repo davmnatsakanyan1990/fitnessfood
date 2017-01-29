@@ -23,6 +23,7 @@ class Trainer extends Authenticatable
         'username',
         'password',
         'is_approved',
+        'is_seen'
 
     ];
 

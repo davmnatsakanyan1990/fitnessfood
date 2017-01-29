@@ -26,5 +26,10 @@ return [
     'price' => 'Price',
     'count' => 'Count',
     'total' => 'Total',
+    'bonus' => 'Bonus',
+    'paid' => 'Paid',
+    'active' => 'Active',
+    'amount' => 'Amount',
+    'get' => 'Get'
 
 ];

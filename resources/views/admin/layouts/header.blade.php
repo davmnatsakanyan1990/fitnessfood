@@ -30,27 +30,35 @@
             </li>
             <li class="dropdown">
                 <a class="dropdown-toggle count-info  order_notifi" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell"></i> {!! $new_orders_count ? '<span class="label label-primary new_orders_count">'. $new_orders_count .'</span>' : '' !!}
+                    <i class="fa fa-bell"></i> {!! $notifications->count() > 0 ? '<span class="label label-primary notifications_count">'. $notifications->count() .'</span>' : '' !!}
                 </a>
-                @if($new_orders_count)
+                @if($notifications)
                 <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                        <a>
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i> You have {{ $new_orders_count }} new orders
-                                {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <div class="text-center link-block">
-                            <a href="{{ url('admin/orders') }}">
-                                <strong>See All Orders</strong>
-                                <i class="fa fa-angle-right"></i>
+                    <div class="notification_block" style="overflow-y: scroll; max-height: 300px" >
+                    @foreach($notifications as $item)
+                        @if($item['type'] == 'order')
+                        <li id="order_{{ $item['id'] }}">
+                            <a href="{{ url('admin/orders/show/'.$item['id']) }}">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have new order
+                                    {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                                </div>
                             </a>
-                        </div>
-                    </li>
+                        </li>
+                        <li class="divider"></li>
+                        @elseif($item['type'] == 'trainer')
+                                <li id="trainer_{{ $item['id'] }}">
+                                    <a href="{{ url('admin/trainers/show/'.$item['id']) }}">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw"></i> You have new trainer
+                                            {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                        @endif
+                    @endforeach
+                    </div>
                 </ul>
                 @endif
             </li>

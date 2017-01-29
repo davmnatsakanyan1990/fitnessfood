@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
     if(localStorage.getItem('basket') && (JSON.parse(localStorage.getItem('basket'))).length > 0){
         $('.submit').removeAttr('disabled');
     }
@@ -31,7 +32,8 @@ $(document).ready(function(){
         })
     }
     else{
-        $('#total').html('0');
+        $(document).find('.not_empty').addClass('hidden');
+        $(document).find('.empty').removeClass('hidden');
     }
 });
 
@@ -64,6 +66,11 @@ $(document).on('click','.remove', function(){
     });
 
     $('#total').html(total);
+
+    if(total == 0){
+        $(document).find('.not_empty').addClass('hidden');
+        $(document).find('.empty').removeClass('hidden');
+    }
 });
 
 // click on advised box

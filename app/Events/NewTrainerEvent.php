@@ -10,14 +10,16 @@ class NewTrainerEvent extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
+    public $trainer;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($trainer)
     {
-        //
+        $this->trainer = $trainer;
     }
 
     /**
@@ -28,5 +30,11 @@ class NewTrainerEvent extends Event implements ShouldBroadcast
     public function broadcastOn()
     {
         return ['new-trainer'];
+    }
+
+    public function broadcastWith(){
+        return [
+            'trainer_id' => $this->trainer->id
+        ];
     }
 }

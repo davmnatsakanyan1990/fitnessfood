@@ -168,6 +168,28 @@
 
         var trainer_id = '{{ $trainer->id }}';
 
+        $(document).ready(function(){
+            if('{{ $trainer->is_seen }}' == 0){
+                $.ajax({
+                    url: BASE_URL+'/admin/trainers/seen/'+trainer_id,
+                    type: 'get',
+                    success: function(){
+                        var notifications_count = ($('.notifications_count'))[0].innerHTML;
+                        if(notifications_count-1 == 0) {
+                            $('.notifications_count').remove();
+                        }
+                        else {
+                            $('.notifications_count').html(notifications_count - 1);
+                            $('#trainer_'+trainer_id).next('li').remove();
+                            $('#trainer_'+trainer_id).remove();
+
+                        }
+
+                    }
+                });
+            }
+        });
+
         $('#tab1').on('click', function(){
             messagesSeen();
         });

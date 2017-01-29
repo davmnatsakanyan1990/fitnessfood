@@ -22,6 +22,7 @@ return [
     'name' => 'Name',
     'message' => 'Message',
     'send' => 'Send',
-    'buyer' => 'Buyer'
+    'buyer' => 'Buyer',
+    'basket is empty' => 'Your basket is empty'
 
 ];

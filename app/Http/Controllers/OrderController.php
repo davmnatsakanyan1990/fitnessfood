@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Events\NewOrderEvent;
+use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use Validator;
@@ -53,7 +54,8 @@ class OrderController extends Controller
             OrderProduct::create(['order_id' => $order, 'product_id' => $product->product_id, 'count'=>$product->count]);
         }
 
-        Event::fire(new NewOrderEvent($order));
+        $obj = Order::find($order);
+        Event::fire(new NewOrderEvent($obj));
 
     }
 }

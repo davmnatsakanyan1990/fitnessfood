@@ -21,9 +21,9 @@ class CreateTrainersTable extends Migration
             $table->string('phone');
             $table->string('workplace');
             $table->date('date_of_birth');
-            $table->string('username')->unique();
             $table->string('password');
             $table->enum('is_approved',[0,1])->default(0);
+            $table->enum('is_seen',[0,1])->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

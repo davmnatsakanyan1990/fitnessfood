@@ -97,6 +97,12 @@
 
         return t;
     }(document, "script", "twitter-wjs"));</script>
+<script>
+    $(document).find('select[name="lang"]').change(function(){
+        var lang = $(this).val();
+        window.location.href = lang;
+    })
+</script>
     
 
 @yield('scripts')

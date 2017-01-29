@@ -80,6 +80,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('trainers/delete/{id}', 'TrainerController@delete');
     Route::get('trainers/approve/{id}', 'TrainerController@approve');
     Route::get('trainer/messages/seen/{trainer_id}', 'TrainerController@messagesSeen');
+    Route::get('trainers/seen/{id}', 'TrainerController@seen');
 
     Route::get('payments', 'PaymentController@index');
     Route::post('payments/update/{id}', 'PaymentController@update');

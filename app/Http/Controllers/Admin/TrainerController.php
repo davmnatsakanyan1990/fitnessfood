@@ -96,4 +96,8 @@ class TrainerController extends AdminBaseController
 
         return response()->json(['count' => $count]);
     }
+
+    public function seen($id){
+        Trainer::where('id', $id)->update(['is_seen' => 1]);
+    }
 }

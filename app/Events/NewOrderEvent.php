@@ -30,4 +30,10 @@ class NewOrderEvent extends Event implements ShouldBroadcast
     {
         return ['new-order'];
     }
+
+    public function broadcastWith(){
+        return [
+            'order_id' => $this->order->id
+        ];
+    }
 }
