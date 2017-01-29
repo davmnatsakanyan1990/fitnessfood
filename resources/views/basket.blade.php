@@ -5,7 +5,7 @@
 
 @endsection
 @section('content')
-    <main>
+    <main class="basket-main">
     	<div class="container">
     		<h3 class="basket-title">@lang('global.basket')</h3>
     		<div class="row for-table basket-table"><!--Row For table -->    

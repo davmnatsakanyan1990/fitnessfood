@@ -135,25 +135,89 @@
                 </div>
                 @endforeach
             @endif
-
         </section><!-- Products section -->
-        <h2>Small Modal</h2>
+        
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Modal</button>
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog modal-sm">
+          <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title"></h4>
               </div>
               <div class="modal-body">
-                <p>This is a small modal.</p>
+                <div class="container opening-block show-open"><!-- Opening Block -->
+                    <div class="row">
+                        <div class="reapeating-block show-prod"><!-- * 1 * -->
+                            <div class="col-md-4">
+                                <div class="gall-big">
+                                    <img src="images/products/gal/1.png" class="img-responsive" alt="opened1.png">
+                                </div>
+                                <ul class="sm-gallery-ul list-inline text-center">
+                                    <li><a href="javascript:;"><img src="images/products/gal/sm1.png" data-big-src="images/products/gal/1.png" alt="pr4.png"></a></li>
+                                    <li><a href="javascript:;"><img src="images/products/gal/sm2.png" alt="pr4.png" data-big-src="images/products/gal/2.png"></a></li>
+                                    <li><a href="javascript:;"><img src="images/products/gal/sm3.png" alt="pr4.png" data-big-src="images/products/gal/3.png"></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-8">
+                                <h2>Կաթնաշոռային Չիզ Քեյք</h2>
+                                <p>Բաղադրություն։ վարսակի թեփ, կաթ 1%, կաթնաշոռ 1%, սուկրալոզա, յուղազերծված կակաո, եգիպտացորենի օսլա, հատապտուղներ, ձու</p>
+                                <h3>Սննդային Արժեք - 100g.</h3>
+                                <div class="sp-ch-k">
+                                    <div>
+                                        <p>Սպիտակուցներ<span>9.2գ</span></p>
+                                        <p>Ճարպեր<span>7.8գ</span></p>
+                                    </div>
+                                    <div>
+                                        <p>Ածխաջրեր<span>8.4գ</span></p>
+                                        <p>Կալորիաներ<span>185k</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="social-wrap clearfix"><!-- Social block -->
+                                    <div>
+                                        <ul class="list-inline">
+                                            <li><a href="#"><img src="images/social/share.png" alt="share.png"></a></li>
+                                            <li><a href="#"><img src="images/social/1.png" alt="social/1.png"></a></li>
+                                            <li><a href="#"><img src="images/social/2.png" alt="social/2.png"></a></li>
+                                            <li><a href="#"><img src="images/social/3.png" alt="social/3.png"></a></li>
+                                            <li><a href="#"><img src="images/social/4.png" alt="social/4.png"></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="sided-to-social">
+                                        <div class="prod-inf">
+                                            <div class="clearfix">
+                                                <div class="p-price">700<sub>դր</sub></div>
+                                            </div>
+                                            <div class="quantity-wrap clearfix">
+                                                <div>
+                                                    <form class="quantity-form" method="POST" action="#">
+                                                        <div>
+                                                            <input type="text" name="quantity" value="0" class="qty">
+                                                        </div>
+                                                        <div>
+                                                            <input type="button" value="+" class="qtyplus" field="quantity">
+                                                            <input type="button" value="−" class="qtyminus" field="quantity">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="add-to-card-wrap">
+                                                    <button class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>Ավելացնել</button>
+                                                </div>
+                                            </div>
+                                        </div><!-- prod-info end in opening block -->
+                                    </div><!-- Sided to social -->
+                                </div><!-- Social block -->
+                            </div><!-- col-sm-8 end-->
+                        </div><!-- reapiting-block end-->
               </div>
+              </div><!-- Aram -->
+              </div><!-- Aram -->
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Փակել</button>
               </div>
             </div>
           </div>

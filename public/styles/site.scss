@@ -10,7 +10,6 @@
       src: url('../fonts/ArialAMU/ArialAMU.woff') format('woff'),
            url('../fonts/ArialAMU/ArialAMU.eot?#iefix') format('embedded-opentype');
     }
-
     @font-face {
       font-family: 'ArialAMUbold';
       src: url('../fonts/ArialAMU/ArialAMUbold.eot');
@@ -26,9 +25,32 @@ html, body {
   font-family: 'ArialAMU'; 
 }
 
+
+
 body{
 	background: #f5f5f5;
 }
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0px -3px 4px;
+   background: #fff;
+    
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 4px;
+    background: $main-violet;
+}
+/* ::-webkit-scrollbar-thumb:window-inactive {
+	
+} */
 
 .show-prod{
 	display: block !important;
@@ -40,6 +62,10 @@ body{
 
 main{
 	min-height: 100%; 
+}
+
+.basket-main{
+	margin-top: 112px;
 }
 
 .home-main{
@@ -130,13 +156,14 @@ footer, main:after{
 
 .navbar{
 	position: fixed;
-	width: 100%;
-	z-index: 2;
-	background: #fff;
-	border-radius: 0;
-	border: none;
-	margin-bottom: 0;
-	box-shadow: 1px -2px 12px 1px $main-gray;
+    right: 10px;
+    width: 100%;
+    z-index: 20;
+    background: #fff;
+    border-radius: 0;
+    border: none;
+    margin-bottom: 0;
+    box-shadow: 0px 6px 12px -3px rgba(103, 103, 103, 0.52);
 }
 
 .navbar-header{
@@ -153,7 +180,7 @@ footer, main:after{
 				color: $main-violet;
 				font-family: ArialAMUbold;
 				span{
-					padding-left: 5px;
+					padding: 3px;
 				}
 				img{
 					padding-right: 5px;
@@ -163,10 +190,25 @@ footer, main:after{
 	}
 }
 
+.modal-dialog{
+	width: 96%;
+	overflow: hidden;
+}
+
+.modal-header{
+	padding: 0;
+	border-bottom: 0;
+	button.close{
+		padding: 15px 15px 0 0;
+		font-size: 30px;
+	}
+}
 
 .home-product-cont{
 	.col-md-3{
 		.tumb-wrap{
+			transition: all 0.3s;
+			border: 1px solid transparent;
 			padding: 2px;
 			padding-bottom: 12px;
 			border-radius: 8px;
@@ -187,17 +229,14 @@ footer, main:after{
 }
 
 .opening-block{
-	min-height: 360px;
-	position: relative;
-	margin-top: 10px; 
+	margin-top: 10px;  
 	border-radius: 8px; 
 	display: none;
-	
+
 	.reapeating-block{
-		position: absolute;
-		height: 100%; 
+		overflow: hidden;
+		min-height: 360px; 
 		padding: 20px 5px; 
-		border-radius: 20px;
 		background: #fff;
 		display: none;
 	}
@@ -370,11 +409,11 @@ footer, main:after{
 		.addToCard-button{
 			transition: all 0.3s;
 			height: 100%;
-			padding-left: 20px;
-			padding-right: 20px;
-			background: $main-violet;
+			padding-left: 22px;
+			padding-right: 22px;
+			background: #892E6B;
 			color: #fff;
-			border-radius: 20px;
+			border-radius: 0px 35px 0px 35px;
 			box-shadow: 0 3px 0 0 #561D43;
 			border: none;
 			span{
@@ -395,7 +434,8 @@ footer, main:after{
 						}
 			}
 			&:hover{
-				
+				background: $main-violet + 30;
+				border-radius: 35px 0px 35px 0px;
 			}
 			&:after{
 				content: "";
@@ -873,7 +913,47 @@ footer{
 }
 
 /* Login */
+.registration-block{
+	margin: 0 auto;
+	margin-top: 102px;
+	max-width: 300px;
+	input{
+		width: 100%;
+		margin-top: 10px;
+		padding: 15px 10px 10px 10px;
+		font-size: 18px;
+		color: $main-black;
+		border: 1px solid #999999;
+		border-radius: 4px;
+	} 
+	input[type="submit"]{
+		text-transform: uppercase;
+		margin-top: 30px;
+		color: #fff;
+		transition: all 0.3s;
+		background: $main-violet;
+		border: none;
+		border-radius: 20px;
+		&:hover{
+			box-shadow: inset 0 0 4px 1px;
+		}
+	}
+	p{
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 18px;
+		margin-bottom: 10px;
+		font-family: ArialAMUbold;
+		color: #333333;
+	}
+}
 
+.register-link{
+	padding-left: 10px;
+	margin-top: 15px;
+	display: inline-block;
+	color: #3c44ef;
+}
 
 .login-marzich{
 	max-width: 300px;
@@ -898,6 +978,7 @@ footer{
 		width: inherit;
 	}
 	p{
+		text-transform: uppercase;
 		text-align: center;
 		font-size: 18px;
 		margin-top: 30px; 
@@ -968,6 +1049,7 @@ footer{
 .login-reg-button{
 	text-align: center;
 	button{
+		text-transform: uppercase;
 		margin-top: 30px;
 		margin-left: auto;
 		margin-left: auto;
@@ -1022,7 +1104,7 @@ footer{
 }  
  
 .basket-title{
-		margin-top: 50px;
+	text-transform: uppercase;
 		text-align: center;
 		font-size: 24px;
 		font-family: ArialAMUbold;
@@ -1030,6 +1112,7 @@ footer{
 	}
 
 	.universal-buton{
+		text-transform: uppercase;
 		transition: all 0.3s;
 	    border-radius: 32px;
 	    background: $main-violet;
@@ -1091,6 +1174,7 @@ footer{
 			}
 		}
 		.universal-buton{
+			text-transform: uppercase;
 			min-width: 250px;
 			margin-left: auto;
 			margin-right: auto;
@@ -1124,6 +1208,18 @@ footer{
 	.close-prod{
 		max-width: 44px;
 		border-left: 1px solid #CCCCCC;
+		a{
+			display: inline-block;
+			transition: all 0.3s;
+			cursor: pointer;
+			text-decoration: none;
+			font-weight: bold;
+			color: $light-gray;
+			&:hover{
+				color: $main-violet;
+				transform: rotate(360deg);
+			}
+		}
 	}
 	.basket-first-inps{
 		input{
