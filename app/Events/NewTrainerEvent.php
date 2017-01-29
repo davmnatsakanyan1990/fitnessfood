@@ -6,7 +6,7 @@ use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class NewTrainerEvent extends Event
+class NewTrainerEvent extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
@@ -27,6 +27,6 @@ class NewTrainerEvent extends Event
      */
     public function broadcastOn()
     {
-        return [];
+        return ['new-trainer'];
     }
 }

@@ -29,7 +29,7 @@
                 @endif
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                <a class="dropdown-toggle count-info  order_notifi" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i> {!! $new_orders_count ? '<span class="label label-primary new_orders_count">'. $new_orders_count .'</span>' : '' !!}
                 </a>
                 @if($new_orders_count)

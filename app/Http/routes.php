@@ -31,8 +31,8 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::post('password/reset', 'Auth\PasswordController@reset');
     Route::get('password/reset/{locale}/{token?}', 'Auth\PasswordController@getReset');
 
-    Route::get('register', 'Auth\AuthController@showRegistrationForm');
-    Route::post('register', 'Auth\AuthController@postRegister');
+    Route::get('register/{locale}', 'Auth\AuthController@showRegistrationForm');
+    Route::post('register/{locale}', 'Auth\AuthController@postRegister');
 
     Route::get('profile/{locale}', 'ProfileController@index');
 
