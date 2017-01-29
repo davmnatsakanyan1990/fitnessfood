@@ -247,6 +247,17 @@ footer, main:after {
   margin-top: 21px;
 }
 
+.droshakner-parent {
+  border-radius: 2px;
+  margin-top: 20px;
+  display: inline-block;
+  border: 1px solid #892E6B;
+}
+
+.droshakner-parent select {
+  border: none;
+}
+
 .navbar-toggle {
   border: 1px solid #892E6B;
 }
@@ -872,6 +883,18 @@ footer .all-rights {
   padding: 10px 10px 20px;
 }
 
+.profile-top span {
+  color: #892E6B;
+  cursor: pointer;
+}
+
+.profile-top span:after {
+  content: "\f08b";
+  position: relative;
+  padding-left: 5px;
+  font-family: FontAwesome;
+}
+
 .profile-top a {
   border-radius: 100%;
   display: inline-block;
@@ -1055,11 +1078,45 @@ footer .all-rights {
   color: #fff;
 }
 
+.bfh-datepicker-calendar > table.calendar {
+  width: 300px;
+}
+
+.bfh-datepicker {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.bfh-datepicker:hover i {
+  color: #892E6B;
+}
+
+.bfh-datepicker .bfh-datepicker-toggle span {
+  border-right: 0;
+  background: #fff;
+  border: 1px solid #999999;
+}
+
+.bfh-datepicker .bfh-datepicker-toggle input {
+  color: #999999;
+  height: 48px;
+  margin: 0;
+  background: #fff;
+  border-left: 0;
+}
+
 /* Login */
 .registration-block {
   margin: 0 auto;
   margin-top: 102px;
   max-width: 300px;
+}
+
+.registration-block .d-of-birth {
+  color: #892E6B;
+  font-family: ArialAMU;
+  display: inline-block;
+  margin-top: 15px;
 }
 
 .registration-block input {
@@ -1410,7 +1467,7 @@ footer .all-rights {
 }
 
 .select2-container .select2-selection--single {
-  height: auto !important;
+  height: 38px !important;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -1423,6 +1480,12 @@ footer .all-rights {
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   top: 6px !important;
+}
+
+@media screen and (max-width: 1199px) {
+  .main-nav {
+    padding-left: 85px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -1450,6 +1513,8 @@ footer .all-rights {
     float: none !important;
   }
   .navbar-toggle {
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: block;
   }
   .navbar-collapse {

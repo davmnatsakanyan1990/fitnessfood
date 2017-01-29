@@ -20,7 +20,34 @@
     			<input name="email" type="email" placeholder="@lang('auth.email')">
     			<input name="workplace" type="text" placeholder="@lang('auth.workplace')">
     			<input name="address" type="text" placeholder="@lang('auth.address')">
-    			<input name="date_of_birth" type="text" placeholder="@lang('auth.date of birthday')">
+				<span class="d-of-birth">Ծննդյան ամիս ամսաթիվ</span>
+				<div class="bfh-datepicker">
+					<div class="input-prepend bfh-datepicker-toggle" data-toggle="bfh-datepicker">
+						<span class="add-on"><i class="icon-calendar"></i></span>
+						<input type="text" class="input-medium">
+					</div>
+					<div class="bfh-datepicker-calendar">
+						<table class="calendar table table-bordered">
+							<thead>
+							<tr class="months-header">
+								<th class="month" colspan="4">
+									<a class="previous" href="#"><i class="icon-chevron-left"></i></a>
+									<span></span>
+									<a class="next" href="#"><i class="icon-chevron-right"></i></a>
+								</th>
+								<th class="year" colspan="3">
+									<a class="previous" href="#"><i class="icon-chevron-left"></i></a>
+									<span></span>
+									<a class="next" href="#"><i class="icon-chevron-right"></i></a>
+								</th>
+							</tr>
+							<tr class="days-header">
+							</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
     			<input name="password" type="password" placeholder="@lang('auth.password')">
     			<input name="password_confirmation" type="password" placeholder="@lang('auth.password_confirm')">
     			<input type="submit" value="@lang('auth.register')">
