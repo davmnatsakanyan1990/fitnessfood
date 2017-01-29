@@ -1291,7 +1291,6 @@ footer .all-rights {
 .basket-form-div .check-box input {
   padding-right: 10px;
   float: left;
-  background: #892E6B;
   border: 0;
   cursor: pointer;
   margin: 0;
@@ -1309,8 +1308,8 @@ footer .all-rights {
   margin: 0 10px 0 -17px;
   width: 17px;
   height: 17px;
-  background-color: #892E6B;
-  color: #fff;
+  background: #fff;
+  color: #892E6B;
   display: inline-block;
   border: 1px solid #892E6B;
   border-radius: 4px;
@@ -1408,6 +1407,22 @@ footer .all-rights {
   color: #fff;
   padding: 10px 15px;
   font-size: 18px;
+}
+
+.select2-container .select2-selection--single {
+  height: auto !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  padding: 5px 10px !important;
+}
+
+.select2-container--default .select2-selection--single {
+  border: 1px solid #892E6B !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 6px !important;
 }
 
 @media screen and (max-width: 1024px) {
