@@ -4,6 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="profile-top">
+                    <span>Log-out</span>
                     <a href="{{ url('trainer/settings/'.App::getLocale()) }}">
                         <img src="/images/profile/astxik.png" alt="profile/astxik.png">
                     </a>

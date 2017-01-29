@@ -1,3 +1,10 @@
+@media screen and(max-width: 1199px){
+	.main-nav{
+		padding-left: 85px;
+	}
+}
+
+
 @media screen and(max-width: 1024px){
 	.main-nav{
 		padding-left: 40px;
@@ -28,6 +35,8 @@
 	        float: none !important;
 	    }
 	    .navbar-toggle {
+	    	margin-top: 15px;
+	    	margin-bottom: 15px;
 	        display: block;
 	    }
 	    .navbar-collapse {

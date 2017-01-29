@@ -19,6 +19,13 @@
                         <li><a href="{{ url('trainer/login/'.App::getLocale()) }}">@lang('global.I am trainer')</a></li>
                         <li><a href="{{ url('contact/'.App::getLocale()) }}">@lang('global.contact')</a></li>
                     </ul>
+                    <div class="droshakner-parent">
+                        <select name="lang" id="">
+                            <option value="AM">AM</option>
+                            <option value="RU">RU</option>
+                            <option value="US">US</option>
+                        </select>
+                    </div>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="{{ url('basket/'.App::getLocale()) }}">
