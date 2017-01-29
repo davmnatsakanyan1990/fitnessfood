@@ -44,7 +44,7 @@
                                         {{ $order->customer_phone }}
                                     </td>
                                     <td>
-                                        {{ $order->counselor->first_name }} {{ $order->counselor->last_name }}
+                                        {{ $order->counselor ? $order->counselor->first_name : '' }} {{ $order->counselor ? $order->counselor->last_name : '' }}
                                     </td>
                                     <td>
                                         {{ $order->amount }}
@@ -58,8 +58,6 @@
                                         @elseif($order->status == 1)
                                             <span class="label label-primary">Confirmed</span>
                                         @elseif($order->status == 2)
-                                            <span class="label label-success">Shipping</span>
-                                        @elseif($order->status == 3)
                                             <span class="label label-danger">Canceled</span>
                                         @endif
                                     </td>

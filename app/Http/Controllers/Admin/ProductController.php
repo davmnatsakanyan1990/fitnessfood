@@ -153,7 +153,7 @@ class ProductController extends AdminBaseController
 
         foreach($request->file('file') as $image){
 
-            $destinationPath = 'images\products';
+            $destinationPath = 'images/products';
             $randomNumber = str_random(5);
             $ext = $image->getClientOriginalExtension();
 

@@ -57,8 +57,8 @@
 
 
             <li>
-                <a href="{{ url('admin/logout/'.App::getLocale()) }}">
-                    <i class="fa fa-sign-out"></i> @lang('auth.logout')
+                <a href="{{ url('admin/logout/') }}">
+                    <i class="fa fa-sign-out"></i> Logout
                 </a>
             </li>
         </ul>
