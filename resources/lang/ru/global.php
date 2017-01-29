@@ -23,6 +23,9 @@ return [
     'message' => 'Текст',
     'send' => 'Отправить',
     'buyer' => 'Покупатель',
-    'basket is empty' => 'Ваша корзина пуста'
+    'basket is empty' => 'Ваша корзина пуста',
+    'advised by trainer' => 'Мне посоветовал трейнер',
+    'shipping' => 'Доставка',
+    'order' => 'Заказиват'
 
 ];

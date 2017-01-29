@@ -23,6 +23,9 @@ return [
     'message' => 'Message',
     'send' => 'Send',
     'buyer' => 'Buyer',
-    'basket is empty' => 'Your basket is empty'
+    'basket is empty' => 'Your basket is empty',
+    'advised by trainer' => 'Advised by trainer',
+    'shipping' => 'Shipping',
+    'order' => 'Order'
 
 ];
