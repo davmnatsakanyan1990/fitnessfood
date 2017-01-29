@@ -3,21 +3,25 @@
 namespace App\Events;
 
 use App\Events\Event;
+use App\Models\Trainer;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class NewMessageEvent extends Event
+class NewMessageEvent extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
+    public $trainer;
+    public $message;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($trainer, $message)
     {
-        //
+        $this->trainer = $trainer;
+        $this->message = $message;
     }
 
     /**
@@ -27,6 +31,14 @@ class NewMessageEvent extends Event
      */
     public function broadcastOn()
     {
-        return [];
+        return ['new-message'];
+    }
+
+    public function broadcastWith(){
+        return [
+            'sender' => $this->trainer->first_name.' '.$this->trainer->last_name,
+            'message' => $this->message
+
+        ];
     }
 }

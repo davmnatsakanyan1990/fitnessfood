@@ -32,7 +32,7 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::get('password/reset/{locale}/{token?}', 'Auth\PasswordController@getReset');
 
     Route::get('register', 'Auth\AuthController@showRegistrationForm');
-    Route::post('register', 'Auth\AuthController@register');
+    Route::post('register', 'Auth\AuthController@postRegister');
 
     Route::get('profile/{locale}', 'ProfileController@index');
 
@@ -77,6 +77,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
     Route::get('trainers', 'TrainerController@index');
     Route::get('trainers/show/{id}', 'TrainerController@show');
+    Route::post('trainers/delete/{id}', 'TrainerController@delete');
+    Route::get('trainers/approve/{id}', 'TrainerController@approve');
     Route::get('trainer/messages/seen/{trainer_id}', 'TrainerController@messagesSeen');
 
     Route::get('payments', 'PaymentController@index');

@@ -145,6 +145,38 @@ $('.tab').on('click', function(){
     localStorage.setItem('trainer_profile_tab', id);
 });
 
+$('.delete').on('click', function(){
+    var _this = $(this);
+    swal({
+            title: "Are you sure?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#1ab394",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: true },
+        function (isConfirm) {
+            if (isConfirm) {
+                var trainer_id = _this.data('id');
+                $.ajax({
+                    url: BASE_URL+'/admin/trainers/delete/'+trainer_id,
+                    type: 'post',
+                    data: {
+                        _token: token
+                    },
+                    success: function(data){
+                        window.location.href = BASE_URL+'/admin/trainers'
+                    }
+                });
+
+            } else {
+
+            }
+        });
+
+});
+
 if(localStorage.getItem('trainer_profile_tab')){
     switch (localStorage.getItem('trainer_profile_tab')){
         case 'tab1':

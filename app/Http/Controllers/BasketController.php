@@ -22,7 +22,7 @@ class BasketController extends Controller
 
     public function index(){
 
-        $trainers = Trainer::with('image')->get();
+        $trainers = Trainer::with('image')->where('is_approved', 1)->get();
 
         return view('basket', compact('trainers'));
     }

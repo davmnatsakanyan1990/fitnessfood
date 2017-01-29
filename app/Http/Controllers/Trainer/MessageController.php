@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Trainer;
 
+use App\Events\NewMessageEvent;
 use App\Models\Message;
 use App\Models\Order;
 use App\Models\Trainer;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 
 class MessageController extends Controller
 {
@@ -46,7 +48,9 @@ class MessageController extends Controller
             return redirect()->back()->with('error', 'Նվազագույն գումարի չափը 5000դր է');
         }
 
-        Message::create(['trainer_id' => $this->trainer->id, 'amount' => $request->amount]);
+        $message = Message::create(['trainer_id' => $this->trainer->id, 'amount' => $request->amount]);
+
+        Event::fire(new NewMessageEvent($this->trainer, $message));
         return redirect()->back()->with('message', 'Ձեզ հետ կկապնվի մեր օպերատորը գումարի փոախանցման հարցով');
     }
 }

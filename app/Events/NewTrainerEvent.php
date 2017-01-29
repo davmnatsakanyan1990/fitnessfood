@@ -6,19 +6,18 @@ use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class NewOrderEvent extends Event implements ShouldBroadcast
+class NewTrainerEvent extends Event
 {
     use SerializesModels;
 
-    public $order;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct()
     {
-        $this->order = $order;
+        //
     }
 
     /**
@@ -28,6 +27,6 @@ class NewOrderEvent extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['new-order'];
+        return [];
     }
 }

@@ -22,6 +22,27 @@
 
     @yield('styles')
 
+    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('f099d8275bf3d94c6bf9', {
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('new-message');
+        channel.bind('App\\Events\\NewMessageEvent', function(data) {
+            alert(data.name);
+        });
+
+        var channel = pusher.subscribe('new-order');
+        channel.bind('App\\Events\\NewOrderEvent', function(data) {
+            alert('order');
+        });
+    </script>
+
 </head>
 
 <body class="">

@@ -9,6 +9,9 @@
 @endsection
 @section('content')
     <div class="wrapper wrapper-content">
+        @if(session('message'))
+            <div class="alert alert-success"><p>{{ session('message') }}</p></div>
+        @endif
         <div class="row animated fadeInRight">
             <div class="col-md-4">
                 <div class="ibox float-e-margins">
@@ -45,6 +48,10 @@
                                     <h5>{{ $trainer->bonus - $trainer->paid }} <strong> AMD</strong> </h5>
                                 </div>
                             </div>
+                            @if(! $trainer->is_approved)
+                                <a href="{{ url('admin/trainers/approve/'.$trainer->id) }}"> <button class="btn btn-primary full-width">Approve</button></a>
+                            @endif
+                                <button class="btn btn-danger full-width delete" data-id="{{ $trainer->id }}">Delete</button>
                         </div>
                     </div>
                 </div>

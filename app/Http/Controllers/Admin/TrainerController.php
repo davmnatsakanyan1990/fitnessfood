@@ -81,6 +81,15 @@ class TrainerController extends AdminBaseController
         return view('admin.trainers.profile', compact('trainer'));
     }
 
+    public function delete($id){
+        Trainer::find($id)->delete();
+    }
+
+    public function approve($id){
+        Trainer::where('id', $id)->update(['is_approved' => 1]);
+        return redirect()->back()->with('message', 'Profile Approved');
+    }
+
     public function messagesSeen($trainer_id){
         $count = Message::where('trainer_id', $trainer_id)->where('is_seen', 0)->count();
         Message::where('trainer_id', $trainer_id)->update(['is_seen' => 1]);
