@@ -137,9 +137,9 @@
             @endif
 
         </section><!-- Products section -->
-        <h2>Small Modal</h2>
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
+        {{--<h2>Small Modal</h2>--}}
+        {{--<!-- Trigger the modal with a button -->--}}
+        {{--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>--}}
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">

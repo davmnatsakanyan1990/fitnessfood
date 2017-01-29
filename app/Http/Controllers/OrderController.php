@@ -27,7 +27,12 @@ class OrderController extends Controller
         $data['name'] = $request->name;
         $data['phone'] = $request->phone;
         $data['trainer'] = $request->trainer == '' ? null : $request->trainer;
-        $data['shipping'] = $request->shipping;
+        if($request->shipping === true){
+            $data['shipping'] = 1;
+        }
+        else{
+            $data['shipping'] = 0;
+        }
         $data['products'] = json_decode($request->products);
 
        $validator = $this->validator($data);
@@ -40,7 +45,7 @@ class OrderController extends Controller
             'customer_name' => $data['name'],
             'customer_phone' => $data['phone'],
             'trainer_id' => $data['trainer'],
-            'is_shipping' => $data['shipping'] ? 1 : 0,
+            'is_shipping' => $data['shipping'],
             'created_at' => date("Y-m-d H:i:s")
         ]);
 

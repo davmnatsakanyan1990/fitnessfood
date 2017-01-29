@@ -15,7 +15,7 @@
                                     <dt>Ordered by:</dt> <dd>{{ $order->customer_name }}</dd>
                                     <dt>Phone:</dt> <dd>  {{ $order->customer_phone }}</dd>
                                     <dt>Shipping:</dt> <dd>{{ $order->is_shipping ? 'YES' : 'NO' }} </dd>
-                                    <dt>Counselor:</dt> <dd> 	{{ $order->counselor->name }} </dd>
+                                    <dt>Counselor:</dt> <dd> 	{{ $order->counselor ? $order->counselor->name : 'NO'}} </dd>
                                     <dt>Order ID:</dt> <dd> 	{{ $order->id }} </dd>
                                 </dl>
                             </div>
