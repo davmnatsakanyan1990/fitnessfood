@@ -21,7 +21,6 @@
 html, body {
   margin: 0 !important;
   height: 100%;
-  overflow-x: hidden;
   font-family: 'ArialAMU'; 
 }
 
@@ -161,12 +160,23 @@ footer, main:after{
 			font-size: 16px;
 			letter-spacing: 0.5px;
 		}
+	} 
+}
+
+.checked-check{
+	
+	&:after{
+		position: absolute;
+	    top: 1px;
+	    left: 14px;
+	    content: '✔';
+	    font-size: 14px;
 	}
 }
 
 .navbar{
 	position: fixed;
-    right: 10px;
+    top: 0;
     width: 100%;
     z-index: 20;
     background: #fff;
@@ -1220,11 +1230,11 @@ footer{
 			& > input:checked{
 				& + label{
 					&:after{
-						position: absolute;
+						/* position: absolute;
 						top: 1px;
 						left: 14px;
 						content: '✔';
-						font-size: 14px;
+						font-size: 14px; */
 					}
 				}
 			}
