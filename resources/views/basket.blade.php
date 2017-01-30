@@ -28,7 +28,7 @@
             <div class="row"><!-- basket-form row-->
               <div class="basket-form">
                 <ul class="list-inline">
-                  <li>Ընդհանուր</li>
+                  <li>@lang('product.total')</li>
                   <li><span id="total"></span>@lang('product.amd')</li>
               </ul>
               <hr>
@@ -36,14 +36,14 @@
                   <div class="message"></div>
                 <form action="#">
                   <div class="basket-first-inps">
-                    <input name="name" type="name" placeholder="Անուն">
-                    <input name="phone" type="number" placeholder="Հեռ.">
+                    <input name="name" type="name" placeholder="@lang('auth.name')">
+                    <input name="phone" type="number" placeholder="@lang('auth.tel').">
                   </div>
 
                   <div class="check-box">
                     <input type="checkbox" name="is_addvised">
                     <label for="#"></label>
-                    <span for="#">Ինձ խորհուրդ է տվել մարզիչը</span>
+                    <span for="#">@lang('global.advised by trainer')</span>
                   </div>
 
                   <div class="marzich-search" style="display: none; margin-top: 20px">
@@ -72,10 +72,10 @@
                     <div class="check-box">
                       <input type="checkbox" name="shipping">
                       <label for="#"></label>
-                      <span>Առաքում</span>
-                      <span style="color: #999999;">(600դր)</span>
+                      <span>@lang('global.shipping')</span>
+                      <span style="color: #999999;">(600{{ trans('product.amd') }})</span>
                     </div>
-                    <button  type="button" disabled class="submit universal-buton">Պատվիրել</button>
+                    <button  type="button" disabled class="submit universal-buton">@lang('global.order')</button>
                 </form>
               </div><!-- basket-form-div end -->
             </div><!-- basket-form -->
