@@ -22,7 +22,7 @@ class OrderController extends AdminBaseController
     
     public function index(){
 
-        $orders = Order::with('products', 'counselor')->get();
+        $orders = Order::with('products', 'counselor')->orderBy('created_at', 'desc')->get();
         foreach($orders as $order){
             foreach($order->products as $product){
                 $order->amount += $product->price * $product->pivot->count;
