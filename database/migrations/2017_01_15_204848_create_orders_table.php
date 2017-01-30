@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('customer_name');
             $table->string('customer_phone');
-            $table->enum('status', [0,1,2])->default(0); // 0: pending;
+            $table->enum('status', [0,1,2])->default(0);   // 0: pending;
                                                            // 1: order confirmed;
                                                            // 2: order canceled;
 
@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->enum('is_seen', [0,1])->default(0);
             $table->timestamps();
 
-            $table->foreign('trainer_id')->references('id')->on('trainers');
+            $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
         });
     }
 

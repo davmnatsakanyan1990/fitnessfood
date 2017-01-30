@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('trainer.layouts.index')
 @section('content')
     <main>
         <div class="settings-wrap">
