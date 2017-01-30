@@ -56,6 +56,11 @@
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script src="/admin/js/broadcasting.js"></script>
 
+<script>
+    $(document).on('click', '.view_message', function(){
+        localStorage.setItem('trainer_profile_tab', 'tab1');
+    })
+</script>
 </body>
 
 </html>

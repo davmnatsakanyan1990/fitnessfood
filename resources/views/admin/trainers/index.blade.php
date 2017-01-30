@@ -4,14 +4,13 @@
 @endsection
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
+        <div class="row trainers">
             @foreach($trainers as $trainer)
             <div class="col-lg-4">
                 <div class="contact-box">
                     <div class="col-sm-4">
                         <a href="{{ url('admin/trainers/show/'.$trainer->id) }}">
                             <div class="text-center">
-                                <span class="label label-warning new_messages_count">{{ $trainer->new_messages ? $trainer->new_messages : '' }}</span>
                                 <img alt="image" style="margin-bottom: 10px" class="img-circle m-t-xs img-responsive center-block" src="{{ $trainer->image ? '/images/trainerImages/'.$trainer->image->name : '/images/profile-icon.png' }}">
                                 @if($trainer->is_approved)
                                 <div class="label small label-primary">Approved</div>

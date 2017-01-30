@@ -49,8 +49,9 @@ class MessageController extends Controller
         }
 
         $message = Message::create(['trainer_id' => $this->trainer->id, 'amount' => $request->amount]);
+        $sender = Trainer::with('image')->find($this->trainer->id)->toArray();
 
-        Event::fire(new NewMessageEvent($this->trainer, $message));
+        Event::fire(new NewMessageEvent($sender, $message));
         return redirect()->back()->with('message', 'Ձեզ հետ կկապնվի մեր օպերատորը գումարի փոախանցման հարցով');
     }
 }

@@ -34,7 +34,7 @@ class NewTrainerEvent extends Event implements ShouldBroadcast
 
     public function broadcastWith(){
         return [
-            'trainer_id' => $this->trainer->id
+            'trainer' => $this->trainer
         ];
     }
 }
