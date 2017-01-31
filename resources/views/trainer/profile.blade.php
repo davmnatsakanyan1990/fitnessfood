@@ -9,8 +9,7 @@
                     </a>
                     <div>
                         <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">
-                        <?php $locale = App::getLocale() ?>
-                        <h2>{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)[$locale].' '.json_decode($trainer->first_name, true)[$locale] : $trainer->first_name.' '.$trainer->last_name }} </h2>
+                        <h2>{{ $trainer->first_name.' '.$trainer->last_name }} </h2>
                     </div>
                     <a href="{{ url('trainer/logout/'.App::getLocale()) }}" class="profile-exit">@lang('auth.logout')</a>
                 </div><!-- Profile top end -->
@@ -30,8 +29,8 @@
                   @foreach($orders as $order)
                     <tr>
                       <td class="name-td">{{ $order->customer_name }}</td>
-                      <td class="text-center">10 %</td>
-                      <td class="text-center">{{ $order->products->count() }}</td>
+                      <td class="text-center">{{ $order->trainer_percent }} %</td>
+                      <td class="text-center">{{ $order->products_count }}</td>
                       <td class="text-right">{{ $order->amount }}@lang('product.amd')</td>
                     </tr>
                     @endforeach
@@ -43,21 +42,10 @@
             <div class="row stanal" id="info"><!-- Stanal row -->
                 <div class="col-md-4 col-md-offset-8 col-sm-6 col-sm-offset-6 stanal-info"><!-- Stanal info -->
                     <ul class="list-inline">
-                        <li>@lang('product.total')</li>
-                        <li>{{ $total }}@lang('product.amd')</li>
-                    </ul>
-                    <ul class="list-inline">
                         <li>@lang('product.bonus')</li>
-                        <li>{{ $total/10 }}@lang('product.amd')</li>
+                        <li>{{ $active_bonus }}@lang('product.amd')</li>
                     </ul>
-                    <ul class="list-inline">
-                        <li>@lang('product.paid')</li>
-                        <li>{{ $paid }}@lang('product.amd')</li>
-                    </ul>
-                    <ul class="list-inline">
-                        <li>@lang('product.active')</li>
-                        <li>{{ $active }}@lang('product.amd')</li>
-                    </ul>
+
                     <hr>
                     @if(session('error'))
                         <div class="alert alert-danger">

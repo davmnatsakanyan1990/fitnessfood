@@ -29,16 +29,17 @@ class MessageController extends Controller
         $trainer = Trainer::with('image')->find($this->trainer->id);
 
         $os = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->get();
+
+        $total_bonus = 0;
         foreach($os as $order){
             foreach($order->products as $product){
                 $order->amount += $product->price * $product->pivot->count;
             }
+            $total_bonus += $order->amount * $order->trainer_percent/100;
         }
 
-        $total = $os->sum('amount');
-
         $paid = $trainer->payments->sum('amount');
-        $active = $total/10 - $paid;
+        $active = $total_bonus - $paid;
 
         // Minimum amount 5000 AMD
         if($request->amount > $active){

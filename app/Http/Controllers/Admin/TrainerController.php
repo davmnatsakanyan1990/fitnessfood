@@ -42,17 +42,16 @@ class TrainerController extends AdminBaseController
         ])->orderBy('created_at', 'desc')->get();
 
         foreach($trainers as $trainer){
-            $total = 0;
+
+            $total_bonus = 0;
             foreach($trainer->orders as $order){
                 foreach($order->products as $product) {
-                    $total = $total + ($product->price * $product->pivot->count);
+                    $order->amount += $product->price * $product->pivot->count;
                 }
+                $total_bonus += ($order->amount * $order->trainer_percent)/100;
             }
-            $trainer->total = $total;
-            $trainer->name_is_json = $this->isJSON($trainer->first_name);
-            $trainer->total_bonus = $total/10;
-            $trainer->new_messages = $trainer->messages->count();
-            $trainer->active = $trainer->total_bonus - $trainer->payments->sum('amount');
+
+            $trainer->active_bonus = $total_bonus - $trainer->payments->sum('amount');
         }
 
         return view('admin.trainers.index', compact('trainers'));
@@ -70,25 +69,29 @@ class TrainerController extends AdminBaseController
             ])->find($trainer_id);
 
         $total  = 0;
-        foreach($trainer->orders as $order){
-            foreach($order->products as $product) {
-                $total = $total + ($product->price * $product->pivot->count);
+        $total_bonus = 0;
+
+        if(count($trainer->orders)>0) {
+            foreach ($trainer->orders as $order) {
+                foreach ($order->products as $product) {
+                    $trainer->total += $product->price * $product->pivot->count;
+                    $order->amount += $product->price * $product->pivot->count;
+                }
+
+                $trainer->total_bonus += ($order->amount * $order->trainer_percent)/100;
             }
         }
-        $trainer->total = $total;
-        $trainer->bonus = $total/10;
-        $trainer->paid = $trainer->payments->sum('amount');
 
-        $trainer->name_is_json = $this->isJSON($trainer->first_name);
+        $trainer->paid = $trainer->payments->sum('amount');
 
         return view('admin.trainers.profile', compact('trainer'));
     }
     
     public function update(Request $request, $id){
-        $first_name = json_encode($request->first_name);
-        $last_name = json_encode($request->last_name);
+//        $first_name = json_encode($request->first_name);
+//        $last_name = json_encode($request->last_name);
         $percent = $request->percent;
-        Trainer::where('id', $id)->update(['first_name' => $first_name, 'last_name' => $last_name, 'percent' => $percent]);
+        Trainer::where('id', $id)->update(['percent' => $percent]);
         
         return redirect()->back()->with('message', 'Data was successfully updated');
     }
