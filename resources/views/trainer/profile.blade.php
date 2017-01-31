@@ -4,7 +4,6 @@
         <div class="container">
             <div class="row">
                 <div class="profile-top">
-                    <a href="{{ url('trainer/logout/'.App::getLocale()) }}" class="profile-exit">@lang('auth.logout')</a>
                     <a class="astxik" href="{{ url('trainer/settings/'.App::getLocale()) }}">
                         <img src="/images/profile/astxik.png" alt="profile/astxik.png">
                     </a>
@@ -13,6 +12,7 @@
                         <?php $locale = App::getLocale() ?>
                         <h2>{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)[$locale].' '.json_decode($trainer->first_name, true)[$locale] : $trainer->first_name.' '.$trainer->last_name }} </h2>
                     </div>
+                    <a href="{{ url('trainer/logout/'.App::getLocale()) }}" class="profile-exit">@lang('auth.logout')</a>
                 </div><!-- Profile top end -->
             </div><!-- Row end -->
 

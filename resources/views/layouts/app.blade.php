@@ -38,8 +38,15 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
+<script src="{{ url('lib/jQuery.scrollSpeed.js')}}"></script>
 <script src="/js/main.js"></script>
+<script>
+    $(function() {
 
+        // Default
+        jQuery.scrollSpeed(100, 800);
+    });
+</script>
 <script>
     $(document).find('select[name="lang"]').change(function(){
         var lang = $(this).val();

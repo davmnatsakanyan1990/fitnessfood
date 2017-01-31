@@ -12,9 +12,11 @@
                     <div class="cont-for-img">
                         <img src="/images/contact/1.png" alt="">
                     </div>
-                    <p>Т: 077 700 323</p>
-                    <p>Т: 044 700 323</p>
-                    <p>Т: 091 700 323</p>
+                    <p>Т: 077 700 323 <br>    
+                       Т: 044 700 323 <br>
+                       Т: 091 700 323 <br>
+                    </p>
+                    
                 </div>
 
                 <div class="col-sm-4 text-center">
