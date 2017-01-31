@@ -22,7 +22,7 @@ class SettingsController extends AdminBaseController
     
     public function update(Request $request){
         
-        Setting::first()->update(['trainer_percent' => $request->trainer_percent]);
+        Setting::first()->update(['trainer_percent' => $request->trainer_percent, 'min_amount_free_shipping' => $request->min_amount_free_shipping ]);
         return redirect()->back()->with('message', 'Data was successfully updated');
     }
 }

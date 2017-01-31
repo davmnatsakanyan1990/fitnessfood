@@ -35,7 +35,7 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::post('password/reset', 'Auth\PasswordController@reset');
     Route::get('password/reset/{locale}/{token?}', 'Auth\PasswordController@getReset');
 
-    Route::get('register/{locale}', 'Auth\AuthController@showRegistrationForm');
+    Route::get('register/{locale}', 'Auth\AuthController@getRegister');
     Route::post('register/{locale}', 'Auth\AuthController@postRegister');
 
     Route::get('profile/{locale}', 'ProfileController@index');
@@ -44,6 +44,8 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::post('settings/update', 'SettingsController@update');
 
     Route::post('message/new', 'MessageController@create');
+
+    Route::get('payments/{locale}', 'PaymentsController@index');
 
 });
 
@@ -94,6 +96,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
     Route::get('settings', 'SettingsController@index');
     Route::post('settings/update', 'SettingsController@update');
+
+    Route::get('gyms', 'GymController@index');
+    Route::get('gyms/new', 'GymController@create');
+    Route::post('gyms/create', 'GymController@save');
+    Route::get('gyms/edit/{id}', 'GymController@edit');
+    Route::post('gyms/update/{id}', 'GymController@update');
+    Route::get('gyms/delete/{id}', 'GymController@delete');
 
 });
 

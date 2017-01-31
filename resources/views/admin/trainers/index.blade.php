@@ -26,7 +26,7 @@
                         <address>
                             <i class="fa fa-envelope"></i> {{ $trainer->email }}<br>
                             <i class="fa fa-phone"></i> {{ $trainer->phone }}<br>
-                            <i class="fa fa-building"> </i> {{ $trainer->workplace }}
+                            <i class="fa fa-building"> </i> {{ $trainer->gym ? $trainer->gym->name : '' }}
                         </address>
                         <div class="hr-line-dashed"></div>
                         <p>

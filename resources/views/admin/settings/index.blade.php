@@ -18,6 +18,14 @@
                         <input class="trainer_percent" type="text" value="{{ $data->trainer_percent }}" name="trainer_percent"/>
                     </div>
                     <div class="form-group">
+                        <label>Shipping Price</label>
+                        <input class="touchspin2" type="text" value="{{ $data->shipping_price }}" name="shipping_price">
+                    </div>
+                    <div class="form-group">
+                        <label>Min amount for free shipping</label>
+                        <input class="touchspin1" type="text" value="{{ $data->min_amount_free_shipping }}" name="min_amount_free_shipping">
+                    </div>
+                    <div class="form-group">
                         <button class="btn btn-primary">Save</button>
                     </div>
                 </form>
@@ -37,6 +45,21 @@
         boostat: 5,
         maxboostedstep: 10,
         postfix: '%',
+        buttondown_class: 'btn btn-white',
+        buttonup_class: 'btn btn-white'
+    });
+
+    $(".touchspin1").TouchSpin({
+        min: 0,
+        max: 10000000,
+        step: 100,
+        buttondown_class: 'btn btn-white',
+        buttonup_class: 'btn btn-white'
+    });
+    $(".touchspin2").TouchSpin({
+        min: 0,
+        max: 10000000,
+        step: 50,
         buttondown_class: 'btn btn-white',
         buttonup_class: 'btn btn-white'
     });

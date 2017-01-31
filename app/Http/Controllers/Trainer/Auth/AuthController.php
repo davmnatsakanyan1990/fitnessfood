@@ -94,7 +94,7 @@ class AuthController extends Controller
             'address' => $data['address'],
             'phone' => $data['phone'],
             'percent' => $percent,
-            'workplace' => $data['workplace'],
+            'gym_id' => $data['gym'],
             'date_of_birth' => $data['date_of_birth'],
             'password' => bcrypt($data['password']),
         ]);
@@ -102,6 +102,11 @@ class AuthController extends Controller
         Event::fire(new NewTrainerEvent($trainer));
 
         return $trainer;
+    }
+
+    public function getRegister()
+    {
+        return $this->showRegistrationForm();
     }
 
 }

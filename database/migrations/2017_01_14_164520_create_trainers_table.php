@@ -19,7 +19,7 @@ class CreateTrainersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('address');
             $table->string('phone');
-            $table->string('workplace');
+            $table->integer('gym_id')->nullable();
             $table->date('date_of_birth');
             $table->string('password');
             $table->double('percent');
@@ -27,7 +27,11 @@ class CreateTrainersTable extends Migration
             $table->enum('is_seen',[0,1])->default(0);
             $table->rememberToken();
             $table->timestamps();
+
+
         });
+
+
     }
 
     /**

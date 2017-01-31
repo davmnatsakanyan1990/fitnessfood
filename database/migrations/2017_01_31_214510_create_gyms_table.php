@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSettingsTable extends Migration
+class CreateGymsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('gyms', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('trainer_percent');
-            $table->double('shipping_price');
-            $table->double('min_amount_free_shipping');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings');
+        Schema::drop('gyms');
     }
 }

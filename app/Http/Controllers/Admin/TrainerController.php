@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Gym;
 use App\Models\Message;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
@@ -52,6 +53,7 @@ class TrainerController extends AdminBaseController
             }
 
             $trainer->active_bonus = $total_bonus - $trainer->payments->sum('amount');
+            $trainer->gym = Gym::where('id', $trainer->gym_id)->first();
         }
 
         return view('admin.trainers.index', compact('trainers'));
@@ -83,6 +85,7 @@ class TrainerController extends AdminBaseController
         }
 
         $trainer->paid = $trainer->payments->sum('amount');
+        $trainer->gym = Gym::where('id', $trainer->gym_id)->first();
 
         return view('admin.trainers.profile', compact('trainer'));
     }

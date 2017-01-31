@@ -31,7 +31,7 @@
 
                             <p><i class="fa fa-envelope"></i> {{ $trainer->email }}</p>
                             <p><i class="fa fa-phone"></i> {{ $trainer->phone }}</p>
-                            <p><i class="fa fa-building"> </i> {{ $trainer->workplace }}</p>
+                            <p><i class="fa fa-building"> </i> {{ $trainer->gym ? $trainer->gym->name : ''}}</p>
 
                             <div class="row m-t-lg">
                                 <div class="col-md-3">
