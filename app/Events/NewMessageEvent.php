@@ -36,7 +36,7 @@ class NewMessageEvent extends Event implements ShouldBroadcast
 
     public function broadcastWith(){
         return [
-            'sender' => $this->trainer->first_name.' '.$this->trainer->last_name,
+            'sender' => $this->trainer,
             'message' => $this->message
 
         ];

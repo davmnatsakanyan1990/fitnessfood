@@ -39,7 +39,7 @@ class TrainerController extends AdminBaseController
                     return $messages->where('is_seen', 0);
                 },
             'payments'
-        ])->get();
+        ])->orderBy('created_at', 'desc')->get();
 
         foreach($trainers as $trainer){
             $total = 0;
@@ -92,9 +92,11 @@ class TrainerController extends AdminBaseController
 
     public function messagesSeen($trainer_id){
         $count = Message::where('trainer_id', $trainer_id)->where('is_seen', 0)->count();
+        $messages = Message::where('trainer_id', $trainer_id)->where('is_seen', 0)->get();
         Message::where('trainer_id', $trainer_id)->update(['is_seen' => 1]);
 
-        return response()->json(['count' => $count]);
+
+        return response()->json(['count' => $count, 'messages' => $messages]);
     }
 
     public function seen($id){

@@ -26,7 +26,17 @@ $(document).ready(function(){
                     var count = $(this).val();
                     var product_id = $(this).closest('form').data('id');
                     var price = $(this).closest('form').data('price');
+
                     updateCount( count, product_id, price);
+
+                    var basket = JSON.parse(localStorage.getItem('basket'));
+
+                    var basket_count = 0;
+                    $.each(basket, function (key, item) {
+                        basket_count += item.count
+                    });
+
+                    $('.basket_count').text(basket_count);
                 })
             }
         })
@@ -106,6 +116,9 @@ $(document).on('click', '.qtyplus', function(e){
         // Otherwise put a 1 there
         $(this).closest('form').find('input[name='+fieldName+']').val(1);
     }
+
+    var basket_count = $(document).find('.basket_count')[0].innerHTML;
+    $('.basket_count').text(parseInt(basket_count) + 1);
 });
 // This button will decrement the value till 0
 $(document).on('click','.qtyminus', function(e) {
@@ -128,6 +141,12 @@ $(document).on('click','.qtyminus', function(e) {
         // Otherwise put a 1 there
         $(this).closest('form').find('input[name='+fieldName+']').val(1);
     }
+
+    var basket_count = $(document).find('.basket_count')[0].innerHTML;
+
+    if(currentVal > 1)
+        $('.basket_count').text(parseInt(basket_count) - 1);
+
 });
 
 function updateCount(count, product_id, price){

@@ -27,53 +27,83 @@
 </head>
 <body>
 
-@include('layouts.header')
+{{--@include('trainer.layouts.header')--}}
 
 @yield('content')
 
-@include('layouts.footer')
+@include('trainer.layouts.footer')
 
-<!-- jQuery library -->
+        <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
-<script src="{{ url('lib/jQuery.scrollSpeed.js')}}"></script>
 <script src="/js/main.js"></script>
 
 <script>
-    $(function() {  
-
-        // Default
-        jQuery.scrollSpeed(100, 800);
-    });
-</script>
-
-<script>
     $(document).ready(function(){
-        if(localStorage.getItem('basket')) {
-            var basket = JSON.parse(localStorage.getItem('basket'));
-
+        if(localStorage.getItem('basket'))
+            var basket_count = (JSON.parse(localStorage.getItem('basket'))).length;
+        else
             var basket_count = 0;
-            $.each(basket, function (key, item) {
-                basket_count += item.count
-            })
-        }
-        else {
-            var basket_count = 0;
-        }
 
         $('.basket_count').text(basket_count);
     });
 </script>
 
 <script>
+    $(document).ready(function(){
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '{{ env('FB_APP_ID') }}',
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        $('.fbShare').on('click', function(){
+            FB.ui({
+                method: 'share',
+                display: 'iframe',
+                href: '{{ url()->current() }}'
+            }, function(response){});
+        })
+    });
+</script>
+
+<script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+
+        return t;
+    }(document, "script", "twitter-wjs"));</script>
+<script>
     $(document).find('select[name="lang"]').change(function(){
         var lang = $(this).val();
         window.location.href = lang;
     })
 </script>
-    
+
 
 @yield('scripts')
 </body>

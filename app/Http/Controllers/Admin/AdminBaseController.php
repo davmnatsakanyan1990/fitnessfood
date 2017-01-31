@@ -33,7 +33,7 @@ class AdminBaseController extends Controller
 
         $new_messages = Message::with(['sender' => function($sender){
                 return $sender->with('image');
-            }])->where('is_seen', 0)->groupBy('trainer_id')->get();
+            }])->where('is_seen', 0)->get();
 
         view()->share('new_messages', $new_messages);
     }

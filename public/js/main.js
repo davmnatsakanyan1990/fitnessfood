@@ -87,8 +87,8 @@ $(document).ready(function(){
             localStorage.setItem('basket', json);
         }
 
-        var basket_count = (JSON.parse(localStorage.getItem('basket'))).length;
-        $('.basket_count').text(basket_count);
+        var basket_count = $(document).find('.basket_count')[0].innerHTML;
+        $('.basket_count').text(parseInt(basket_count) + parseInt(count));
 
         $(this).closest('.quantity-wrap').find('input[name="quantity"]').val(1)
     });

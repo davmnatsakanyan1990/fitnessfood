@@ -205,10 +205,20 @@
                 success: function(data){
                     var new_messages_count = ($('.new_messages_count')[0]).innerHTML;
                     if(data.count != 0) {
-                        if (new_messages_count - 1 == 0)
+                        if (new_messages_count - data.count == 0)
                             $('.new_messages_count').remove();
                         else
-                            $('.new_messages_count').html(new_messages_count - 1);
+                            $('.new_messages_count').html(new_messages_count - data.count);
+
+                        $.each(data.messages, function(index, value){
+                            $(document).find('.msg_'+value.id).next('li').remove();
+                            $(document).find('.msg_'+value.id).remove();
+
+                            if($(document).find('.dropdown-messages li').length == 0){
+                                $(document).find('.dropdown-messages').remove();
+                            }
+                        })
+
                     }
 
                 }

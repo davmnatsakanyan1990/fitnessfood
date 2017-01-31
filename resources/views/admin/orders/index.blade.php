@@ -15,11 +15,10 @@
                     <div class="ibox-content">
                         <h4>Orders</h4>
                         <div class="hr-line-dashed"></div>
-                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                        <table class="footable table table-stripped toggle-arrow-tiny order-table" data-page-size="15">
                             <thead>
                             <tr>
 
-                                <th>Order ID</th>
                                 <th data-hide="phone">Customer Name</th>
                                 <th>Customer Phone</th>
                                 <th>Counselor</th>
@@ -34,9 +33,6 @@
                             @if(count($orders) > 0)
                                 @foreach($orders as $order)
                                 <tr class="{{ $order->is_seen == 0 ? 'new_order' : '' }}">
-                                    <td>
-                                        {{ $order->id }}
-                                    </td>
                                     <td>
                                         {{ $order->customer_name }}
                                     </td>

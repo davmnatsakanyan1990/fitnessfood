@@ -4,16 +4,16 @@
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-envelope"></i>{!! count($new_messages) > 0 ?   '<span class="label label-warning new_messages_count">'. count($new_messages).'</span>' : '' !!}
+            <li class="dropdown drp_msg">
+                <a class="dropdown-toggle count-info message_notifi" data-toggle="dropdown" href="#">
+                    <i class="fa fa-envelope"></i>{!! count($new_messages) > 0 ?   '<span class="label label-primary new_messages_count">'. count($new_messages).'</span>' : '' !!}
                 </a>
                 @if(count($new_messages) > 0)
-                <ul class="dropdown-menu dropdown-messages">
+                <ul class="dropdown-menu dropdown-messages" style="overflow-y: scroll; max-height: 300px" >
                     @foreach($new_messages as $message)
-                            <li>
+                            <li class="msg_{{ $message->id }}">
                                 <div class="dropdown-messages-box">
-                                    <a href="/admin/trainers/show/{{ $message->sender->id }}" class="pull-left">
+                                    <a href="/admin/trainers/show/{{ $message->sender->id }}" class="pull-left view_message">
                                         <img alt="image" class="img-circle" src="/images/trainerImages/{{ $message->sender->image ? $message->sender->image->name : 'profile-icon.png' }}">
                                     </a>
                                     <div class="media-body">
@@ -28,7 +28,7 @@
                 </ul>
                 @endif
             </li>
-            <li class="dropdown">
+            <li class="dropdown drp_noti">
                 <a class="dropdown-toggle count-info  order_notifi" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i> {!! $notifications->count() > 0 ? '<span class="label label-primary notifications_count">'. $notifications->count() .'</span>' : '' !!}
                 </a>
