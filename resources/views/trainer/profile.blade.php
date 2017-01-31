@@ -4,7 +4,6 @@
         <div class="container">
             <div class="row">
                 <div class="profile-top">
-                    <a href="{{ url('trainer/logout/'.App::getLocale()) }}" class="profile-exit">@lang('auth.logout')</a>
                     <a class="astxik" href="{{ url('trainer/settings/'.App::getLocale()) }}">
                         <img src="/images/profile/astxik.png" alt="profile/astxik.png">
                     </a>
@@ -12,6 +11,7 @@
                         <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">
                         <h2>{{ $trainer->first_name }} {{ $trainer->last_name }}</h2>
                     </div>
+                    <a href="{{ url('trainer/logout/'.App::getLocale()) }}" class="profile-exit">@lang('auth.logout')</a>
                 </div><!-- Profile top end -->
             </div><!-- Row end -->
 

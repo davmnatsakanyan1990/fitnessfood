@@ -433,7 +433,7 @@ footer, main:after{
 			padding-right: 22px;
 			background: #892E6B;
 			color: #fff;
-			border-radius: 0px 35px 0px 35px;
+			border-radius: 20px;
 			box-shadow: 0 3px 0 0 #561D43;
 			border: none;
 			span{
@@ -455,7 +455,6 @@ footer, main:after{
 			}
 			&:hover{
 				background: $main-violet + 30;
-				border-radius: 35px 0px 35px 0px;
 			}
 			&:after{
 				content: "";
@@ -543,7 +542,7 @@ footer{
 	p{
 		font-family: arial;
 		font-size: 24px;
-		line-height: 26px;
+		line-height: 28px;
 		margin-top: 30px;
 		color: $light-gray;
 	}
@@ -751,21 +750,30 @@ footer{
 /* PRofile  */
 
 .profile-top{
+	text-align: center;
 	margin: 92px auto 30px auto;
 	max-width: 370px;
 	background: #fff;
 	padding: 10px 10px 20px;
 	.profile-exit{
+		display: inline-block;
+		margin-top: 15px;
 		text-decoration: none;
 		color: $main-violet;
 		cursor: pointer;
 		&:after{
+			transition: all 0.3s;
+			display: inline-block;
+			position: absolute;
+			margin-top: 1px;
+			padding-left: 5px;
 			font-family: FontAwesome;
 			content: "\f08b";
-			position: relative;
-			display: inline-block;
-			padding-left: 5px;
-			bottom: -2px;
+		}
+		&:hover{
+			&:after{
+				padding-left: 10px;
+			}
 		}
 	}
 	a.astxik{
@@ -1283,7 +1291,7 @@ footer{
 			color: $light-gray;
 			&:hover{
 				color: $main-violet;
-				transform: rotate(360deg);
+				transform: rotate(90deg);
 			}
 		}
 	}
