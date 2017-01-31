@@ -40,7 +40,8 @@
                                         {{ $order->customer_phone }}
                                     </td>
                                     <td>
-                                        {{ $order->counselor ? $order->counselor->first_name : '' }} {{ $order->counselor ? $order->counselor->last_name : '' }}
+                                        {{ $order->counselor ? $order->counselor->name_is_json ? json_decode($order->counselor->first_name, true)['en'] : $order->counselor->first_name  : '' }}
+                                        {{ $order->counselor ? $order->counselor->name_is_json ? json_decode($order->counselor->last_name, true)['en'] : $order->counselor->last_name  : '' }}
                                     </td>
                                     <td>
                                         {{ $order->amount }}

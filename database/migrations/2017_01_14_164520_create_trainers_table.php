@@ -22,6 +22,7 @@ class CreateTrainersTable extends Migration
             $table->string('workplace');
             $table->date('date_of_birth');
             $table->string('password');
+            $table->double('percent');
             $table->enum('is_approved',[0,1])->default(0);
             $table->enum('is_seen',[0,1])->default(0);
             $table->rememberToken();

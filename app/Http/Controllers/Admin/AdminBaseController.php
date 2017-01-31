@@ -37,4 +37,8 @@ class AdminBaseController extends Controller
 
         view()->share('new_messages', $new_messages);
     }
+
+    function isJSON($string){
+        return is_string($string) && is_array(json_decode($string, true)) ? true : false;
+    }
 }

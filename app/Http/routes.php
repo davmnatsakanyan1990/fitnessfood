@@ -12,9 +12,13 @@
 */
 
 
+use App\Models\Setting;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
-
+Route::get('test1', function (){
+    $percent = Setting::first()->trainer_percent;
+    dd($percent);
+});
 Route::get('/{locale?}', 'HomeController@index');
 Route::post('orders/new','OrderController@create');
 
@@ -78,6 +82,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('trainers', 'TrainerController@index');
     Route::get('trainers/show/{id}', 'TrainerController@show');
     Route::post('trainers/delete/{id}', 'TrainerController@delete');
+    Route::post('trainers/update/{id}', 'TrainerController@update');
     Route::get('trainers/approve/{id}', 'TrainerController@approve');
     Route::get('trainer/messages/seen/{trainer_id}', 'TrainerController@messagesSeen');
     Route::get('trainers/seen/{id}', 'TrainerController@seen');
@@ -86,6 +91,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('payments/update/{id}', 'PaymentController@update');
     Route::post('payments/new', 'PaymentController@create');
     Route::post('payments/delete/{id}', 'PaymentController@delete');
+
+    Route::get('settings', 'SettingsController@index');
+    Route::post('settings/update', 'SettingsController@update');
 
 });
 
@@ -99,3 +107,5 @@ Route::post('contact/send', 'ContactUsController@send');
 
 // Ajax call
 Route::post('basket/products/{locale}', 'BasketController@products');
+
+

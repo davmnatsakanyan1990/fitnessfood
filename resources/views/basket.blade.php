@@ -91,7 +91,8 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="{{ url('select2-4.0.3/dist/js/select2.min.js') }}"></script>
+    <script src="{{ url('select2-4.0.3/dist/js/i18n/en.js') }}"></script>
 
     <script type="text/javascript">
 
@@ -99,6 +100,7 @@
         var locale = '{{ App::getLocale() }}';
 
         $("select.trainer").select2({
+            language: "ru",
             templateResult: formatTrainer
         });
 

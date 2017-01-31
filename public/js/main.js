@@ -1,9 +1,17 @@
 $(document).ready(function(){
 
-    if(localStorage.getItem('basket') && (localStorage.getItem('basket')).length > 0)
-        var basket_count = (JSON.parse(localStorage.getItem('basket'))).length;
-    else
+    if(localStorage.getItem('basket')) {
+        var basket = JSON.parse(localStorage.getItem('basket'));
+
         var basket_count = 0;
+        $.each(basket, function (key, item) {
+            basket_count += item.count
+        })
+    }
+    else {
+        var basket_count = 0;
+    }
+
     $('.basket_count').text(basket_count);
 
     // This button will increment the value
@@ -94,24 +102,24 @@ $(document).ready(function(){
     });
 
 
-        // click to product
-        $('.product').on('click', function () {
-            if($(window).width() >= 1024)
-            {
-                var id = $(this).data('id');
+    // click to product
+    $('.product').on('click', function () {
+        if($(window).width() >= 1024)
+        {
+            var id = $(this).data('id');
 
-                $('.t-active').removeClass('t-active');
-                $('.show-open').removeClass('show-open');
-                $('.show-prod').removeClass('show-prod');
+            $('.t-active').removeClass('t-active');
+            $('.show-open').removeClass('show-open');
+            $('.show-prod').removeClass('show-prod');
 
-                $(this).closest('.tumb-wrap').addClass('t-active');
-                $('#' + id).closest('.opening-block').addClass('show-open');
-                $('#' + id).addClass('show-prod');
-            }
-            else{
-                alert('open modal')
-            }
-        })
+            $(this).closest('.tumb-wrap').addClass('t-active');
+            $('#' + id).closest('.opening-block').addClass('show-open');
+            $('#' + id).addClass('show-prod');
+        }
+        else{
+            alert('open modal')
+        }
+    })
 
 });/*Document Ready*/
  

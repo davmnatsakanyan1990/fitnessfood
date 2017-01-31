@@ -27,6 +27,8 @@ class OrderController extends AdminBaseController
             foreach($order->products as $product){
                 $order->amount += $product->price * $product->pivot->count;
             }
+            if($order->counselor)
+                $order->counselor->name_is_json = $this->isJSON($order->counselor->first_name);
         }
 
         return view('admin.orders.index', compact('orders'));
@@ -36,7 +38,8 @@ class OrderController extends AdminBaseController
         $locale = $this->locale;
         $order = Order::with(['products'=>function($products){
             return $products->with('thumb_image');
-        }])->find($order_id);
+        },
+        'counselor'])->find($order_id);
 
         $total = 0;
         foreach($order->products as $product){
@@ -44,6 +47,9 @@ class OrderController extends AdminBaseController
             $product->title = json_decode($product->title)->$locale;
         }
         $order->total = $total;
+
+        if($order->counselor)
+            $order->counselor->name_is_json = $this->isJSON($order->counselor->first_name);
 
         if($order)
             return view('admin.orders.single', compact('order'));

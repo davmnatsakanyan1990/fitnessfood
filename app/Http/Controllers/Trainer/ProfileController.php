@@ -32,6 +32,8 @@ class ProfileController extends Controller
     public function index(){
         $locale = $this->locale;
         $trainer = Trainer::with('image')->find($this->trainer->id);
+        
+        $trainer->name_is_json = $this->isJSON($trainer->first_name);
 
         $os = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->get();
         foreach($os as $order){
@@ -53,6 +55,10 @@ class ProfileController extends Controller
         $active = $total/10-$paid;
 
         return view('trainer.profile', compact('trainer', 'orders', 'total', 'paid', 'active'));
+    }
+
+    function isJSON($string){
+        return is_string($string) && is_array(json_decode($string, true)) ? true : false;
     }
 }
 

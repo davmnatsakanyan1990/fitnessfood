@@ -21,7 +21,7 @@
                         </a>
                     </div>
                     <div class="col-sm-8">
-                        <a href="{{ url('admin/trainers/show/'.$trainer->id) }}"><h3><strong>{{ $trainer->first_name }} {{ $trainer->last_name }}</strong></h3> </a>
+                        <a href="{{ url('admin/trainers/show/'.$trainer->id) }}"><h3><strong>{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)['en'] : $trainer->first_name }} {{ $trainer->name_is_json ? json_decode($trainer->last_name, true)['en'] : $trainer->last_name }}</strong></h3></a>
                         <p><i class="fa fa-map-marker"></i> {{ $trainer->address }}</p>
                         <address>
                             <i class="fa fa-envelope"></i> {{ $trainer->email }}<br>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Trainer\Auth;
 
 use App\Events\NewTrainerEvent;
+use App\Models\Setting;
 use App\Models\Trainer;
 use App\User;
 use Illuminate\Http\Request;
@@ -85,12 +86,14 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        $percent = Setting::first()->trainer_percent;
         $trainer = Trainer::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'address' => $data['address'],
             'phone' => $data['phone'],
+            'percent' => $percent,
             'workplace' => $data['workplace'],
             'date_of_birth' => $data['date_of_birth'],
             'password' => bcrypt($data['password']),

@@ -41,24 +41,6 @@
 <script src="/js/main.js"></script>
 
 <script>
-    $(document).ready(function(){
-        if(localStorage.getItem('basket')) {
-            var basket = JSON.parse(localStorage.getItem('basket'));
-
-            var basket_count = 0;
-            $.each(basket, function (key, item) {
-                basket_count += item.count
-            })
-        }
-        else {
-            var basket_count = 0;
-        }
-
-        $('.basket_count').text(basket_count);
-    });
-</script>
-
-<script>
     $(document).find('select[name="lang"]').change(function(){
         var lang = $(this).val();
         window.location.href = lang;

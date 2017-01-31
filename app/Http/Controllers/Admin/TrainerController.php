@@ -49,6 +49,7 @@ class TrainerController extends AdminBaseController
                 }
             }
             $trainer->total = $total;
+            $trainer->name_is_json = $this->isJSON($trainer->first_name);
             $trainer->total_bonus = $total/10;
             $trainer->new_messages = $trainer->messages->count();
             $trainer->active = $trainer->total_bonus - $trainer->payments->sum('amount');
@@ -78,7 +79,18 @@ class TrainerController extends AdminBaseController
         $trainer->bonus = $total/10;
         $trainer->paid = $trainer->payments->sum('amount');
 
+        $trainer->name_is_json = $this->isJSON($trainer->first_name);
+
         return view('admin.trainers.profile', compact('trainer'));
+    }
+    
+    public function update(Request $request, $id){
+        $first_name = json_encode($request->first_name);
+        $last_name = json_encode($request->last_name);
+        $percent = $request->percent;
+        Trainer::where('id', $id)->update(['first_name' => $first_name, 'last_name' => $last_name, 'percent' => $percent]);
+        
+        return redirect()->back()->with('message', 'Data was successfully updated');
     }
 
     public function delete($id){

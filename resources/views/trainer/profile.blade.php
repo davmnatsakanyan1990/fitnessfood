@@ -10,7 +10,8 @@
                     </a>
                     <div>
                         <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">
-                        <h2>{{ $trainer->first_name }} {{ $trainer->last_name }}</h2>
+                        <?php $locale = App::getLocale() ?>
+                        <h2>{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)[$locale].' '.json_decode($trainer->first_name, true)[$locale] : $trainer->first_name.' '.$trainer->last_name }} </h2>
                     </div>
                 </div><!-- Profile top end -->
             </div><!-- Row end -->

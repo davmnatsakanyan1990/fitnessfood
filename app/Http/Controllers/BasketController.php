@@ -23,6 +23,10 @@ class BasketController extends Controller
     public function index(){
 
         $trainers = Trainer::with('image')->where('is_approved', 1)->get();
+        foreach ($trainers as $trainer){
+            $trainer->first_name = $this->isJSON($trainer->first_name) ? json_decode($trainer->first_name, true)[$this->locale] : $trainer->first_name;
+            $trainer->last_name = $this->isJSON($trainer->last_name) ? json_decode($trainer->last_name, true)[$this->locale] : $trainer->last_name;
+        }
 
         return view('basket', compact('trainers'));
     }
@@ -45,4 +49,8 @@ class BasketController extends Controller
         return view('ajax.basket', compact('products', 'total'));
 
     }
+    function isJSON($string){
+        return is_string($string) && is_array(json_decode($string, true)) ? true : false;
+    }
+
 }
