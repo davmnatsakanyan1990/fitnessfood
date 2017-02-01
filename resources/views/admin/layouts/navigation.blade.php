@@ -30,6 +30,12 @@
             <li class="{{ url()->current() == url('admin/payments') ? 'active' : ''  }}">
                 <a href="{{ url('admin/payments') }}"><i class="fa fa-money"></i> <span class="nav-label">Payments</span></a>
             </li>
+            <li class="{{ url()->current() == url('admin/settings') ? 'active' : ''  }}">
+                <a href="{{ url('admin/settings') }}"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span></a>
+            </li>
+            <li class="{{ url()->current() == url('admin/gyms') ? 'active' : ''  }}">
+                <a href="{{ url('admin/gyms') }}"><i class="fa fa-cogs"></i> <span class="nav-label">Gyms</span></a>
+            </li>
         </ul>
 
     </div>

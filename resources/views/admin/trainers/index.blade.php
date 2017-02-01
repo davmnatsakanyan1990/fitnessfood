@@ -21,16 +21,16 @@
                         </a>
                     </div>
                     <div class="col-sm-8">
-                        <a href="{{ url('admin/trainers/show/'.$trainer->id) }}"><h3><strong>{{ $trainer->first_name }} {{ $trainer->last_name }}</strong></h3> </a>
+                        <a href="{{ url('admin/trainers/show/'.$trainer->id) }}"><h3><strong>{{  $trainer->first_name }} {{  $trainer->last_name }}</strong></h3></a>
                         <p><i class="fa fa-map-marker"></i> {{ $trainer->address }}</p>
                         <address>
                             <i class="fa fa-envelope"></i> {{ $trainer->email }}<br>
                             <i class="fa fa-phone"></i> {{ $trainer->phone }}<br>
-                            <i class="fa fa-building"> </i> {{ $trainer->workplace }}
+                            <i class="fa fa-building"> </i> {{ $trainer->gym ? $trainer->gym->name : '' }}
                         </address>
                         <div class="hr-line-dashed"></div>
                         <p>
-                            Active: {{ $trainer->active }} AMD<br>
+                            Active: {{ $trainer->active_bonus }} AMD<br>
                         </p>
                     </div>
                     <div class="clearfix"></div>

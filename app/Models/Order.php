@@ -12,6 +12,7 @@ class Order extends Model
         'customer_phone',
         'status',
         'trainer_id',
+        'trainer_percent',
         'is_seen',
         'is_shipping'
     ];

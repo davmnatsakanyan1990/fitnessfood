@@ -198,5 +198,12 @@ if(localStorage.getItem('trainer_profile_tab')){
                 $('#tab-1').removeClass('active')
             }
             break
+        case 'tab3' :
+            if(!$('#tab3').hasClass('active')){
+                $('#tab3').addClass('active');
+                $('#tab1').removeClass('active');
+                $('#tab-3').addClass('active');
+                $('#tab-1').removeClass('active')
+            }
     }
 }

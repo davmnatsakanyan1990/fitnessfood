@@ -7,6 +7,7 @@ use App\Events\NewOrderEvent;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Requests;
@@ -29,6 +30,7 @@ class OrderController extends Controller
         $data['name'] = $request->name;
         $data['phone'] = $request->phone;
         $data['trainer'] = $request->trainer == '' ? null : $request->trainer;
+        $trainer_percent  = $request->trainer == '' ? null : Trainer::find($request->trainer)->percent;
 
         if($request->shipping == 'true'){
             $shipping = 1;
@@ -48,6 +50,7 @@ class OrderController extends Controller
             'customer_name' => $data['name'],
             'customer_phone' => $data['phone'],
             'trainer_id' => $data['trainer'],
+            'trainer_percent' => $trainer_percent,
             'is_shipping' => $shipping,
             'created_at' => date("Y-m-d H:i:s")
         ]);

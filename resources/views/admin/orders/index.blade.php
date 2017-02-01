@@ -15,6 +15,31 @@
                     <div class="ibox-content">
                         <h4>Orders</h4>
                         <div class="hr-line-dashed"></div>
+                        <div class="row">
+                            <form method="get" action="">
+                                <div class="col-md-2">
+                                    <select name="trainer" class="form-control">
+                                        <option value="">Select Trainer</option>
+                                        @foreach($trainers as $trainer)
+                                            <option {{ request('trainer') == $trainer->id ? 'selected' : '' }} value="{{ $trainer->id }}">{{ $trainer->first_name }} {{ $trainer->last_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select name="status" class="form-control">
+                                        <option value="">Select Status</option>
+                                        <option {{ request('status') != "" && request('status') == 0 ? 'selected' : ''  }} value="0">Pending</option>
+                                        <option {{ request('status') == 1 ? 'selected' : ''  }} value="1">Confirmed</option>
+                                        <option {{ request('status') == 2 ? 'selected' : ''  }} value="2">Canceled</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-success btn-sm" type="submit">Add To Filter</button>
+                                    <a href="{{ url('admin/orders') }}"> <button class="btn btn-warning btn-sm" type="button">Clear Filter</button></a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="hr-line-dashed"></div>
                         <table class="footable table table-stripped toggle-arrow-tiny order-table" data-page-size="15">
                             <thead>
                             <tr>
@@ -40,7 +65,8 @@
                                         {{ $order->customer_phone }}
                                     </td>
                                     <td>
-                                        {{ $order->counselor ? $order->counselor->first_name : '' }} {{ $order->counselor ? $order->counselor->last_name : '' }}
+                                        {{ $order->counselor ? $order->counselor->name_is_json ? json_decode($order->counselor->first_name, true)['en'] : $order->counselor->first_name  : '' }}
+                                        {{ $order->counselor ? $order->counselor->name_is_json ? json_decode($order->counselor->last_name, true)['en'] : $order->counselor->last_name  : '' }}
                                     </td>
                                     <td>
                                         {{ $order->amount }}

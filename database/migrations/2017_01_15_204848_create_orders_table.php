@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
                                                            // 2: order canceled;
 
             $table->integer('trainer_id')->unsigned()->nullable();
+            $table->double('trainer_percent')->nullable();
             $table->enum('is_shipping', [0,1]);
             $table->enum('is_seen', [0,1])->default(0);
             $table->timestamps();

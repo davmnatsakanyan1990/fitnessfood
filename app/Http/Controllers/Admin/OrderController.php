@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,23 +21,39 @@ class OrderController extends AdminBaseController
         parent::__construct();
     }
     
-    public function index(){
+    public function index(Request $request){
+        $orders = Order::with('products', 'counselor');
 
-        $orders = Order::with('products', 'counselor')->orderBy('created_at', 'desc')->get();
+        // filter by trainer
+        if($request->trainer && $request->trainer != ""){
+            $orders = $orders->where('trainer_id', $request->trainer);
+        }
+
+        // filter by status
+        if(isset($request->status) && $request->status != ""){
+            $orders = $orders->where('status', $request->status);
+        }
+
+        $orders = $orders->orderBy('created_at', 'desc')->get();
         foreach($orders as $order){
             foreach($order->products as $product){
                 $order->amount += $product->price * $product->pivot->count;
             }
+            if($order->counselor)
+                $order->counselor->name_is_json = $this->isJSON($order->counselor->first_name);
         }
 
-        return view('admin.orders.index', compact('orders'));
+        $trainers = Trainer::where('is_approved', 1)->get();
+
+        return view('admin.orders.index', compact('orders', 'trainers'));
     }
 
     public function show($order_id){
         $locale = $this->locale;
         $order = Order::with(['products'=>function($products){
             return $products->with('thumb_image');
-        }])->find($order_id);
+        },
+        'counselor'])->find($order_id);
 
         $total = 0;
         foreach($order->products as $product){
@@ -44,6 +61,9 @@ class OrderController extends AdminBaseController
             $product->title = json_decode($product->title)->$locale;
         }
         $order->total = $total;
+
+        if($order->counselor)
+            $order->counselor->name_is_json = $this->isJSON($order->counselor->first_name);
 
         if($order)
             return view('admin.orders.single', compact('order'));

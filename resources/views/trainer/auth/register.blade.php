@@ -18,7 +18,13 @@
     			<input name="last_name" type="text" value="{{ old('last_name') }}" placeholder="@lang('auth.surname')">
     			<input name="phone" type="tel" value="{{ old('phone') }}" placeholder=" @lang('auth.tel')։">
     			<input name="email" type="email" value="{{ old('email') }}" placeholder="@lang('auth.email')">
-    			<input name="workplace" type="text" value="{{ old('workplace') }}" placeholder="@lang('auth.workplace')">
+    			{{--<input name="workplace" type="text" value="{{ old('workplace') }}" placeholder="@lang('auth.workplace')">--}}
+				<select class="form-control" name="gym">
+					<option value="">Select Gym</option>
+					@foreach(\App\Models\Gym::all() as $gym)
+						<option {{ old('gym') && old('gym') == $gym->id ? 'selected' : '' }} value="{{ $gym->id }}">{{ $gym->name }}</option>
+					@endforeach
+				</select>
     			<input name="address" type="text" value="{{ old('address') }}" placeholder="@lang('auth.address')">
 				{{--<span class="d-of-birth">Ծննդյան ամիս ամսաթիվ</span>--}}
 				<div class="bfh-datepicker" data-name="date_of_birth" data-format="y-m-d" data-placeholder="Date of birthday"></div>

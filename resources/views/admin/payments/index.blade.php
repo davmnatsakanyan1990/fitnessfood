@@ -31,7 +31,7 @@
                             @foreach($payments as $payment)
                             <tr>
                                 <td>{{ $payment->created_at }}</td>
-                                <td>{{ $payment->trainer->first_name }} {{ $payment->trainer->last_name }}</td>
+                                <td>{{ $payment->trainer->name_is_json ? json_decode($payment->trainer->first_name, true)['en'].' '.json_decode($payment->trainer->last_name, true)['en'] : $payment->trainer->first_name.' '.$payment->trainer->last_name }} </td>
                                 <td>{{ $payment->amount }} AMD </td>
                                 <td>Inceptos Hymenaeos Ltd</td>
                                 <td><span class="pie">0.52/1.561</span></td>

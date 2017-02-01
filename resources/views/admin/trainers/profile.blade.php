@@ -6,6 +6,9 @@
 
 <!-- Sweet Alert -->
 <link href="/template/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+<link href="/template/css/plugins/touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+
 @endsection
 @section('content')
     <div class="wrapper wrapper-content">
@@ -23,12 +26,12 @@
                             <img alt="image" class="img-responsive text-center" src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'no-image.jpg' }}">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4><strong>{{ $trainer->first_name }} {{ $trainer->last_name }}</strong></h4>
+                            <h4><strong>{{ $trainer->first_name}} {{  $trainer->last_name }}</strong></h4>
                             <p><i class="fa fa-map-marker"></i>{{ $trainer->address }}</p>
 
                             <p><i class="fa fa-envelope"></i> {{ $trainer->email }}</p>
                             <p><i class="fa fa-phone"></i> {{ $trainer->phone }}</p>
-                            <p><i class="fa fa-building"> </i> {{ $trainer->workplace }}</p>
+                            <p><i class="fa fa-building"> </i> {{ $trainer->gym ? $trainer->gym->name : ''}}</p>
 
                             <div class="row m-t-lg">
                                 <div class="col-md-3">
@@ -37,7 +40,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <span>Bonus</span>
-                                    <h5> {{ $trainer->bonus }} <strong> AMD</strong></h5>
+                                    <h5> {{ $trainer->total_bonus }} <strong> AMD</strong></h5>
                                 </div>
                                 <div class="col-md-3">
                                     <span>Paid</span>
@@ -45,7 +48,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <span>Active</span>
-                                    <h5>{{ $trainer->bonus - $trainer->paid }} <strong> AMD</strong> </h5>
+                                    <h5>{{  $trainer->total_bonus - $trainer->paid }} <strong> AMD</strong> </h5>
                                 </div>
                             </div>
                             @if(! $trainer->is_approved)
@@ -57,7 +60,7 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="ibox float-e-margins">
+                <div class="ibox">
                     <div style="min-height: 61px" class="ibox-title">
                         <h5>Activites</h5>
                         <button data-trainer_id="{{ $trainer->id }}" class="pull-right btn btn-sm btn-warning new_payment">New Payment</button>
@@ -67,6 +70,7 @@
                             <ul class="nav nav-tabs">
                                 <li class="active tab" id="tab1"><a data-toggle="tab" href="#tab-1">Messages</a></li>
                                 <li class="tab" id="tab2"><a data-toggle="tab" href="#tab-2">Payments</a></li>
+                                <li class="tab" id="tab3"><a data-toggle="tab" href="#tab-3">Settings</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div id="tab-1" class="tab-pane active">
@@ -138,6 +142,57 @@
                                         </table>
                                     </div>
                                 </div>
+                                <div id="tab-3" class="tab-pane">
+                                    <div class="panel-body">
+                                        <form method="post" action="{{ url('admin/trainers/update/'.$trainer->id) }}">
+                                            {{ csrf_field() }}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>Հայերեն</label>--}}
+                                                {{--<div class="row">--}}
+                                                    {{--<div class="col-md-6">--}}
+                                                        {{--<input type="text" class="form-control" name="first_name[am]" value="{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)['am'] : $trainer->first_name }}" placeholder="Անուն">--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="col-md-6">--}}
+                                                        {{--<input type="text" class="form-control" name="last_name[am]" value="{{ $trainer->name_is_json ? json_decode($trainer->last_name, true)['am'] : $trainer->last_name }}" placeholder="Ազգանուն">--}}
+                                                {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>Русский</label>--}}
+                                                {{--<div class="row">--}}
+                                                    {{--<div class="col-md-6">--}}
+                                                        {{--<input class="form-control" type="text" name="first_name[ru]" value="{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)['ru'] : $trainer->first_name }}" placeholder="Имя">--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="col-md-6">--}}
+                                                        {{--<input class="form-control" type="text" name="last_name[ru]" value="{{ $trainer->name_is_json ? json_decode($trainer->last_name, true)['ru'] : $trainer->last_name }}" placeholder="Фамилия">--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>English</label>--}}
+                                                {{--<div class="row">--}}
+                                                    {{--<div class="col-md-6">--}}
+                                                        {{--<input type="text" class="form-control" name="first_name[en]" value="{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)['en'] : $trainer->first_name }}" placeholder="First Name">--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="col-md-6">--}}
+                                                        {{--<input type="text" class="form-control" name="last_name[en]" value= "{{ $trainer->name_is_json ? json_decode($trainer->last_name, true)['en'] : $trainer->last_name }}" placeholder="Last Name">--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            <div class="form-group">
+                                                <label>Bonus Percent</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input class="percent" type="text" value="{{ $trainer->percent }}" name="percent"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary" type="submit">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -163,6 +218,21 @@
 
     <!-- Page-Level Scripts -->
     <script src="/admin/js/trainer_profile.js"></script>
+        <!-- TouchSpin -->
+        <script src="/template/js/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+        <script>
+            $(".percent").TouchSpin({
+                min: 0,
+                max: 100,
+                step: 0.5,
+                decimals: 1,
+                boostat: 5,
+                maxboostedstep: 10,
+                postfix: '%',
+                buttondown_class: 'btn btn-white',
+                buttonup_class: 'btn btn-white btn_plus'
+            });
+        </script>
 
     <script>
 
