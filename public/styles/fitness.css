@@ -207,11 +207,11 @@ footer, main:after {
   font-family: ArialAMUbold;
 }
 
-.carousel-control.right {
+#main-slider .carousel-control.right {
   background: transparent;
 }
 
-.carousel-control.right span {
+#main-slider .carousel-control.right span {
   display: block;
   color: #fff;
   background: #333333;
@@ -222,11 +222,11 @@ footer, main:after {
   padding-right: 10px;
 }
 
-.carousel-control.left {
+#main-slider .carousel-control.left {
   background: transparent;
 }
 
-.carousel-control.left span {
+#main-slider .carousel-control.left span {
   display: block;
   color: #fff;
   background: #333333;
@@ -237,12 +237,12 @@ footer, main:after {
   padding-right: 10px;
 }
 
-.carousel-control {
+#main-slider .carousel-control {
   width: inherit !important;
   opacity: 0.6;
 }
 
-.carousel-control span img {
+#main-slider .carousel-control span img {
   margin-top: 21px;
 }
 
@@ -333,6 +333,59 @@ footer, main:after {
 .modal-header button.close {
   padding: 15px 15px 0 0;
   font-size: 30px;
+}
+
+.modal-product-info {
+  max-width: 300px;
+  color: #fff;
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+}
+
+.modal-product-info h2 {
+  text-align: center;
+  font-size: 18px;
+  font-family: ArialAMUbold;
+}
+
+.modal-product-info h4 {
+  margin-bottom: 20px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.modal-product-info hr {
+  border-bottom: 1px solid #fff;
+  margin: 0;
+}
+
+.modal-product-info ul {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.modal-product-info ul li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #C4C5C7;
+}
+
+.modal-product-info ul li span {
+  float: right;
+}
+
+.modal-product-info ul li:last-child {
+  border: none;
+}
+
+.modal-product-info p {
+  line-height: 22px;
+  margin-top: 20px;
+}
+
+.modal-product-info p span {
+  font-family: ArialAMUbold;
 }
 
 .home-product-cont .col-md-3 .tumb-wrap {
