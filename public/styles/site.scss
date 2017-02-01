@@ -1287,6 +1287,7 @@ footer{
 		max-width: 44px;
 		border-left: 1px solid #CCCCCC;
 		a{
+			width: 23px;
 			display: inline-block;
 			transition: all 0.3s;
 			cursor: pointer;
@@ -1295,7 +1296,7 @@ footer{
 			color: $light-gray;
 			&:hover{
 				color: $main-violet;
-				transform: rotate(90deg);
+				transform: scale(1.1);
 			}
 		}
 	}
