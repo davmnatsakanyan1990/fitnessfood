@@ -26,6 +26,10 @@
                         <input class="touchspin1" type="text" value="{{ $data->min_amount_free_shipping }}" name="min_amount_free_shipping">
                     </div>
                     <div class="form-group">
+                        <label>Min payment amount</label>
+                        <input class="touchspin3" type="text" value="{{ $data->min_payment_amount }}" name="min_payment_amount">
+                    </div>
+                    <div class="form-group">
                         <button class="btn btn-primary">Save</button>
                     </div>
                 </form>
@@ -53,6 +57,7 @@
         min: 0,
         max: 10000000,
         step: 100,
+        postfix: 'AMD',
         buttondown_class: 'btn btn-white',
         buttonup_class: 'btn btn-white'
     });
@@ -60,6 +65,15 @@
         min: 0,
         max: 10000000,
         step: 50,
+        postfix: 'AMD',
+        buttondown_class: 'btn btn-white',
+        buttonup_class: 'btn btn-white'
+    });
+    $(".touchspin3").TouchSpin({
+        min: 0,
+        max: 10000000,
+        step: 50,
+        postfix: 'AMD',
         buttondown_class: 'btn btn-white',
         buttonup_class: 'btn btn-white'
     });

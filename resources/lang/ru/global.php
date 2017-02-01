@@ -26,6 +26,8 @@ return [
     'basket is empty' => 'Ваша корзина пуста',
     'advised by trainer' => 'Мне посоветовал трейнер',
     'shipping' => 'Доставка',
-    'order' => 'Заказиват'
+    'order' => 'Заказиват',
+    'success_order' => 'Заказ отправлен',
+    'free_shipping' => 'Безплатная доставка'
 
 ];

@@ -26,6 +26,8 @@ return [
     'basket is empty' => 'Your basket is empty',
     'advised by trainer' => 'Advised by trainer',
     'shipping' => 'Shipping',
-    'order' => 'Order'
+    'order' => 'Order',
+    'success_order' => 'Order was sent',
+    'free_shipping' => 'Free shipping'
 
 ];

@@ -1,58 +1,26 @@
-$(document).ready(function(){
+// manually change count
+$(document).find('input[name="quantity"]').change(function(){
+    var count = $(this).val();
+    var product_id = $(this).closest('form').data('id');
+    var price = $(this).closest('form').data('price');
 
+    updateCount( count, product_id, price);
 
-    if(localStorage.getItem('basket') && (JSON.parse(localStorage.getItem('basket'))).length > 0){
-        $('.submit').removeAttr('disabled');
-    }
+    var basket = JSON.parse(readCookie('basket'));
 
+    var basket_count = 0;
+    $.each(basket, function (key, item) {
+        basket_count += item.count
+    });
 
-    var products = JSON.parse(localStorage.getItem('basket'));
-
-    if(products && products.length > 0) {
-
-        $.ajax({
-            url: BASE_URL + '/basket/products/' + locale,
-            type: 'post',
-            data: {
-                products: products,
-                _token: token
-            },
-            success: function (data) {
-                $('.table').find('tbody').html(data);
-                var total = $(document).find('input[name="total"]').val();
-                $('#total').html(total);
-
-                $(document).find('input[name="quantity"]').change(function(){
-                    var count = $(this).val();
-                    var product_id = $(this).closest('form').data('id');
-                    var price = $(this).closest('form').data('price');
-
-                    updateCount( count, product_id, price);
-
-                    var basket = JSON.parse(localStorage.getItem('basket'));
-
-                    var basket_count = 0;
-                    $.each(basket, function (key, item) {
-                        basket_count += item.count
-                    });
-
-                    $('.basket_count').text(basket_count);
-                })
-            }
-        })
-    }
-    else{
-        $(document).find('.not_empty').addClass('hidden');
-        $(document).find('.empty').removeClass('hidden');
-    }
-});
-
+    $('.basket_count').text(basket_count);
+})
 
 // click on remove product button
 $(document).on('click','.remove', function(){
     var product_id = $(this).data('id');
 
-    var basket = JSON.parse(localStorage.getItem('basket'));
+    var basket = JSON.parse(readCookie('basket'));
     var new_basket = [];
     $.each(basket, function(key, product){
         
@@ -63,11 +31,10 @@ $(document).on('click','.remove', function(){
 
     var json = JSON.stringify(new_basket);
 
-    localStorage.setItem('basket', json);
+    createCookie('basket', json);
 
     $(this).closest('tr').remove();
-
-    var basket_count = (JSON.parse(localStorage.getItem('basket'))).length;
+    var basket_count = new_basket.length;
     $('.basket_count').text(basket_count);
 
     var total = 0;
@@ -150,8 +117,8 @@ $(document).on('click','.qtyminus', function(e) {
 });
 
 function updateCount(count, product_id, price){
-    if(localStorage.getItem('basket') && (localStorage.getItem('basket')).length > 0){
-        var basket = JSON.parse(localStorage.getItem('basket'));
+    if(readCookie('basket') && (readCookie('basket')).length > 0){
+        var basket = JSON.parse(readCookie('basket'));
     }
     else{
         var basket = [];
@@ -166,7 +133,7 @@ function updateCount(count, product_id, price){
         if(value.product_id == product_id){
             value.count = parseInt(count);
             var json = JSON.stringify(basket);
-            localStorage.setItem('basket', json);
+            createCookie('basket', json);
         }
     });
 
@@ -175,7 +142,7 @@ function updateCount(count, product_id, price){
     var total = 0;
     $.each($(document).find('.amount'), function(index, value){
        total += parseInt(value.innerText);
-    })
+    });
 
     $('#total').html(total);
 
