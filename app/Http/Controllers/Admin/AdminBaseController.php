@@ -15,20 +15,11 @@ class AdminBaseController extends Controller
 {
     public function __construct()
     {
-        $notifications = [];
-        $new_orders = Order::where('is_seen', 0)->get()->toArray();
-        foreach($new_orders as $new_order){
-            $new_order['type'] = 'order';
-            array_push($notifications, $new_order);
-        }
+        $new_orders = Order::where('is_seen', 0)->get();
+        view()->share('new_orders', $new_orders);
 
-        $new_trainers = Trainer::where('is_seen', 0)->get()->toArray();
-        foreach($new_trainers as $new_trainer){
-            $new_trainer['type'] = 'trainer';
-            array_push($notifications, $new_trainer);
-        }
-        $notifications = collect($notifications)->sortByDesc('created_at');
-        view()->share('notifications', $notifications);
+        $new_trainers = Trainer::where('is_seen', 0)->get();
+        view()->share('new_trainers', $new_trainers);
 
 
         $new_messages = Message::with(['sender' => function($sender){

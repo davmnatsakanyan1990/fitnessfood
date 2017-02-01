@@ -4,61 +4,72 @@
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown drp_msg">
-                <a class="dropdown-toggle count-info message_notifi" data-toggle="dropdown" href="#">
-                    <i class="fa fa-envelope"></i>{!! count($new_messages) > 0 ?   '<span class="label label-primary new_messages_count">'. count($new_messages).'</span>' : '' !!}
+            {{-- New Trainers  --}}
+            <li class="dropdown trainer_alert">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-users"></i>{!! count($new_trainers) > 0 ?   '<span class="label label-primary count">'. count($new_trainers).'</span>' : '' !!}
+                </a>
+                @if(count($new_trainers) > 0)
+                    <ul class="dropdown-menu dropdown-messages" style="overflow-y: scroll; max-height: 300px" >
+                        @foreach($new_trainers as $trainer)
+                            <li id="trainer_{{ $trainer->id }}">
+                                <a href="/admin/trainers/show/{{ $trainer->id }}" class="pull-left">
+                                    <img alt="image" width="30" class="img-circle" src="/images/trainerImages/profile-icon.png">
+                                </a>
+                                <div class="media-body">
+                                    <strong>{{ $trainer->first_name }} {{ $trainer->last_name }}</strong> <br>
+                                    <p>New Trainer</p>
+                                    <small class="text-muted">{{ $trainer->created_at }}</small>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                        @endforeach
+                    </ul>
+                @endif
+            </li>
+
+            {{--   New Messages  --}}
+            <li class="dropdown message_alert">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-envelope"></i>{!! count($new_messages) > 0 ?   '<span class="label label-primary count">'. count($new_messages).'</span>' : '' !!}
                 </a>
                 @if(count($new_messages) > 0)
                 <ul class="dropdown-menu dropdown-messages" style="overflow-y: scroll; max-height: 300px" >
                     @foreach($new_messages as $message)
-                            <li class="msg_{{ $message->id }}">
-                                <div class="dropdown-messages-box">
-                                    <a href="/admin/trainers/show/{{ $message->sender->id }}" class="pull-left view_message">
-                                        <img alt="image" class="img-circle" src="/images/trainerImages/{{ $message->sender->image ? $message->sender->image->name : 'profile-icon.png' }}">
-                                    </a>
-                                    <div class="media-body">
-                                        <strong>{{ $message->sender->first_name }} {{ $message->sender->last_name }}</strong> <br>
-                                        <p>New Message</p>
-                                        <small class="text-muted">{{ $message->created_at }}</small>
-                                    </div>
-                                </div>
-                            </li>
+                        <li id="msg_{{ $message->id }}">
+                            <a href="/admin/trainers/show/{{ $message->sender->id }}" class="pull-left view_message">
+                                <img alt="image" width="30" class="img-circle" src="/images/trainerImages/{{ $message->sender->image ? $message->sender->image->name : 'profile-icon.png' }}">
+                            </a>
+                            <div class="media-body">
+                                <strong>{{ $message->sender->first_name }} {{ $message->sender->last_name }}</strong> <br>
+                                <p>New Message</p>
+                                <small class="text-muted">{{ $message->created_at }}</small>
+                            </div>
+                        </li>
                     <li class="divider"></li>
                     @endforeach
                 </ul>
                 @endif
             </li>
-            <li class="dropdown drp_noti">
-                <a class="dropdown-toggle count-info  order_notifi" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell"></i> {!! $notifications->count() > 0 ? '<span class="label label-primary notifications_count">'. $notifications->count() .'</span>' : '' !!}
+
+            {{--   New Orders  --}}
+            <li class="dropdown order_alert">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell"></i> {!! count($new_orders) > 0 ? '<span class="label label-primary count">'. count($new_orders) .'</span>' : '' !!}
                 </a>
-                @if($notifications)
-                <ul class="dropdown-menu dropdown-alerts">
-                    <div class="notification_block" style="overflow-y: scroll; max-height: 300px" >
-                    @foreach($notifications as $item)
-                        @if($item['type'] == 'order')
-                        <li id="order_{{ $item['id'] }}">
-                            <a href="{{ url('admin/orders/show/'.$item['id']) }}">
+                @if(count($new_orders) > 0)
+                <ul class="dropdown-menu dropdown-alerts" style="overflow-y: scroll; max-height: 300px">
+                    @foreach($new_orders as $order)
+                        <li id="order_{{ $order->id }}">
+                            <a href="{{ url('admin/orders/show/'.$order->id) }}">
                                 <div>
-                                    <i class="fa fa-envelope fa-fw"></i> You have new order
-                                    {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                                    <i class="fa fa-envelope fa-fw"></i> New order
+                                    <span class="pull-right text-muted small">{{ date('H:m:s', strtotime($order->created_at)) }}</span>
                                 </div>
                             </a>
                         </li>
                         <li class="divider"></li>
-                        @elseif($item['type'] == 'trainer')
-                                <li id="trainer_{{ $item['id'] }}">
-                                    <a href="{{ url('admin/trainers/show/'.$item['id']) }}">
-                                        <div>
-                                            <i class="fa fa-envelope fa-fw"></i> You have new trainer
-                                            {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                        @endif
                     @endforeach
-                    </div>
                 </ul>
                 @endif
             </li>

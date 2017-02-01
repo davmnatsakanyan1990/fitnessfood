@@ -53,7 +53,6 @@ class OrderController extends Controller
             'customer_phone' => $phone,
             'trainer_id' => $trainer,
             'trainer_percent' => $trainer_percent,
-            'is_shipping' => 1,
             'created_at' => date("Y-m-d H:i:s")
         ]);
 

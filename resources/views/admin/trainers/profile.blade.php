@@ -244,28 +244,30 @@
                     url: BASE_URL+'/admin/trainers/seen/'+trainer_id,
                     type: 'get',
                     success: function(){
-                        var notifications_count = ($('.notifications_count'))[0].innerHTML;
-                        if(notifications_count-1 == 0) {
-                            $('.notifications_count').remove();
+                        var count = $('.trainer_alert .count')[0].innerHTML;
+                        if(count-1 == 0) {
+                            $('.trainer_alert .count').remove();
+                            $('.trainer_alert .dropdown-menu').remove();
                         }
                         else {
-                            $('.notifications_count').html(notifications_count - 1);
+                            $('.trainer_alert .count').html(count - 1);
                             $('#trainer_'+trainer_id).next('li').remove();
                             $('#trainer_'+trainer_id).remove();
 
                         }
-
                     }
                 });
             }
         });
 
         $('#tab1').on('click', function(){
-            messagesSeen();
+            if($('.message_alert .count')[0])
+                messagesSeen();
         });
 
         if($('#tab1').hasClass('active')){
-            messagesSeen();
+            if($('.message_alert .count')[0])
+                messagesSeen();
         }
 
         function messagesSeen(){
@@ -273,19 +275,19 @@
                 url: BASE_URL+'/admin/trainer/messages/seen/'+trainer_id,
                 type: 'get',
                 success: function(data){
-                    var new_messages_count = ($('.new_messages_count')[0]).innerHTML;
+                    var count = ($('.message_alert .count')[0]).innerHTML;
                     if(data.count != 0) {
-                        if (new_messages_count - data.count == 0)
-                            $('.new_messages_count').remove();
+                        if (count - data.count == 0)
+                            $('.message_alert .count').remove();
                         else
-                            $('.new_messages_count').html(new_messages_count - data.count);
+                            $('.message_alert .count').html(count - data.count);
 
                         $.each(data.messages, function(index, value){
-                            $(document).find('.msg_'+value.id).next('li').remove();
-                            $(document).find('.msg_'+value.id).remove();
+                            $(document).find('#msg_'+value.id).next('li').remove();
+                            $(document).find('#msg_'+value.id).remove();
 
-                            if($(document).find('.dropdown-messages li').length == 0){
-                                $(document).find('.dropdown-messages').remove();
+                            if($(document).find('.message_alert .dropdown-menu li').length == 0){
+                                $(document).find('.message_alert .dropdown-menu').remove();
                             }
                         })
 

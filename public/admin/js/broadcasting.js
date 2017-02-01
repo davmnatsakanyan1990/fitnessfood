@@ -8,47 +8,43 @@ var pusher = new Pusher('f099d8275bf3d94c6bf9', {
 // New Message channel
 var channel = pusher.subscribe('new-message');
 channel.bind('App\\Events\\NewMessageEvent', function(data) {
-    console.log(data);
-    if(data.sender.image == "null"){
+    if(data.sender.image == null){
         var image = 'profile-icon.png';
     }
     else{
         var image = data.sender.image.name;
     }
 
-    if($('.new_messages_count').length > 0){
-        var count = $(document).find('.new_messages_count')[0].innerText;
-        $(document).find('.new_messages_count').text(parseInt(count)+1);
-        $(document).find('.dropdown-messages').prepend('<li class="msg_'+data.message.id+'">'+
-                '<div class="dropdown-messages-box">'+
-                    '<a href="/admin/trainers/show/'+data.sender.id+'" class="pull-left view_message">'+
-                        '<img alt="image" class="img-circle" src="/images/trainerImages/'+image+'">'+
-                    '</a>'+
-                    '<div class="media-body">'+
-                        '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
-                        '<p>New Message</p>'+
-                        '<small class="text-muted">'+data.message.created_at+'</small>'+
-                    '</div>'+
+    if($('.message_alert .count').length > 0){
+        var count = $(document).find('.message_alert .count')[0].innerText;
+        $(document).find('.message_alert .count').text(parseInt(count)+1);
+        $(document).find('.message_alert ul').prepend('<li id="msg_'+data.message.id+'">'+
+                '<a href="/admin/trainers/show/'+data.sender.id+'" class="pull-left view_message">'+
+                    '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/'+image+'">'+
+                '</a>'+
+                '<div class="media-body">'+
+                    '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
+                    '<p>New Message</p>'+
+                    '<small class="text-muted">'+data.message.created_at+'</small>'+
                 '</div>'+
             '</li>'+
             '<li class="divider"></li>'
         );
     }
     else{
-        $(document).find('.message_notifi').append('<span class="label label-primary new_messages_count">1</span>');
+        $(document).find('.message_alert .count-info').append('<span class="label label-primary count">1</span>');
 
-        $(document).find('.drp_msg').append('<ul class="dropdown-menu dropdown-messages">'+
-                '<li class="msg_'+data.message.id+'">'+
-                    '<div class="dropdown-messages-box">'+
-                        '<a href="/admin/trainers/show/'+data.sender.id+'" class="pull-left view_message">'+
-                            '<img alt="image" class="img-circle" src="/images/trainerImages/'+image+'">'+
-                        '</a>'+
-                        '<div class="media-body">'+
-                            '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
-                            '<p>New Message</p>'+
-                            '<small class="text-muted">'+data.message.created_at+'</small>'+
-                        '</div>'+
+        $(document).find('.message_alert').append('<ul class="dropdown-menu dropdown-messages">'+
+                '<li id="msg_'+data.message.id+'">'+
+                    '<a href="/admin/trainers/show/'+data.sender.id+'" class="pull-left view_message">'+
+                        '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/'+image+'">'+
+                    '</a>'+
+                    '<div class="media-body">'+
+                        '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
+                        '<p>New Message</p>'+
+                        '<small class="text-muted">'+data.message.created_at+'</small>'+
                     '</div>'+
+
                 '</li>'+
                 '<li class="divider"></li>'+
             '</ul>'
@@ -61,37 +57,38 @@ channel.bind('App\\Events\\NewMessageEvent', function(data) {
 var channel = pusher.subscribe('new-order');
 channel.bind('App\\Events\\NewOrderEvent', function(data) {
 
-    if($('.notifications_count').length > 0){
-        var count = $(document).find('.notifications_count')[0].innerText;
-        $(document).find('.notifications_count').text(parseInt(count)+1);
-        $(document).find('.notification_block').prepend('<li id="order_'+data.order.id+'">'+
+    if($('.order_alert .count').length > 0){
+        var count = $(document).find('.order_alert .count')[0].innerText;
+        $(document).find('.order_alert .count').text(parseInt(count)+1);
+        $(document).find('.order_alert ul').prepend('<li id="order_'+data.order.id+'">'+
                 '<a href="'+BASE_URL+'/admin/orders/show/'+data.order.id+'">'+
                     '<div>'+
-                        '<i class="fa fa-envelope fa-fw"></i> You have new order'+
+                        '<i class="fa fa-envelope fa-fw"></i> New order'+
+                        '<span class="pull-right text-muted small">'+data.order.created_at+'</span>'+
                     '</div>'+
                 '</a>'+
             '</li>'+
             '<li class="divider"></li>');
     }
     else{
-        $(document).find('.order_notifi').append('<span class="label label-primary new_messages_count">1</span>');
+        $(document).find('.order_alert .count-info').append('<span class="label label-primary count">1</span>');
 
-        $(document).find('.drp_noti').append('<ul class="dropdown-menu dropdown-alerts">'+
-                '<div class="notification_block" style="overflow-y: scroll; max-height: 300px" >' +
-                    '<li id="trainer_' + data.order.id + '">' +
-                        '<a href="' + BASE_URL + '/admin/orders/show/' + data.order.id + '">' +
-                            '<div>' +
-                                '<i class="fa fa-envelope fa-fw"></i> You have new order' +
-                            '</div>' +
-                        '</a>' +
-                    '</li>' +
-                    '<li class="divider"></li>' +
-                '</div>' +
+        $(document).find('.order_alert').append('<ul class="dropdown-menu dropdown-alerts" style="overflow-y: scroll; max-height: 300px">'+
+                '<li id="order_' + data.order.id + '">' +
+                    '<a href="' + BASE_URL + '/admin/orders/show/' + data.order.id + '">' +
+                        '<div>' +
+                            '<i class="fa fa-envelope fa-fw"></i> New order' +
+                            '<span class="pull-right text-muted small">'+data.order.created_at+'</span>'+
+                        '</div>' +
+                    '</a>' +
+                '</li>' +
+                '<li class="divider"></li>' +
             '</ul>')
     }
 
     if(current == BASE_URL+'/admin/orders'){
-        if( data.order.counselor == "null"){
+        console.log(data.order);
+        if( data.order.counselor == null){
             var counselor = '';
         }
         else{
@@ -118,27 +115,34 @@ channel.bind('App\\Events\\NewOrderEvent', function(data) {
 // New Trainer Channel
 var channel = pusher.subscribe('new-trainer');
 channel.bind('App\\Events\\NewTrainerEvent', function(data) {
-    if($('.notifications_count').length > 0){
-        var count = $(document).find('.notifications_count')[0].innerText;
-        $(document).find('.notifications_count').text(parseInt(count)+1);
-        $(document).find('.notification_block').prepend('<li id="trainer_'+data.trainer.id+'">'+
-                '<a href="'+BASE_URL+'/admin/trainers/show/'+data.trainer.id+'">'+
-                    '<div>'+
-                        '<i class="fa fa-envelope fa-fw"></i> You have new trainer'+
-                    '</div>'+
+    if($('.trainer_alert .count').length > 0){
+
+        var count = $(document).find('.trainer_alert .count')[0].innerText;
+        $(document).find('.trainer_alert .count').text(parseInt(count)+1);
+
+        $(document).find('.trainer_alert ul').prepend('<li id="trainer_'+data.trainer.id+'">'+
+                '<a href="'+BASE_URL+'/admin/trainers/show/'+data.trainer.id+'" class="pull-left">'+
+                    '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/profile-icon.png">'+
                 '</a>'+
+                '<div class="media-body">'+
+                    '<strong>'+data.trainer.first_name+' '+data.trainer.last_name+'</strong>'+
+                    '<p>New Trainer</p>'+
+                    '<small class="text-muted">'+data.trainer.created_at+'</small>'+
+                '</div>'+
             '</li>'+
             '<li class="divider"></li>');
     }
     else{
-        $(document).find('.order_notifi').append('<span class="label label-primary new_messages_count">1</span>');
+        $(document).find('.trainer_alert .count-info').append('<span class="label label-primary count">1</span>');
 
-        $(document).find('.drp_noti').append('<ul class="dropdown-menu dropdown-alerts">'+
+        $(document).find('.trainer_alert').append('<ul class="dropdown-menu dropdown-messages">'+
                 '<div class="notification_block" style="overflow-y: scroll; max-height: 300px" >'+
                     '<li id="trainer_'+data.trainer.id+'">'+
                         '<a href="'+BASE_URL+'/admin/trainers/show/'+data.trainer.id+'">'+
-                            '<div>'+
-                                '<i class="fa fa-envelope fa-fw"></i> You have new trainer'+
+                            '<div class="media-body">'+
+                                '<strong>'+data.trainer.first_name+' '+data.trainer.last_name+'</strong>'+
+                                '<p>New Trainer</p>'+
+                                '<small class="text-muted">'+data.trainer.created_at+'</small>'+
                             '</div>'+
                         '</a>'+
                     '</li>'+

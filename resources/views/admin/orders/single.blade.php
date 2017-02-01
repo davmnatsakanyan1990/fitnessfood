@@ -14,7 +14,6 @@
 
                                     <dt>Ordered by:</dt> <dd>{{ $order->customer_name }}</dd>
                                     <dt>Phone:</dt> <dd>  {{ $order->customer_phone }}</dd>
-                                    <dt>Shipping:</dt> <dd>{{ $order->is_shipping ? 'YES' : 'NO' }} </dd>
                                     <dt>Counselor:</dt> <dd> 	{{ $order->counselor ? $order->counselor->name_is_json ? json_decode($order->counselor->first_name, true)['en'] : $order->counselor->first_name : 'NO'}} </dd>
                                     <dt>Order ID:</dt> <dd> 	{{ $order->id }} </dd>
                                 </dl>
@@ -55,7 +54,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td class="text-right total_sum" colspan="6" ><strong>Total: </strong>{{ $order->is_shipping ? $order->total.' + 600 = '.($order->total+600) : $order->total }} AMD</td>
+                                    <td class="text-right total_sum" colspan="6" ><strong>Total: </strong>{{ $min_amount_free_shipping > $order->total ? $order->total.' + '.$shipping.' = '.($order->total+$shipping) : $order->total }} AMD</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -75,15 +74,15 @@
                     url: BASE_URL+'/admin/order/seen/'+order_id,
                     type: 'get',
                     success: function(){
-                        var new_orders_count = ($('.notifications_count'))[0].innerHTML;
-                        if(new_orders_count-1 == 0) {
-                            $('.notifications_count').remove();
+                        var count = ($('.order_alert .count'))[0].innerHTML;
+                        if(count-1 == 0) {
+                            $('.order_alert .count').remove();
+                            $('.order_alert ul').remove();
                         }
                         else {
-                            $('.notifications_count').html(new_orders_count - 1);
+                            $('.order_alert .count').html(count - 1);
                             $('#order_'+order_id).next('li').remove();
                             $('#order_'+order_id).remove();
-
                         }
 
                     }

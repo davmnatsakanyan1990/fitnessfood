@@ -13,8 +13,7 @@ class Order extends Model
         'status',
         'trainer_id',
         'trainer_percent',
-        'is_seen',
-        'is_shipping'
+        'is_seen'
     ];
     
     public function products(){

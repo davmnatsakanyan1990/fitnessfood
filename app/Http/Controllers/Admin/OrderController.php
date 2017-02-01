@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 
@@ -65,8 +66,12 @@ class OrderController extends AdminBaseController
         if($order->counselor)
             $order->counselor->name_is_json = $this->isJSON($order->counselor->first_name);
 
+        $shipping = Setting::first()->shipping_price;
+        $min_amount_free_shipping = Setting::first()->min_amount_free_shipping;
+
+
         if($order)
-            return view('admin.orders.single', compact('order'));
+            return view('admin.orders.single', compact('order', 'shipping', 'min_amount_free_shipping'));
         else
             abort(404);
     }

@@ -144,6 +144,17 @@ function updateCount(count, product_id, price){
        total += parseInt(value.innerText);
     });
 
+    if(total > min_amount_free_shipping){
+        $(document).find('.freeshipping').show();
+        $(document).find('.shipping').hide();
+        $(document).find('.shipping_amount').hide();
+    }
+    else{
+        $(document).find('.shipping').show();
+        $(document).find('.freeshipping').hide();
+        $(document).find('.shipping_amount').show();
+    }
+
     $('#total').html(total);
 
 }

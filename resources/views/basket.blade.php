@@ -64,11 +64,8 @@
                             <tfoot>
                             <tr>
                                 <td colspan="5" class="text-right">
-                                    @if($total > $min_amount_free_shipping)
-                                        @lang('global.free_shipping')
-                                    @else
-                                        @lang('global.shipping'): {{ $shipping }}
-                                    @endif
+                                    <span class="freeshipping" {{ $total > $min_amount_free_shipping ? '' : 'hidden' }}>@lang('global.free_shipping')</span>
+                                    <span class="shipping" {{ $total < $min_amount_free_shipping ? '' : 'hidden' }}>@lang('global.shipping'): {{ $shipping }}</span>
                                 </td>
                             </tr>
                             </tfoot>
@@ -78,7 +75,10 @@
                         <div class="basket-form">
                             <ul class="list-inline">
                                 <li>@lang('product.total')</li>
-                                <li><span id="total">{{ $total }}</span>@lang('product.amd')</li>
+                                <li>
+                                    <span id="total">{{ $total }}</span>@lang('product.amd')
+                                    <span {{ $total > $min_amount_free_shipping ? 'hidden' : '' }} class="shipping_amount">+ {{ $shipping }}@lang('product.amd')</span>
+                                </li>
                             </ul>
                             <hr>
                             <div class="basket-form-div">
