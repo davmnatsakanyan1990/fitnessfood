@@ -16,6 +16,7 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->double('trainer_percent');
             $table->double('shipping_price');
+            $table->double('min_payment_amount');
             $table->double('min_amount_free_shipping');
             $table->timestamps();
         });

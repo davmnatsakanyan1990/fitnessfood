@@ -1,19 +1,5 @@
 $(document).ready(function(){
 
-    if(localStorage.getItem('basket')) {
-        var basket = JSON.parse(localStorage.getItem('basket'));
-
-        var basket_count = 0;
-        $.each(basket, function (key, item) {
-            basket_count += item.count
-        })
-    }
-    else {
-        var basket_count = 0;
-    }
-
-    $('.basket_count').text(basket_count);
-
     // This button will increment the value
     $('.qtyplus').click(function(e){
         // Stop acting like a button
@@ -49,8 +35,7 @@ $(document).ready(function(){
         }
     });
 
-/*Single page gallery code starts here */
-
+    /*Single page gallery code starts here */
     $('.sm-gallery-ul li  img').click(function() {
         var big_src = $(this).data('big-src');
         $(this).closest('div').find('.gall-big img').attr('src',big_src);
@@ -62,8 +47,8 @@ $(document).ready(function(){
         var product_id = $(this).data('id');
         var count = $(this).closest('.quantity-wrap').find('input[name="quantity"]').val();
 
-        if(localStorage.getItem('basket') && (localStorage.getItem('basket')).length > 0){
-            var basket = JSON.parse(localStorage.getItem('basket'));
+        if(checkCookie('basket') && (readCookie('basket')).length > 0){
+            var basket = JSON.parse(readCookie('basket'));
         }
         else{
             var basket = [];
@@ -82,7 +67,7 @@ $(document).ready(function(){
 
                 var json = JSON.stringify(basket);
 
-                localStorage.setItem('basket', json);
+                createCookie('basket', json);
 
                 exist = true;
             }
@@ -92,7 +77,7 @@ $(document).ready(function(){
             basket.push(product);
             var json = JSON.stringify(basket);
 
-            localStorage.setItem('basket', json);
+            createCookie('basket', json);
         }
 
         var basket_count = $(document).find('.basket_count')[0].innerHTML;

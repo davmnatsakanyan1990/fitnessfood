@@ -26,6 +26,8 @@ return [
     'basket is empty' => 'Զամբյուղը դատարկ է',
     'advised by trainer' => 'Ինձ խորհուրդ է տվել մարզիչը',
     'shipping' => 'Առաքում',
-    'order' => 'Պատվիրել'
+    'order' => 'Պատվիրել',
+    'success_order' => 'Ձեր պատվերը ուղարկված է',
+    'free_shipping' => 'Անվճար առաքում'
 
 ];

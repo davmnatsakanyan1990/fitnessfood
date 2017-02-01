@@ -20,7 +20,46 @@
 
 
     <script>
-        var BASE_URL = '{{ url('/') }}'
+        var BASE_URL = '{{ url('/') }}';
+
+        function createCookie(name,value,days) {
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime()+(days*24*60*60*1000));
+                var expires = "; expires="+date.toGMTString();
+            }
+            else var expires = "";
+            document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+
+        function eraseCookie(name) {
+            createCookie(name,"",-1);
+        }
+
+        function checkCookie(name)
+        {
+            return readCookie(name) != null;
+        }
+
+        if(checkCookie("XYZ")) {
+            createCookie("XYZ","SMURF",1);
+            document.write("reset cookie");
+        }
+        else {
+            createCookie("XYZ","SMURF",1);
+            document.write(readCookie("XYZ"));
+        }
     </script>
 
     @yield('styles')
@@ -39,7 +78,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
 <script src="{{ url('lib/jQuery.scrollSpeed.js')}}"></script>
-<script src="/js/main.js"></script>
 <script>
     $(function() {
 
@@ -52,6 +90,20 @@
         var lang = $(this).val();
         window.location.href = lang;
     })
+</script>
+<script>
+    if(checkCookie('basket') && (readCookie('basket')).length > 0) {
+        var basket = JSON.parse(readCookie('basket'));
+
+        var basket_count = 0;
+        $.each(basket, function (key, item) {
+            basket_count = parseInt(basket_count) + parseInt(item.count)
+        });
+    }
+    else {
+        var basket_count = 0;
+    }
+    $('.basket_count').text(basket_count);
 </script>
     
 

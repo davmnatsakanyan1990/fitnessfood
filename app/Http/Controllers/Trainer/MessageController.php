@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Trainer;
 use App\Events\NewMessageEvent;
 use App\Models\Message;
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,12 @@ class MessageController extends Controller
             $this->trainer = Auth::guard('trainer')->user();
     }
 
+    /**
+     * Send new payment message
+     * 
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function create(Request $request){
 
         $trainer = Trainer::with('image')->find($this->trainer->id);
@@ -41,11 +48,14 @@ class MessageController extends Controller
         $paid = $trainer->payments->sum('amount');
         $active = $total_bonus - $paid;
 
-        // Minimum amount 5000 AMD
+
         if($request->amount > $active){
             return redirect()->back()->with('error', 'Դուք չունեք բավականաչափ գումար ձեր հաշվի վրա');
         }
-        if($active < 5000){
+
+        // Minimum amount
+        $min_payment_amount = Setting::first()->min_payment_amount;
+        if($active < $min_payment_amount){
             return redirect()->back()->with('error', 'Նվազագույն գումարի չափը 5000դր է');
         }
 

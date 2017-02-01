@@ -9,54 +9,56 @@ use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\App;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 
 class OrderController extends Controller
 {
-    public function validator($data){
-        return Validator::make($data, [
-            'name' => 'required',
-            'phone' => 'required|numeric',
-            'products' => 'required'
-        ]);
+    public $locale;
+
+    /**
+     * OrderController constructor.
+     * @param Request $request
+     */
+    public function __construct(Request $request)
+    {
+        if($request->route()->parameter('locale')){
+            $this->locale = $request->route()->parameter('locale');
+            App::setLocale($this->locale);
+        }
     }
 
+    /**
+     * Create new order
+     * 
+     * @param Request $request
+     * @return $this
+     */
     public function create(Request $request){
-
-        $data = [];
-        $data['name'] = $request->name;
-        $data['phone'] = $request->phone;
-        $data['trainer'] = $request->trainer == '' ? null : $request->trainer;
-        $trainer_percent  = $request->trainer == '' ? null : Trainer::find($request->trainer)->percent;
-
-        if($request->shipping == 'true'){
-            $shipping = 1;
-        }
-        else{
-            $shipping = 0;
-        }
-        $data['products'] = json_decode($request->products);
-
-       $validator = $this->validator($data);
-        if($validator->fails()){
-            return  response($validator->errors()->all(), 422);
-        }
-
+        $this->validate($request, [
+            'name' => 'required',
+            'phone' => 'required'
+        ]);
+        
+        $name = $request->name;
+        $phone = $request->phone;
+        $trainer = $request->is_addvised ? $request->trainer : null;
+        $trainer_percent  = $request->is_addvised ? Trainer::find($request->trainer)->percent : null;
+        $products = json_decode($_COOKIE['basket']);
 
         $order = DB::table('orders')->insertGetId([
-            'customer_name' => $data['name'],
-            'customer_phone' => $data['phone'],
-            'trainer_id' => $data['trainer'],
+            'customer_name' => $name,
+            'customer_phone' => $phone,
+            'trainer_id' => $trainer,
             'trainer_percent' => $trainer_percent,
-            'is_shipping' => $shipping,
+            'is_shipping' => 1,
             'created_at' => date("Y-m-d H:i:s")
         ]);
 
         $amount = 0;
-        foreach($data['products'] as $product){
+        foreach($products as $product){
             OrderProduct::create(['order_id' => $order, 'product_id' => $product->product_id, 'count'=>$product->count]);
             $prd = Product::find($product->product_id);
             $amount += $prd->price * $product->count;
@@ -64,7 +66,10 @@ class OrderController extends Controller
 
         $obj = Order::with('counselor')->find($order)->toArray();
         $obj['amount'] = $amount;
+        
         Event::fire(new NewOrderEvent($obj));
+
+       return redirect()->back()->with('success', 'global.success_order')->cookie('basket', '', -1);
 
     }
 }

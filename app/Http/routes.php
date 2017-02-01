@@ -16,8 +16,7 @@ use App\Models\Setting;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 Route::get('test1', function (){
-    $percent = Setting::first()->trainer_percent;
-    dd($percent);
+    
 });
 Route::get('/{locale?}', 'HomeController@index');
 Route::post('orders/new','OrderController@create');
@@ -102,7 +101,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('gyms/create', 'GymController@save');
     Route::get('gyms/edit/{id}', 'GymController@edit');
     Route::post('gyms/update/{id}', 'GymController@update');
-    Route::get('gyms/delete/{id}', 'GymController@delete');
+    Route::post('gyms/delete/{id}', 'GymController@delete');
 
 });
 
