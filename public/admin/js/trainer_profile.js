@@ -3,6 +3,100 @@ $(document).ready(function() {
     $('.footable').footable();
     $('.footable2').footable();
 
+    $(".percent").TouchSpin({
+        min: 0,
+        max: 100,
+        step: 0.5,
+        decimals: 1,
+        boostat: 5,
+        maxboostedstep: 10,
+        postfix: '%',
+        buttondown_class: 'btn btn-white',
+        buttonup_class: 'btn btn-white btn_plus'
+    });
+
+    if (trainer_is_seen == 0) {
+        $.ajax({
+            url: BASE_URL + '/admin/trainers/seen/' + trainer_id,
+            type: 'get',
+            success: function () {
+                var count = $('.trainer_alert .count')[0].innerHTML;
+                if (count - 1 == 0) {
+                    $('.trainer_alert .count').remove();
+                    $('.trainer_alert .dropdown-menu').remove();
+                }
+                else {
+                    $('.trainer_alert .count').html(count - 1);
+                    $('#trainer_' + trainer_id).next('li').remove();
+                    $('#trainer_' + trainer_id).remove();
+
+                }
+            }
+        });
+    }
+
+    $('#tab1').on('click', function () {
+        if ($('.message_alert .count')[0])
+            messagesSeen();
+    });
+
+    if ($('#tab1').hasClass('active')) {
+        if ($('.message_alert .count')[0])
+            messagesSeen();
+    }
+
+    function messagesSeen() {
+        $.ajax({
+            url: BASE_URL + '/admin/trainer/messages/seen/' + trainer_id,
+            type: 'get',
+            success: function (data) {
+                var count = ($('.message_alert .count')[0]).innerHTML;
+                if (data.count != 0) {
+                    if (count - data.count == 0)
+                        $('.message_alert .count').remove();
+                    else
+                        $('.message_alert .count').html(count - data.count);
+
+                    $.each(data.messages, function (index, value) {
+                        $(document).find('#msg_' + value.id).next('li').remove();
+                        $(document).find('#msg_' + value.id).remove();
+
+                        if ($(document).find('.message_alert .dropdown-menu li').length == 0) {
+                            $(document).find('.message_alert .dropdown-menu').remove();
+                        }
+                    })
+
+                }
+
+            }
+        });
+    }
+
+    var skip_msg = 0;
+
+    $(document).find('.messages_more').on('click', function(){
+        skip_msg += 10;
+        $.ajax ({
+            url: BASE_URL+'/admin/trainers/messages/'+trainer_id+'/'+skip_msg,
+            type: 'get',
+            success: function(data){
+                $.each(data.messages, function(index, value){
+                    $('#tab-1 .feed-activity-list').append('<div class="feed-element">' +
+                            '<div class="media-body ">'+
+                                '<small class="pull-right text-navy">'+value.created_at+'</small>'+
+                                '<strong>Trainer</strong> wants to get <strong>'+value.amount+' AMD</strong> from Active Account. <br>'+
+                            '</div>'+
+                        '</div>'
+
+                    )
+                });
+
+                if(data.exist.length == 0){
+                    $('.messages_more').hide();
+                }
+            }
+        })
+    });
 
 
     $('.edit_payment').on('click', function(){

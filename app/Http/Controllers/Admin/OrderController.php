@@ -21,7 +21,13 @@ class OrderController extends AdminBaseController
         $this->middleware('auth:admin');
         parent::__construct();
     }
-    
+
+    /**
+     * Show all orders
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request){
         $orders = Order::with('products', 'counselor');
 
@@ -49,6 +55,12 @@ class OrderController extends AdminBaseController
         return view('admin.orders.index', compact('orders', 'trainers'));
     }
 
+    /**
+     * Show single order
+     *
+     * @param $order_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($order_id){
         $locale = $this->locale;
         $order = Order::with(['products'=>function($products){
@@ -76,10 +88,21 @@ class OrderController extends AdminBaseController
             abort(404);
     }
 
+    /**
+     * Update order status
+     *
+     * @param Request $request
+     * @param $order_id
+     */
     public function statusUpdate(Request $request, $order_id){
         Order::where('id', $order_id)->update(['status' => $request->status]);
     }
 
+    /**
+     * Mark order as seen
+     *
+     * @param $order_id
+     */
     public function orderSeen($order_id){
         Order::where('id', $order_id)->update(['is_seen'=>1]);
     }

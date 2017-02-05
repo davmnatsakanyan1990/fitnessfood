@@ -10,8 +10,10 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Upload Images</h5>
+
                         <div class="ibox-tools">
-                            <a href="{{ url('admin/products/edit/'.$product_id) }}" style="color: #1ab394"><span style="font-weight: bold; font-size: medium">Back to images >></span></a>
+                            <a href="{{ url('admin/products/edit/'.$product_id) }}" style="color: #1ab394"><span
+                                        style="font-weight: bold; font-size: medium">Back to images >></span></a>
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -24,43 +26,12 @@
                 </div>
             </div>
         </div>
-
     </div>
-@endsection
-@section('scripts')
+    @endsection
+    @section('scripts')
     <!-- DROPZONE -->
     <script src="/template/js/plugins/dropzone/dropzone.js"></script>
 
-
-    <script>
-        $(document).ready(function(){
-
-            Dropzone.options.myAwesomeDropzone = {
-
-                autoProcessQueue: false,
-                uploadMultiple: true,
-                parallelUploads: 100,
-                maxFiles: 100,
-
-                // Dropzone settings
-                init: function() {
-                    var myDropzone = this;
-
-                    this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        myDropzone.processQueue();
-                    });
-                    this.on("sendingmultiple", function() {
-                    });
-                    this.on("successmultiple", function(files, response) {
-                    });
-                    this.on("errormultiple", function(files, response) {
-                    });
-                }
-
-            }
-
-        });
-    </script>
+    <!-- Custom js -->
+    <script src="/admin/js/product_image_upload.js"></script>
 @endsection

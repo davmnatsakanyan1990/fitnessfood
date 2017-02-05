@@ -2,8 +2,8 @@
 @section('content')
     <main>
         <div class="login-marzich">
-            <h3>Մոռացել եմ գաղտնաբառը</h3>
-            <p>Մուտքագրեք ձեր էլ-փոստը և կստանաք գաղտնաբառը վերականգնող հաղորդագրություն</p>
+            <h3>@lang('auth.forgot password')</h3>
+            <p>@lang('auth.forgot password_message')</p>
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
@@ -18,11 +18,11 @@
                     </ul>
                 </div>
             @endif
-            <form method="POST" action="{{ url('trainer/password/email') }}">
+            <form method="POST" action="{{ url('trainer/password/email/'.App::getLocale()) }}">
                 {{ csrf_field() }}
-                <input name="email" value="{{ old('email') }}" type="email" placeholder="Էլ-հասցե">
+                <input name="email" value="{{ old('email') }}" type="email" placeholder="@lang('auth.email')">
                 <div class="login-reg-button">
-                    <button type="submit">Ողարկել</button>
+                    <button type="submit">@lang('global.send')</button>
                 </div>
 
             </form>

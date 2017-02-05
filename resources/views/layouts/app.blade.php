@@ -18,50 +18,29 @@
     <meta property="og:description"   content="Your description" />
     <meta property="og:image"         content="{{ url('/').'/images/logo.png' }}" />
 
+    <meta name="title" content="Fitness Cook">
+    <meta name="description" content="Your description">
+    <link rel="image_src" href="{{ url('/').'/images/logo.png' }}">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Fitness Cook">
+    <meta name="twitter:image" content="{{ url('/').'/images/logo.png' }}">
+    <meta name="twitter:description" content="Tour description">
+    <meta name="twitter:site" content="user">
+
+    <meta itemprop="name" content="Fitness Cook">
+    <meta itemprop="description" content="Your description">
+    <meta itemprop="image" content="{{ url('/').'/images/logo.png' }}">
+
 
     <script>
         var BASE_URL = '{{ url('/') }}';
-
-        function createCookie(name,value,days) {
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime()+(days*24*60*60*1000));
-                var expires = "; expires="+date.toGMTString();
-            }
-            else var expires = "";
-            document.cookie = name+"="+value+expires+"; path=/";
-        }
-
-        function readCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for(var i=0;i < ca.length;i++) {
-                var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-            }
-            return null;
-        }
-
-        function eraseCookie(name) {
-            createCookie(name,"",-1);
-        }
-
-        function checkCookie(name)
-        {
-            return readCookie(name) != null;
-        }
-
-        if(checkCookie("XYZ")) {
-            createCookie("XYZ","SMURF",1);
-            document.write("reset cookie");
-        }
-        else {
-            createCookie("XYZ","SMURF",1);
-            document.write(readCookie("XYZ"));
-        }
+        var token = '{{ csrf_token() }}';
+        var locale = '{{ App::getLocale() }}';
     </script>
 
+    <link rel="stylesheet" href="/rrssb-master/css/rrssb.css" />
     @yield('styles')
 </head>
 <body>
@@ -74,39 +53,15 @@
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
 <script src="{{ url('lib/jQuery.scrollSpeed.js')}}"></script>
-<script>
-    $(function() {
 
-        // Default
-        jQuery.scrollSpeed(100, 800);
-    });
-</script>
-<script>
-    $(document).find('select[name="lang"]').change(function(){
-        var lang = $(this).val();
-        window.location.href = lang;
-    })
-</script>
-<script>
-    if(checkCookie('basket') && (readCookie('basket')).length > 0) {
-        var basket = JSON.parse(readCookie('basket'));
-
-        var basket_count = 0;
-        $.each(basket, function (key, item) {
-            basket_count = parseInt(basket_count) + parseInt(item.count)
-        });
-    }
-    else {
-        var basket_count = 0;
-    }
-    $('.basket_count').text(basket_count);
-</script>
-    
-
+<!-- Custom script -->
+<script src="/js/main.js"></script>
+<script src="/rrssb-master/js/rrssb.js"></script>
 @yield('scripts')
 </body>
 </html>

@@ -16,8 +16,8 @@
 
     <script>
         var BASE_URL = '{{ url('/') }}';
-
         var token = '{{ csrf_token() }}';
+        var current = '{{ url()->current() }}';
     </script>
 
     @yield('styles')
@@ -49,10 +49,9 @@
 <!-- Custom and plugin javascript -->
 <script src="/template/js/inspinia.js"></script>
 <script src="/template/js/plugins/pace/pace.min.js"></script>
+
 @yield('scripts')
-<script>
-    var current = '{{ url()->current() }}';
-</script>
+
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script src="/admin/js/broadcasting.js"></script>
 

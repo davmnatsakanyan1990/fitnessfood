@@ -18,6 +18,7 @@ class Trainer extends Authenticatable
         'email',
         'address',
         'phone',
+        'gym_id',
         'workplace',
         'date_of_birth',
         'username',

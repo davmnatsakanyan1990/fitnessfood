@@ -29,11 +29,22 @@ class SettingsController extends Controller
             $this->trainer = Auth::guard('trainer')->user();
     }
 
+    /**
+     * Show trainer settings page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(){
         $trainer = Trainer::with('image')->find($this->trainer->id);
         return view('trainer.settings', compact('trainer'));
     }
 
+    /**
+     * Update trainer settings
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request){
 
         if(empty($request->current_password) && empty($request->password) && empty($request->password_conformation)){
@@ -41,13 +52,16 @@ class SettingsController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'email' => 'required',
+                'phone' => 'required',
                 'image' => 'image'
             ]);
 
             Trainer::where('id', $this->trainer->id)->update([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
-                'email' => $request->email
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'gym_id' => $request->gym
             ]);
 
             if($request->hasFile('image')){
@@ -84,6 +98,8 @@ class SettingsController extends Controller
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'email' => $request->email,
+                    'phone' => $request->phone,
+                    'gym_id' => $request->gym,
                     'password' => bcrypt($request->password)
 
                 ]);

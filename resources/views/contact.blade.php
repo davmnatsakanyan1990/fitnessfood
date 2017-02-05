@@ -63,7 +63,7 @@
                         @endforeach
                     </div>
                 @endif
-                <form class="contact-page-form" method="post" action="{{ url('contact/send') }}">
+                <form class="contact-page-form" method="post" action="{{ url('contact/send/'.App::getLocale()) }}">
                     {{ csrf_field() }}
                     <div class="col-sm-6">
                         <input name="name" value="{{ old('name') }}" class="form-control" type="text" placeholder="@lang('global.name')">

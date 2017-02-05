@@ -12,6 +12,11 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        Setting::create(['trainer_percent' => 7]);
+        Setting::create([
+            'trainer_percent' => 7,
+            'shipping_price' => 600,
+            'min_payment_amount' => 5000,
+            'min_amount_free_shipping' => 2000
+        ]);
     }
 }

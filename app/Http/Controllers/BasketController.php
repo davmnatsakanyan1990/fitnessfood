@@ -62,4 +62,15 @@ class BasketController extends Controller
         return view('basket', compact('trainers', 'shipping', 'min_amount_free_shipping', 'products', 'total'));
     }
 
+    // Ajax call
+    public function products(Request $request){
+        $products = [];
+        foreach($request->basket as $product){
+            $object = Product::find($product['product_id']);
+            $object->count = $product['count'];
+            array_push($products, $object);
+        }
+
+        return $products;
+    }
 }

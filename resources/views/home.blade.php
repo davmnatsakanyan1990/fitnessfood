@@ -30,9 +30,9 @@
                         @foreach($row as $product)
                         <!-- 1 -->
                         <div class="col-sm-6 col-md-3" >
-                            <div class="tumb-wrap ">
+                            <div class="tumb-wrap" data-id="{{ $product->id }}">
                                 <div class="for-img">
-                                    <img src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" data-id="{{ $product->id }}" class="img-responsive product" alt="">
+                                    <img data-toggle="modal" data-target="#productModal" src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" data-id="{{ $product->id }}" class="img-responsive product" alt="">
                                     <div class="prod-inf">
                                         <p>{{ $product->title }}</p>
                                         <div class="clearfix">
@@ -63,86 +63,86 @@
                         @endforeach
                     </div><!-- Row end -->
                 </div><!-- home-product-cont end -->
-                    <div class="container opening-block"><!-- Opening Block -->
-                        <div class="row">
-                    @foreach($row as $product)
-                        <div class="reapeating-block" id="{{ $product->id }}"><!-- * 1 * -->
-                            <div class="col-md-4">
-                                <div class="gall-big">
-                                    <img src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" class="img-responsive" alt="">
-                                </div>
-                                <ul class="sm-gallery-ul list-inline text-center">
-                                    @if(count($product->images) > 0)
-                                        @foreach($product->images as $image)
-                                        <li><a href="javascript:;"><img src="images/products/{{ $image->name }}" data-big-src="images/products/{{ $image->name }}" alt=""></a></li>
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </div>
-                            <div class="col-sm-8">
-                                <h2>{{ $product->title }}</h2>
-                                <p>{{ $product->description }}</p>
-                                <h3>@lang('product.nutritional value') - {{ $product->nutritional_value }}@lang('product.g').</h3>
-                                <div class="sp-ch-k">
-                                    <div>
-                                        <p>@lang('product.proteins')<span>{{ $product->proteins }}@lang('product.g')</span></p>
-                                        <p>@lang('product.carbs')<span>{{ $product->carbs }}@lang('product.g')</span></p>
-                                    </div>
-                                    <div>
-                                        <p>@lang('product.fats')<span>{{ $product->fats }}@lang('product.g')</span></p>
-                                        <p>@lang('product.calories')<span>{{ $product->calories }}@lang('product.g')</span></p>
-                                    </div>
-                                </div>
+                    {{--<div class="container opening-block"><!-- Opening Block -->--}}
+                        {{--<div class="row">--}}
+                    {{--@foreach($row as $product)--}}
+                        {{--<div class="reapeating-block" id="{{ $product->id }}"><!-- * 1 * -->--}}
+                            {{--<div class="col-md-4">--}}
+                                {{--<div class="gall-big">--}}
+                                    {{--<img src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" class="img-responsive" alt="">--}}
+                                {{--</div>--}}
+                                {{--<ul class="sm-gallery-ul list-inline text-center">--}}
+                                    {{--@if(count($product->images) > 0)--}}
+                                        {{--@foreach($product->images as $image)--}}
+                                        {{--<li><a href="javascript:;"><img src="images/products/{{ $image->name }}" data-big-src="images/products/{{ $image->name }}" alt=""></a></li>--}}
+                                        {{--@endforeach--}}
+                                    {{--@endif--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-sm-8">--}}
+                                {{--<h2>{{ $product->title }}</h2>--}}
+                                {{--<p>{{ $product->description }}</p>--}}
+                                {{--<h3>@lang('product.nutritional value') - {{ $product->nutritional_value }}@lang('product.g').</h3>--}}
+                                {{--<div class="sp-ch-k">--}}
+                                    {{--<div>--}}
+                                        {{--<p>@lang('product.proteins')<span>{{ $product->proteins }}@lang('product.g')</span></p>--}}
+                                        {{--<p>@lang('product.carbs')<span>{{ $product->carbs }}@lang('product.g')</span></p>--}}
+                                    {{--</div>--}}
+                                    {{--<div>--}}
+                                        {{--<p>@lang('product.fats')<span>{{ $product->fats }}@lang('product.g')</span></p>--}}
+                                        {{--<p>@lang('product.calories')<span>{{ $product->calories }}@lang('product.g')</span></p>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
-                                <div class="social-wrap clearfix"><!-- Social block -->
-                                    <div>
-                                        <ul class="list-inline">
-                                            <li><a href="#"><img src="images/social/share.png" alt="share.png"></a></li>
-                                            <li><a href="#"><img src="images/social/1.png" alt="social/1.png"></a></li>
-                                            <li><a href="#"><img src="images/social/2.png" alt="social/2.png"></a></li>
-                                            <li><a href="#"><img src="images/social/3.png" alt="social/3.png"></a></li>
-                                            <li><a href="#"><img src="images/social/4.png" alt="social/4.png"></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="sided-to-social">
-                                        <div class="prod-inf">
-                                            <div class="clearfix">
-                                                <div class="p-price">{{ $product->price }}<sub>@lang('product.amd')</sub></div>
-                                            </div>
-                                            <div class="quantity-wrap clearfix">
-                                                <div>
-                                                    <form class="quantity-form" method="POST" action="#">
-                                                        <div>
-                                                            <input type="text" name="quantity" value="1" class="qty">
-                                                        </div>
-                                                        <div>
-                                                            <input type="button" value="+" class="qtyplus" field="quantity">
-                                                            <input type="button" value="−" class="qtyminus" field="quantity">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="add-to-card-wrap">
-                                                    <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>
-                                                </div>
-                                            </div>
-                                        </div><!-- prod-info end in opening block -->
-                                    </div><!-- Sided to social -->
-                                </div><!-- Social block -->
-                            </div><!-- col-sm-8 end-->
-                        </div><!-- reapiting-block end-->
-                    @endforeach
-                    </div>
-                </div>
+                                {{--<div class="social-wrap clearfix"><!-- Social block -->--}}
+                                    {{--<div>--}}
+                                        {{--<ul class="list-inline">--}}
+                                            {{--<li><a href="#"><img src="images/social/share.png" alt="share.png"></a></li>--}}
+                                            {{--<li><a href="#"><img src="images/social/1.png" alt="social/1.png"></a></li>--}}
+                                            {{--<li><a href="#"><img src="images/social/2.png" alt="social/2.png"></a></li>--}}
+                                            {{--<li><a href="#"><img src="images/social/3.png" alt="social/3.png"></a></li>--}}
+                                            {{--<li><a href="#"><img src="images/social/4.png" alt="social/4.png"></a></li>--}}
+                                        {{--</ul>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="sided-to-social">--}}
+                                        {{--<div class="prod-inf">--}}
+                                            {{--<div class="clearfix">--}}
+                                                {{--<div class="p-price">{{ $product->price }}<sub>@lang('product.amd')</sub></div>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="quantity-wrap clearfix">--}}
+                                                {{--<div>--}}
+                                                    {{--<form class="quantity-form" method="POST" action="#">--}}
+                                                        {{--<div>--}}
+                                                            {{--<input type="text" name="quantity" value="1" class="qty">--}}
+                                                        {{--</div>--}}
+                                                        {{--<div>--}}
+                                                            {{--<input type="button" value="+" class="qtyplus" field="quantity">--}}
+                                                            {{--<input type="button" value="−" class="qtyminus" field="quantity">--}}
+                                                        {{--</div>--}}
+                                                    {{--</form>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="add-to-card-wrap">--}}
+                                                    {{--<button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div><!-- prod-info end in opening block -->--}}
+                                    {{--</div><!-- Sided to social -->--}}
+                                {{--</div><!-- Social block -->--}}
+                            {{--</div><!-- col-sm-8 end-->--}}
+                        {{--</div><!-- reapiting-block end-->--}}
+                    {{--@endforeach--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 @endforeach
             @endif
 
         </section><!-- Products section -->
-        {{--<h2>Small Modal</h2>--}}
-        {{--<!-- Trigger the modal with a button -->--}}
+        <h2>Small Modal</h2>
+        <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="productModal" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -157,75 +157,7 @@
                         <li data-target="#carousel-id" data-slide-to="2" class="active"></li>
                     </ol> -->
                     <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="/images/modalslides/1.png" alt="m1">
-                            <div class="container">
-                                <div class="modal-product-info">
-                                    <h2>Nutrition Facts</h2>
-                                    <h4>Per 100g</h4>
-                                    <hr>
-                                    <ul>
-                                        <li>Protein <span>7.7g</span></li>
-                                        <li>Fat     <span>5.9g</span></li>
-                                        <li>Carbo   <span>14.7g</span></li>
-                                        <li>Calories<span>148k</span></li>
-                                    </ul>
-                                    <hr>
-                                    <p>
-                                        <span>Ingredients:</span>
-                                        oat bran, milk1 %, sucralose,
-                                        lemon peel, lemon, corn starch, egg
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="/images/modalslides/1.png" alt="m1">
-                            <div class="container">
-                                <div class="modal-product-info">
-                                    <h2>Nutrition Facts</h2>
-                                    <h4>Per 100g</h4>
-                                    <hr>
-                                    <ul>
-                                        <li>Protein <span>7.7g</span></li>
-                                        <li>Fat     <span>5.9g</span></li>
-                                        <li>Carbo   <span>14.7g</span></li>
-                                        <li>Calories<span>148k</span></li>
-                                    </ul>
-                                    <hr>
-                                    <p>
-                                        <span>Ingredients:</span>
-                                        oat bran, milk1 %, sucralose,
-                                        lemon peel, lemon, corn starch, egg
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="/images/modalslides/1.png" alt="m1">
-                            <div class="container">
-                                <div class="modal-product-info">
-                                   <h2>Nutrition Facts</h2>
-                                    <h4>Per 100g</h4>
-                                    <hr>
-                                    <ul>
-                                        <li>Protein <span>7.7g</span></li>
-                                        <li>Fat     <span>5.9g</span></li>
-                                        <li>Carbo   <span>14.7g</span></li>
-                                        <li>Calories<span>148k</span></li>
-                                    </ul>
-                                    <hr>
-                                    <p>
-                                        <span>Ingredients:</span>
-                                        oat bran, milk1 %, sucralose,
-                                        lemon peel, lemon, corn starch, egg
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        {{-- Filling from axaj call--}}
                     </div>
                     <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                     <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -242,5 +174,10 @@
 @endsection
 
 @section('scripts')
-    <script src="/js/main.js"></script>
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+
+    <script src="/js/home.js"></script>
 @endsection

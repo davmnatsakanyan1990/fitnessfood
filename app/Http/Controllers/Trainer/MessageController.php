@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 
@@ -18,8 +19,13 @@ class MessageController extends Controller
 {
     protected $trainer;
 
-    public function __construct(){
+    public function __construct(Request $request){
         $this->middleware('auth:trainer');
+
+        if($request->route()->parameter('locale')){
+            $this->locale = $request->route()->parameter('locale');
+            App::setLocale($this->locale);
+        }
 
         if(Auth::guard('trainer')->check())
             $this->trainer = Auth::guard('trainer')->user();
@@ -32,6 +38,9 @@ class MessageController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function create(Request $request){
+        $this->validate($request, [
+            'amount' => 'required'
+        ]);
 
         $trainer = Trainer::with('image')->find($this->trainer->id);
 
@@ -50,13 +59,13 @@ class MessageController extends Controller
 
 
         if($request->amount > $active){
-            return redirect()->back()->with('error', 'Դուք չունեք բավականաչափ գումար ձեր հաշվի վրա');
+            return redirect()->back()->with('error', trans('validation.amount_error'));
         }
 
         // Minimum amount
         $min_payment_amount = Setting::first()->min_payment_amount;
         if($active < $min_payment_amount){
-            return redirect()->back()->with('error', 'Նվազագույն գումարի չափը 5000դր է');
+            return redirect()->back()->with('error', trans('validation.min_amount', ['attribute' => $min_payment_amount]));
         }
 
         $message = Message::create(['trainer_id' => $this->trainer->id, 'amount' => $request->amount]);

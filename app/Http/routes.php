@@ -13,13 +13,14 @@
 
 
 use App\Models\Setting;
+use BrianFaust\SocialShare\Share;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 Route::get('test1', function (){
-    
+    //Share::facebook(route('post.show',1), 'dff', 'dfdf');
 });
 Route::get('/{locale?}', 'HomeController@index');
-Route::post('orders/new','OrderController@create');
+Route::post('orders/new/{locale}','OrderController@create');
 
 /**
  * Trainer route part
@@ -30,7 +31,7 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::post('login/{locale}', 'Auth\AuthController@login');
     Route::get('logout/{locale}', 'Auth\AuthController@logout');
 
-    Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+    Route::post('password/email/{locale}', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
     Route::get('password/reset/{locale}/{token?}', 'Auth\PasswordController@getReset');
 
@@ -42,7 +43,7 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::get('settings/{locale}', 'SettingsController@index');
     Route::post('settings/update', 'SettingsController@update');
 
-    Route::post('message/new', 'MessageController@create');
+    Route::post('message/new/{locale}', 'MessageController@create');
 
     Route::get('payments/{locale}', 'PaymentsController@index');
 
@@ -87,6 +88,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('trainers/approve/{id}', 'TrainerController@approve');
     Route::get('trainer/messages/seen/{trainer_id}', 'TrainerController@messagesSeen');
     Route::get('trainers/seen/{id}', 'TrainerController@seen');
+    Route::get('trainers/messages/{id}/{count}', 'TrainerController@moreMessages');
 
     Route::get('payments', 'PaymentController@index');
     Route::post('payments/update/{id}', 'PaymentController@update');
@@ -97,9 +99,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('settings/update', 'SettingsController@update');
 
     Route::get('gyms', 'GymController@index');
-    Route::get('gyms/new', 'GymController@create');
     Route::post('gyms/create', 'GymController@save');
-    Route::get('gyms/edit/{id}', 'GymController@edit');
+    Route::get('gyms/get/{id}', 'GymController@getGym');
     Route::post('gyms/update/{id}', 'GymController@update');
     Route::post('gyms/delete/{id}', 'GymController@delete');
 
@@ -111,9 +112,12 @@ Route::get('about/{locale}', function($locale){
 });
 Route::get('basket/{locale}', 'BasketController@index');
 Route::get('contact/{locale}', 'ContactUsController@index');
-Route::post('contact/send', 'ContactUsController@send');
+Route::post('contact/send/{locale}', 'ContactUsController@send');
 
 // Ajax call
 Route::post('basket/products/{locale}', 'BasketController@products');
+
+// Ajax call
+Route::get('products/get/{id}/{locale}', 'HomeController@getProduct');
 
 

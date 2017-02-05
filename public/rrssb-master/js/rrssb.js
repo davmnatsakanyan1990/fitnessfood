@@ -349,7 +349,7 @@
 		 */
 
 		try {
-			$(document).on('click', '.rrssb-buttons a.popup', {}, function popUp(e) {
+			$(document).on('click', '.rrssb-buttonss a.popup', {}, function popUp(e) {
 				var self = $(this);
 				popupCenter(self.attr('href'), self.find('.rrssb-text').html(), 580, 470);
 				e.preventDefault();

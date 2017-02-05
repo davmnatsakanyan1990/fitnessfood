@@ -35,6 +35,7 @@ return [
     'logout' => 'Logout',
     'forgot password?' => 'Forgot password ?',
     'forgot password' => 'Forgot password',
+    'forgot password_message' => 'Insert your email and you will get a message to reset your password',
     'remember me' => 'Remember me',
     'admin login' => 'Admin Login'
 

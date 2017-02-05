@@ -64,6 +64,7 @@ class ProductController extends AdminBaseController
             'carbs' => $request->carbs,
             'fats' => $request->fats,
             'calories' => $request->calories,
+            'weight' => $request->weight,
             'status'=>$request->status
         ]);
 
@@ -107,6 +108,7 @@ class ProductController extends AdminBaseController
             'carbs' => $request->carbs,
             'fats' => $request->fats,
             'calories' => $request->calories,
+            'weight' => $request->weight,
             'status'=>$request->status
         ]);
 
@@ -165,6 +167,11 @@ class ProductController extends AdminBaseController
         }
     }
 
+    /**
+     * Delete product image
+     *
+     * @param $id
+     */
     public function deleteImage($id){
         $image = Image::find($id);
 
@@ -174,6 +181,12 @@ class ProductController extends AdminBaseController
             unlink('images/products/'.$image->name);
     }
 
+    /**
+     * Set image as thumbnail image for product
+     *
+     * @param $product_id
+     * @param $image_id
+     */
     public function setThumbnail($product_id, $image_id){
         $thum_img = Image::where('imageable_id', $product_id)->where('role', 1)->first();
         if($thum_img){

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\App;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -39,7 +40,7 @@ class OrderController extends Controller
     public function create(Request $request){
         $this->validate($request, [
             'name' => 'required',
-            'phone' => 'required'
+            'phone' => 'required|numeric|digits:9'
         ]);
         
         $name = $request->name;

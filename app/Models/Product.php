@@ -15,6 +15,7 @@ class Product extends Model
         'carbs',
         'fats',
         'calories',
+        'weight',
         'price',
     ];
 

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('styles')
+
     <!-- select2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
 
@@ -82,11 +83,18 @@
                             </ul>
                             <hr>
                             <div class="basket-form-div">
-                                <form action="{{ url('orders/new') }}" method="post">
+                                @if(count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        @foreach($errors->all() as $error)
+                                            <p>{{ $error }}</p>
+                                        @endforeach
+                                    </div>
+                                @endif
+                                <form action="{{ url('orders/new/'.App::getLocale()) }}" method="post">
                                     {{ csrf_field() }}
                                     <div class="basket-first-inps">
-                                        <input name="name" type="name" placeholder="@lang('auth.name')">
-                                        <input name="phone" type="number" placeholder="@lang('auth.tel').">
+                                        <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('auth.name')">
+                                        <input name="phone" type="text" value="{{ old('phone') }}" placeholder="@lang('auth.tel').">
                                     </div>
 
                                     <div class="check-box">
@@ -99,7 +107,7 @@
                                         <select name="trainer" class="trainer form-control"
                                                 style="width: 100% !important; ">
                                             @foreach($trainers as $trainer)
-                                                <option data-image="{{ $trainer->image ? $trainer->image->name : ''}}"
+                                                <option data-image="{{ $trainer->image ? $trainer->image->name : 'profile-icon.png'}}"
                                                         value="{{ $trainer->id }}">{{ $trainer->first_name }} {{ $trainer->last_name }}</option>
                                             @endforeach
                                         </select>
@@ -133,31 +141,9 @@
 
 @section('scripts')
     <script src="{{ url('select2-4.0.3/dist/js/select2.min.js') }}"></script>
-    <script src="{{ url('select2-4.0.3/dist/js/i18n/en.js') }}"></script>
 
-    <script type="text/javascript">
-
-        var token = '{{ csrf_token() }}';
-        var locale = '{{ App::getLocale() }}';
+    <script>
         var min_amount_free_shipping = '{{ $min_amount_free_shipping }}';
-
-        $("select.trainer").select2({
-            language: "ru",
-            templateResult: formatTrainer
-        });
-
-        function formatTrainer(trainer) {
-
-            if (!trainer.id) {
-                return trainer.first_name;
-            }
-            var image = trainer.element.attributes[0].value;
-            var $trainer = $(
-                    '<span><img width="20" height="20" src="/images/trainerImages/' + image + '" /> ' + trainer.text + '</span>'
-            );
-            return $trainer;
-        }
-        ;
     </script>
     <script src="/js/basket.js"></script>
 @endsection

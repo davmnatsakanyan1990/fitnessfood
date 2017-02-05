@@ -13,7 +13,12 @@ class HomeController extends AdminBaseController
         $this->middleware('auth:admin');
         parent::__construct();
     }
-    
+
+    /**
+     * Show home page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(){
         return view('admin.home');
     }

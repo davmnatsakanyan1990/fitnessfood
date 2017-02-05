@@ -14,7 +14,7 @@ $(document).find('input[name="quantity"]').change(function(){
     });
 
     $('.basket_count').text(basket_count);
-})
+});
 
 // click on remove product button
 $(document).on('click','.remove', function(){
@@ -55,9 +55,11 @@ $(document).find('input[name="is_addvised"]').on('click', function(){
     var is_checked = $(document).find('input[name="is_addvised"]').is(':checked');
     if(is_checked){
         $('.marzich-search').addClass('show-open');
+        $(this).next('label').addClass('checked-check')
     }
     else{
         $('.marzich-search').removeClass('show-open');
+        $(this).next('label').removeClass('checked-check')
     }
 });
 
@@ -157,6 +159,22 @@ function updateCount(count, product_id, price){
 
     $('#total').html(total);
 
+}
+
+$("select.trainer").select2({
+    templateResult: formatTrainer
+});
+
+function formatTrainer(trainer) {
+
+    if (!trainer.id) {
+        return trainer.first_name;
+    }
+    var image = trainer.element.attributes[0].value;
+    var $trainer = $(
+        '<span><img width="20" height="20" src="/images/trainerImages/' + image + '" /> ' + trainer.text + '</span>'
+    );
+    return $trainer;
 }
 
 

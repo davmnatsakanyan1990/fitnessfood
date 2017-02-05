@@ -35,6 +35,7 @@ return [
     'logout' => 'Выйти',
     'forgot password?' => 'Забыли пароль ?',
     'forgot password' => 'Забыли пароль',
+    'forgot password_message' => 'напишите ваш аддрес електронной почти и вы получите сообщение для вотановления пороля',
     'remember me' => 'Запомнит',
     'admin login' => 'Админ вход'
 

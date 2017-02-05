@@ -23,6 +23,12 @@ class ContactUsController extends Controller
        return view('contact');
    }
 
+    /**
+     * Send new message
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function send(Request $request){
         $this->validate($request, [
             'email' => 'required|email',

@@ -27,7 +27,7 @@
                         </select>
                     </div>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
+                        <li class="shopping-cart">
                             <a href="{{ url('basket/'.App::getLocale()) }}">
                                 <img src="/images/zambyux.png" style="vertical-align: middle;" alt="images/zambyux.png">
                                 @lang('global.basket')(<span  class="basket_count"></span>)

@@ -13,20 +13,25 @@
                 <div class="ibox">
                     <div class="ibox-content">
                         <h4 class="pull-left">All Products</h4>
-                        <a class="pull-right" href="{{ url('admin/products/create') }}"><button class="btn btn-warning pull-right " type="button"><i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;Add Product</button></a>
-                        <div style="border-top: none; border-bottom: 1px dashed #e7eaec; height: 25px" class="hr-line-dashed"></div>
+                        <a class="pull-right" href="{{ url('admin/products/create') }}">
+                            <button class="btn btn-warning pull-right " type="button">
+                                <i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;Add Product
+                            </button>
+                        </a>
+                        <div style="border-top: none; border-bottom: 1px dashed #e7eaec; height: 25px"
+                             class="hr-line-dashed"></div>
                         @if(session('message'))
-                        <div class="alert alert-success alert-dismissable">
-                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
-                            <p>{{ session('message') }}</p>
-                        </div>
+                            <div class="alert alert-success alert-dismissable">
+                                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
+                                <p>{{ session('message') }}</p>
+                            </div>
                         @endif
                         <input type="text" class="form-control input-sm m-b-xs" id="filter"
                                placeholder="Search in table">
-                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="6" data-filter=#filter>
+                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="6"
+                               data-filter=#filter>
                             <thead>
                             <tr>
-
                                 <th data-sort-ignore="true">Image</th>
                                 <th data-toggle="true">Product Name</th>
                                 <th data-hide="phone, tablet" data-sort-ignore="true">Description</th>
@@ -36,55 +41,68 @@
                                 <th data-hide="phone" data-sort-ignore="true">Fats</th>
                                 <th data-hide="phone" data-sort-ignore="true">Calories</th>
                                 <th data-hide="phone">Price</th>
+                                <th data-hide="phone">Weight</th>
                                 <th class="text-right" data-sort-ignore="true">Action</th>
-
                             </tr>
                             </thead>
                             <tbody>
                             @if(count($products) > 0)
-                            @foreach($products as $product)
-                            <tr>
-                                <td>
-                                    <img src="/images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}" class="img-thumbnail img-responsive" width="100">
-                                </td>
-                                <td>
-                                    {{ $product->title ? json_decode($product->title)->am : '' }}<br>
-                                    {{ $product->title ? json_decode($product->title)->ru : '' }}<br>
-                                    {{ $product->title ? json_decode($product->title)->en : '' }}<br>
-                                </td>
-                                <td class="description">
-                                    {{$product->description ? json_decode($product->description)->am : '' }} <br>
-                                    {{$product->description ? json_decode($product->description)->ru : '' }} <br>
-                                    {{$product->description ? json_decode($product->description)->en : '' }} <br>
-                                </td>
-                                <td>
-                                    {{ $product->nutritional_value }}
-                                </td>
-                                <td>
-                                    {{ $product->proteins }}
-                                </td>
-                                <td>
-                                    {{ $product->carbs }}
-                                </td>
-                                <td>
-                                    {{ $product->fats }}
-                                </td>
-                                <td>
-                                    {{ $product->calories }}
-                                </td>
-                                <td>
-                                    {{ $product->price }}
-                                </td>
-                                <td class="text-right action">
-                                    <div class="btn-group">
-                                        <a href="{{ url('admin/products/edit/'.$product->id) }}"><button class="btn-white btn btn-xs">Edit</button></a>
-                                        <button style="color: #337ab7" data-id="{{ $product->id }}" class=" delete btn-white btn btn-xs">Delete</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
+                                @foreach($products as $product)
+                                    <tr>
+                                        <td>
+                                            <img src="/images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}"
+                                                 class="img-thumbnail img-responsive" width="100">
+                                        </td>
+                                        <td>
+                                            {{ $product->title ? json_decode($product->title)->am : '' }}<br>
+                                            {{ $product->title ? json_decode($product->title)->ru : '' }}<br>
+                                            {{ $product->title ? json_decode($product->title)->en : '' }}<br>
+                                        </td>
+                                        <td class="description">
+                                            {{$product->description ? json_decode($product->description)->am : '' }}
+                                            <br>
+                                            {{$product->description ? json_decode($product->description)->ru : '' }}
+                                            <br>
+                                            {{$product->description ? json_decode($product->description)->en : '' }}
+                                            <br>
+                                        </td>
+                                        <td>
+                                            {{ $product->nutritional_value }}
+                                        </td>
+                                        <td>
+                                            {{ $product->proteins }}
+                                        </td>
+                                        <td>
+                                            {{ $product->carbs }}
+                                        </td>
+                                        <td>
+                                            {{ $product->fats }}
+                                        </td>
+                                        <td>
+                                            {{ $product->calories }}
+                                        </td>
+                                        <td>
+                                            {{ $product->price }}
+                                        </td>
+                                        <td>
+                                            {{ $product->weight }}
+                                        </td>
+                                        <td class="text-right action">
+                                            <div class="btn-group">
+                                                <a href="{{ url('admin/products/edit/'.$product->id) }}">
+                                                    <button class="btn-white btn btn-xs">Edit</button>
+                                                </a>
+                                                <button style="color: #337ab7" data-id="{{ $product->id }}"
+                                                        class=" delete btn-white btn btn-xs">Delete
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             @else
-                            <tr><td class="text-center" colspan="10">There aren't any products</td></tr>
+                                <tr>
+                                    <td class="text-center" colspan="10">There aren't any products</td>
+                                </tr>
                             @endif
                             </tbody>
                             <tfoot>
@@ -95,7 +113,6 @@
                             </tr>
                             </tfoot>
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -106,10 +123,10 @@
 @section('scripts')
     <script src="/template/js/plugins/footable/footable.all.min.js"></script>
 
-
     <!-- Sweet alert -->
     <script src="/template/js/plugins/sweetalert/sweetalert.min.js"></script>
 
+    <!-- Custom scripts -->
     <script src="/admin/js/products.js"></script>
 
 @endsection

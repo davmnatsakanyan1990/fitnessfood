@@ -13,7 +13,8 @@
                 <div class="ibox">
                     <div class="ibox-content">
                         <h4 class="pull-left">All Gyms</h4>
-                        <a class="pull-right" href="{{ url('admin/gyms/new') }}"><button class="btn btn-warning pull-right " type="button"><i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;Add Gym</button></a>
+                        {{--<a class="pull-right" href="{{ url('admin/gyms/new') }}"><button class="btn btn-warning pull-right " type="button"><i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;Add Gym</button></a>--}}
+                        <button class="btn btn-warning pull-right " type="button" data-toggle="modal" data-target="#addGym"><i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;Add Gym</button>
                         <div style="border-top: none; border-bottom: 1px dashed #e7eaec; height: 25px" class="hr-line-dashed"></div>
                         @if(session('message'))
                             <div class="alert alert-success">
@@ -33,7 +34,7 @@
                                 <tr>
                                     <td>{{ $gym->name }}</td>
                                     <td>
-                                        <a style="color: inherit" href="{{ url('admin/gyms/edit/'.$gym->id) }}"><button class="btn-white btn btn-xs">Edit</button></a>
+                                        <button data-toggle="modal" data-target="#editGym" data-id="{{ $gym->id }}" class="btn-white btn btn-xs edit">Edit</button>
                                         <button data-id="{{ $gym->id }}" class="btn-white btn btn-xs delete">Delete</button>
                                     </td>
                                 </tr>
@@ -50,6 +51,60 @@
             </div>
         </div>
     </div>
+
+    <!-- New Gym -->
+    <div id="addGym" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">New Gym</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="errors"></div>
+                   <form id="new_gym">
+                       <div class="form-group">
+                           <input type="text" name="name" class="form-control" placeholder="Name">
+                       </div>
+                   </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="add">Add</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Edit Gym -->
+    <div id="editGym" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Gym</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="errors"></div>
+                   <form id="edit_gym">
+                       <div class="form-group">
+                           <input type="text" name="name" class="form-control" placeholder="Name">
+                       </div>
+                   </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 @endsection
 @section('scripts')
     <!-- FooTable -->
@@ -58,37 +113,5 @@
     <!-- Sweet alert -->
     <script src="/template/js/plugins/sweetalert/sweetalert.min.js"></script>
 
-    <script>
-        $('.delete').click(function () {
-            var row = $(this);
-
-            swal({
-                        title: "Are you sure?",
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#1ab394",
-                        confirmButtonText: "Yes, delete it!",
-                        cancelButtonText: "No, cancel plx!",
-                        closeOnConfirm: false,
-                        closeOnCancel: true },
-                    function (isConfirm) {
-                        if (isConfirm) {
-                            var gym_id = row.data('id');
-                            $.ajax({
-                                url: BASE_URL+'/admin/gyms/delete/'+gym_id,
-                                type: 'post',
-                                data: {
-                                    _token: token
-                                },
-                                success: function(data){
-                                    row.closest('tr').remove();
-                                }
-                            });
-                            swal("Deleted!", "Gym has been deleted.", "success");
-                        } else {
-//                                swal("Cancelled", "Your imaginary file is safe :)", "error");
-                        }
-                    });
-        });
-    </script>
+    <script src="/admin/js/gyms.js"></script>
 @endsection

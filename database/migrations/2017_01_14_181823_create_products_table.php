@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->double('carbs', 11, 2)->nullable();
             $table->double('fats', 11, 2)->nullable();
             $table->double('calories', 11, 2)->nullable();
+            $table->double('weight', 11, 2)->nullable();
             $table->timestamps();
         });
     }

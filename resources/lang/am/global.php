@@ -28,6 +28,7 @@ return [
     'shipping' => 'Առաքում',
     'order' => 'Պատվիրել',
     'success_order' => 'Ձեր պատվերը ուղարկված է',
-    'free_shipping' => 'Անվճար առաքում'
+    'free_shipping' => 'Անվճար առաքում',
+    'gym' => 'Մարզասրահ',
 
 ];

@@ -1,7 +1,10 @@
 @extends('admin.layouts.index')
 @section('styles')
-        <!-- FooTable -->
-<link href="/template/css/plugins/footable/footable.core.css" rel="stylesheet">
+    <!-- FooTable -->
+    <link href="/template/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+    <!-- Sweet Alert -->
+    <link href="/template/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="  wrapper wrapper-content animated fadeInRight ecommerce">
@@ -10,12 +13,10 @@
                 <div class="ibox">
                     <div class="ibox-content">
                         <h4>Payments</h4>
-
                         <div class="hr-line-dashed"></div>
                         <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="8">
                             <thead>
                             <tr>
-
                                 <th>Date</th>
                                 <th>Name</th>
                                 <th>Amount</th>
@@ -28,22 +29,32 @@
                             </thead>
                             <tbody>
                             @if(count($payments)>0)
-                            @foreach($payments as $payment)
-                            <tr>
-                                <td>{{ $payment->created_at }}</td>
-                                <td>{{ $payment->trainer->name_is_json ? json_decode($payment->trainer->first_name, true)['en'].' '.json_decode($payment->trainer->last_name, true)['en'] : $payment->trainer->first_name.' '.$payment->trainer->last_name }} </td>
-                                <td>{{ $payment->amount }} AMD </td>
-                                <td>Inceptos Hymenaeos Ltd</td>
-                                <td><span class="pie">0.52/1.561</span></td>
-                                <td>20%</td>
-                                <td>Jul 14, 2013</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            @endforeach
+                                @foreach($payments as $payment)
+                                    <tr>
+                                        <td>{{ $payment->created_at }}</td>
+                                        <td>{{ $payment->trainer->first_name.' '.$payment->trainer->last_name }} </td>
+                                        <td>{{ $payment->amount }} AMD</td>
+                                        <td>Inceptos Hymenaeos Ltd</td>
+                                        <td><span class="pie">0.52/1.561</span></td>
+                                        <td>20%</td>
+                                        <td>Jul 14, 2013</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button data-amount="{{ $payment->amount }}"
+                                                        data-id="{{ $payment->id }}"
+                                                        class="btn-white btn btn-xs edit_payment">Edit
+                                                </button>
+                                                <button data-id="{{ $payment->id }}"
+                                                        class=" delete btn-white btn btn-xs delete_payment">Delete
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             @else
-                            <tr>
-                                <td colspan="5" class="text-center">There aren't any payments</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="5" class="text-center">There aren't any payments</td>
+                                </tr>
                             @endif
                             </tbody>
                             <tfoot>
@@ -59,19 +70,22 @@
             </div>
         </div>
     </div>
-@endsection
-@section('scripts')
-        <!-- FooTable -->
-<script src="/template/js/plugins/footable/footable.all.min.js"></script>
+    @endsection
+    @section('scripts')
 
-<!-- Page-Level Scripts -->
-<script>
-    $(document).ready(function() {
+    <!-- FooTable -->
+    <script src="/template/js/plugins/footable/footable.all.min.js"></script>
 
-        $('.footable').footable();
-        $('.footable2').footable();
+    <!-- Sweet alert -->
+    <script src="/template/js/plugins/sweetalert/sweetalert.min.js"></script>
 
-    });
+    <script src="/admin/js/payments.js"></script>
 
-</script>
+    <!-- Custom scripts -->
+    <script>
+        $(document).ready(function () {
+            $('.footable').footable();
+            $('.footable2').footable();
+        });
+    </script>
 @endsection

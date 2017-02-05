@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Gym;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class GymController extends AdminBaseController
 {
@@ -29,35 +27,12 @@ class GymController extends AdminBaseController
     }
 
     /**
-     * Show gym create form
-     * 
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create(){
-        return view('admin.gyms.create');
-    }
-
-    /**
      * Create new gym
-     * 
+     *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function save(Request $request){
         Gym::create(['name' => $request->name]);
-        return redirect('admin/gyms')->with('message', 'Gym was created');
-    }
-
-    /**
-     * Show edit gym form
-     * 
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function edit($id){
-        $gym = Gym::find($id);
-
-        return view('admin.gyms.edit', compact('gym'));
     }
 
     /**
@@ -65,11 +40,9 @@ class GymController extends AdminBaseController
      * 
      * @param Request $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id){
         Gym::where('id', $id)->update(['name' => $request->name]);
-        return redirect('admin/gyms')->with('message', 'Data was updated');
     }
 
     /**
@@ -79,5 +52,17 @@ class GymController extends AdminBaseController
      */
     public function delete($id){
         Gym::where('id', $id)->delete();
+    }
+
+    /**
+     * Get single gym
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getGym($id){
+        $gym = Gym::find($id);
+
+        return $gym;
     }
 }

@@ -28,6 +28,7 @@ return [
     'shipping' => 'Shipping',
     'order' => 'Order',
     'success_order' => 'Order was sent',
-    'free_shipping' => 'Free shipping'
+    'free_shipping' => 'Free shipping',
+    'gym' => 'Gym'
 
 ];

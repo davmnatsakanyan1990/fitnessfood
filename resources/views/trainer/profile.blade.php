@@ -37,6 +37,8 @@
                   </tbody>
                 </table>
             </div><!-- Row For table end -->
+
+            <!-- Pagination -->
             {{ $orders->links() }}
 
             <div class="row stanal" id="info"><!-- Stanal row -->
@@ -45,14 +47,20 @@
                         <li>@lang('product.bonus')</li>
                         <li>{{ $active_bonus }}@lang('product.amd')</li>
                     </ul>
-
                     <hr>
                     @if(session('error'))
                         <div class="alert alert-danger">
                             <p>{{ session('error') }}</p>
                         </div>
                     @endif
-                    <form action="{{ url('trainer/message/new').'#info' }}" method="post" class="kkapnvenq" id="message">
+                    @if(count($errors)>0)
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                    <form action="{{ url('trainer/message/new/'.App::getLocale()).'#info' }}" method="post" class="kkapnvenq" id="message">
                         {{ csrf_field() }}
                         <input type="number" name="amount" placeholder="@lang('product.amount')">
                     </form>

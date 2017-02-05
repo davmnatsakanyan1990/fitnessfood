@@ -24,70 +24,85 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input name="name[am]" value="{{ old('name[am]') }}" type="text" class="form-control" placeholder="Հայերեն">
+                                    <input name="name[am]" value="{{ old('name[am]') }}" type="text"
+                                           class="form-control" placeholder="Հայերեն">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input name="name[ru]" value="{{ old('name[ru]') }}" type="text" class="form-control" placeholder="Русский">
+                                    <input name="name[ru]" value="{{ old('name[ru]') }}" type="text"
+                                           class="form-control" placeholder="Русский">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input name="name[en]" value="{{ old('name[en]') }}" type="text" class="form-control" placeholder="English">
+                                    <input name="name[en]" value="{{ old('name[en]') }}" type="text"
+                                           class="form-control" placeholder="English">
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Price</label>
-                                <div class="col-sm-10"><input name="price" value="{{ old('price') }}" type="text" class="form-control" placeholder="AMD"></div>
+                                <div class="col-sm-10"><input name="price" value="{{ old('price') }}" type="text"
+                                                              class="form-control" placeholder="AMD"></div>
                             </div>
-
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Description</label>
                                 <div class="col-sm-10">
-                                    <textarea rows="5" name="description[am]" class="form-control" placeholder="Հայերեն">{{ old('description[am]') }}</textarea>
+                                    <textarea rows="5" name="description[am]" class="form-control"
+                                              placeholder="Հայերեն">{{ old('description[am]') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <textarea rows="5" name="description[ru]" class="form-control" placeholder="Русский">{{ old('description[ru]') }}</textarea>
+                                    <textarea rows="5" name="description[ru]" class="form-control"
+                                              placeholder="Русский">{{ old('description[ru]') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <textarea rows="5" name="description[en]" class="form-control" placeholder="English">{{ old('description[en]') }}</textarea>
+                                    <textarea rows="5" name="description[en]" class="form-control"
+                                              placeholder="English">{{ old('description[en]') }}</textarea>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Nutritional Value</label>
-                                <div class="col-sm-10"><input name="nutritional_value" type="text" class="form-control" value="{{ old('nutritional_value') }}" placeholder="kcal"></div>
+                                <div class="col-sm-10"><input name="nutritional_value" type="text" class="form-control"
+                                                              value="{{ old('nutritional_value') }}" placeholder="kcal">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Proteins</label>
-                                <div class="col-sm-10"><input name="proteins" type="text" class="form-control" value="{{ old('proteins') }}" placeholder="gram"></div>
+                                <div class="col-sm-10"><input name="proteins" type="text" class="form-control"
+                                                              value="{{ old('proteins') }}" placeholder="gram"></div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Carbs</label>
-                                <div class="col-sm-10"><input name="carbs" type="text" class="form-control" value="{{ old('carbs') }}" placeholder="gram"></div>
+                                <div class="col-sm-10"><input name="carbs" type="text" class="form-control"
+                                                              value="{{ old('carbs') }}" placeholder="gram"></div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Fats</label>
-                                <div class="col-sm-10"><input name="fats" type="text" class="form-control" value="{{ old('fats') }}" placeholder="gram"></div>
+                                <div class="col-sm-10"><input name="fats" type="text" class="form-control"
+                                                              value="{{ old('fats') }}" placeholder="gram"></div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Calories</label>
-                                <div class="col-sm-10"><input name="calories" type="text" class="form-control" value="{{ old('calories') }}" placeholder="gram"></div>
+                                <div class="col-sm-10"><input name="calories" type="text" class="form-control"
+                                                              value="{{ old('calories') }}" placeholder="gram"></div>
                             </div>
-
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Weight</label>
+                                <div class="col-sm-10"><input name="weight" type="text" class="form-control"
+                                                              value="{{ old('weight') }}" placeholder="gram"></div>
+                            </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Status</label>
                                 <div class="col-sm-10">
                                     <select class="form-control m-b" name="status">
                                         <option>Select Status</option>
                                         <option {{ old('status') === 0 ? 'selected' : '' }} value="0">Available</option>
-                                        <option {{ old('status') === 1 ? 'selected' : '' }} value="1">Not Available</option>
+                                        <option {{ old('status') === 1 ? 'selected' : '' }} value="1">Not Available
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -95,7 +110,9 @@
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <button class="btn btn-primary" type="submit">Save</button>
-                                    <a href="{{ url('admin/products') }}"><button class="btn btn-warning" type="button">Cancel</button></a>
+                                    <a href="{{ url('admin/products') }}">
+                                        <button class="btn btn-warning" type="button">Cancel</button>
+                                    </a>
                                 </div>
                             </div>
                         </form>

@@ -20,6 +20,11 @@ class HomeController extends Controller
         }
     }
 
+    /**
+     * Show home page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(){
         if($this->locale)
             $locale = $this->locale;
@@ -36,5 +41,12 @@ class HomeController extends Controller
         $products = $products->chunk(4);
 
         return view('home', compact('products'));
+    }
+
+    public function getProduct($id){
+        $locale = $this->locale;
+        $product = Product::with('images', 'thumb_image')->find($id);
+        $product->description = json_decode($product->description)->$locale;
+        return view('ajax.product_carousel', compact('product'));
     }
 }

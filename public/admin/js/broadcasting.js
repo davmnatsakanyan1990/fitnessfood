@@ -138,12 +138,14 @@ channel.bind('App\\Events\\NewTrainerEvent', function(data) {
         $(document).find('.trainer_alert').append('<ul class="dropdown-menu dropdown-messages">'+
                 '<div class="notification_block" style="overflow-y: scroll; max-height: 300px" >'+
                     '<li id="trainer_'+data.trainer.id+'">'+
-                        '<a href="'+BASE_URL+'/admin/trainers/show/'+data.trainer.id+'">'+
-                            '<div class="media-body">'+
-                                '<strong>'+data.trainer.first_name+' '+data.trainer.last_name+'</strong>'+
-                                '<p>New Trainer</p>'+
-                                '<small class="text-muted">'+data.trainer.created_at+'</small>'+
-                            '</div>'+
+                        '<a href="'+BASE_URL+'/admin/trainers/show/'+data.trainer.id+'" class="pull-left">'+
+                            '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/profile-icon.png">'+
+                        '</a>'+
+                        '<div class="media-body">'+
+                            '<strong>'+data.trainer.first_name+' '+data.trainer.last_name+'</strong>'+
+                            '<p>New Trainer</p>'+
+                            '<small class="text-muted">'+data.trainer.created_at+'</small>'+
+                        '</div>'+
                         '</a>'+
                     '</li>'+
                     '<li class="divider"></li>'+

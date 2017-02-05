@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-
-use App\User;
-use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;

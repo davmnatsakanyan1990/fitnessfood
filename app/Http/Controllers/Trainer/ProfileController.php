@@ -29,6 +29,11 @@ class ProfileController extends Controller
             $this->trainer = Auth::guard('trainer')->user();
     }
 
+    /**
+     * Shoe trainer profile
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(){
         $trainer = Trainer::with('image')->find($this->trainer->id);
 

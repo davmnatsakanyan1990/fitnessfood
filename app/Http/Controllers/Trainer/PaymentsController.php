@@ -20,6 +20,9 @@ class PaymentsController extends Controller
             $this->trainer = Auth::guard('trainer')->user();
     }
 
+    /**
+     * Shoe trainer payment history
+     */
     public function index(){
         $payments = $this->trainer->payments;
         dd($payments);
