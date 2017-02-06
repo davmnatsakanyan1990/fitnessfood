@@ -60,7 +60,7 @@
                                     <button class="btn btn-primary full-width">Approve</button>
                                 </a>
                             @endif
-                            <button class="btn btn-danger full-width delete" data-id="{{ $trainer->id }}">Delete
+                            <button class="btn btn-default full-width delete" data-id="{{ $trainer->id }}">Delete
                             </button>
                         </div>
                     </div>

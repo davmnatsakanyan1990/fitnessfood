@@ -5,7 +5,7 @@ $('.delete').click(function () {
             title: "Are you sure?",
             type: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#1ab394",
+            confirmButtonColor: "#892E6B",
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "No, cancel plx!",
             closeOnConfirm: false,

@@ -31,7 +31,7 @@ $(document).ready(function () {
                 title: "Are you sure?",
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#1ab394",
+                confirmButtonColor: "#892E6B",
                 confirmButtonText: "Yes, delete it!",
                 cancelButtonText: "No, cancel plx!",
                 closeOnConfirm: false,
@@ -54,7 +54,7 @@ $(document).ready(function () {
                         title: "Deleted!",
                         text: 'Image has been deleted.',
                         type: "success",
-                        confirmButtonColor: "#1ab394",
+                        confirmButtonColor: "#892E6B",
                         timer: 2000
                     });
                 } else {
@@ -72,7 +72,7 @@ $(document).ready(function () {
                 title: "Set as thmbnail picture?",
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#1ab394",
+                confirmButtonColor: "#892E6B",
                 confirmButtonText: "Yes!",
                 cancelButtonText: "No",
                 closeOnConfirm: false,
@@ -107,7 +107,7 @@ $(document).ready(function () {
                                 title: "Updated!",
                                 text: 'Thumbnail picture has been changed',
                                 type: "success",
-                                confirmButtonColor: "#1ab394",
+                                confirmButtonColor: "#892E6B",
                                 timer: 2000
                             });
                         }

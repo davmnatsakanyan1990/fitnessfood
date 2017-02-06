@@ -27,7 +27,7 @@
                 <div class="container home-product-cont">
                     <div class="row" style="margin-left: -30px; margin-right: -30px;">
                         @foreach($row as $product)
-                        <!-- 1 -->
+                        <!-- product -->
                         <div class="col-sm-6 col-md-3" >
                             <div class="tumb-wrap" data-id="{{ $product->id }}">
                                 <div class="for-img">
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 1 end-->
+                        <!-- product end-->
                         @endforeach
                     </div><!-- Row end -->
                 </div><!-- home-product-cont end -->
@@ -134,7 +134,6 @@
                 {{--</div>--}}
                 @endforeach
             @endif
-
         </section><!-- Products section -->
 
         <!-- Modal -->
