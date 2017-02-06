@@ -1,6 +1,5 @@
 @foreach($product->images as $k => $image)
-    <div class="item {{ $k == 0 ? 'active' : '' }}">
-        <img src="/images/products/{{ $image->name }}" alt="m1">
+    <div class="item {{ $k == 0 ? 'active' : '' }}" style="background: url(/images/products/{{ $image->name }}); background-repeat: no-repeat; min-height: 400px; background-size: cover; background-position: center center;">
 
         <div class="container">
             <div class="modal-product-info">

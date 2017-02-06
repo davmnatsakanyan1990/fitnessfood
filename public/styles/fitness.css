@@ -249,12 +249,20 @@ footer, main:after {
 .droshakner-parent {
   border-radius: 2px;
   margin-top: 20px;
+  margin-right: -15px;
+  float: right;
   display: inline-block;
   border: 1px solid #892E6B;
 }
 
 .droshakner-parent select {
   border: none;
+  cursor: pointer;
+}
+
+.droshakner-parent + ul {
+  padding-left: 60px;
+  display: inline-block;
 }
 
 .navbar-toggle {
@@ -267,6 +275,7 @@ footer, main:after {
 
 .main-nav {
   padding-left: 160px;
+  margin-top: 3px;
 }
 
 .nav li a {
@@ -321,8 +330,7 @@ footer, main:after {
 }
 
 .modal-dialog {
-  width: 96%;
-  overflow: hidden;
+  width: 70%;
 }
 
 .modal-header {
@@ -336,11 +344,13 @@ footer, main:after {
 }
 
 .modal-product-info {
-  max-width: 300px;
+  background: rgba(12, 24, 39, 0.65);
+  max-width: 330px;
   color: #fff;
   position: absolute;
   bottom: 60px;
   left: 20px;
+  padding: 15px;
 }
 
 .modal-product-info h2 {
@@ -389,6 +399,7 @@ footer, main:after {
 }
 
 .home-product-cont .col-md-3 .tumb-wrap {
+  min-height: 270px;
   transition: all 0.3s;
   border: 1px solid transparent;
   padding: 2px;
@@ -401,9 +412,11 @@ footer, main:after {
 .home-product-cont .col-md-3 .tumb-wrap .for-img > img {
   padding: 10px;
   background: #fff;
+  cursor: pointer;
 }
 
 .home-product-cont .col-md-3 .t-active {
+  box-shadow: 0 0 12px 2px #333333;
   border: 1px solid #892E6B;
 }
 
@@ -634,30 +647,8 @@ footer, main:after {
   box-shadow: 0px 1px 0px 0px;
 }
 
-.prod-inf .quantity-wrap .addToCard-button:active:after {
-  border-radius: 100%;
-  padding: 0;
-  margin: 0;
-  opacity: 0.9;
-  transition: 0s;
-}
-
 .prod-inf .quantity-wrap .addToCard-button:hover {
   background: #a74c89;
-}
-
-.prod-inf .quantity-wrap .addToCard-button:after {
-  content: "";
-  pointer-events: none;
-  background: #892E6B;
-  border-radius: 50%;
-  display: block;
-  position: absolute;
-  padding: 100%;
-  margin-top: -100%;
-  margin-left: -100%;
-  opacity: 0;
-  transition: all 0.5s;
 }
 
 .sided-to-social .prod-inf {
@@ -938,15 +929,22 @@ footer .all-rights {
 }
 
 /* PRofile  */
+.profile-row-main {
+  background: #fff;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+
 .profile-top {
   text-align: center;
-  margin: 92px auto 30px auto;
   max-width: 370px;
-  background: #fff;
   padding: 10px 10px 20px;
 }
 
 .profile-top .profile-exit {
+  font-size: 18px;
+  font-family: ArialAMUbold;
   display: inline-block;
   margin-top: 15px;
   text-decoration: none;
@@ -955,25 +953,25 @@ footer .all-rights {
 }
 
 .profile-top .profile-exit:after {
-  transition: all 0.3s;
-  display: inline-block;
+  content: url(../images/logout.png);
   position: absolute;
-  margin-top: 1px;
-  padding-left: 5px;
-  font-family: FontAwesome;
-  content: "\f08b";
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 10px;
+  transition: all 0.3s;
+  margin-top: -4px;
 }
 
 .profile-top .profile-exit:hover:after {
-  padding-left: 10px;
+  transform: rotateY(45deg);
 }
 
 .profile-top a.astxik {
-  border-radius: 100%;
-  display: inline-block;
   width: 16px;
   height: 16px;
-  float: right;
+  left: 20px;
+  top: 20px;
+  position: absolute;
   transition: all 0.3s;
 }
 
@@ -1046,6 +1044,10 @@ footer .all-rights {
   padding-right: 20px;
   padding-left: 0;
   max-width: 25px;
+}
+
+.stanal {
+  max-width: 470px;
 }
 
 .stanal-info {
@@ -1122,9 +1124,10 @@ footer .all-rights {
 
 .stanal-info .kkapnvenq input {
   width: 100%;
-  border: none;
+  border: 1px solid #cccccc;
   border-radius: 6px;
   padding: 15px;
+  margin-bottom: 20px;
   font-size: 18px;
 }
 
@@ -1559,6 +1562,68 @@ footer .all-rights {
   top: 6px !important;
 }
 
+.dropdown-content {
+  background: #f9f9f9;
+  margin-top: 62px;
+  display: none;
+  position: absolute;
+  max-width: 370px;
+  z-index: 8;
+}
+
+.dropdown-content a {
+  color: #333333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown {
+  margin-bottom: -3px;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropdown-content ul li {
+  background: #fff;
+  transition: all 0.3s;
+  margin-bottom: 2px;
+}
+
+.dropdown:hover .dropdown-content ul li:hover {
+  background: #892E6B;
+}
+
+.dropdown:hover .dropdown-content ul li:hover span {
+  color: #fff;
+}
+
+.dropdown:hover .dropdown-content ul li a {
+  display: table;
+}
+
+.dropdown:hover .dropdown-content ul li a span {
+  font-size: 17px;
+  min-width: 100px;
+  vertical-align: middle;
+  display: table-cell;
+  padding: 15px 5px;
+}
+
+.dropdown:hover .dropdown-content ul li a span .fa {
+  float: right;
+}
+
+.dropdown:hover .dropdown-content ul li a span img {
+  vertical-align: middle;
+  max-width: 50px;
+  border-radius: 100%;
+}
+
 @media screen and (max-width: 1199px) {
   .main-nav {
     padding-left: 85px;
@@ -1651,6 +1716,11 @@ footer .all-rights {
     padding-left: 22px;
     padding-right: 22px;
   }
+  .modal-dialog {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1718,6 +1788,9 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 360px) {
+  .modal-product-info {
+    position: static;
+  }
   .carousel-control.left span {
     top: 25%;
   }
@@ -1727,6 +1800,9 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 320px) {
+  .modal-dialog {
+    width: 98%;
+  }
   .carousel-control.left span {
     top: 22%;
     padding-left: 2px;

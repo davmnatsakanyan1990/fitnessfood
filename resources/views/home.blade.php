@@ -9,7 +9,6 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <img src="/images/slider/sl-1.png" alt="/images/slider/sl-1.png">
-
                             </div>
                             <div class="item">
                                 <img src="/images/slider/sl-1.png" alt="/images/slider/sl-1.png">
@@ -137,9 +136,6 @@
             @endif
 
         </section><!-- Products section -->
-        <h2>Small Modal</h2>
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
 
         <!-- Modal -->
         <div class="modal fade" id="productModal" role="dialog">
@@ -151,11 +147,6 @@
               </div>
             <div class="modal-body"><!-- Modal-body -->
                 <div id="carousel-id" class="carousel slide" data-ride="carousel">
-                    <!-- <ol class="carousel-indicators">
-                        <li data-target="#carousel-id" data-slide-to="0" class=""></li>
-                        <li data-target="#carousel-id" data-slide-to="1" class=""></li>
-                        <li data-target="#carousel-id" data-slide-to="2" class="active"></li>
-                    </ol> -->
                     <div class="carousel-inner">
                         {{-- Filling from axaj call--}}
                     </div>
@@ -165,7 +156,7 @@
             </div><!-- Modal-body end-->
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Փակել</button>
-              </div>
+              </div> 
             </div>
           </div>
         </div>

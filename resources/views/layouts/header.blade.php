@@ -26,14 +26,44 @@
                             <option {{ App::getLocale() == 'en' ? 'selected' : '' }} value="en">EN</option>
                         </select>
                     </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="shopping-cart">
-                            <a href="{{ url('basket/'.App::getLocale()) }}">
-                                <img src="/images/zambyux.png" style="vertical-align: middle;" alt="images/zambyux.png">
-                                @lang('global.basket')(<span  class="basket_count"></span>)
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="dropdown">
+                        <ul class="nav navbar-nav dropbtn">
+                            <li class="shopping-cart ">
+                                <a href="{{ url('basket/'.App::getLocale()) }}">
+                                    <img src="/images/zambyux.png" style="vertical-align: middle;" alt="images/zambyux.png">
+                                    @lang('global.basket')(<span  class="basket_count"></span>)
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="dropdown-content">
+                             <ul>
+                                 <li>
+                                    <a href="#">
+                                        <span><img src="/images/basket-prod.png" alt=""></span>
+                                        <span>Անվանում</span>
+                                        <span>1500դր</span>
+                                        <span class="fa fa-close"></span>
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="#">
+                                        <span><img src="/images/basket-prod.png" alt=""></span>
+                                        <span>Անվանում Երկար</span>
+                                        <span>2000դր</span>
+                                        <span class="fa fa-close"></span>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href="#">
+                                        <span><img src="/images/basket-prod.png" alt=""></span>
+                                        <span>Անվանում</span>
+                                        <span>800դր</span>
+                                        <span class="fa fa-close"></span>
+                                    </a>
+                                 </li>
+                             </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

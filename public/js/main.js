@@ -26,6 +26,9 @@ $(document).ready(function(){
     }
     $('.basket_count').text(basket_count);
 
+    $("").each.click(function() {
+        
+    });
 });
 
 // Change language
