@@ -165,7 +165,7 @@
                                     </fieldset>
                                     <div class="hr-line-dashed"></div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success">Update</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                         <button type="button" class="btn btn-warning">Cancel</button>
                                     </div>
                                 </form>

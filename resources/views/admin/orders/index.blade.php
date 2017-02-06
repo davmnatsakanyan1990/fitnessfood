@@ -34,7 +34,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-success btn-sm" type="submit">Add To Filter</button>
+                                    <button class="btn btn-primary btn-sm" type="submit">Add To Filter</button>
                                     <a href="{{ url('admin/orders') }}">
                                         <button class="btn btn-warning btn-sm" type="button">Clear Filter</button>
                                     </a>

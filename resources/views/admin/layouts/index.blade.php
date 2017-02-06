@@ -13,6 +13,8 @@
 
     <link href="/template/css/animate.css" rel="stylesheet">
     <link href="/template/css/style.css" rel="stylesheet">
+    <link href="/admin/css/custom.css" rel="stylesheet">
+
 
     <script>
         var BASE_URL = '{{ url('/') }}';

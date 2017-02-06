@@ -28,7 +28,7 @@
                 <div class="container home-product-cont">
                     <div class="row" style="margin-left: -30px; margin-right: -30px;">
                         @foreach($row as $product)
-                        <!-- 1 -->
+                        <!-- product -->
                         <div class="col-sm-6 col-md-3" >
                             <div class="tumb-wrap" data-id="{{ $product->id }}">
                                 <div class="for-img">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 1 end-->
+                        <!-- product end-->
                         @endforeach
                     </div><!-- Row end -->
                 </div><!-- home-product-cont end -->
@@ -135,11 +135,7 @@
                 {{--</div>--}}
                 @endforeach
             @endif
-
         </section><!-- Products section -->
-        <h2>Small Modal</h2>
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
 
         <!-- Modal -->
         <div class="modal fade" id="productModal" role="dialog">
@@ -151,11 +147,6 @@
               </div>
             <div class="modal-body"><!-- Modal-body -->
                 <div id="carousel-id" class="carousel slide" data-ride="carousel">
-                    <!-- <ol class="carousel-indicators">
-                        <li data-target="#carousel-id" data-slide-to="0" class=""></li>
-                        <li data-target="#carousel-id" data-slide-to="1" class=""></li>
-                        <li data-target="#carousel-id" data-slide-to="2" class="active"></li>
-                    </ol> -->
                     <div class="carousel-inner">
                         {{-- Filling from axaj call--}}
                     </div>
