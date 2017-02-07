@@ -41,7 +41,11 @@
                                  @foreach($basket_products as $product)
                                  <li id="bsk_product_{{ $product['id'] }}">
                                     <a>
-                                        <span><img src="/images/products/{{ $product['thumb_image']['name'] }}"></span>
+                                        <span>
+                                            <article style="background: url(/images/basket-prod.png);">
+                                                <mark>9</mark>
+                                            </article>
+                                        </span>
                                         <span class="title">{{ $product['title'] }}</span>
                                         <span><label class="total">{{ $product['count']* $product['price'] }}</label>@lang('product.amd')</span>
                                         <span class="fa fa-close remove" data-id="{{ $product['id'] }}"></span>
