@@ -15,6 +15,7 @@ class AdminBaseController extends Controller
 {
     public function __construct()
     {
+        App::setLocale('en');
         $new_orders = Order::where('is_seen', 0)->get();
         view()->share('new_orders', $new_orders);
 

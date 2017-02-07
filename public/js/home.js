@@ -92,7 +92,7 @@ $(document).ready(function(){
                                 '<a>' +
                                     '<span>'+
                                         '<article style="background: url('+image+');">'+
-                                            '<mark>9</mark>'+
+                                            '<mark>'+count+'</mark>'+
                                         '</article>'+
                                     '</span>'+
                                     '<span class="title">' + title + '</span>' +
@@ -109,7 +109,7 @@ $(document).ready(function(){
                         '<a>'+
                             '<span>'+
                                 '<article style="background: url('+image+');">'+
-                                    '<mark>9</mark>'+
+                                    '<mark>'+count+'</mark>'+
                                 '</article>'+
                             '</span>'+
                             '<span class="title">' + title + '</span>' +
@@ -222,8 +222,14 @@ $(document).ready(function(){
             url: BASE_URL+'/products/get/'+product_id+'/'+locale,
             type: 'get',
             success: function(data){
-                $($('#carousel-id').find('.carousel-inner')[0]).html(data);
-                console.log($('#carousel-id').find('.carousel-inner'))
+                $($('#carousel-id').find('.carousel-inner')[0]).html(data.view);
+                $('#carousel-id').find('.modal-product-info .fats').text(data.data.fats);
+                $('#carousel-id').find('.modal-product-info .proteins').text(data.data.proteins);
+                $('#carousel-id').find('.modal-product-info .carbs').text(data.data.carbs);
+                $('#carousel-id').find('.modal-product-info .calories').text(data.data.calories);
+                $('#carousel-id').find('.modal-product-info .weight').text(data.data.weight);
+                $('#carousel-id').find('.modal-product-info .description').text(data.data.description);
+                $('#carousel-id').find('.modal-product-info .nutritional_value').text(data.data.nutritional_value);
             }
         });
 

@@ -27,6 +27,34 @@ $(document).ready(function(){
         var basket_count = 0;
     }
     $('.basket_count').text(basket_count);
+
+    // remove product from backet dropdown
+    $(document).find('.dropdown').on('click', '.remove', function(){
+        var product_id = $(this).data('id');
+
+        var basket = JSON.parse(readCookie('basket'));
+        var new_basket = [];
+        $.each(basket, function(key, product){
+
+            if(product.product_id != product_id){
+                new_basket.push(product);
+            }
+        });
+
+        var json = JSON.stringify(new_basket);
+
+        createCookie('basket', json);
+
+        if(new_basket.length == 0){
+            $(this).closest('.basket_dropdown').remove();
+        }
+        else{
+            $(this).closest('li').remove();
+        }
+
+        var basket_count = new_basket.length;
+        $('.basket_count').text(basket_count);
+    });
     
 });
 

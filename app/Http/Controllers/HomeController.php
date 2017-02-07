@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -47,6 +48,9 @@ class HomeController extends Controller
         $locale = $this->locale;
         $product = Product::with('images', 'thumb_image')->find($id);
         $product->description = json_decode($product->description)->$locale;
-        return view('ajax.product_carousel', compact('product'));
+        $data = [];
+        $data['view'] = View::make('ajax.product_carousel', compact('product'))->render();
+        $data['data'] = $product;
+        return $data;
     }
 }
