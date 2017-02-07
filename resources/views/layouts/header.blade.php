@@ -39,7 +39,11 @@
                              <ul>
                                  <li>
                                     <a href="#">
-                                        <span><img src="/images/basket-prod.png" alt=""></span>
+                                        <span>
+                                            <article style="background: url(/images/basket-prod.png);">
+                                                <mark>9</mark>
+                                            </article>
+                                        </span>
                                         <span>Անվանում</span>
                                         <span>1500դր</span>
                                         <span class="fa fa-close"></span>
@@ -47,7 +51,11 @@
                                 </li>
                                  <li>
                                     <a href="#">
-                                        <span><img src="/images/basket-prod.png" alt=""></span>
+                                        <span>
+                                            <article style="background: url(/images/basket-prod.png);">
+                                                <mark>2</mark>
+                                            </article>
+                                        </span>
                                         <span>Անվանում Երկար</span>
                                         <span>2000դր</span>
                                         <span class="fa fa-close"></span>
@@ -55,7 +63,23 @@
                                  </li>
                                  <li>
                                     <a href="#">
-                                        <span><img src="/images/basket-prod.png" alt=""></span>
+                                        <span>
+                                            <article style="background: url(/images/basket-prod.png);">
+                                                <mark>7</mark>
+                                            </article>
+                                        </span>
+                                        <span>Անվանում</span>
+                                        <span>800դր</span>
+                                        <span class="fa fa-close"></span>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href="#">
+                                        <span>
+                                            <article style="background: url(/images/basket-prod.png);">
+                                                <mark>1</mark>
+                                            </article>
+                                        </span>
                                         <span>Անվանում</span>
                                         <span>800դր</span>
                                         <span class="fa fa-close"></span>
