@@ -23,7 +23,7 @@
                             </thead>
                             <tbody>
                             @foreach($products as $product)
-                                <tr>
+                                <tr id="tr_{{ $product['id'] }}">
                                     <td class="name-td">
                                         <img src="/images/products/{{ $product['thumb_image'] ? $product['thumb_image']['name'] : 'noimage.gif' }}"
                                              alt="prod">
@@ -144,6 +144,7 @@
 
     <script>
         var min_amount_free_shipping = '{{ $min_amount_free_shipping }}';
+        var bsk_empty = '{{ trans('global.basket is empty') }}';
     </script>
     <script src="/js/basket.js"></script>
 @endsection

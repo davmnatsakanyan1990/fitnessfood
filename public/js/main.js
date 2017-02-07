@@ -9,26 +9,25 @@ $(document).ready(function(){
 
         var basket_count = 0;
         $.each(basket, function (key, item) {
-            basket_count = parseInt(basket_count) + parseInt(item.count)
+            basket_count = parseInt(basket_count) + 1
         });
 
-        $.ajax({
-            url: BASE_URL+'/basket/products/'+locale,
-            type: 'post',
-            data: {
-                _token: token,
-                basket: basket
-            }
-        })
+        if(basket_count > 0) {
+            $.ajax({
+                url: BASE_URL + '/basket/products/' + locale,
+                type: 'post',
+                data: {
+                    _token: token,
+                    basket: basket
+                }
+            })
+        }
     }
     else {
         var basket_count = 0;
     }
     $('.basket_count').text(basket_count);
-
-    $("").each.click(function() {
-        
-    });
+    
 });
 
 // Change language
