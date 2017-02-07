@@ -42,8 +42,8 @@
                                  <li id="bsk_product_{{ $product['id'] }}">
                                     <a>
                                         <span>
-                                            <article style="background: url(/images/basket-prod.png);">
-                                                <mark>9</mark>
+                                            <article style="background: url(/images/products/{{ $product['thumb_image']['name'] }});">
+                                                <mark>{{ $product['count'] }}</mark>
                                             </article>
                                         </span>
                                         <span class="title">{{ $product['title'] }}</span>
