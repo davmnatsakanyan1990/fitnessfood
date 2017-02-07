@@ -1417,7 +1417,7 @@ footer{
 			}
 			.dropdown-content{
 				ul{
-					height: 287px;
+					max-height: 287px;
 					overflow-y: scroll;
 					overflow-x: hidden;
 					li{
