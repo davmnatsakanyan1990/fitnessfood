@@ -35,58 +35,26 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="dropdown-content">
+                        @if(count($basket_products) > 0)
+                        <div class="dropdown-content basket_dropdown">
                              <ul>
-                                 <li>
-                                    <a href="#">
+                                 @foreach($basket_products as $product)
+                                 <li id="bsk_product_{{ $product['id'] }}">
+                                    <a>
                                         <span>
                                             <article style="background: url(/images/basket-prod.png);">
                                                 <mark>9</mark>
                                             </article>
                                         </span>
-                                        <span>Անվանում</span>
-                                        <span>1500դր</span>
-                                        <span class="fa fa-close"></span>
+                                        <span class="title">{{ $product['title'] }}</span>
+                                        <span><label class="total">{{ $product['count']* $product['price'] }}</label>@lang('product.amd')</span>
+                                        <span class="fa fa-close remove" data-id="{{ $product['id'] }}"></span>
                                     </a>
                                 </li>
-                                 <li>
-                                    <a href="#">
-                                        <span>
-                                            <article style="background: url(/images/basket-prod.png);">
-                                                <mark>2</mark>
-                                            </article>
-                                        </span>
-                                        <span>Անվանում Երկար</span>
-                                        <span>2000դր</span>
-                                        <span class="fa fa-close"></span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="#">
-                                        <span>
-                                            <article style="background: url(/images/basket-prod.png);">
-                                                <mark>7</mark>
-                                            </article>
-                                        </span>
-                                        <span>Անվանում</span>
-                                        <span>800դր</span>
-                                        <span class="fa fa-close"></span>
-                                    </a>
-                                 </li>
-                                 <li>
-                                    <a href="#">
-                                        <span>
-                                            <article style="background: url(/images/basket-prod.png);">
-                                                <mark>1</mark>
-                                            </article>
-                                        </span>
-                                        <span>Անվանում</span>
-                                        <span>800դր</span>
-                                        <span class="fa fa-close"></span>
-                                    </a>
-                                 </li>
+                                @endforeach
                              </ul>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

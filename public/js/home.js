@@ -59,8 +59,12 @@ $(document).ready(function(){
         product.count = count;
         product.product_id = product_id;
 
+        var image = $(this).closest('.for-img').find('img.product').attr('src');
+        var title = $($(this).closest('.for-img').find('.prod-inf .prd_title'))[0].innerText;
+        var price = $($(this).closest('.for-img').find(' .prd_price'))[0].innerText;
+
         // determine the product exist or not
-        var exist = false;
+        var is_exist = false;
         $.each(basket, function(key, value){
             if(value.product_id == product_id){
                 value.count = parseInt(value.count) + parseInt(count);
@@ -69,21 +73,50 @@ $(document).ready(function(){
 
                 createCookie('basket', json);
 
-                exist = true;
+                // $('#bsk_product_'+product_id)
+                is_exist = true;
             }
         });
 
-        if(!exist) {
+        if(!is_exist) {
+            var basket_count = $(document).find('.basket_count')[0].innerHTML;
+            $('.basket_count').text(parseInt(basket_count) + 1);
+            if (basket.length == 0){
+
+                $('#myNavbar').find('.dropdown').append('<div class="dropdown-content basket_dropdown">'+
+                    '<ul>'+
+                    '<li id="bsk_product_' + product_id + '">' +
+                    '<a>' +
+                    '<span><img src="/' + image + '"></span>' +
+                    '<span class="title">' + title + '</span>' +
+                    '<span><label class="total">' + parseInt(count) * parseInt(price) + '</label>'+currency+'</span>' +
+                    '<span class="fa fa-close remove" data-id="'+product_id+'"></span>' +
+                    '</a>' +
+                    '</li>'+
+                    '</ul>'+
+                    '</div>');
+            }
+            else {
+                $('.basket_dropdown').find('ul').append(
+                    '<li id="bsk_product_' + product_id + '">' +
+                    '<a>' +
+                    '<span><img src="/' + image + '"></span>' +
+                    '<span class="title">' + title + '</span>' +
+                    '<span><label class="total">' + parseInt(count) * parseInt(price) + '</label>'+currency+'</span>' +
+                    '<span class="fa fa-close remove" data-id="'+product_id+'"></span>' +
+                    '</a>' +
+                    '</li>'
+                );
+            }
             basket.push(product);
             var json = JSON.stringify(basket);
 
             createCookie('basket', json);
+
         }
 
-        var basket_count = $(document).find('.basket_count')[0].innerHTML;
-        $('.basket_count').text(parseInt(basket_count) + parseInt(count));
 
-        $(this).closest('.quantity-wrap').find('input[name="quantity"]').val(1)
+        $(this).closest('.quantity-wrap').find('input[name="quantity"]').val(1);
 
         // Start animation
         var cart = $('.shopping-cart');
@@ -123,6 +156,34 @@ $(document).ready(function(){
                 $(this).detach()
             });
         }
+    });
+
+    // remove product from backet dropdown
+    $(document).find('.dropdown').on('click', '.remove', function(){
+        var product_id = $(this).data('id');
+
+        var basket = JSON.parse(readCookie('basket'));
+        var new_basket = [];
+        $.each(basket, function(key, product){
+
+            if(product.product_id != product_id){
+                new_basket.push(product);
+            }
+        });
+
+        var json = JSON.stringify(new_basket);
+
+        createCookie('basket', json);
+
+        if(new_basket.length == 0){
+            $(this).closest('.basket_dropdown').remove();
+        }
+        else{
+            $(this).closest('li').remove();
+        }
+
+        var basket_count = new_basket.length;
+        $('.basket_count').text(basket_count);
     });
 
 

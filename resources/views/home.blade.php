@@ -33,10 +33,10 @@
                                 <div class="for-img">
                                     <img data-toggle="modal" data-target="#productModal" src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" data-id="{{ $product->id }}" class="img-responsive product" alt="">
                                     <div class="prod-inf">
-                                        <p>{{ $product->title }}</p>
+                                        <p class="prd_title">{{ $product->title }}</p>
                                         <div class="clearfix">
                                             <div class="p-kkal">{{ $product->nutritional_value }} @lang('product.kkal') </div>
-                                            <div class="p-price">{{ $product->price }}<sub>@lang('product.amd')</sub></div>
+                                            <div class="p-price"><span class="prd_price">{{ $product->price }}</span><sub>@lang('product.amd')</sub></div>
                                         </div>
                                         <div class="quantity-wrap clearfix">
                                             <div>
@@ -168,6 +168,8 @@
             src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
             integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
             crossorigin="anonymous"></script>
-
+    <script>
+        var currency = '{{ trans('product.amd') }}'
+    </script>
     <script src="/js/home.js"></script>
 @endsection

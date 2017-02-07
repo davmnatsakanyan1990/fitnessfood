@@ -17,7 +17,7 @@ $(document).find('input[name="quantity"]').change(function(){
 });
 
 // click on remove product button
-$(document).on('click','.remove', function(){
+$(document).find('table').on('click','.remove', function(){
     var product_id = $(this).data('id');
 
     var basket = JSON.parse(readCookie('basket'));
@@ -34,6 +34,21 @@ $(document).on('click','.remove', function(){
     createCookie('basket', json);
 
     $(this).closest('tr').remove();
+    if(new_basket == 0){
+        $(document).find('.basket_dropdown').remove();
+
+        $(document).find('.not_empty').html('<div class="empty">'+
+            '<div class="col-md-offset-4 col-md-4">'+
+            '<div style="margin-top: 50px; font-size: larger" class="row text-center">'+
+            '<h1>'+bsk_empty+'</h1>'+
+            '</div>'+
+            '</div>'+
+            '</div>')
+    }
+    else{
+        $(document).find('#bsk_product_'+product_id).remove();
+    }
+
     var basket_count = new_basket.length;
     $('.basket_count').text(basket_count);
 
@@ -44,10 +59,46 @@ $(document).on('click','.remove', function(){
 
     $('#total').html(total);
 
-    if(total == 0){
-        $(document).find('.not_empty').addClass('hidden');
-        $(document).find('.empty').removeClass('hidden');
+    // if(total == 0){
+    //     $(document).find('.not_empty').addClass('hidden');
+    //     $(document).find('.empty').removeClass('hidden');
+    // }
+});
+
+// remove item from basket dropdown
+$(document).find('.dropdown').on('click', '.remove', function(){
+    var product_id = $(this).data('id');
+
+    var basket = JSON.parse(readCookie('basket'));
+    var new_basket = [];
+    $.each(basket, function(key, product){
+
+        if(product.product_id != product_id){
+            new_basket.push(product);
+        }
+    });
+
+    var json = JSON.stringify(new_basket);
+
+    createCookie('basket', json);
+
+    if(new_basket.length == 0){
+        $(this).closest('.basket_dropdown').remove();
+        $(document).find('.not_empty').html('<div class="empty">'+
+            '<div class="col-md-offset-4 col-md-4">'+
+            '<div style="margin-top: 50px; font-size: larger" class="row text-center">'+
+            '<h1>'+bsk_empty+'</h1>'+
+            '</div>'+
+            '</div>'+
+            '</div>')
     }
+    else{
+        $(this).closest('li').remove();
+        $(document).find('#tr_'+product_id).remove();
+    }
+
+    var basket_count = new_basket.length;
+    $('.basket_count').text(basket_count);
 });
 
 // click on advised box
@@ -86,8 +137,8 @@ $(document).on('click', '.qtyplus', function(e){
         $(this).closest('form').find('input[name='+fieldName+']').val(1);
     }
 
-    var basket_count = $(document).find('.basket_count')[0].innerHTML;
-    $('.basket_count').text(parseInt(basket_count) + 1);
+    // var basket_count = $(document).find('.basket_count')[0].innerHTML;
+    // $('.basket_count').text(parseInt(basket_count) + 1);
 });
 // This button will decrement the value till 0
 $(document).on('click','.qtyminus', function(e) {
@@ -111,10 +162,10 @@ $(document).on('click','.qtyminus', function(e) {
         $(this).closest('form').find('input[name='+fieldName+']').val(1);
     }
 
-    var basket_count = $(document).find('.basket_count')[0].innerHTML;
-
-    if(currentVal > 1)
-        $('.basket_count').text(parseInt(basket_count) - 1);
+    // var basket_count = $(document).find('.basket_count')[0].innerHTML;
+    //
+    // if(currentVal > 1)
+    //     $('.basket_count').text(parseInt(basket_count) - 1);
 
 });
 
