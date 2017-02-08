@@ -60,7 +60,7 @@
                                     <button class="btn btn-primary full-width">Approve</button>
                                 </a>
                             @endif
-                            <button class="btn btn-default full-width delete" data-id="{{ $trainer->id }}">Delete
+                            <button class="btn btn-default full-width delete" style="color: #e6763e;" data-id="{{ $trainer->id }}">Delete
                             </button>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                     <div style="min-height: 61px" class="ibox-title">
                         <h5>Activites</h5>
                         <button data-trainer_id="{{ $trainer->id }}"
-                                class="pull-right btn btn-sm btn-warning new_payment">New Payment
+                                class="pull-right btn btn-warning new_payment"><i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;New Payment
                         </button>
                     </div>
                     <div class="ibox-content">

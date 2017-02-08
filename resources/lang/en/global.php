@@ -29,6 +29,7 @@ return [
     'order' => 'Order',
     'success_order' => 'Order was sent',
     'free_shipping' => 'Free shipping',
-    'gym' => 'Gym'
+    'gym' => 'Gym',
+    'phone' => 'Phone'
 
 ];

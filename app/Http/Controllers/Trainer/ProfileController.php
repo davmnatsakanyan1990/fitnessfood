@@ -45,6 +45,7 @@ class ProfileController extends Controller
         foreach($orders->items() as $order){
             foreach($order->products as $product){
                 $order->amount += $product->price * $product->pivot->count;
+                $order->products_count += $product->pivot->count;
             }
             $total_bonus += ($order->amount * $order->trainer_percent)/100;
         }
