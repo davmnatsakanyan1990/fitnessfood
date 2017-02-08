@@ -85,13 +85,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('trainers/delete/{id}', 'TrainerController@delete');
     Route::post('trainers/update/{id}', 'TrainerController@update');
     Route::get('trainers/approve/{id}', 'TrainerController@approve');
-    Route::get('trainer/messages/seen/{trainer_id}', 'TrainerController@messagesSeen');
+    Route::get('trainer/payments/seen/{trainer_id}', 'TrainerController@paymentsSeen');
     Route::get('trainers/seen/{id}', 'TrainerController@seen');
-    Route::get('trainers/messages/{id}/{count}', 'TrainerController@moreMessages');
+    Route::get('trainers/payments/{id}/{count}', 'TrainerController@morePayments');
 
     Route::get('payments', 'PaymentController@index');
-    Route::post('payments/update/{id}', 'PaymentController@update');
-    Route::post('payments/new', 'PaymentController@create');
+    Route::post('payments/update', 'PaymentController@update');
     Route::post('payments/delete/{id}', 'PaymentController@delete');
 
     Route::get('settings', 'SettingsController@index');

@@ -31,7 +31,7 @@
                                 <li>{{ $pending }}@lang('product.amd')</li>
                             </ul>
                             <ul class="list-inline">
-                                <li>remaining</li>
+                                <li>Active</li>
                                 <li>{{ $active_bonus }}@lang('product.amd')</li>
                             </ul>
                             <hr>

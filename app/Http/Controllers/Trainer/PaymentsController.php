@@ -50,12 +50,11 @@ class PaymentsController extends Controller
 
         $paid = $this->getPaidAmount();
 
-        $active = $total_bonus - $paid;
-        
-        
+        $pending = $this->getPendingAmount();
 
+        $active = $total_bonus - $paid - $pending;
 
-        if($request->amount > $active - $this->getPendingAmount()){
+        if($request->amount > $active){
             return redirect()->back()->with('error', trans('validation.amount_error'));
         }
 

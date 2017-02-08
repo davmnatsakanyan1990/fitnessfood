@@ -43,8 +43,10 @@ class ProfileController extends Controller
         $total_bonus = $this->getBonus();
 
         $paid = $this->getPaidAmount();
-        $active_bonus = $total_bonus - $paid;
+
         $pending = $this->getPendingAmount();
+
+        $active_bonus = $total_bonus - $paid -$pending;
 
         return view('trainer.profile', compact('trainer', 'orders', 'total_bonus', 'active_bonus', 'pending', 'paid'));
     }
@@ -59,6 +61,7 @@ class ProfileController extends Controller
             }
             $total_bonus += $order->amount * $order->trainer_percent/100;
         }
+        
         return $total_bonus;
     }
 
