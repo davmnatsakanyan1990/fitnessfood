@@ -51,8 +51,4 @@ class Trainer extends Authenticatable
     public function payments(){
         return $this->hasMany(Payment::class);
     }
-
-    public function messages(){
-        return $this->hasMany(Message::class);
-    }
 }

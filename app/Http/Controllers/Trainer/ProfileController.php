@@ -40,20 +40,42 @@ class ProfileController extends Controller
         // get all orders for trainer
         $orders = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->orderBy('created_at', 'desc')->simplePaginate(10);
 
-        $total_bonus = 0;
+        $total_bonus = $this->getBonus();
 
-        foreach($orders->items() as $order){
+        $paid = $this->getPaidAmount();
+
+        $pending = $this->getPendingAmount();
+
+        $active_bonus = $total_bonus - $paid -$pending;
+
+        return view('trainer.profile', compact('trainer', 'orders', 'total_bonus', 'active_bonus', 'pending', 'paid'));
+    }
+
+    public function getBonus(){
+        $os = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->get();
+
+        $total_bonus = 0;
+        foreach($os as $order){
             foreach($order->products as $product){
                 $order->amount += $product->price * $product->pivot->count;
                 $order->products_count += $product->pivot->count;
             }
-            $total_bonus += ($order->amount * $order->trainer_percent)/100;
+            $total_bonus += $order->amount * $order->trainer_percent/100;
         }
+        
+        return $total_bonus;
+    }
 
-        $paid = $trainer->payments->sum('amount');
-        $active_bonus = $total_bonus - $paid;
+    public function getPaidAmount(){
+        $amount = collect($this->trainer->payments->toArray())->where('status', '1')->sum('amount');
 
-        return view('trainer.profile', compact('trainer', 'orders', 'active_bonus'));
+        return $amount;
+    }
+
+    public function getPendingAmount(){
+        $amount = collect($this->trainer->payments->toArray())->where('status', '0')->sum('amount');
+
+        return $amount;
     }
 }
 

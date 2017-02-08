@@ -6,8 +6,8 @@ var pusher = new Pusher('f099d8275bf3d94c6bf9', {
 });
 
 // New Message channel
-var channel = pusher.subscribe('new-message');
-channel.bind('App\\Events\\NewMessageEvent', function(data) {
+var channel = pusher.subscribe('new-payment');
+channel.bind('App\\Events\\NewPaymentEvent', function(data) {
     if(data.sender.image == null){
         var image = 'profile-icon.png';
     }
@@ -18,14 +18,14 @@ channel.bind('App\\Events\\NewMessageEvent', function(data) {
     if($('.message_alert .count').length > 0){
         var count = $(document).find('.message_alert .count')[0].innerText;
         $(document).find('.message_alert .count').text(parseInt(count)+1);
-        $(document).find('.message_alert ul').prepend('<li id="msg_'+data.message.id+'">'+
+        $(document).find('.message_alert ul').prepend('<li id="msg_'+data.payment.id+'">'+
                 '<a href="/admin/trainers/show/'+data.sender.id+'" class="pull-left view_message">'+
                     '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/'+image+'">'+
                 '</a>'+
                 '<div class="media-body">'+
                     '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
                     '<p>New Message</p>'+
-                    '<small class="text-muted">'+data.message.created_at+'</small>'+
+                    '<small class="text-muted">'+data.payment.created_at+'</small>'+
                 '</div>'+
             '</li>'+
             '<li class="divider"></li>'
@@ -35,14 +35,14 @@ channel.bind('App\\Events\\NewMessageEvent', function(data) {
         $(document).find('.message_alert .count-info').append('<span class="label label-primary count">1</span>');
 
         $(document).find('.message_alert').append('<ul class="dropdown-menu dropdown-messages">'+
-                '<li id="msg_'+data.message.id+'">'+
+                '<li id="msg_'+data.payment.id+'">'+
                     '<a href="/admin/trainers/show/'+data.sender.id+'" class="pull-left view_message">'+
                         '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/'+image+'">'+
                     '</a>'+
                     '<div class="media-body">'+
                         '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
                         '<p>New Message</p>'+
-                        '<small class="text-muted">'+data.message.created_at+'</small>'+
+                        '<small class="text-muted">'+data.payment.created_at+'</small>'+
                     '</div>'+
 
                 '</li>'+
