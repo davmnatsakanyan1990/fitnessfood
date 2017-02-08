@@ -13,7 +13,6 @@
 
 
 use App\Models\Setting;
-use BrianFaust\SocialShare\Share;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 Route::get('test1', function (){
@@ -43,7 +42,7 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::get('settings/{locale}', 'SettingsController@index');
     Route::post('settings/update', 'SettingsController@update');
 
-    Route::post('message/new/{locale}', 'MessageController@create');
+    Route::post('payments/new/{locale}', 'PaymentsController@create');
 
     Route::get('payments/{locale}', 'PaymentsController@index');
 

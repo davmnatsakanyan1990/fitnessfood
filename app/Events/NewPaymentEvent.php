@@ -7,21 +7,21 @@ use App\Models\Trainer;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class NewMessageEvent extends Event implements ShouldBroadcast
+class NewPaymentEvent extends Event implements ShouldBroadcast
 {
     use SerializesModels;
 
     public $trainer;
-    public $message;
+    public $payment;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($trainer, $message)
+    public function __construct($trainer, $payment)
     {
         $this->trainer = $trainer;
-        $this->message = $message;
+        $this->payment = $payment;
     }
 
     /**
@@ -31,13 +31,13 @@ class NewMessageEvent extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['new-message'];
+        return ['new-payment'];
     }
 
     public function broadcastWith(){
         return [
             'sender' => $this->trainer,
-            'message' => $this->message
+            'payment' => $this->payment
 
         ];
     }
