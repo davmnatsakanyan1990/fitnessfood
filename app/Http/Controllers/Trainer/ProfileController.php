@@ -37,10 +37,17 @@ class ProfileController extends Controller
     public function index(){
         $trainer = Trainer::with('image')->find($this->trainer->id);
 
-        // get all orders for trainer
         $orders = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->orderBy('created_at', 'desc')->simplePaginate(10);
 
-        $total_bonus = $this->getBonus();
+        $total_bonus = 0;
+
+        foreach($orders->items() as $order){
+            foreach($order->products as $product){
+                $order->amount += $product->price * $product->pivot->count;
+                $order->products_count += $product->pivot->count;
+            }
+            $total_bonus += ($order->amount * $order->trainer_percent)/100;
+        }
 
         $paid = $this->getPaidAmount();
 
@@ -51,27 +58,22 @@ class ProfileController extends Controller
         return view('trainer.profile', compact('trainer', 'orders', 'total_bonus', 'active_bonus', 'pending', 'paid'));
     }
 
-    public function getBonus(){
-        $os = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->get();
-
-        $total_bonus = 0;
-        foreach($os as $order){
-            foreach($order->products as $product){
-                $order->amount += $product->price * $product->pivot->count;
-                $order->products_count += $product->pivot->count;
-            }
-            $total_bonus += $order->amount * $order->trainer_percent/100;
-        }
-        
-        return $total_bonus;
-    }
-
+    /**
+     * Get paid amount
+     *
+     * @return mixed
+     */
     public function getPaidAmount(){
         $amount = collect($this->trainer->payments->toArray())->where('status', '1')->sum('amount');
 
         return $amount;
     }
 
+    /**
+     * Get pending amount
+     *
+     * @return mixed
+     */
     public function getPendingAmount(){
         $amount = collect($this->trainer->payments->toArray())->where('status', '0')->sum('amount');
 

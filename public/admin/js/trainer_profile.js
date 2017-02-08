@@ -37,15 +37,15 @@ $(document).ready(function() {
 
     $('#tab1').on('click', function () {
         if ($('.message_alert .count')[0])
-            messagesSeen();
+           paymentsSeen();
     });
 
     if ($('#tab1').hasClass('active')) {
         if ($('.message_alert .count')[0])
-            messagesSeen();
+            paymentsSeen();
     }
 
-    function messagesSeen() {
+    function paymentsSeen() {
         $.ajax({
             url: BASE_URL + '/admin/trainer/payments/seen/' + trainer_id,
             type: 'get',

@@ -31,7 +31,7 @@
             {{--   New Payments  --}}
             <li class="dropdown message_alert">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-envelope"></i>{!! count($new_payments) > 0 ?   '<span class="label label-primary count">'. count($new_payments).'</span>' : '' !!}
+                    <i class="fa fa-money"></i>{!! count($new_payments) > 0 ?   '<span class="label label-primary count">'. count($new_payments).'</span>' : '' !!}
                 </a>
                 @if(count($new_payments) > 0)
                 <ul class="dropdown-menu dropdown-messages" style="overflow-y: scroll; max-height: 300px" >
@@ -42,7 +42,7 @@
                             </a>
                             <div class="media-body">
                                 <strong>{{ $payment->sender->first_name }} {{ $payment->sender->last_name }}</strong> <br>
-                                <p>New Payment</p>
+                                <p>New Payment Request</p>
                                 <small class="text-muted">{{ $payment->created_at }}</small>
                             </div>
                         </li>

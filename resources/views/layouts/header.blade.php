@@ -42,7 +42,7 @@
                                  <li id="bsk_product_{{ $product['id'] }}">
                                     <a>
                                         <span>
-                                            <article style="background: url(/images/products/{{ $product['thumb_image']['name'] }});">
+                                            <article style="background: url(/images/products/{{ $product['thumb_image'] ? $product['thumb_image']['name'] : 'noimage.gif' }});">
                                                 <mark>{{ $product['count'] }}</mark>
                                             </article>
                                         </span>

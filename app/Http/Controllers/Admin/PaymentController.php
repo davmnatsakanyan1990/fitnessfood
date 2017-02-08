@@ -22,11 +22,12 @@ class PaymentController extends AdminBaseController
      */
     public function index(){
         $payments = Payment::with('trainer')->orderBy('created_at', 'desc')->get();
-        foreach ($payments as $payment){
-            $payment->trainer->name_is_json = $this->isJSON($payment->trainer->first_name);
-        }
         
         return view('admin.payments.index', compact('payments'));
+    }
+
+    public function create(Request $request){
+        Payment::create(['trainer_id' => $request->trainer_id, 'amount' => $request->amount, 'status' => 1, 'is_seen' => 1] );
     }
 
     /**

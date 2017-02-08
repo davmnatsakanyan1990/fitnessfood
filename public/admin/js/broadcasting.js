@@ -5,7 +5,7 @@ var pusher = new Pusher('f099d8275bf3d94c6bf9', {
     encrypted: true
 });
 
-// New Message channel
+// New Payment channel
 var channel = pusher.subscribe('new-payment');
 channel.bind('App\\Events\\NewPaymentEvent', function(data) {
     if(data.sender.image == null){
@@ -24,7 +24,7 @@ channel.bind('App\\Events\\NewPaymentEvent', function(data) {
                 '</a>'+
                 '<div class="media-body">'+
                     '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
-                    '<p>New Message</p>'+
+                    '<p>New Payment Request</p>'+
                     '<small class="text-muted">'+data.payment.created_at+'</small>'+
                 '</div>'+
             '</li>'+

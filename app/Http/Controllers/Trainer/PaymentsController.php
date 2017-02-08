@@ -34,13 +34,20 @@ class PaymentsController extends Controller
     }
 
     /**
-     * Shoe trainer payment history
+     * Show trainer payment history
      */
+
     public function index(){
         $payments = $this->trainer->payments;
         dd($payments);
     }
 
+    /**
+     * Create new payment request
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function create(Request $request){
         $this->validate($request, [
             'amount' => 'required'
@@ -71,6 +78,12 @@ class PaymentsController extends Controller
         return redirect()->back()->with('message', 'Ձեզ հետ կկապնվի մեր օպերատորը գումարի փոախանցման հարցով');
     }
 
+
+    /**
+     * Get total bonus for current trainer
+     *
+     * @return float|int
+     */
     public function getBonus(){
         $os = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->get();
 
@@ -84,12 +97,22 @@ class PaymentsController extends Controller
         return $total_bonus;
     }
 
+    /**
+     * Get paid amount
+     *
+     * @return mixed
+     */
     public function getPaidAmount(){
         $amount = collect($this->trainer->payments->toArray())->where('status', '1')->sum('amount');
 
         return $amount;
     }
-    
+
+    /**
+     * Get pending amount
+     *
+     * @return mixed
+     */
     public function getPendingAmount(){
         $amount = collect($this->trainer->payments->toArray())->where('status', '0')->sum('amount');
 

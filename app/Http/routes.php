@@ -91,6 +91,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
     Route::get('payments', 'PaymentController@index');
     Route::post('payments/update', 'PaymentController@update');
+    Route::post('payments/new', 'PaymentController@create');
     Route::post('payments/delete/{id}', 'PaymentController@delete');
 
     Route::get('settings', 'SettingsController@index');

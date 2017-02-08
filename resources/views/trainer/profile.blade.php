@@ -19,19 +19,7 @@
                     <div class="stanal" id="info"><!-- Stanal row -->
                         <div class=" stanal-info"><!-- Stanal info -->
                             <ul class="list-inline">
-                                <li>Total</li>
-                                <li>{{ $total_bonus }}@lang('product.amd')</li>
-                            </ul>
-                            <ul class="list-inline">
-                                <li>Paid</li>
-                                <li>{{ $paid }}@lang('product.amd')</li>
-                            </ul>
-                            <ul class="list-inline">
-                                <li>Pending</li>
-                                <li>{{ $pending }}@lang('product.amd')</li>
-                            </ul>
-                            <ul class="list-inline">
-                                <li>Active</li>
+                                <li>@lang('product.bonus')</li>
                                 <li>{{ $active_bonus }}@lang('product.amd')</li>
                             </ul>
                             <hr>
@@ -47,7 +35,7 @@
                                     @endforeach
                                 </div>
                             @endif
-                            <form action="{{ url('trainer/payments/new/'.App::getLocale()).'#info' }}" method="post" class="kkapnvenq" id="message">
+                            <form action="{{ url('trainer/payments/new/'.App::getLocale()) }}" method="post" class="kkapnvenq" id="message">
                                 {{ csrf_field() }}
                                 <input type="number" name="amount" placeholder="@lang('product.amount')">
                             </form>
