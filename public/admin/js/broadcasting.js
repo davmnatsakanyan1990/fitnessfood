@@ -41,7 +41,7 @@ channel.bind('App\\Events\\NewPaymentEvent', function(data) {
                     '</a>'+
                     '<div class="media-body">'+
                         '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
-                        '<p>New Message</p>'+
+                        '<p>New Payment Request</p>'+
                         '<small class="text-muted">'+data.payment.created_at+'</small>'+
                     '</div>'+
 

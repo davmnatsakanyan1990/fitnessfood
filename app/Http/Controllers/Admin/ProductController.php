@@ -56,9 +56,9 @@ class ProductController extends AdminBaseController
         ]);
 
         Product::create([
-            'title' => json_encode($request->name),
+            'title' => json_encode($request->name, JSON_UNESCAPED_UNICODE),
             'price'=>$request->price,
-            'description'=>json_encode($request->description),
+            'description'=>json_encode($request->description, JSON_UNESCAPED_UNICODE),
             'nutritional_value' => $request->nutritional_value,
             'proteins' => $request->proteins,
             'carbs' => $request->carbs,
@@ -100,9 +100,9 @@ class ProductController extends AdminBaseController
         ]);
 
         Product::find($request->product_id)->update([
-            'title'=>json_encode($request->name),
+            'title'=>json_encode($request->name, JSON_UNESCAPED_UNICODE),
             'price'=>$request->price,
-            'description'=>json_encode($request->description),
+            'description'=>json_encode($request->description, JSON_UNESCAPED_UNICODE),
             'nutritional_value' => $request->nutritional_value,
             'proteins' => $request->proteins,
             'carbs' => $request->carbs,

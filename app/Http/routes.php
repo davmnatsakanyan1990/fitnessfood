@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 Route::get('test1', function (){
     //Share::facebook(route('post.show',1), 'dff', 'dfdf');
+    dd(\App\Models\Product::where('title', 'like', '%Фитнес%')->get());
 });
 Route::get('/{locale?}', 'HomeController@index');
 Route::post('orders/new/{locale}','OrderController@create');

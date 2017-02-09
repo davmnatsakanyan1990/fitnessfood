@@ -41,12 +41,16 @@ class BasketComposer
         $total = 0;
         if(count($pds) > 0) {
             foreach ($pds as $item) {
-                $product = Product::with('thumb_image')->find($item->product_id)->toArray();
-                $product['count'] = $item->count;
-                $total += $item->count * $product['price'];
-                $product['title'] = json_decode($product['title'])->$locale;
+                $product = Product::with('thumb_image')->find($item->product_id);
+                    if($product){
+                        $product = $product->toArray();
+                        $product['count'] = $item->count;
+                        $total += $item->count * $product['price'];
+                        $product['title'] = json_decode($product['title'])->$locale;
 
-                array_push($basket_products, $product);
+                        array_push($basket_products, $product);
+                    }
+
             }
         }
         $view->with('basket_products', $basket_products);
