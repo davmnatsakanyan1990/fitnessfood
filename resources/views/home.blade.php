@@ -31,7 +31,7 @@
                         <div class="col-sm-6 col-md-3" >
                             <div class="tumb-wrap" data-id="{{ $product->id }}">
                                 <div class="for-img">
-                                    <div class="prod-img product" data-toggle="modal" data-target="#productModal" style="background: url(images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" data-id="{{ $product->id }}");" >
+                                    <div class="prod-img product" data-toggle="modal" data-target="#productModal" style="background: url(images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }});" data-id="{{ $product->id }}" >
                                     </div>
                                     <div class="prod-inf">
                                         <p class="prd_title">{{ $product->title }}</p>
