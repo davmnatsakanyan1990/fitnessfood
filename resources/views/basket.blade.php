@@ -29,7 +29,7 @@
                                              alt="prod">
                                         <span>{{ $product['title'] }}</span>
                                     </td>
-                                    <td class="text-center">{{ $product['price'] }}@lang('product.amd')</td>
+                                    <td class="text-center td-gin">{{ $product['price'] }}@lang('product.amd')</td>
                                     <td class="text-center">
                                         <div class="prod-inf">
                                             <div class="quantity-wrap clearfix">
