@@ -49,35 +49,83 @@
                         </div><!-- Stanal info end-->
                     </div><!-- Stanal row end-->
                 </div>
+            </div><!--Profile Row end -->
 
-            </div><!-- Row end -->
-
-            <div class="row for-table"><!--Row For table -->           
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>@lang('global.date')</th>
-                      <th>@lang('global.buyer')</th>
-                      <th>@lang('global.phone')</th>
-                      <th class="text-center">%</th>
-                      <th class="text-center">@lang('product.count')</th>
-                      <th class="text-right">@lang('product.total')</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  @foreach($orders as $order)
-                    <tr>
-                      <td class="name-td">{{ date( "Y/m/d H:i", strtotime($order->created_at)) }}</td>
-                      <td class="name-td">{{ $order->customer_name }}</td>
-                      <td>{{ $order->customer_phone}}</td>
-                      <td class="text-center">{{ $order->trainer_percent }} %</td>
-                      <td class="text-center">{{ $order->products_count }}</td>
-                      <td class="text-right">{{ $order->amount }}@lang('product.amd')</td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-            </div><!-- Row For table end -->
+          <div class="row">
+            <div role="tabpanel">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                  <a href="#hashiv" aria-controls="hashiv" role="tab" data-toggle="tab">ԸՆԹԱՑԻԿ ՀԱՇԻՎԸ</a>
+                </li>
+                <li role="presentation">
+                  <a href="#poxancum" aria-controls="tab" role="tab" data-toggle="tab">ՓՈԽԱՆՑՈՒՄՆԵՐ</a>
+                </li>
+              </ul>
+            
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="hashiv">
+                  <div class="for-table"><!--Row For table -->           
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>@lang('global.date')</th>
+                            <th>@lang('global.buyer')</th>
+                            <th>@lang('global.phone')</th>
+                            <th class="text-center">%</th>
+                            <th class="text-center">@lang('product.count')</th>
+                            <th class="text-right">@lang('product.total')</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($orders as $order)
+                          <tr>
+                            <td class="name-td">{{ date( "Y/m/d H:i", strtotime($order->created_at)) }}</td>
+                            <td class="name-td">{{ $order->customer_name }}</td>
+                            <td>{{ $order->customer_phone}}</td>
+                            <td class="text-center">{{ $order->trainer_percent }} %</td>
+                            <td class="text-center">{{ $order->products_count }}</td>
+                            <td class="text-right">{{ $order->amount }}@lang('product.amd')</td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                  </div><!-- Row For table end -->
+                </div>
+                <!-- Hashivner end -->
+                <!-- Poxancumner  start-->
+                <div role="tabpanel" class="tab-pane" id="poxancum">
+                  <div class="for-table"><!--Row For table -->           
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>@lang('global.date')</th>
+                            <th>@lang('global.buyer')</th>
+                            <th>@lang('global.phone')</th>
+                            <th class="text-center">%</th>
+                            <th class="text-center">@lang('product.count')</th>
+                            <th class="text-right">@lang('product.total')</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($orders as $order)
+                          <tr>
+                            <td class="name-td">{{ date( "Y/m/d H:i", strtotime($order->created_at)) }}</td>
+                            <td class="name-td">{{ $order->customer_name }}</td>
+                            <td>{{ $order->customer_phone}}</td>
+                            <td class="text-center">{{ $order->trainer_percent }} %</td>
+                            <td class="text-center">{{ $order->products_count }}</td>
+                            <td class="text-right">{{ $order->amount }}@lang('product.amd')</td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                  </div><!-- Row For table end -->
+                </div>
+              </div>
+            </div>
+          </div>
 
             <!-- Pagination -->
             {{ $orders->links() }}

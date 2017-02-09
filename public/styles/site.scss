@@ -388,7 +388,46 @@ footer, main:after{
 	}
 }
 
+.tab-content{
+	margin: 0 5px;
+}
 
+.tab-pane{
+	margin-top: 10px;
+}
+
+.nav-tabs{
+	border: none;
+	li{
+		width: 50%;
+		a{
+			margin: 0 5px;
+			border-radius: 0;
+			background: #fff;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			&:hover{
+				background: $main-violet;
+				color: #fff;
+			}
+		}
+		&.active{
+			a{
+				border: 1px solid $main-violet !important;
+				color: $main-violet !important;
+			}
+		}
+	}
+}
+
+.prod-img{
+	min-height: 150px;
+	margin: 8px;
+	border: 1px solid red;
+	background-size: cover !important;
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+}
 
 .prod-inf{
 	padding: 0 10px;

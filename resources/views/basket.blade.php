@@ -14,12 +14,12 @@
                     <div class="row for-table basket-table"><!--Row For table -->
                         <table class="table">
                             <thead>
-                            <tr>
-                                <th>@lang('product.name')</th>
-                                <th class="text-center">@lang('product.price')</th>
-                                <th class="text-center">@lang('product.count')</th>
-                                <th class="text-right">@lang('product.total')</th>
-                            </tr>
+                                <tr>
+                                    <th>@lang('product.name')</th>
+                                    <th class="text-center th-gin">@lang('product.price')</th>
+                                    <th class="text-center">@lang('product.count')</th>
+                                    <th class="text-right">@lang('product.total')</th>
+                                </tr>
                             </thead>
                             <tbody>
                             @foreach($products as $product)
