@@ -30,6 +30,8 @@ return [
     'success_order' => 'Order was sent',
     'free_shipping' => 'Free shipping',
     'gym' => 'Gym',
-    'phone' => 'Phone'
+    'phone' => 'Phone',
+    'date' => 'Date',
+    'per' => 'Per'
 
 ];

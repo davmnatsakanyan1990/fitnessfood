@@ -49,9 +49,9 @@ class PaymentsController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function create(Request $request){
-        $this->validate($request, [
-            'amount' => 'required'
-        ]);
+//        $this->validate($request, [
+//            'amount' => 'required'
+//        ]);
 
         $total_bonus = $this->getBonus();
 
@@ -60,6 +60,13 @@ class PaymentsController extends Controller
         $pending = $this->getPendingAmount();
 
         $active = $total_bonus - $paid - $pending;
+
+        if(empty($request->amount)){
+            $request->amount = $active;
+            if($active == 0){
+                return redirect()->back()->with('error', trans('validation.amount_error'));
+            }
+        }
 
         if($request->amount > $active){
             return redirect()->back()->with('error', trans('validation.amount_error'));

@@ -201,13 +201,13 @@
     </div>
     <!-- Edit Payment Modal -->
     <div class="modal fade" id="editPaymentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-md" role="document">
+        <div class="modal-dialog modal-md" style="max-width: 400px" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Edit Payment</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="padding: 8px">
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             <form method="post" action="{{ url('admin/payments/update') }}" id="edit_payment_form">
@@ -220,7 +220,7 @@
                                     {{ csrf_field() }}
                                     <label>Status</label></br>
                                     <input type="radio" name="status" class="pending" value="0">Pending
-                                    <input type="radio" name="status" class="paid" value="1">Paid
+                                    <input type="radio" name="status" style="margin-left: 20px" class="paid" value="1">Paid
                                     {{--<select class="form-control" name="status">--}}
                                         {{--<option value="0">Pending</option>--}}
                                         {{--<option value="1">Paid</option>--}}

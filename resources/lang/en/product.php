@@ -22,6 +22,7 @@ return [
     'carbs' => 'Carbs',
     'fats' => 'Fats',
     'calories' => 'Calories',
+    'weight' => 'Weight',
     'name' => 'Name',
     'price' => 'Price',
     'count' => 'Count',

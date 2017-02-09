@@ -44,10 +44,12 @@ class HomeController extends Controller
         return view('home', compact('products'));
     }
 
+    //Ajax call | Get single product info
     public function getProduct($id){
         $locale = $this->locale;
         $product = Product::with('images', 'thumb_image')->find($id);
         $product->description = json_decode($product->description)->$locale;
+        
         $data = [];
         $data['view'] = View::make('ajax.product_carousel', compact('product'))->render();
         $data['data'] = $product;
