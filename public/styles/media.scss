@@ -252,9 +252,9 @@
 }
 
 @media screen and(max-width: 360px){
-	.modal-product-info{
+	/* .modal-product-info{
 		position: static;
-	}
+	} */
 	.carousel-control.left span{
 		top: 25%;
 	}
@@ -269,6 +269,11 @@
 }
 
 @media screen and(max-width: 320px){
+	.modal-product-info{ 
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
 	.modal-dialog{
 		width: 98%;
 	}
