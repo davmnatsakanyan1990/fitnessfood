@@ -36,6 +36,8 @@ return [
     'status' => 'Status',
     'paid' => 'Paid',
     'pendin' => 'Pending',
+    'payments' => 'Payments',
+    'current account' => 'Current Account',
     'per' => 'Per'
 
 ];

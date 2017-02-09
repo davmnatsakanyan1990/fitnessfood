@@ -15,7 +15,7 @@ return [
 
     'products' => 'Продукты',
     'about us' => 'О Нас',
-    'I am trainer' => 'Я Траинер',
+    'I am trainer' => 'Я Тренер',
     'contact' => 'Связ',
     'basket' => 'Карзина',
     'contact us' => 'Связ С Нами',
@@ -26,7 +26,7 @@ return [
     'basket is empty' => 'Ваша корзина пуста',
     'advised by trainer' => 'Мне посоветовал трейнер',
     'shipping' => 'Доставка',
-    'order' => 'Заказиват',
+    'order' => 'Заказывать',
     'success_order' => 'Заказ отправлен',
     'free_shipping' => 'Безплатная доставка',
     'gym' => 'Спорт зал',
@@ -36,6 +36,8 @@ return [
     'status' => 'Статус',
     'paid' => 'оплачен',
     'pending' => 'В процессе',
+    'payments' => 'Платежи',
+    'current account' => 'Текущий аккаунт',
     'per' => 'Б'
 
 ];

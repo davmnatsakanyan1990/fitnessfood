@@ -56,10 +56,10 @@
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                  <a href="#hashiv" aria-controls="hashiv" role="tab" data-toggle="tab">ԸՆԹԱՑԻԿ ՀԱՇԻՎԸ</a>
+                  <a href="#hashiv" aria-controls="hashiv" role="tab" data-toggle="tab">@lang('global.payments')</a>
                 </li>
                 <li role="presentation">
-                  <a href="#poxancum" aria-controls="tab" role="tab" data-toggle="tab">ՓՈԽԱՆՑՈՒՄՆԵՐ</a>
+                  <a href="#poxancum" aria-controls="tab" role="tab" data-toggle="tab">@lang('global.current account')</a>
                 </li>
               </ul>
             
