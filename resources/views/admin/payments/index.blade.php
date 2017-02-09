@@ -20,10 +20,7 @@
                                 <th>Date</th>
                                 <th>Name</th>
                                 <th>Amount</th>
-                                <th data-hide="all"></th>
-                                <th data-hide="all">Completed</th>
-                                <th data-hide="all">Task</th>
-                                <th data-hide="all">Date</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -34,14 +31,14 @@
                                         <td>{{ $payment->created_at }}</td>
                                         <td>{{ $payment->trainer->first_name.' '.$payment->trainer->last_name }} </td>
                                         <td>{{ $payment->amount }} AMD</td>
-                                        <td>Inceptos Hymenaeos Ltd</td>
-                                        <td><span class="pie">0.52/1.561</span></td>
-                                        <td>20%</td>
-                                        <td>Jul 14, 2013</td>
+                                        <td>{!! $payment->status == 0 ? '<div class="label label-warning">Pending</div>' : '<div class="label label-primary">Paid</div>' !!}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button data-amount="{{ $payment->amount }}"
                                                         data-id="{{ $payment->id }}"
+                                                        data-status="{{ $payment->status }}"
+                                                        data-toggle="modal"
+                                                        data-target="#editPaymentModal"
                                                         class="btn-white btn btn-xs edit_payment">Edit
                                                 </button>
                                                 <button data-id="{{ $payment->id }}"
@@ -66,6 +63,40 @@
                             </tfoot>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Payment Modal -->
+    <div class="modal fade" id="editPaymentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Edit Payment</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <form method="post" action="{{ url('admin/payments/update') }}" id="edit_payment_form">
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <input type="text" name="amount" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="payment_id">
+                                    {{ csrf_field() }}
+                                    <label>Status</label></br>
+                                    <input type="radio" name="status" class="pending" value="0">Pending
+                                    <input type="radio" name="status" class="paid" value="1">Paid
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="edit_payment_form" class="btn btn-primary btn-sm">Save</button>
                 </div>
             </div>
         </div>

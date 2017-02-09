@@ -185,6 +185,10 @@ function updateCount(count, product_id, price){
     $.each(basket, function(key, value){
         if(value.product_id == product_id){
             value.count = parseInt(count);
+
+            $('#bsk_product_'+product_id).find('mark').text(value.count);
+            $('#bsk_product_'+product_id).find('.total').text(parseInt(value.count) * parseInt(price));
+
             var json = JSON.stringify(basket);
             createCookie('basket', json);
         }

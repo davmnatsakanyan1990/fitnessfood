@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Gym;
 use App\Models\Message;
+use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 
@@ -42,23 +44,18 @@ class TrainerController extends AdminBaseController
                     return $orders->with('products');
                 },
             'image',
-            'messages' =>function($messages){
-                    return $messages->where('is_seen', 0);
-                },
             'payments'
         ])->orderBy('created_at', 'desc')->get();
 
         foreach($trainers as $trainer){
 
-            $total_bonus = 0;
-            foreach($trainer->orders as $order){
-                foreach($order->products as $product) {
-                    $order->amount += $product->price * $product->pivot->count;
-                }
-                $total_bonus += ($order->amount * $order->trainer_percent)/100;
-            }
+            $total_bonus = $this->getBonus($trainer);
 
-            $trainer->active_bonus = $total_bonus - $trainer->payments->sum('amount');
+            $paid = $this->getPaidAmount($trainer);
+
+            $pending = $this->getPendingAmount($trainer);
+
+            $trainer->active_bonus = $total_bonus - $paid - $pending;
             $trainer->gym = Gym::where('id', $trainer->gym_id)->first();
         }
 
@@ -80,40 +77,29 @@ class TrainerController extends AdminBaseController
                 'orders' => function($orders){
                         return $orders->with('products');
                     },
-                'messages' => function($messages){
-                        return $messages->orderBy('created_at', 'desc')->take(10);
-                },
-            ])->find($trainer_id);
+                ])->find($trainer_id);
+        
+        $trainer->total_bonus = $this->getBonus($trainer);
 
-        if(count($trainer->orders)>0) {
-            foreach ($trainer->orders as $order) {
-                foreach ($order->products as $product) {
-                    $trainer->total += $product->price * $product->pivot->count;
-                    $order->amount += $product->price * $product->pivot->count;
-                }
+        $trainer->paid = $this->getPaidAmount($trainer);
 
-                $trainer->total_bonus += ($order->amount * $order->trainer_percent)/100;
-            }
-        }
-
-        $trainer->paid = $trainer->payments->sum('amount');
+        $trainer->pending = $this->getPendingAmount($trainer);
+        
         $trainer->gym = Gym::where('id', $trainer->gym_id)->first();
 
-        $messages_count = Message::where('trainer_id', $trainer_id)->count();
-
-        return view('admin.trainers.profile', compact('trainer', 'messages_count'));
+        return view('admin.trainers.profile', compact('trainer'));
     }
 
     /**
-     * Load more messages
+     * Load more payments
      *
      * @param $trainer_id
      * @param $count
      * @return mixed
      */
-    public function moreMessages($trainer_id, $count){
-        $data['messages'] = DB::table('messages')->where('trainer_id', $trainer_id)->orderBy('created_at', 'desc')->skip($count)->take(10)->get();
-        $data['exist'] = DB::table('messages')->where('trainer_id', $trainer_id)->orderBy('created_at', 'desc')->skip($count+10)->take(1)->get();
+    public function morePayments($trainer_id, $count){
+        $data['payments'] = DB::table('payments')->where('trainer_id', $trainer_id)->orderBy('created_at', 'desc')->skip($count)->take(10)->get();
+        $data['exist'] = DB::table('payments')->where('trainer_id', $trainer_id)->orderBy('created_at', 'desc')->skip($count+10)->take(1)->get();
         return $data;
     }
 
@@ -159,13 +145,13 @@ class TrainerController extends AdminBaseController
      * @param $trainer_id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function messagesSeen($trainer_id){
-        $count = Message::where('trainer_id', $trainer_id)->where('is_seen', 0)->count();
-        $messages = Message::where('trainer_id', $trainer_id)->where('is_seen', 0)->get();
-        Message::where('trainer_id', $trainer_id)->update(['is_seen' => 1]);
+    public function paymentsSeen($trainer_id){
+        $count = Payment::where('trainer_id', $trainer_id)->where('is_seen', 0)->count();
+        $payments = Payment::where('trainer_id', $trainer_id)->where('is_seen', 0)->get();
+        Payment::where('trainer_id', $trainer_id)->update(['is_seen' => 1]);
 
 
-        return response()->json(['count' => $count, 'messages' => $messages]);
+        return response()->json(['count' => $count, 'payments' => $payments]);
     }
 
     /**
@@ -175,5 +161,30 @@ class TrainerController extends AdminBaseController
      */
     public function seen($id){
         Trainer::where('id', $id)->update(['is_seen' => 1]);
+    }
+
+    public function getBonus($trainer){
+        $os = Order::with('products')->where('trainer_id', $trainer->id)->where('status', 1)->get();
+
+        $total_bonus = 0;
+        foreach($os as $order){
+            foreach($order->products as $product){
+                $order->amount += $product->price * $product->pivot->count;
+            }
+            $total_bonus += $order->amount * $order->trainer_percent/100;
+        }
+        return $total_bonus;
+    }
+
+    public function getPaidAmount($trainer){
+        $amount = collect($trainer->payments->toArray())->where('status', '1')->sum('amount');
+
+        return $amount;
+    }
+
+    public function getPendingAmount($trainer){
+        $amount = collect($trainer->payments->toArray())->where('status', '0')->sum('amount');
+
+        return $amount;
     }
 }

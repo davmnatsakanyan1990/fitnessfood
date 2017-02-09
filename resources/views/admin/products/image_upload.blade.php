@@ -17,6 +17,8 @@
                         </div>
                     </div>
                     <div class="ibox-content">
+                        <div class="errors"></div>
+                        <p>Uploaded image size: min-height: 480px, min-width: 1024px</p>
                         <form id="my-awesome-dropzone" class="dropzone" action="upload">
                             {{ csrf_field() }}
                             <div class="dropzone-previews"></div>

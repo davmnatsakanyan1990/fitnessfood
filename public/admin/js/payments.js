@@ -1,54 +1,3 @@
-$('.edit_payment').on('click', function(){
-    var payment_id = $(this).data('id');
-    var amount = $(this).data('amount');
-
-    swal({
-            title: "Edit Payment!",
-            text: "Amount",
-            type: "input",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            animation: "slide-from-top",
-            inputPlaceholder: "AMD",
-            inputValue: amount
-        },
-        function(inputValue){
-            if (inputValue === false) return false;
-
-            if (inputValue === "") {
-                swal.showInputError("Amount is required!");
-                return false
-            }
-            if(!$.isNumeric(inputValue)){
-                swal.showInputError("Amount should be number!");
-                return false
-            }
-
-            $.ajax({
-                url: BASE_URL+'/admin/payments/update/'+payment_id,
-                type: 'post',
-                data: {
-                    amount: inputValue,
-                    _token: token
-                },
-                success: function(){
-                    swal({
-                            title: "Payment Updated!",
-                            text: "Amount: " + inputValue,
-                            type: "success"
-                        },
-                        function(isConfirm){
-                            location.reload();
-                        }
-                    );
-                }
-
-            });
-        });
-
-
-});
-
 $('.delete_payment').on('click', function(){
     var payment_id = $(this).data('id');
     swal({
@@ -82,4 +31,21 @@ $('.delete_payment').on('click', function(){
             }
         }
     );
+});
+
+$('.edit_payment').on('click', function(){
+
+    var status = $(this).data('status');
+    var amount = $(this).data('amount');
+    var payment_id = $(this).data('id');
+
+    if(status == 0) {
+        $(document).find('.pending').prop('checked', true);
+    }
+    else
+    if(status == 1)
+        $(document).find('.paid').prop('checked', true);
+
+    $(document).find('#editPaymentModal input[name="amount"] ').val(amount);
+    $(document).find('#editPaymentModal input[name="payment_id"]').val(payment_id);
 });

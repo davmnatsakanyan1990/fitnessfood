@@ -28,22 +28,22 @@
                 @endif
             </li>
 
-            {{--   New Messages  --}}
+            {{--   New Payments  --}}
             <li class="dropdown message_alert">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                    <i class="fa fa-envelope"></i>{!! count($new_messages) > 0 ?   '<span class="label label-primary count">'. count($new_messages).'</span>' : '' !!}
+                    <i class="fa fa-money"></i>{!! count($new_payments) > 0 ?   '<span class="label label-primary count">'. count($new_payments).'</span>' : '' !!}
                 </a>
-                @if(count($new_messages) > 0)
+                @if(count($new_payments) > 0)
                 <ul class="dropdown-menu dropdown-messages" style="overflow-y: scroll; max-height: 300px" >
-                    @foreach($new_messages as $message)
-                        <li id="msg_{{ $message->id }}">
-                            <a href="/admin/trainers/show/{{ $message->sender->id }}" class="pull-left view_message">
-                                <img alt="image" width="30" class="img-circle" src="/images/trainerImages/{{ $message->sender->image ? $message->sender->image->name : 'profile-icon.png' }}">
+                    @foreach($new_payments as $payment)
+                        <li id="msg_{{ $payment->id }}">
+                            <a href="/admin/trainers/show/{{ $payment->sender->id }}" class="pull-left view_message">
+                                <img alt="image" width="30" class="img-circle" src="/images/trainerImages/{{ $payment->sender->image ? $payment->sender->image->name : 'profile-icon.png' }}">
                             </a>
                             <div class="media-body">
-                                <strong>{{ $message->sender->first_name }} {{ $message->sender->last_name }}</strong> <br>
-                                <p>New Message</p>
-                                <small class="text-muted">{{ $message->created_at }}</small>
+                                <strong>{{ $payment->sender->first_name }} {{ $payment->sender->last_name }}</strong> <br>
+                                <p>New Payment Request</p>
+                                <small class="text-muted">{{ $payment->created_at }}</small>
                             </div>
                         </li>
                     <li class="divider"></li>

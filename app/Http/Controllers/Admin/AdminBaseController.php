@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Message;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,6 +16,7 @@ class AdminBaseController extends Controller
 {
     public function __construct()
     {
+        App::setLocale('en');
         $new_orders = Order::where('is_seen', 0)->get();
         view()->share('new_orders', $new_orders);
 
@@ -22,11 +24,11 @@ class AdminBaseController extends Controller
         view()->share('new_trainers', $new_trainers);
 
 
-        $new_messages = Message::with(['sender' => function($sender){
+        $new_payments = Payment::with(['sender' => function($sender){
                 return $sender->with('image');
             }])->where('is_seen', 0)->get();
 
-        view()->share('new_messages', $new_messages);
+        view()->share('new_payments', $new_payments);
     }
 
     function isJSON($string){

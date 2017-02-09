@@ -22,11 +22,12 @@ class PaymentController extends AdminBaseController
      */
     public function index(){
         $payments = Payment::with('trainer')->orderBy('created_at', 'desc')->get();
-        foreach ($payments as $payment){
-            $payment->trainer->name_is_json = $this->isJSON($payment->trainer->first_name);
-        }
         
         return view('admin.payments.index', compact('payments'));
+    }
+
+    public function create(Request $request){
+        Payment::create(['trainer_id' => $request->trainer_id, 'amount' => $request->amount, 'status' => 1, 'is_seen' => 1] );
     }
 
     /**
@@ -35,17 +36,10 @@ class PaymentController extends AdminBaseController
      * @param Request $request
      * @param $id
      */
-    public function update(Request $request, $id){
-        Payment::where('id', $id)->update(['amount' => $request->amount]);
-    }
-
-    /**
-     * Create new payment
-     *
-     * @param Request $request
-     */
-    public function create(Request $request){
-        Payment::create(['trainer_id' => $request->trainer_id, 'amount' => $request->amount]);
+    public function update(Request $request){
+        Payment::where('id', $request->payment_id)->update(['status' => $request->status, 'amount' => $request->amount]);
+        
+        return redirect()->back();
     }
 
     /**

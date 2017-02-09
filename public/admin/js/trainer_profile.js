@@ -37,17 +37,17 @@ $(document).ready(function() {
 
     $('#tab1').on('click', function () {
         if ($('.message_alert .count')[0])
-            messagesSeen();
+           paymentsSeen();
     });
 
     if ($('#tab1').hasClass('active')) {
         if ($('.message_alert .count')[0])
-            messagesSeen();
+            paymentsSeen();
     }
 
-    function messagesSeen() {
+    function paymentsSeen() {
         $.ajax({
-            url: BASE_URL + '/admin/trainer/messages/seen/' + trainer_id,
+            url: BASE_URL + '/admin/trainer/payments/seen/' + trainer_id,
             type: 'get',
             success: function (data) {
                 var count = ($('.message_alert .count')[0]).innerHTML;
@@ -57,7 +57,7 @@ $(document).ready(function() {
                     else
                         $('.message_alert .count').html(count - data.count);
 
-                    $.each(data.messages, function (index, value) {
+                    $.each(data.payments, function (index, value) {
                         $(document).find('#msg_' + value.id).next('li').remove();
                         $(document).find('#msg_' + value.id).remove();
 
@@ -77,10 +77,10 @@ $(document).ready(function() {
     $(document).find('.messages_more').on('click', function(){
         skip_msg += 10;
         $.ajax ({
-            url: BASE_URL+'/admin/trainers/messages/'+trainer_id+'/'+skip_msg,
+            url: BASE_URL+'/admin/trainers/payments/'+trainer_id+'/'+skip_msg,
             type: 'get',
             success: function(data){
-                $.each(data.messages, function(index, value){
+                $.each(data.payments, function(index, value){
                     $('#tab-1 .feed-activity-list').append('<div class="feed-element">' +
                             '<div class="media-body ">'+
                                 '<small class="pull-right text-navy">'+value.created_at+'</small>'+
@@ -100,54 +100,20 @@ $(document).ready(function() {
 
 
     $('.edit_payment').on('click', function(){
-        var payment_id = $(this).data('id');
+
+        var status = $(this).data('status');
         var amount = $(this).data('amount');
+        var payment_id = $(this).data('id');
 
-        swal({
-                title: "Edit Payment!",
-                text: "Amount",
-                type: "input",
-                showCancelButton: true,
-                closeOnConfirm: false,
-                animation: "slide-from-top",
-                inputPlaceholder: "AMD",
-                inputValue: amount
-            },
-            function(inputValue){
-                if (inputValue === false) return false;
+        if(status == 0) {
+            $(document).find('.pending').prop('checked', true);
+        }
+        else
+            if(status == 1)
+                $(document).find('.paid').prop('checked', true);
 
-                if (inputValue === "") {
-                    swal.showInputError("Amount is required!");
-                    return false
-                }
-                if(!$.isNumeric(inputValue)){
-                    swal.showInputError("Amount should be number!");
-                    return false
-                }
-
-                $.ajax({
-                    url: BASE_URL+'/admin/payments/update/'+payment_id,
-                    type: 'post',
-                    data: {
-                        amount: inputValue,
-                        _token: token
-                    },
-                    success: function(){
-                        swal({
-                                title: "Payment Updated!",
-                                text: "Amount: " + inputValue,
-                                type: "success"
-                            },
-                            function(isConfirm){
-                                location.reload();
-                            }
-                        );
-                    }
-
-                });
-            });
-
-
+        $(document).find('#editPaymentModal input[name="amount"] ').val(amount);
+        $(document).find('#editPaymentModal input[name="payment_id"]').val(payment_id);
     });
 
     $('.delete_payment').on('click', function(){

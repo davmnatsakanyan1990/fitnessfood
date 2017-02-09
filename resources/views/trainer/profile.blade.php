@@ -22,10 +22,6 @@
                                 <li>@lang('product.bonus')</li>
                                 <li>{{ $active_bonus }}@lang('product.amd')</li>
                             </ul>
-                            <ul class="list-inline">
-                                <li>@lang('product.bonus')</li>
-                                <li>{{ $active_bonus }}@lang('product.amd')</li>
-                            </ul>
                             <hr>
                             @if(session('error'))
                                 <div class="alert alert-danger">
@@ -39,7 +35,7 @@
                                     @endforeach
                                 </div>
                             @endif
-                            <form action="{{ url('trainer/message/new/'.App::getLocale()).'#info' }}" method="post" class="kkapnvenq" id="message">
+                            <form action="{{ url('trainer/payments/new/'.App::getLocale()) }}" method="post" class="kkapnvenq" id="message">
                                 {{ csrf_field() }}
                                 <input type="number" name="amount" placeholder="@lang('product.amount')">
                             </form>
@@ -61,6 +57,7 @@
                   <thead>
                     <tr>
                       <th>@lang('global.buyer')</th>
+                      <th>@lang('global.phone')</th>
                       <th class="text-center">%</th>
                       <th class="text-center">@lang('product.count')</th>
                       <th class="text-right">@lang('product.total')</th>
@@ -70,6 +67,7 @@
                   @foreach($orders as $order)
                     <tr>
                       <td class="name-td">{{ $order->customer_name }}</td>
+                      <td>{{ $order->customer_phone}}</td>
                       <td class="text-center">{{ $order->trainer_percent }} %</td>
                       <td class="text-center">{{ $order->products_count }}</td>
                       <td class="text-right">{{ $order->amount }}@lang('product.amd')</td>

@@ -59,7 +59,7 @@ $(document).ready(function(){
         product.count = count;
         product.product_id = product_id;
 
-        var image = $(this).closest('.for-img').find('img.product').attr('src');
+        var image = '/'+$(this).closest('.for-img').find('img.product').attr('src');
         var title = $($(this).closest('.for-img').find('.prod-inf .prd_title'))[0].innerText;
         var price = $($(this).closest('.for-img').find(' .prd_price'))[0].innerText;
 
@@ -67,13 +67,16 @@ $(document).ready(function(){
         var is_exist = false;
         $.each(basket, function(key, value){
             if(value.product_id == product_id){
+
                 value.count = parseInt(value.count) + parseInt(count);
+
+                $('#bsk_product_'+product_id).find('mark').text(value.count);
+                $('#bsk_product_'+product_id).find('.total').text(parseInt(value.count) * parseInt(price));
 
                 var json = JSON.stringify(basket);
 
                 createCookie('basket', json);
 
-                // $('#bsk_product_'+product_id)
                 is_exist = true;
             }
         });
@@ -84,27 +87,35 @@ $(document).ready(function(){
             if (basket.length == 0){
 
                 $('#myNavbar').find('.dropdown').append('<div class="dropdown-content basket_dropdown">'+
-                    '<ul>'+
-                    '<li id="bsk_product_' + product_id + '">' +
-                    '<a>' +
-                    '<span><img src="/' + image + '"></span>' +
-                    '<span class="title">' + title + '</span>' +
-                    '<span><label class="total">' + parseInt(count) * parseInt(price) + '</label>'+currency+'</span>' +
-                    '<span class="fa fa-close remove" data-id="'+product_id+'"></span>' +
-                    '</a>' +
-                    '</li>'+
-                    '</ul>'+
+                        '<ul>'+
+                            '<li id="bsk_product_' + product_id + '">' +
+                                '<a>' +
+                                    '<span>'+
+                                        '<article style="background: url('+image+');">'+
+                                            '<mark>'+count+'</mark>'+
+                                        '</article>'+
+                                    '</span>'+
+                                    '<span class="title">' + title + '</span>' +
+                                    '<span><label class="total">' + parseInt(count) * parseInt(price) + '</label>'+currency+'</span>' +
+                                    '<span class="fa fa-close remove" data-id="'+product_id+'"></span>' +
+                                '</a>' +
+                            '</li>'+
+                        '</ul>'+
                     '</div>');
             }
             else {
                 $('.basket_dropdown').find('ul').append(
                     '<li id="bsk_product_' + product_id + '">' +
-                    '<a>' +
-                    '<span><img src="/' + image + '"></span>' +
-                    '<span class="title">' + title + '</span>' +
-                    '<span><label class="total">' + parseInt(count) * parseInt(price) + '</label>'+currency+'</span>' +
-                    '<span class="fa fa-close remove" data-id="'+product_id+'"></span>' +
-                    '</a>' +
+                        '<a>'+
+                            '<span>'+
+                                '<article style="background: url('+image+');">'+
+                                    '<mark>'+count+'</mark>'+
+                                '</article>'+
+                            '</span>'+
+                            '<span class="title">' + title + '</span>' +
+                            '<span><label class="total">' + parseInt(count) * parseInt(price) + '</label>'+currency+'</span>' +
+                            '<span class="fa fa-close remove" data-id="'+product_id+'"></span>' +
+                        '</a>' +
                     '</li>'
                 );
             }
@@ -211,8 +222,14 @@ $(document).ready(function(){
             url: BASE_URL+'/products/get/'+product_id+'/'+locale,
             type: 'get',
             success: function(data){
-                $($('#carousel-id').find('.carousel-inner')[0]).html(data);
-                console.log($('#carousel-id').find('.carousel-inner'))
+                $($('#carousel-id').find('.carousel-inner')[0]).html(data.view);
+                $('#carousel-id').find('.modal-product-info .fats').text(data.data.fats);
+                $('#carousel-id').find('.modal-product-info .proteins').text(data.data.proteins);
+                $('#carousel-id').find('.modal-product-info .carbs').text(data.data.carbs);
+                $('#carousel-id').find('.modal-product-info .calories').text(data.data.calories);
+                $('#carousel-id').find('.modal-product-info .weight').text(data.data.weight);
+                $('#carousel-id').find('.modal-product-info .description').text(data.data.description);
+                $('#carousel-id').find('.modal-product-info .nutritional_value').text(data.data.nutritional_value);
             }
         });
 

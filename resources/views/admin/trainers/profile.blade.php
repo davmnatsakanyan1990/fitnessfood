@@ -39,20 +39,20 @@
 
                             <div class="row m-t-lg">
                                 <div class="col-md-3">
-                                    <span>Total</span>
-                                    <h5> {{ $trainer->total }}<strong> AMD</strong></h5>
-                                </div>
-                                <div class="col-md-3">
-                                    <span>Bonus</span>
-                                    <h5> {{ $trainer->total_bonus }} <strong> AMD</strong></h5>
+                                    <span>Total Bonus</span>
+                                    <h5> {{ $trainer->total_bonus }}<strong> AMD</strong></h5>
                                 </div>
                                 <div class="col-md-3">
                                     <span>Paid</span>
-                                    <h5>{{ $trainer->paid }} <strong> AMD</strong></h5>
+                                    <h5> {{ $trainer->paid }} <strong> AMD</strong></h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <span>Pending</span>
+                                    <h5>{{ $trainer->pending }} <strong> AMD</strong></h5>
                                 </div>
                                 <div class="col-md-3">
                                     <span>Active</span>
-                                    <h5>{{  $trainer->total_bonus - $trainer->paid }} <strong> AMD</strong></h5>
+                                    <h5>{{  $trainer->total_bonus - $trainer->paid - $trainer->pending }} <strong> AMD</strong></h5>
                                 </div>
                             </div>
                             @if(! $trainer->is_approved)
@@ -60,7 +60,7 @@
                                     <button class="btn btn-primary full-width">Approve</button>
                                 </a>
                             @endif
-                            <button class="btn btn-default full-width delete" data-id="{{ $trainer->id }}">Delete
+                            <button class="btn btn-default full-width delete" style="color: #e6763e;" data-id="{{ $trainer->id }}">Delete
                             </button>
                         </div>
                     </div>
@@ -71,51 +71,18 @@
                     <div style="min-height: 61px" class="ibox-title">
                         <h5>Activites</h5>
                         <button data-trainer_id="{{ $trainer->id }}"
-                                class="pull-right btn btn-sm btn-warning new_payment">New Payment
+                                class="pull-right btn btn-warning new_payment"><i style="padding-right: 7px" class="fa fa-plus"></i>&nbsp;New Payment
                         </button>
                     </div>
                     <div class="ibox-content">
                         <div class="tabs-container">
                             <ul class="nav nav-tabs">
-                                <li class="active tab" id="tab1"><a data-toggle="tab" href="#tab-1">Messages</a></li>
-                                <li class="tab" id="tab2"><a data-toggle="tab" href="#tab-2">Payments</a></li>
-                                <li class="tab" id="tab3"><a data-toggle="tab" href="#tab-3">Settings</a></li>
+                                <li class="active tab" id="tab1"><a data-toggle="tab" href="#tab-1">Payments</a></li>
+                                <li class="tab" id="tab2"><a data-toggle="tab" href="#tab-2">Settings</a></li>
                             </ul>
                             <div class="tab-content">
-                                {{-- Messages Tab --}}
-                                <div id="tab-1" class="tab-pane active">
-                                    <div class="panel-body">
-                                        <div>
-                                            <div class="feed-activity-list">
-                                                @if(count($trainer->messages) > 0)
-                                                    @foreach($trainer->messages as $message)
-                                                        <div class="feed-element">
-                                                            <div class="media-body ">
-                                                                <small class="pull-right text-navy">{{ $message->created_at }}</small>
-                                                                <strong>Trainer</strong> wants to get
-                                                                <strong>{{ $message->amount }} AMD</strong> from Active
-                                                                Account. <br>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                @else
-                                                    <div class="feed-element">
-                                                        <div class="media-body ">
-                                                            <p class="text-center">There aren't any messages</p>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            @if($messages_count > 10)
-                                                <button class="messages_more btn btn-primary btn-block m"><i
-                                                            class="fa fa-arrow-down"></i> Show More
-                                                </button>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
                                 {{-- Payments Tab --}}
-                                <div id="tab-2" class="tab-pane">
+                                <div id="tab-1" class="tab-pane active">
                                     <div class="panel-body">
                                         <table class="footable table table-stripped toggle-arrow-tiny"
                                                data-page-size="8">
@@ -123,6 +90,7 @@
                                             <tr>
                                                 <th data-toggle="true">Date</th>
                                                 <th>Amount</th>
+                                                <th>Status</th>
                                                 <th data-sort-ignore="true">Note</th>
                                                 <th data-sort-ignore="true">Action</th>
                                             </tr>
@@ -133,11 +101,16 @@
                                                     <tr>
                                                         <td>{{ $payment->created_at }}</td>
                                                         <td>{{ $payment->amount }}</td>
+                                                        <td>{!!  $payment->status == 0 ? '<div class="label label-warning">Pending</span>' : '<div class="label label-primary">Paid</span>'  !!}</td>
                                                         <td>{{ $payment->note }}</td>
                                                         <td>
                                                             <div class="btn-group">
-                                                                <button data-amount="{{ $payment->amount }}"
+                                                                <button
                                                                         data-id="{{ $payment->id }}"
+                                                                        data-status="{{ $payment->status }}"
+                                                                        data-amount="{{ $payment->amount }}"
+                                                                        data-toggle="modal"
+                                                                        data-target="#editPaymentModal"
                                                                         class="btn-white btn btn-xs edit_payment">Edit
                                                                 </button>
                                                                 <button data-id="{{ $payment->id }}"
@@ -165,7 +138,7 @@
                                     </div>
                                 </div>
                                 {{-- Settings Tab --}}
-                                <div id="tab-3" class="tab-pane">
+                                <div id="tab-2" class="tab-pane">
                                     <div class="panel-body">
                                         <form method="post" action="{{ url('admin/trainers/update/'.$trainer->id) }}">
                                             {{ csrf_field() }}
@@ -218,9 +191,47 @@
                                         </form>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Payment Modal -->
+    <div class="modal fade" id="editPaymentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Edit Payment</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <form method="post" action="{{ url('admin/payments/update') }}" id="edit_payment_form">
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <input type="text" name="amount" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="payment_id">
+                                    {{ csrf_field() }}
+                                    <label>Status</label></br>
+                                    <input type="radio" name="status" class="pending" value="0">Pending
+                                    <input type="radio" name="status" class="paid" value="1">Paid
+                                    {{--<select class="form-control" name="status">--}}
+                                        {{--<option value="0">Pending</option>--}}
+                                        {{--<option value="1">Paid</option>--}}
+                                    {{--</select>--}}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="edit_payment_form" class="btn btn-primary btn-sm">Save</button>
                 </div>
             </div>
         </div>

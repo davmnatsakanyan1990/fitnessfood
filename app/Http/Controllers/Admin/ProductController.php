@@ -153,7 +153,11 @@ class ProductController extends AdminBaseController
      */
     public function uploadImage(Request $request, $product_id){
 
+        $this->validate($request, [
+            'file.*' => 'image|mimes:jpeg,png,jpg|dimensions:min_width=1024,min_height=480'
+        ]);
         foreach($request->file('file') as $image){
+
 
             $destinationPath = 'images/products';
             $randomNumber = str_random(5);

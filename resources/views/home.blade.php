@@ -145,17 +145,34 @@
                 <h4 class="modal-title"></h4>
               </div>
             <div class="modal-body"><!-- Modal-body -->
-                <div id="carousel-id" class="carousel slide" data-ride="carousel">
+                <div id="carousel-id" data-interval="false" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         {{-- Filling from axaj call--}}
+                    </div>
+                    <div class="container">
+                        <div class="modal-product-info">
+                            <h2>Nutrition Facts</h2>
+                            <h4>Per <label class="nutritional_value"></label>@lang('product.g')</h4>
+                            <hr>
+                            <ul>
+                                <li>Protein <span><label class="proteins"></label> @lang('product.g')</span></li>
+                                <li>Fat <span><label class="fats"></label> @lang('product.g')</span></li>
+                                <li>Carbo <span><label class="carbs"></label> g</span></li>
+                                <li>Calories <span><label class="calories"></label> @lang('product.kkal')</span></li>
+                                <li>Weight <span><label class="weight"></label> @lang('product.g')</span></li>
+                            </ul>
+                            <hr>
+                            <p>
+                                <span>Ingredients:</span>
+                                <label class="description"></label>
+                            </p>
+                        </div>
                     </div>
                     <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                     <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
             </div><!-- Modal-body end-->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Փակել</button>
-              </div> 
+
             </div>
           </div>
         </div>
