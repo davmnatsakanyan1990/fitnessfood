@@ -101,13 +101,13 @@
                                                     <tr>
                                                         <td>{{ $payment->created_at }}</td>
                                                         <td>{{ $payment->amount }}</td>
-                                                        <td>{!!  $payment->status == 0 ? '<div class="label label-warning">Pending</span>' : '<div class="label label-primary">Paid</span>'  !!}</td>
+                                                        <td>{!!  is_null($payment->payment_date) ? '<div class="label label-warning">Pending</span>' : '<div class="label label-primary">Paid</span>'  !!}</td>
                                                         <td>{{ $payment->note }}</td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <button
                                                                         data-id="{{ $payment->id }}"
-                                                                        data-status="{{ $payment->status }}"
+                                                                        data-status="{{ is_null($payment->payment_date) ? 0 : 1 }}"
                                                                         data-amount="{{ $payment->amount }}"
                                                                         data-toggle="modal"
                                                                         data-target="#editPaymentModal"

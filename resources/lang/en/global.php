@@ -32,6 +32,10 @@ return [
     'gym' => 'Gym',
     'phone' => 'Phone',
     'date' => 'Date',
+    'payment date' => 'Paid Date',
+    'status' => 'Status',
+    'paid' => 'Paid',
+    'pendin' => 'Pending',
     'per' => 'Per'
 
 ];

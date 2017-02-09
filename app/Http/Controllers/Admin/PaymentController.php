@@ -27,7 +27,7 @@ class PaymentController extends AdminBaseController
     }
 
     public function create(Request $request){
-        Payment::create(['trainer_id' => $request->trainer_id, 'amount' => $request->amount, 'status' => 1, 'is_seen' => 1] );
+        Payment::create(['trainer_id' => $request->trainer_id, 'amount' => $request->amount, 'payment_date' => date("Y-m-d H:i:s"), 'is_seen' => 1] );
     }
 
     /**
@@ -37,8 +37,15 @@ class PaymentController extends AdminBaseController
      * @param $id
      */
     public function update(Request $request){
-        Payment::where('id', $request->payment_id)->update(['status' => $request->status, 'amount' => $request->amount]);
-        
+        $payment = Payment::find($request->payment_id);
+        if(is_null($payment->payment_date) && $request->status == 1)
+            Payment::where('id', $request->payment_id)->update(['payment_date' => date("Y-m-d H:i:s"), 'amount' => $request->amount]);
+        elseif(!is_null($payment->payment_date) && $request->status == 0)
+            Payment::where('id', $request->payment_id)->update(['payment_date' => null, 'amount' => $request->amount]);
+        else
+            Payment::where('id', $request->payment_id)->update(['amount' => $request->amount]);
+
+
         return redirect()->back();
     }
 

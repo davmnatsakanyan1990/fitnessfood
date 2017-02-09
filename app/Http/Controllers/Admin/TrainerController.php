@@ -177,13 +177,17 @@ class TrainerController extends AdminBaseController
     }
 
     public function getPaidAmount($trainer){
-        $amount = collect($trainer->payments->toArray())->where('status', '1')->sum('amount');
-
+        $amount = 0;
+        foreach($trainer->payments->toArray() as $payment){
+            if(!is_null($payment['payment_date'])){
+                $amount += $payment['amount'];
+            }
+        }
         return $amount;
     }
 
     public function getPendingAmount($trainer){
-        $amount = collect($trainer->payments->toArray())->where('status', '0')->sum('amount');
+        $amount = collect($trainer->payments->toArray())->where('payment_date', null)->sum('amount');
 
         return $amount;
     }

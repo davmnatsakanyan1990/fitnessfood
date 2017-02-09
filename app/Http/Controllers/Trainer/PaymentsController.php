@@ -34,15 +34,6 @@ class PaymentsController extends Controller
     }
 
     /**
-     * Show trainer payment history
-     */
-
-    public function index(){
-        $payments = $this->trainer->payments;
-        dd($payments);
-    }
-
-    /**
      * Create new payment request
      *
      * @param Request $request
@@ -110,8 +101,12 @@ class PaymentsController extends Controller
      * @return mixed
      */
     public function getPaidAmount(){
-        $amount = collect($this->trainer->payments->toArray())->where('status', '1')->sum('amount');
-
+        $amount = 0;
+        foreach($this->trainer->payments->toArray() as $payment){
+            if(!is_null($payment['payment_date'])){
+                $amount += $payment['amount'];
+            }
+        }
         return $amount;
     }
 
@@ -121,7 +116,7 @@ class PaymentsController extends Controller
      * @return mixed
      */
     public function getPendingAmount(){
-        $amount = collect($this->trainer->payments->toArray())->where('status', '0')->sum('amount');
+        $amount = collect($this->trainer->payments->toArray())->where('payment_date',  null)->sum('amount');
 
         return $amount;
     }

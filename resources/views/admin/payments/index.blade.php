@@ -31,12 +31,12 @@
                                         <td>{{ $payment->created_at }}</td>
                                         <td>{{ $payment->trainer->first_name.' '.$payment->trainer->last_name }} </td>
                                         <td>{{ $payment->amount }} AMD</td>
-                                        <td>{!! $payment->status == 0 ? '<div class="label label-warning">Pending</div>' : '<div class="label label-primary">Paid</div>' !!}</td>
+                                        <td>{!! is_null($payment->payment_date) ? '<div class="label label-warning">Pending</div>' : '<div class="label label-primary">Paid</div>' !!}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button data-amount="{{ $payment->amount }}"
                                                         data-id="{{ $payment->id }}"
-                                                        data-status="{{ $payment->status }}"
+                                                        data-status="{{ is_null($payment->payment_date) ? 0 : 1 }}"
                                                         data-toggle="modal"
                                                         data-target="#editPaymentModal"
                                                         class="btn-white btn btn-xs edit_payment">Edit
