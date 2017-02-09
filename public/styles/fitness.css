@@ -1885,9 +1885,9 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 360px) {
-  .modal-product-info {
-    position: static;
-  }
+  /* .modal-product-info{
+		position: static;
+	} */
   .carousel-control.left span {
     top: 25%;
   }
@@ -1901,6 +1901,11 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 320px) {
+  .modal-product-info {
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
   .modal-dialog {
     width: 98%;
   }
