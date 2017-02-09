@@ -131,7 +131,7 @@ $(document).ready(function(){
 
         // Start animation
         var cart = $('.shopping-cart');
-        var imgtodrag = $(this).closest('.for-img').find("img.product").eq(0);
+        var imgtodrag = $(this).closest('.for-img').find("div.product").eq(0);
 
         if (imgtodrag) {
             var imgclone = imgtodrag.clone()
