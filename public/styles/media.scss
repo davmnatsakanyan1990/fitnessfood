@@ -125,6 +125,14 @@
 	.carousel-control.right span{
 		top: 36%;
 	}
+
+	.basket-form{
+		float: none;
+		margin: 30px auto 0 auto; 
+	}
+	.droshakner-parent{
+		margin-right: 5px;
+	}
 }
 
 @media screen and(max-width: 767px){
@@ -163,7 +171,12 @@
 			}
 		}
 	} 
-	
+	.stanal{
+		margin: auto;
+	}
+	.profile-top{
+		margin: auto;
+	}
 }
 
 @media screen and(max-width: 480px){
@@ -229,6 +242,10 @@
 
 	.carousel-control.right span{
 		top: 25%;
+	}
+	footer{
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 }
 

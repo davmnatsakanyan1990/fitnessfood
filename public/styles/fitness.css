@@ -1597,6 +1597,10 @@ footer .all-rights {
   margin-bottom: 2px;
 }
 
+.dropdown:hover .dropdown-content ul li:last-child {
+  margin-bottom: 0;
+}
+
 .dropdown:hover .dropdown-content ul li:hover {
   background: #892E6B;
 }
@@ -1749,6 +1753,13 @@ footer .all-rights {
   .carousel-control.right span {
     top: 36%;
   }
+  .basket-form {
+    float: none;
+    margin: 30px auto 0 auto;
+  }
+  .droshakner-parent {
+    margin-right: 5px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -1772,6 +1783,12 @@ footer .all-rights {
   }
   .for-table .main-inf ul {
     float: none;
+  }
+  .stanal {
+    margin: auto;
+  }
+  .profile-top {
+    margin: auto;
   }
 }
 
@@ -1815,6 +1832,10 @@ footer .all-rights {
   }
   .carousel-control.right span {
     top: 25%;
+  }
+  footer {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 
