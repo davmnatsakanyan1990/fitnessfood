@@ -146,7 +146,7 @@ html, body {
 }
 
 body {
-  background: #f5f5f5;
+  background: #F9F9E3;
 }
 
 ::-webkit-scrollbar {
@@ -181,11 +181,11 @@ main {
 }
 
 .basket-main {
-  margin-top: 112px;
+  margin-top: 144px;
 }
 
 .home-main {
-  margin-top: 62px;
+  margin-top: 94px;
 }
 
 footer, main:after {
@@ -305,6 +305,33 @@ footer, main:after {
   border: none;
   margin-bottom: 0;
   box-shadow: 0px 6px 12px -3px rgba(103, 103, 103, 0.52);
+}
+
+.heraxosner {
+  background: #EFEDD3;
+  color: #892E6B;
+  min-height: 30px;
+  line-height: 30px;
+}
+
+.heraxosner ul:before {
+  content: "\f095";
+  position: relative;
+  font-family: FontAwesome;
+  top: 3px;
+  padding-left: 5px;
+  font-size: 20px;
+}
+
+.heraxosner ul li {
+  font-size: 16px;
+  /* &:before{
+				padding-right: 10px;
+				font-size: 18px;
+				content: "\f095";
+				font-family: FontAwesome;
+			
+			} */
 }
 
 .navbar-header img {
@@ -731,7 +758,7 @@ footer .all-rights {
 /* About page */
 .about-main > div {
   text-align: center;
-  margin-top: 107px;
+  margin-top: 139px;
 }
 
 .about-main p {
@@ -744,7 +771,7 @@ footer .all-rights {
 
 /* contact page  */
 .contact-main {
-  margin-top: 62px;
+  margin-top: 126px;
 }
 
 .cols-3-row .col-sm-4 {
@@ -1218,7 +1245,7 @@ footer .all-rights {
 /* Login */
 .registration-block {
   margin: 0 auto;
-  margin-top: 102px;
+  margin-top: 134px;
   max-width: 300px;
 }
 
@@ -1271,7 +1298,7 @@ footer .all-rights {
 
 .login-marzich {
   max-width: 300px;
-  margin: 112px auto 50px auto;
+  margin: 144px auto 50px auto;
 }
 
 .login-marzich h3 {
@@ -1852,6 +1879,16 @@ footer .all-rights {
   }
 }
 
+@media screen and (max-width: 640px) {
+  .modal-product-info {
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .carousel-control.left span {
     top: 30%;
@@ -1885,9 +1922,15 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 360px) {
-  /* .modal-product-info{
-		position: static;
-	} */
+  .heraxosner {
+    text-align: center;
+  }
+  .heraxosner:before {
+    font-size: 16px;
+  }
+  .heraxosner ul li {
+    font-size: 12px;
+  }
   .carousel-control.left span {
     top: 25%;
   }
@@ -1901,11 +1944,6 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 320px) {
-  .modal-product-info {
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
   .modal-dialog {
     width: 98%;
   }

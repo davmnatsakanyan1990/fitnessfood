@@ -4,7 +4,7 @@
 
 /* font-family: "ArianAMURegular"; */
     @font-face {
-      font-family: 'ArialAMU';
+      font-family: 'ArialAMU'; 
       src: url('../fonts/ArialAMU/ArialAMU.eot');
       src: url('../fonts/ArialAMU/ArialAMU.ttf');
       src: url('../fonts/ArialAMU/ArialAMU.woff') format('woff'),
@@ -26,7 +26,7 @@ html, body {
 }
 
 body{
-	background: #f5f5f5;
+	background: #F9F9E3;
 }
 
 
@@ -63,11 +63,11 @@ main{
 }
 
 .basket-main{
-	margin-top: 112px;
+	margin-top: 144px;
 }
 
 .home-main{
-	margin-top: 62px;
+	margin-top: 94px;
 }
 
 footer, main:after{
@@ -191,6 +191,34 @@ footer, main:after{
     border: none;
     margin-bottom: 0;
     box-shadow: 0px 6px 12px -3px rgba(103, 103, 103, 0.52);
+}
+
+.heraxosner{
+	background: #EFEDD3;
+	color: $main-violet;
+	min-height: 30px;
+	line-height: 30px;
+	ul{
+		&:before{
+			content: "\f095";
+			position: relative;
+			font-family: FontAwesome;
+			top: 3px;
+			padding-left: 5px;
+			font-size: 20px;
+
+		}
+		li{
+			font-size: 16px;
+			/* &:before{
+				padding-right: 10px;
+				font-size: 18px;
+				content: "\f095";
+				font-family: FontAwesome;
+			
+			} */
+		}
+	}
 }
 
 .navbar-header{
@@ -593,7 +621,7 @@ footer{
 .about-main{
 	& > div{
 		text-align: center;
-		margin-top: 107px;
+		margin-top: 139px;
 	}
 	p{
 		max-width: 550px;
@@ -607,7 +635,7 @@ footer{
 
 /* contact page  */
 .contact-main{
-	margin-top: 62px;
+	margin-top: 126px;
 }
 .cols-3-row{
 	.col-sm-4{
@@ -1068,7 +1096,7 @@ footer{
 /* Login */
 .registration-block{
 	margin: 0 auto;
-	margin-top: 102px;
+	margin-top: 134px;
 	max-width: 300px;
 	.d-of-birth{
 		color: $main-violet;
@@ -1116,7 +1144,7 @@ footer{
 
 .login-marzich{
 	max-width: 300px;
-	margin: 112px auto 50px auto; 
+	margin: 144px auto 50px auto; 
 	h3{
 		color: $main-violet;
 		text-align: center;
@@ -1509,6 +1537,5 @@ footer{
 				}
 			}
 	    }
-
 	}
  
