@@ -14,7 +14,9 @@ class Trainer extends Authenticatable
      */
     protected $fillable = [
         'first_name',
+        'custom_first_name',
         'last_name',
+        'custom_last_name',
         'email',
         'address',
         'phone',
