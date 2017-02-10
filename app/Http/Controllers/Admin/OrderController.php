@@ -17,9 +17,10 @@ class OrderController extends AdminBaseController
     public $locale;
 
     public function __construct(){
-        $this->locale = App::getLocale();
+
         $this->middleware('auth:admin');
         parent::__construct();
+        $this->locale = App::getLocale();
     }
 
     /**

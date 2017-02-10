@@ -59,7 +59,10 @@ $(document).ready(function(){
         product.count = count;
         product.product_id = product_id;
 
-        var image = '/'+$(this).closest('.for-img').find('img.product').attr('src');
+        var str = $(this).closest('.for-img').find('div.product').attr('style');
+        var url_start = str.indexOf('(');
+        var url_end = str.indexOf(');');
+        var image = '/'+str.slice(url_start+1, url_end);
         var title = $($(this).closest('.for-img').find('.prod-inf .prd_title'))[0].innerText;
         var price = $($(this).closest('.for-img').find(' .prd_price'))[0].innerText;
 

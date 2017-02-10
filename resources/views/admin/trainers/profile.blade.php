@@ -101,13 +101,13 @@
                                                     <tr>
                                                         <td>{{ $payment->created_at }}</td>
                                                         <td>{{ $payment->amount }}</td>
-                                                        <td>{!!  $payment->status == 0 ? '<div class="label label-warning">Pending</span>' : '<div class="label label-primary">Paid</span>'  !!}</td>
+                                                        <td>{!!  is_null($payment->payment_date) ? '<div class="label label-warning">Pending</span>' : '<div class="label label-primary">Paid</span>'  !!}</td>
                                                         <td>{{ $payment->note }}</td>
                                                         <td>
                                                             <div class="btn-group">
                                                                 <button
                                                                         data-id="{{ $payment->id }}"
-                                                                        data-status="{{ $payment->status }}"
+                                                                        data-status="{{ is_null($payment->payment_date) ? 0 : 1 }}"
                                                                         data-amount="{{ $payment->amount }}"
                                                                         data-toggle="modal"
                                                                         data-target="#editPaymentModal"
@@ -142,39 +142,55 @@
                                     <div class="panel-body">
                                         <form method="post" action="{{ url('admin/trainers/update/'.$trainer->id) }}">
                                             {{ csrf_field() }}
-                                            {{--<div class="form-group">--}}
-                                            {{--<label>Հայերեն</label>--}}
-                                            {{--<div class="row">--}}
-                                            {{--<div class="col-md-6">--}}
-                                            {{--<input type="text" class="form-control" name="first_name[am]" value="{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)['am'] : $trainer->first_name }}" placeholder="Անուն">--}}
-                                            {{--</div>--}}
-                                            {{--<div class="col-md-6">--}}
-                                            {{--<input type="text" class="form-control" name="last_name[am]" value="{{ $trainer->name_is_json ? json_decode($trainer->last_name, true)['am'] : $trainer->last_name }}" placeholder="Ազգանուն">--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="form-group">--}}
-                                            {{--<label>Русский</label>--}}
-                                            {{--<div class="row">--}}
-                                            {{--<div class="col-md-6">--}}
-                                            {{--<input class="form-control" type="text" name="first_name[ru]" value="{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)['ru'] : $trainer->first_name }}" placeholder="Имя">--}}
-                                            {{--</div>--}}
-                                            {{--<div class="col-md-6">--}}
-                                            {{--<input class="form-control" type="text" name="last_name[ru]" value="{{ $trainer->name_is_json ? json_decode($trainer->last_name, true)['ru'] : $trainer->last_name }}" placeholder="Фамилия">--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="form-group">--}}
-                                            {{--<label>English</label>--}}
-                                            {{--<div class="row">--}}
-                                            {{--<div class="col-md-6">--}}
-                                            {{--<input type="text" class="form-control" name="first_name[en]" value="{{ $trainer->name_is_json ? json_decode($trainer->first_name, true)['en'] : $trainer->first_name }}" placeholder="First Name">--}}
-                                            {{--</div>--}}
-                                            {{--<div class="col-md-6">--}}
-                                            {{--<input type="text" class="form-control" name="last_name[en]" value= "{{ $trainer->name_is_json ? json_decode($trainer->last_name, true)['en'] : $trainer->last_name }}" placeholder="Last Name">--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Անուն</label>
+                                                        <input type="text" class="form-control" name="first_name[am]"
+                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_first_name)->am : $trainer->first_name }}"
+                                                               placeholder="Անուն">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Ազգանուն</label>
+                                                        <input type="text" class="form-control" name="last_name[am]"
+                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_last_name)->am : $trainer->last_name }}"
+                                                               placeholder="Ազգանուն">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Имя</label>
+                                                        <input class="form-control" type="text" name="first_name[ru]"
+                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_first_name)->ru : $trainer->first_name }}"
+                                                               placeholder="Имя">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Фамилия</label>
+                                                        <input class="form-control" type="text" name="last_name[ru]"
+                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_last_name)->ru : $trainer->last_name }}"
+                                                               placeholder="Фамилия">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Name</label>
+                                                        <input type="text" class="form-control" name="first_name[en]"
+                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_first_name)->en : $trainer->first_name }}"
+                                                               placeholder="First Name">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Surname</label>
+                                                        <input type="text" class="form-control" name="last_name[en]"
+                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_last_name)->en : $trainer->last_name }}"
+                                                               placeholder="Last Name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
                                             <div class="form-group">
                                                 <label>Bonus Percent</label>
 

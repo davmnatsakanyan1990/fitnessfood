@@ -55,7 +55,9 @@ class ProfileController extends Controller
 
         $active_bonus = $total_bonus - $paid -$pending;
 
-        return view('trainer.profile', compact('trainer', 'orders', 'total_bonus', 'active_bonus', 'pending', 'paid'));
+        $payments = $this->trainer->payments;
+
+        return view('trainer.profile', compact('trainer', 'orders', 'total_bonus', 'active_bonus', 'pending', 'paid', 'payments'));
     }
 
     /**
@@ -64,8 +66,12 @@ class ProfileController extends Controller
      * @return mixed
      */
     public function getPaidAmount(){
-        $amount = collect($this->trainer->payments->toArray())->where('status', '1')->sum('amount');
-
+        $amount = 0;
+        foreach($this->trainer->payments->toArray() as $payment){
+            if(!is_null($payment['payment_date'])){
+                $amount += $payment['amount'];
+            }
+        }
         return $amount;
     }
 
@@ -75,9 +81,13 @@ class ProfileController extends Controller
      * @return mixed
      */
     public function getPendingAmount(){
-        $amount = collect($this->trainer->payments->toArray())->where('status', '0')->sum('amount');
+        $amount = collect($this->trainer->payments->toArray())->where('payment_date', null)->sum('amount');
 
         return $amount;
+    }
+
+    function isJSON($string){
+        return is_string($string) && is_array(json_decode($string, true)) ? true : false;
     }
 }
 

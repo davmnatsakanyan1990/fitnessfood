@@ -10,8 +10,8 @@ class Payment extends Model
         'trainer_id',
         'amount', 
         'note',
-        'status',
-        'is_seen'
+        'is_seen',
+        'payment_date'
     ];
 
     public function trainer(){
