@@ -112,35 +112,61 @@ alt="prod">
 
                             <div class="check-box">
                             
-                                <span style="display:block; text-align:center; font-size:18px;">@lang('global.advised by trainer')</span>
+                                <span style="display:block; text-align:center; margin-bottom: 15px; font-size:18px;">@lang('global.advised by trainer')</span>
                             </div>
+                            
+                            <div class="marzich-search">
+                                <input type="text" placeholder="Մարզիչի Անունը">
+                            </div>
+                            <div class="trainer-select-main"> 
+                                <!-- Trainer 1 -->
+                                <div class="trainer-select">
+                                    <input type="radio" id="tr1" name="marzich">
+                                    <label for="tr1">
+                                        <div class="trainer-inner-content">
+                                            <img src="/images/profile/face.png" alt="">
+                                            <div>
+                                                <span>Ալեքսանդր Հարությունյան</span>
+                                                <p>GoldGym</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <!-- Trainer 2 -->
+                                <div class="trainer-select">
+                                    <input type="radio" id="tr2" name="marzich">
+                                    <label for="tr2">
+                                        <div class="trainer-inner-content">
+                                            <img src="/images/profile/face.png" alt="">
+                                            <div>
+                                                <span>Ալեքսանդր Հարությունյան 2</span>
+                                                <p>GoldGym</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>  
+                                
+                                <!-- Trainer 3 -->
+                                <div class="trainer-select">
+                                    <input type="radio" id="tr3" name="marzich" class="add-to-s">
+                                    <label for="tr3">
+                                        <div class="trainer-inner-content">
+                                            <img src="/images/profile/face.png" alt="">
+                                            <div>
+                                                <span>Ալեքսանդր Հարությունյան</span>
+                                                <p>GoldGym</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>           
+                            </div> 
+                              
+                            <div class="v-voq">
+                                <input type="radio" id="tr4" name="marzich">   
+                                <label for="tr4">Ոչ ոք</label>
+                            </div> 
 
-                            <select class="selectpicker" data-show-subtext="true" data-live-search="true">
-                                <option data-subtext="" data-content="<img src='/images/profile/face.png'><span style='display:inline-block;'>Ալեքսանդր Հարությունյան</span>
-                                    <br>
-                                    <span>GoldGym</span>
-                                ">
-                                </option>
-
-                                <option data-subtext="" data-content="<img src='/images/profile/face.png'><span style='display:inline-block;'>Դավիթ Հարությունյան</span>
-                                    <br>
-                                    <span>GoldGym</span>            
-                                ">
-
-                                </option>
-
-                                <option data-subtext="" data-content="<img src='/images/profile/face.png'><span style='display:inline-block;'>Ալեքսանդր Թամանյան</span>
-                                    <br>
-                                    <span>GoldGym</span>
-                                ">
-                                </option>
-                            </select>
-
-                            <input type="checkbox" name="is_addvised" id="voch-voq">
-                            <label for="voch-voq" class="voch-voq-label"></label>
-                            <span>Ոչ ոք</span>
-                            <button type="submit"
-{{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
+                            <button type="submit" {{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
                         </form>
 
                     </div>

@@ -1716,78 +1716,76 @@ footer .all-rights {
   border-radius: 100%;
 }
 
-.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {
-  background: #892E6B;
+.trainer-inner-content > div {
+  padding-top: 15px;
 }
 
-.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
-  background: #892E6B;
-}
-
-.basket-form .dropdown-menu {
-  float: none;
-  overflow: hidden;
-  display: block !important;
-  margin-top: 20px;
-  position: static;
-  padding: 0;
-}
-
-.basket-form .dropdown-menu li {
-  min-height: 94px;
-}
-
-.basket-form .dropdown-menu li.selected {
-  background: #892E6B;
-}
-
-.basket-form .dropdown-menu li.selected span {
-  color: #fff;
-}
-
-.basket-form .dropdown-menu li a {
-  min-height: 94px;
-  margin: 0;
-  padding-top: 10px;
-}
-
-.basket-form .dropdown-menu li img {
-  float: left;
-  display: inline-block !important;
+.trainer-inner-content img {
+  margin-right: 20px;
   width: 75px;
   height: 75px;
   border-radius: 100%;
-  vertical-align: middle;
+  float: left;
 }
 
-.basket-form .dropdown-menu li span {
+.trainer-select-main {
+  border: 1px solid #999999;
+  border-top: none;
+}
+
+.add-to-s:checked + label {
+  background: #892E6B;
+  color: #fff;
+}
+
+.v-voq {
+  margin-top: 15px;
+}
+
+.trainer-select label {
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
   color: #333333;
-  padding-left: 20px;
-  padding-top: 12px;
+  line-height: 22px;
 }
 
-.basket-form .bootstrap-select {
-  margin-bottom: 20px;
-  width: 100% !important;
+.trainer-select label:hover {
+  background: #892E6B;
+  color: #fff;
 }
 
-.basket-form .bootstrap-select button.selectpicker {
-  display: none !important;
-}
-
-.basket-form .bootstrap-select .bs-searchbox {
-  padding: 0;
-}
-
-.basket-form .bootstrap-select .bs-searchbox:after {
-  content: "\f002";
+.trainer-select input {
   position: absolute;
-  font-family: FontAwesome;
-  right: 0;
-  top: 25px;
-  padding-right: 15px;
-  color: #999999;
+  visibility: hidden;
+  height: 0;
+}
+
+.trainer-select input:checked + label {
+  /* background: $main-violet;
+				color: #fff; */
+}
+
+.marzich-search {
+  position: relative;
+}
+
+.marzich-search input {
+  width: 100%;
+  padding: 15px 10px;
+  border: 1px solid #999999;
+}
+
+.marzich-search:after {
+  content: '\f002';
+  position: absolute;
   font-size: 24px;
+  color: #999999;
+  right: 15px;
+  top: 12px;
+  font-family: FontAwesome;
 }
 
 @media screen and (max-width: 1199px) {
@@ -2014,6 +2012,12 @@ footer .all-rights {
   footer {
     padding-left: 5px;
     padding-right: 5px;
+  }
+  .trainer-select label {
+    font-size: 14px;
+  }
+  .v-voq {
+    padding-left: 15px;
   }
 }
 
