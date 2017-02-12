@@ -365,7 +365,7 @@ footer, main:after {
 }
 
 .modal-dialog {
-  width: 70%;
+  width: 848px;
 }
 
 .modal-header {
@@ -379,18 +379,20 @@ footer, main:after {
 }
 
 .modal-product-info {
-  background: rgba(12, 24, 39, 0.65);
-  max-width: 330px;
-  color: #fff;
-  position: absolute;
-  bottom: 60px;
-  left: 20px;
-  padding: 15px;
+  color: #333333;
+}
+
+.modal-product-info h1 {
+  color: #892E6B;
+  text-align: center;
+  font-size: 20px;
+  font-family: ArialAMUbold;
 }
 
 .modal-product-info h2 {
+  margin-top: 10px;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   font-family: ArialAMUbold;
 }
 
@@ -425,8 +427,10 @@ footer, main:after {
 }
 
 .modal-product-info p {
-  line-height: 22px;
-  margin-top: 20px;
+  margin-top: 10px;
+  padding: 10px;
+  line-height: 18px;
+  text-align: center;
 }
 
 .modal-product-info p span {
@@ -452,6 +456,19 @@ footer, main:after {
   padding: 10px;
   background: #fff;
   cursor: pointer;
+}
+
+.home-product-cont .col-md-3 .tumb-wrap .modal-product-info h2 {
+  margin-top: 15px;
+}
+
+.home-product-cont .col-md-3 .tumb-wrap .modal-product-info ul li {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.home-product-cont .col-md-3 .tumb-wrap .modal-product-info h4 {
+  margin-bottom: 10px;
 }
 
 .home-product-cont .col-md-3 .t-active {
@@ -606,6 +623,7 @@ footer, main:after {
 .prod-inf p {
   margin-bottom: 20px;
   text-align: center;
+  text-transform: capitalize;
   font-family: ArialAMUbold;
   font-size: 16px;
   letter-spacing: 0.5px;
@@ -1881,19 +1899,13 @@ footer .all-rights {
     padding-right: 22px;
   }
   .modal-dialog {
-    width: 90%;
+    width: 85%;
     margin-left: auto;
     margin-right: auto;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .carousel-control.left span {
-    top: 36%;
-  }
-  .carousel-control.right span {
-    top: 36%;
-  }
   .basket-form {
     float: none;
     margin: 30px auto 0 auto;
@@ -1962,12 +1974,6 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 480px) {
-  .carousel-control.left span {
-    top: 30%;
-  }
-  .carousel-control.right span {
-    top: 30%;
-  }
   #profile-form .buttons-cont div button {
     font-size: 16px;
   }
@@ -2003,12 +2009,6 @@ footer .all-rights {
   .heraxosner ul li {
     font-size: 12px;
   }
-  .carousel-control.left span {
-    top: 25%;
-  }
-  .carousel-control.right span {
-    top: 25%;
-  }
   footer {
     padding-left: 5px;
     padding-right: 5px;
@@ -2026,12 +2026,10 @@ footer .all-rights {
     width: 98%;
   }
   .carousel-control.left span {
-    top: 22%;
     padding-left: 2px;
     padding-right: 2px;
   }
   .carousel-control.right span {
-    top: 22%;
     padding-right: 2px;
     padding-left: 2px;
   }
