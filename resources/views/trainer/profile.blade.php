@@ -56,10 +56,10 @@
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                  <a href="#hashiv" aria-controls="hashiv" role="tab" data-toggle="tab">@lang('global.payments')</a>
+                  <a href="#hashiv" aria-controls="hashiv" role="tab" data-toggle="tab">@lang('global.orders')</a>
                 </li>
                 <li role="presentation">
-                  <a href="#poxancum" aria-controls="tab" role="tab" data-toggle="tab">@lang('global.current account')</a>
+                  <a href="#poxancum" aria-controls="tab" role="tab" data-toggle="tab">@lang('global.transactions')</a>
                 </li>
               </ul>
             

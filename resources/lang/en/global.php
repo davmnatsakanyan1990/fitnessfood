@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'products' => 'Products',
+    'order' => 'Order',
     'about us' => 'About Us',
     'I am trainer' => 'I Am Trainer',
     'contact' => 'Contact',
@@ -36,8 +36,8 @@ return [
     'status' => 'Status',
     'paid' => 'Paid',
     'pendin' => 'Pending',
-    'payments' => 'Payments',
-    'current account' => 'Current Account',
+    'orders' => 'Orders',
+    'transactions' => 'Transactions',
     'per' => 'Per'
 
 ];

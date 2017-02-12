@@ -41,7 +41,7 @@
             <div class="row form-row"><!-- Form row -->
                 <h2>@lang('global.contact us')</h2>
                 <div class="text-center">
-                    <ul class="list-inline">
+                    <ul class="list-inline rrssb-buttonss">
                         <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="popup">
                                 <img src="/images/social/1.png" alt="social/1.png">
                             </a>

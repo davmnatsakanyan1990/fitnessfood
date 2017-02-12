@@ -4,9 +4,9 @@
             <div class="container">
                 <div class="row">
                     <ul class="list-inline">
-                        <li>(055) 61-04-15</li>
-                        <li>(077) 61-04-15</li>
-                        <li>(091) 61-04-15</li>
+                        <li><a href="tel:091700323">(091) 700-323</a></li>
+                        <li><a href="tel:077700323">(077) 700-323</a></li>
+                        <li><a href="tel:044700323">(044) 700-323</a></li>
                     </ul>
                 </div>      
             </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav main-nav" >
-                        <li class="active"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.products')</a></li>
+                        <li class="active"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.order')</a></li>
                         <li><a href="{{ url('about/'.App::getLocale()) }}">@lang('global.about us')</a></li>
                         <li><a href="{{ url('trainer/login/'.App::getLocale()) }}">@lang('global.I am trainer')</a></li>
                         <li><a href="{{ url('contact/'.App::getLocale()) }}">@lang('global.contact')</a></li>

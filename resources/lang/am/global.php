@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'products' => 'Ապրանքներ',
+    'order' => 'Պատվիրել',
     'about us' => 'Մեր Մասին',
     'I am trainer' => 'Ես մարզիչ եմ',
     'contact' => 'Կապ',
@@ -35,9 +35,9 @@ return [
     'payment date' => 'Ստանալու Ամսաթիվ',
     'status' => 'Ստատուս',
     'paid' => 'Վճարված է',
-    'pending' => 'Վճարված չէ',
-    'payments' => 'Փոխանցումներ',
-    'current account' => 'Ընթացիկ հաշիվ',
+    'pending' => 'Հարցումն Ուղարկված է',
+    'orders' => 'Պատվերներ',
+    'transactions' => 'Գործարքներ',
     'per' => 'Յուր.'
 
 ];

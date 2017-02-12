@@ -22,7 +22,7 @@
     <script>
         var BASE_URL = '{{ url('/') }}'
     </script>
-
+    <link rel="stylesheet" href="/rrssb-master/css/rrssb.css" />
     @yield('styles')
 </head>
 <body>
@@ -38,8 +38,9 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
+<script src="{{ url('lib/jQuery.scrollSpeed.js')}}"></script>
 <script src="/js/main.js"></script>
-
+<script src="/rrssb-master/js/rrssb.js"></script>
 <script>
     $(document).ready(function(){
         if(localStorage.getItem('basket'))
@@ -51,52 +52,52 @@
     });
 </script>
 
-<script>
-    $(document).ready(function(){
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '{{ env('FB_APP_ID') }}',
-                xfbml      : true,
-                version    : 'v2.8'
-            });
+{{--<script>--}}
+    {{--$(document).ready(function(){--}}
+        {{--window.fbAsyncInit = function() {--}}
+            {{--FB.init({--}}
+                {{--appId      : '{{ env('FB_APP_ID') }}',--}}
+                {{--xfbml      : true,--}}
+                {{--version    : 'v2.8'--}}
+            {{--});--}}
 
-            FB.AppEvents.logPageView();
-        };
+            {{--FB.AppEvents.logPageView();--}}
+        {{--};--}}
 
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        {{--(function(d, s, id){--}}
+            {{--var js, fjs = d.getElementsByTagName(s)[0];--}}
+            {{--if (d.getElementById(id)) {return;}--}}
+            {{--js = d.createElement(s); js.id = id;--}}
+            {{--js.src = "//connect.facebook.net/en_US/sdk.js";--}}
+            {{--fjs.parentNode.insertBefore(js, fjs);--}}
+        {{--}(document, 'script', 'facebook-jssdk'));--}}
 
-        $('.fbShare').on('click', function(){
-            FB.ui({
-                method: 'share',
-                display: 'iframe',
-                href: '{{ url()->current() }}'
-            }, function(response){});
-        })
-    });
-</script>
+        {{--$('.fbShare').on('click', function(){--}}
+            {{--FB.ui({--}}
+                {{--method: 'share',--}}
+                {{--display: 'iframe',--}}
+                {{--href: '{{ url()->current() }}'--}}
+            {{--}, function(response){});--}}
+        {{--})--}}
+    {{--});--}}
+{{--</script>--}}
 
-<script>window.twttr = (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0],
-                t = window.twttr || {};
-        if (d.getElementById(id)) return t;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
+{{--<script>window.twttr = (function(d, s, id) {--}}
+        {{--var js, fjs = d.getElementsByTagName(s)[0],--}}
+                {{--t = window.twttr || {};--}}
+        {{--if (d.getElementById(id)) return t;--}}
+        {{--js = d.createElement(s);--}}
+        {{--js.id = id;--}}
+        {{--js.src = "https://platform.twitter.com/widgets.js";--}}
+        {{--fjs.parentNode.insertBefore(js, fjs);--}}
 
-        t._e = [];
-        t.ready = function(f) {
-            t._e.push(f);
-        };
+        {{--t._e = [];--}}
+        {{--t.ready = function(f) {--}}
+            {{--t._e.push(f);--}}
+        {{--};--}}
 
-        return t;
-    }(document, "script", "twitter-wjs"));</script>
+        {{--return t;--}}
+    {{--}(document, "script", "twitter-wjs"));</script>--}}
 <script>
     $(document).find('select[name="lang"]').change(function(){
         var lang = $(this).val();

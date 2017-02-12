@@ -33,11 +33,11 @@
             </div>
             <p>
                 Fitness Cook <br>
-                4/1 1st Avtozavodskiy proezd, Moscow, Russia 115280 <br>
-                Tel: +7(495) 668-08-42
+                {{--4/1 1st Avtozavodskiy proezd, Moscow, Russia 115280 <br>--}}
+                Tel: +374 (91) 700-323
             </p>
             <article class="all-rights">
-                2016 Fitness Cook. All Right Reserved
+                2017 Fitness Cook. All Right Reserved
             </article>
         </div><!-- Footer main row -->
     </div>	<!-- Container-fluid -->

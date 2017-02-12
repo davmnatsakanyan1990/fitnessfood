@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'products' => 'Продукты',
+    'order' => 'Заказывать',
     'about us' => 'О Нас',
     'I am trainer' => 'Я Тренер',
     'contact' => 'Связ',
@@ -36,8 +36,7 @@ return [
     'status' => 'Статус',
     'paid' => 'оплачен',
     'pending' => 'В процессе',
-    'payments' => 'Платежи',
-    'current account' => 'Текущий аккаунт',
-    'per' => 'Б'
+    'transactions' => 'Сделки',
+    'per' => 'В'
 
 ];
