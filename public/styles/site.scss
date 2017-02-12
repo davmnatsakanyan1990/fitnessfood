@@ -19,10 +19,9 @@
     }
 
 html, body {
-  margin: 0 !important;
-  height: 100%;
-  font-family: 'ArialAMU'; 
- 
+	margin: 0 !important;
+	height: 100%;
+	font-family: 'ArialAMU';  
 }
 
 body{
@@ -259,7 +258,7 @@ footer, main:after{
 }
 
 .modal-dialog{
-	width: 70%;
+	width: 848px;
 }
  
 .modal-header{
@@ -272,16 +271,17 @@ footer, main:after{
 }
 
 .modal-product-info{
-	background: rgba(12, 24, 39, 0.65);
-	max-width: 330px;
-	color: #fff;
-	position: absolute;
-	bottom: 60px;
-	left: 20px;
-	padding: 15px;
-	h2{
+	color: $main-black;
+	h1{
+		color: $main-violet;
 		text-align: center;
-		font-size: 18px;
+		font-size: 20px;
+		font-family: ArialAMUbold;
+	}
+	h2{
+		margin-top: 10px;	
+		text-align: center;
+		font-size: 16px;
 		font-family: ArialAMUbold;
 	}
 	h4{
@@ -309,8 +309,10 @@ footer, main:after{
 		}
 	}
 	p{
-		line-height: 22px;
-		margin-top: 20px;
+		margin-top: 10px;
+		padding: 10px;
+		line-height: 18px;
+		text-align: center;
 		span{
 			font-family: ArialAMUbold;
 		}
@@ -321,6 +323,8 @@ footer, main:after{
 .product{
 	cursor: pointer;
 }
+
+
 
 .home-product-cont{
 	.col-md-3{
@@ -340,6 +344,21 @@ footer, main:after{
 					cursor: pointer;
 				}
 			}
+			.modal-product-info{
+				h2{
+					margin-top: 15px;
+				}
+				ul{
+					li{
+						padding-top: 2px;
+						padding-bottom: 2px;
+					}
+				}
+				h4{
+					margin-bottom: 10px;
+				}
+			}
+
 		}
 		.t-active{
 			box-shadow: 0 0 12px 2px $main-black;
@@ -347,6 +366,7 @@ footer, main:after{
 		}
 	}
 }
+ 
 
 .opening-block{
 	margin-top: 10px;  
@@ -476,9 +496,9 @@ footer, main:after{
 .prod-inf{
 	padding: 0 10px;
 	p{
- 
 		margin-bottom: 20px;
 		text-align: center; 
+		text-transform: capitalize;
 		font-family: ArialAMUbold;
 		font-size: 16px;
 		letter-spacing: 0.5px;
