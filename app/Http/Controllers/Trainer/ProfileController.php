@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 
@@ -57,7 +58,10 @@ class ProfileController extends Controller
 
         $payments = $this->trainer->payments;
 
-        return view('trainer.profile', compact('trainer', 'orders', 'total_bonus', 'active_bonus', 'pending', 'paid', 'payments'));
+        // Minimum amount
+        $min_payment_amount = Setting::first()->min_payment_amount;
+
+        return view('trainer.profile', compact('min_payment_amount', 'trainer', 'orders', 'total_bonus', 'active_bonus', 'pending', 'paid', 'payments'));
     }
 
     /**
