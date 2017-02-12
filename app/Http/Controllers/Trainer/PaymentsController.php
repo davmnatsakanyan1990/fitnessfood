@@ -52,19 +52,23 @@ class PaymentsController extends Controller
 
         $active = $total_bonus - $paid - $pending;
 
+        // Minimum amount
+        $min_payment_amount = Setting::first()->min_payment_amount;
+
+        // case: text field is empty and amount is 0
         if(empty($request->amount)){
-            $request->amount = $active;
+            $request->amount = $min_payment_amount;
             if($active == 0){
                 return redirect()->back()->with('error', trans('validation.amount_error'));
             }
         }
 
+        // case: inserted amount is greater than active bonus
         if($request->amount > $active){
             return redirect()->back()->with('error', trans('validation.amount_error'));
         }
 
-        // Minimum amount
-        $min_payment_amount = Setting::first()->min_payment_amount;
+        // case: when user bonus is less than minimum payment amount
         if($active < $min_payment_amount){
             return redirect()->back()->with('error', trans('validation.min_amount', ['attribute' => $min_payment_amount]));
         }

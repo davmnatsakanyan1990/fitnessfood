@@ -35,17 +35,25 @@ alt="prod">
                                 <div class="prod-inf">
                                     <div class="quantity-wrap clearfix">
                                         <div>
-                                            <form class="quantity-form" method="POST" action="#"
-data-id="{{ $product['id'] }}"
-data-price="{{ $product['price'] }}">
+                                            <form class="quantity-form"
+                                                  method="POST"
+                                                  action="#"
+                                                  data-id="{{ $product['id'] }}"
+                                                  data-price="{{ $product['price'] }}">
                                                 <div>
-                                                    <input type="text" name="quantity"
-value="{{ $product['count'] }}" class="qty"></div>
+                                                    <input type="text"
+                                                           name="quantity"
+                                                           value="{{ $product['count'] }}"
+                                                           class="qty"></div>
                                                 <div>
-                                                    <input type="button" value="+" class="qtyplus"
-field="quantity">
-                                                    <input type="button" value="−" class="qtyminus"
-field="quantity"></div>
+                                                    <input type="button"
+                                                           value="+"
+                                                           class="qtyplus"
+                                                           field="quantity">
+                                                    <input type="button"
+                                                           value="−"
+                                                           class="qtyminus"
+                                                           field="quantity"></div>
                                             </form>
                                             <input type="hidden" value="{{ $total }}" name="total"></div>
                                     </div>

@@ -37,7 +37,7 @@
                             @endif
                             <form action="{{ url('trainer/payments/new/'.App::getLocale()) }}" method="post" class="kkapnvenq" id="message">
                                 {{ csrf_field() }}
-                                <input type="number" name="amount" placeholder="{{ $active_bonus }}@lang('product.amd')">
+                                <input type="number" name="amount" placeholder="{{ $active_bonus < $min_payment_amount ? 0 : $min_payment_amount }}@lang('product.amd')">
                             </form>
                             @if(session('message'))
                                 <p>{{ session('message') }}</p>
