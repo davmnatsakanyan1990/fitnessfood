@@ -169,15 +169,28 @@ footer, main:after{
 	} 
 }
 
+.voch-voq-label{
+	width: 15px;
+	height: 15px;
+	position: relative;
+	left: -20px;
+	background: #892E6B;
+	border-radius: 4px;
+}
+
+#voch-voq{
+	margin-left: 3px;
+}
+
 .checked-check{
 	&:after{
 		position: absolute;
-	    top: 1px;
-	    left: 14px;
-	    content: '✔';
-	    color: #fff;/* 
-	    background: $main-violet; */
-	    font-size: 14px;
+		top: 0px;
+		left: 2px;
+		content: '✔';
+		color: #fff;
+		background: #892E6B;
+		font-size: 14px;
 	}
 }
 
@@ -304,6 +317,10 @@ footer, main:after{
 	}
 }
 
+
+.product{
+	cursor: pointer;
+}
 
 .home-product-cont{
 	.col-md-3{
@@ -1315,6 +1332,8 @@ footer{
 	    font-family: ArialAMUbold;
 	}
 
+
+
 	.basket-form-div{
 		.check-box{
 			position: relative;
@@ -1345,23 +1364,12 @@ footer{
 				border: 1px solid #892E6B;
 				border-radius: 4px;
 			}
-			span{
+			/* span{
 				color: $main-black;
 				font-size: 18px;
-			}
-			& > input:checked{
-				& + label{
-					background: $main-violet;
-					&:after{
-						/* position: absolute;
-						top: 1px;
-						left: 14px;
-						content: '✔';
-						font-size: 14px; */
-					}
-				}
-			}
+			} */	
 		}
+
 		.universal-buton{
 			text-transform: uppercase;
 			min-width: 250px;
@@ -1371,10 +1379,8 @@ footer{
 		}
 	}
 
-	.basket-form{
-		margin-right: 99px;
-		margin-top: 30px;
-		max-width: 300px;
+	.basket-form{ 
+		margin-top: 30px; 
 		float: right;
 		hr{
 			margin-bottom: 10px;
@@ -1382,14 +1388,15 @@ footer{
 		}
 		ul{
 			li{
-				&:first-child{
-					font-size: 18px;
-					color: $main-black;
-				}
-				&:nth-child(2){
+				font-size: 18px;				
+			}
+		}
+		ul.prc-ul{
+			li{
+				&:last-child{
 					font-size: 24px;
 					color: $main-violet;
-					float: right;
+					font-family: ArialAMUbold;
 				}
 			}
 		}
@@ -1484,8 +1491,8 @@ footer{
 			}
 			.dropdown-content{
 				ul{
-					max-height: 287px;
-					overflow-y: scroll;
+					min-height: 330px;
+					overflow-y: hidden;
 					overflow-x: hidden;
 					li{
 						background: #fff;
@@ -1539,3 +1546,69 @@ footer{
 	    }
 	}
  
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover{
+	background: $main-violet;
+}
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
+	background: $main-violet;
+}
+
+.basket-form{
+	  	 
+	.dropdown-menu{
+		float: none;
+		overflow: hidden;
+		display: block !important;
+		margin-top: 20px;
+		position: static;
+		padding: 0;
+		li{
+			min-height: 94px;
+			&.selected{
+				background: $main-violet;
+				span{
+					color: #fff;
+				}
+			}
+			a{
+				min-height: 94px;
+				margin: 0;
+				padding-top: 10px;
+			}
+			img{
+				float: left;
+				display: inline-block !important;
+				width: 75px;
+				height: 75px;
+				border-radius: 100%;
+				vertical-align: middle;
+			}
+			span{
+				color: $main-black;
+				padding-left: 20px;
+				padding-top: 12px;
+			}
+		}
+	}
+	.bootstrap-select{
+		margin-bottom: 20px;
+		width: 100% !important;
+		button.selectpicker{
+			display: none !important;
+		}
+		.bs-searchbox{
+			padding: 0;
+			&:after{
+				content: "\f002";
+				position: absolute;
+				font-family: FontAwesome;
+				right: 0;
+				top: 25px;
+				padding-right: 15px;
+				color: $light-gray;
+				font-size: 24px; 
+			}
+		}
+	}
+}
