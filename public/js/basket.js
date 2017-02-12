@@ -1,3 +1,24 @@
+// Search for trainer
+var trainers_list = $(document).find('.trainer-select-main').html();
+$(document).find('input[name="search"]').on('change paste keyup', function() {
+    var value = $(this).val();
+    if(value.length == 0){
+        $(document).find('.trainer-select-main').html(trainers_list);
+    }
+    if(value.length > 2) {
+        $.ajax({
+            url: BASE_URL + '/trainers/search',
+            type: 'get',
+            data: {
+                text: value
+            },
+            success: function (data) {
+                $(document).find('.trainer-select-main').html(data);
+            }
+        })
+    }
+});
+
 // manually change count
 $(document).find('input[name="quantity"]').change(function(){
     var count = $(this).val();

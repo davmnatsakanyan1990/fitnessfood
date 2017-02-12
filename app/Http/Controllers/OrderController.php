@@ -38,6 +38,7 @@ class OrderController extends Controller
      * @return $this
      */
     public function create(Request $request){
+        dd($request->all());
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required|numeric|digits:9'

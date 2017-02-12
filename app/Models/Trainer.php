@@ -53,4 +53,8 @@ class Trainer extends Authenticatable
     public function payments(){
         return $this->hasMany(Payment::class);
     }
+
+    public function gym(){
+        return $this->belongsTo(Gym::class);
+    }
 }

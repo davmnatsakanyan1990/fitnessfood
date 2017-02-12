@@ -116,53 +116,28 @@ alt="prod">
                             </div>
                             
                             <div class="marzich-search">
-                                <input type="text" placeholder="Մարզիչի Անունը">
+                                <input type="text" name="search" placeholder="Մարզիչի Անունը">
                             </div>
-                            <div class="trainer-select-main"> 
-                                <!-- Trainer 1 -->
+                            <div class="trainer-select-main">
+                                @foreach($trainers as $trainer)
+                                <!-- Trainer  -->
                                 <div class="trainer-select">
-                                    <input type="radio" id="tr1" name="marzich">
-                                    <label for="tr1">
+                                    <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="marzich" class="add-to-s">
+                                    <label for="tr{{ $trainer->id }}">
                                         <div class="trainer-inner-content">
-                                            <img src="/images/profile/face.png" alt="">
+                                            <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
                                             <div>
-                                                <span>Ալեքսանդր Հարությունյան</span>
-                                                <p>GoldGym</p>
+                                                <span>{{ $trainer->first_name }} {{ $trainer->last_name }}</span>
+                                                <p>{{ $trainer->gym ? $trainer->gym->name : 'no gym' }}</p>
                                             </div>
                                         </div>
                                     </label>
                                 </div>
-                                <!-- Trainer 2 -->
-                                <div class="trainer-select">
-                                    <input type="radio" id="tr2" name="marzich">
-                                    <label for="tr2">
-                                        <div class="trainer-inner-content">
-                                            <img src="/images/profile/face.png" alt="">
-                                            <div>
-                                                <span>Ալեքսանդր Հարությունյան 2</span>
-                                                <p>GoldGym</p>
-                                            </div>
-                                        </div>
-                                    </label>
-                                </div>  
-                                
-                                <!-- Trainer 3 -->
-                                <div class="trainer-select">
-                                    <input type="radio" id="tr3" name="marzich" class="add-to-s">
-                                    <label for="tr3">
-                                        <div class="trainer-inner-content">
-                                            <img src="/images/profile/face.png" alt="">
-                                            <div>
-                                                <span>Ալեքսանդր Հարությունյան</span>
-                                                <p>GoldGym</p>
-                                            </div>
-                                        </div>
-                                    </label>
-                                </div>           
+                                @endforeach
                             </div> 
                               
                             <div class="v-voq">
-                                <input type="radio" id="tr4" name="marzich">   
+                                <input type="radio" value="0" id="tr4" name="marzich">
                                 <label for="tr4">Ոչ ոք</label>
                             </div> 
 
