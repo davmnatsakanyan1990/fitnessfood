@@ -146,11 +146,8 @@
                 <h4 class="modal-title"></h4>
               </div>
             <div class="modal-body"><!-- Modal-body -->
-                <div id="carousel-id" data-interval="false" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        {{-- Filling from axaj call--}}
-                    </div>
-                    <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
                         <div class="modal-product-info">
                             <h2>@lang('product.nutritional value')</h2>
                             <h4>@lang('global.per') <label class="nutritional_value"></label>@lang('product.g')</h4>
@@ -169,9 +166,20 @@
                             </p>
                         </div>
                     </div>
-                    <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                    <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <div class="col-sm-6">
+                        <div id="carousel-id" data-interval="false" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                {{-- Filling from axaj call--}}
+                            </div>
+                            <div class="container">
+                                
+                            </div>
+                            <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                            <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </div><!-- Modal-carousel-end -->
+                    </div>
                 </div>
+                
             </div><!-- Modal-body end-->
 
             </div>
