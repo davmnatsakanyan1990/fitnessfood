@@ -1743,11 +1743,18 @@ footer .all-rights {
 }
 
 .trainer-select label {
+  cursor: pointer;
+  transition: all 0.3s;
   width: 100%;
   padding: 10px;
   font-size: 18px;
   color: #333333;
   line-height: 22px;
+}
+
+.trainer-select label:hover {
+  background: #892E6B;
+  color: #fff;
 }
 
 .trainer-select input {
