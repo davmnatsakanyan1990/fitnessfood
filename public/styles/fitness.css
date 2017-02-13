@@ -477,6 +477,8 @@ footer, main:after {
 }
 
 .home-product-cont .col-md-3 .tumb-wrap .modal-product-info .product-desc {
+  height: 74px;
+  overflow: hidden;
   padding-top: 2px;
   font-weight: normal;
   font-family: ArialAMU;
