@@ -38,20 +38,20 @@
                                             <!-- Product info from_m -->
                                         <div class="modal-product-info"> 
                                             <h2>@lang('product.nutritional value')
-                                                <span>(@lang('global.per') <label class="nutritional_value"></label>@lang('product.g'))</span>
+                                                <span>(@lang('global.per') <label class="nutritional_value">{{ $product->nutritional_value }}</label>@lang('product.g'))</span>
                                             </h2>
                                             
                                             <hr>
                                             <ul>
-                                                <li>@lang('product.proteins') <span><label class="proteins"></label> @lang('product.g')</span></li>
-                                                <li>@lang('product.fats') <span><label class="fats"></label> @lang('product.g')</span></li>
-                                                <li>@lang('product.carbs') <span><label class="carbs"></label> @lang('product.g')</span></li>
-                                                <li>@lang('product.calories') <span><label class="calories"></label> @lang('product.kkal')</span></li>
-                                                <li>@lang('product.weight') <span><label class="weight"></label> @lang('product.g')</span></li>
+                                                <li>@lang('product.proteins') <span><label class="proteins">{{ $product->proteins }}</label> @lang('product.g')</span></li>
+                                                <li>@lang('product.fats') <span><label class="fats">{{ $product->fats }}</label> @lang('product.g')</span></li>
+                                                <li>@lang('product.carbs') <span><label class="carbs">{{ $product->carbs }}</label> @lang('product.g')</span></li>
+                                                <li>@lang('product.calories') <span><label class="calories">{{ $product->calories }}</label> @lang('product.kkal')</span></li>
+                                                <li>@lang('product.weight') <span><label class="weight">{{ $product->weight }}</label> @lang('product.g')</span></li>
                                             </ul>
                                             <hr>
                                             <p class="product-desc">
-                                                Բաղադրություն։ վարսակի թեփ, կաթ 1%, կաթնաշոռ 1%, սուկրալոզա, յուղազերծված կակաո, եգիպտացորենի օսլա, հատապտուղներ, ձու
+                                                {{ $product->description }}
                                             </p>
                                         </div><!-- Product info from_m end -->
                                         <div class="clearfix">
