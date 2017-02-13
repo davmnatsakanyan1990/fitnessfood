@@ -25,7 +25,7 @@ html, body {
 }
 
 body{
-	background: #F9F9E3;
+	background: #F5F5F5;
 }
 
 
@@ -206,7 +206,7 @@ footer, main:after{
 }
 
 .heraxosner{
-	background: #EFEDD3;
+	background: #F5F5F5;
 	color: $main-violet;
 	min-height: 30px;
 	line-height: 30px;
@@ -229,7 +229,23 @@ footer, main:after{
 				font-family: FontAwesome;
 			
 			} */
+			a{
+				text-decoration: none;
+				color: $main-violet;
+			}
 		}
+	}
+}
+
+.header-ship-p{ 
+	font-family: cursive;
+	position: relative;
+	&:before{
+		content: "\f0d1";
+	    font-family: FontAwesome;
+	    position: relative;
+	    left: -5px;
+	    font-size: 22px;
 	}
 }
 
@@ -345,13 +361,30 @@ footer, main:after{
 				}
 			}
 			.modal-product-info{
+				.product-desc{
+					padding-top: 2px;
+					font-weight: normal;
+					font-family: ArialAMU;
+					line-height: inherit;
+					font-size: 12px;
+					color: $main-black;
+					margin-bottom: 0;
+					margin-top: 0;
+				}
 				h2{
-					margin-top: 15px;
+					font-size: 11px;
+					margin-top: 10px;
+					margin-bottom: 10px;
+					span{
+						font-size: 12px;
+						color: $main-gray;
+					}
 				}
 				ul{
 					li{
-						padding-top: 2px;
-						padding-bottom: 2px;
+						font-size: 10px;
+						padding-top: 0px;
+						padding-bottom: 0px;
 					}
 				}
 				h4{
@@ -496,7 +529,7 @@ footer, main:after{
 .prod-inf{
 	padding: 0 10px;
 	p{
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		text-align: center; 
 		text-transform: capitalize;
 		font-family: ArialAMUbold;
@@ -1511,7 +1544,9 @@ footer{
 			}
 			.dropdown-content{
 				ul{
-					min-height: 330px;
+					border: 1px solid rgba(153, 153, 153, 0.37);
+					border-top: none;
+					max-height: 330px;
 					overflow-y: hidden;
 					overflow-x: hidden;
 					li{
@@ -1582,6 +1617,7 @@ footer{
 
 .trainer-select-main{
 	border: 1px solid $light-gray;
+	background: #fff;
 	border-top: none;
 }
 

@@ -244,7 +244,13 @@
 		padding-left: 15px;
 		padding-right: 15px;
 	}
-
+	
+	.prod-percent-th{
+		display: none;
+	}
+	.prod-count-th{
+		display: none;
+	}
 }
 
 @media screen and(max-width: 360px){
@@ -271,6 +277,13 @@
 	}
 	.v-voq{
 		padding-left: 15px;
+	}
+	.for-table{
+		table{
+			& *{
+				font-size: 12px !important;
+			}
+		}
 	}
 }
 
