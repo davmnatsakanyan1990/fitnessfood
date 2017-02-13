@@ -2,7 +2,7 @@
 @section('content')
 
     <main class="home-main"><!-- Main section -->
-        <section><!-- Slider section -->
+        {{--<section><!-- Slider section -->
             <div class="container">
                 <div class="row">
                     <div id="main-slider" class="carousel slide" data-ride="carousel">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-        </section><!-- Slider section end-->
+        </section>--}}<!-- Slider section end-->
 
         <section><!-- Products section -->
             @if(count($products) > 0)
@@ -166,7 +166,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="modal-product-info">
-                            <h1>Ապրանքի Անվանում</h1>
+                            <h1 class="prd_name"></h1>
                             <h2>@lang('product.nutritional value')</h2>
                             <h4>@lang('global.per') <label class="nutritional_value"></label>@lang('product.g')</h4>
                             <hr>
@@ -178,9 +178,7 @@
                                 <li>@lang('product.weight') <span><label class="weight"></label> @lang('product.g')</span></li>
                             </ul>
                             <hr>
-                            <p>
-                                Բաղադրություն։ վարսակի թեփ, կաթ 1%, կաթնաշոռ 1%, սուկրալոզա, յուղազերծված կակաո, եգիպտացորենի օսլա, հատապտուղներ, ձու
-                            </p>
+                            <p class="description"></p>
                         </div>
                     </div>
                     <div class="col-sm-6">

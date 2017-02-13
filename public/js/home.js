@@ -226,13 +226,14 @@ $(document).ready(function(){
             type: 'get',
             success: function(data){
                 $($('#carousel-id').find('.carousel-inner')[0]).html(data.view);
-                $('#carousel-id').find('.modal-product-info .fats').text(data.data.fats);
-                $('#carousel-id').find('.modal-product-info .proteins').text(data.data.proteins);
-                $('#carousel-id').find('.modal-product-info .carbs').text(data.data.carbs);
-                $('#carousel-id').find('.modal-product-info .calories').text(data.data.calories);
-                $('#carousel-id').find('.modal-product-info .weight').text(data.data.weight);
-                $('#carousel-id').find('.modal-product-info .description').text(data.data.description);
-                $('#carousel-id').find('.modal-product-info .nutritional_value').text(data.data.nutritional_value);
+                $(document).find('.modal-product-info .fats').text(data.data.fats);
+                $(document).find('.modal-product-info .proteins').text(data.data.proteins);
+                $(document).find('.modal-product-info .carbs').text(data.data.carbs);
+                $(document).find('.modal-product-info .calories').text(data.data.calories);
+                $(document).find('.modal-product-info .weight').text(data.data.weight);
+                $(document).find('.modal-product-info .description').text(data.data.description);
+                $(document).find('.modal-product-info .nutritional_value').text(data.data.nutritional_value);
+                $(document).find('.modal-product-info .prd_name').text(data.data.title);
             }
         });
 

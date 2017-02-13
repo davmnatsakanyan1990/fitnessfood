@@ -38,6 +38,9 @@ return [
     'pending' => 'Հարցումն Ուղարկված է',
     'orders' => 'Պատվերներ',
     'transactions' => 'Գործարքներ',
-    'per' => 'Յուր.'
+    'per' => 'Յուր.',
+    'nothing was found' => 'Արդյունք չի գտնվել',
+    'trainer\'s name' => 'Մարզիչի Անունը',
+    'nobody' => 'Ոչ ոք'
 
 ];

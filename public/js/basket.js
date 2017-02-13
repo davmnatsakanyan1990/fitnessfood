@@ -7,7 +7,7 @@ $(document).find('input[name="search"]').on('change paste keyup', function() {
     }
     if(value.length > 2) {
         $.ajax({
-            url: BASE_URL + '/trainers/search',
+            url: BASE_URL + '/trainers/search/'+locale,
             type: 'get',
             data: {
                 text: value

@@ -49,6 +49,7 @@ class HomeController extends Controller
         $locale = $this->locale;
         $product = Product::with('images', 'thumb_image')->find($id);
         $product->description = json_decode($product->description)->$locale;
+        $product->title = json_decode($product->title)->$locale;
         
         $data = [];
         $data['view'] = View::make('ajax.product_carousel', compact('product'))->render();

@@ -37,6 +37,9 @@ return [
     'paid' => 'оплачен',
     'pending' => 'В процессе',
     'transactions' => 'Сделки',
-    'per' => 'В'
+    'per' => 'В',
+    'nothing was found' => 'Результатов нет',
+    'trainer\'s name' => 'Имя Тренера',
+    'nobody' => 'Никто'
 
 ];
