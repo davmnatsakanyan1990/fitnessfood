@@ -54,10 +54,11 @@ class BasketController extends Controller
             }
         }
 
-        $trainers = Trainer::with('image')->where('is_approved', 1)->get();
         $shipping = Setting::first()->shipping_price;
 
         $min_amount_free_shipping = Setting::first()->min_amount_free_shipping;
+
+        $trainers = Trainer::with('image', 'gym')->where('is_approved', 1)->take(3)->get();
 
         return view('basket', compact('trainers', 'shipping', 'min_amount_free_shipping', 'products', 'total'));
     }
@@ -72,5 +73,19 @@ class BasketController extends Controller
         }
 
         return $products;
+    }
+
+    //Ajax call
+    public function searchTrainer(Request $request){
+        $text = $request->text;
+        $trainers = Trainer::where('is_approved', 1)
+                            ->where(function($query) use ($text){
+                                                        $query->where('custom_first_name', 'like', '%'.$text.'%')
+                                                        ->orWhere('custom_last_name', 'like', '%'.$text.'%')
+                                                        ->orWhere('first_name', 'like', '%'.$text.'%')
+                                                        ->orWhere('last_name', 'like', '%'.$text.'%');
+                                                        })
+                                                        ->get();
+        return view('ajax.trainer_search', compact('trainers'));
     }
 }

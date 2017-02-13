@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class Authenticate
@@ -23,10 +24,10 @@ class Authenticate
             } else {
                 switch($guard){
                     case 'trainer' :
-                        return redirect()->guest('trainer/login');
+                        return redirect()->guest('trainer/login/'.App::getLocale());
                     break;
                     case 'admin' :
-                        return redirect()->guest('admin/login');
+                        return redirect()->guest('admin/login/'.App::getLocale());
                     break;
                 }
 

@@ -120,4 +120,7 @@ Route::post('basket/products/{locale}', 'BasketController@products');
 // Ajax call
 Route::get('products/get/{id}/{locale}', 'HomeController@getProduct');
 
+//Ajax call
+Route::get('trainers/search', 'BasketController@searchTrainer');
+
 
