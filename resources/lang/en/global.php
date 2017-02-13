@@ -38,6 +38,9 @@ return [
     'pendin' => 'Pending',
     'orders' => 'Orders',
     'transactions' => 'Transactions',
-    'per' => 'Per'
+    'per' => 'Per',
+    'nothing was found' => 'Nothing was found',
+    'trainer\'s name' => 'Trainer\'s Name',
+    'nobody' => 'Nobody'
 
 ];

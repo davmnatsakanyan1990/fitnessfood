@@ -1,3 +1,4 @@
+@if(count($trainers) > 0)
 @foreach($trainers as $trainer)
 <div class="trainer-select">
     <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="marzich" class="add-to-s">
@@ -12,3 +13,6 @@
     </label>
 </div>
 @endforeach
+@else
+<p class="text-center" style="padding: 7px">@lang('global.nothing was found')</p>
+@endif

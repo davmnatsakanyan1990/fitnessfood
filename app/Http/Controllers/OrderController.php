@@ -38,7 +38,7 @@ class OrderController extends Controller
      * @return $this
      */
     public function create(Request $request){
-        dd($request->all());
+//        dd($request->all());
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required|numeric|digits:9'
@@ -46,8 +46,8 @@ class OrderController extends Controller
         
         $name = $request->name;
         $phone = $request->phone;
-        $trainer = $request->is_addvised ? $request->trainer : null;
-        $trainer_percent  = $request->is_addvised ? Trainer::find($request->trainer)->percent : null;
+        $trainer = $request->trainer ? $request->trainer : null;
+        $trainer_percent  = $request->trainer ? Trainer::find($request->trainer)->percent : null;
         $products = json_decode($_COOKIE['basket']);
 
         $order = DB::table('orders')->insertGetId([

@@ -121,6 +121,6 @@ Route::post('basket/products/{locale}', 'BasketController@products');
 Route::get('products/get/{id}/{locale}', 'HomeController@getProduct');
 
 //Ajax call
-Route::get('trainers/search', 'BasketController@searchTrainer');
+Route::get('trainers/search/{locale}', 'BasketController@searchTrainer');
 
 

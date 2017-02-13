@@ -116,19 +116,19 @@ alt="prod">
                             </div>
                             
                             <div class="marzich-search">
-                                <input type="text" name="search" placeholder="Մարզիչի Անունը">
+                                <input type="text" name="search" placeholder="@lang('global.trainer\'s name')">
                             </div>
                             <div class="trainer-select-main">
                                 @foreach($trainers as $trainer)
                                 <!-- Trainer  -->
                                 <div class="trainer-select">
-                                    <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="marzich" class="add-to-s">
+                                    <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="trainer" class="add-to-s">
                                     <label for="tr{{ $trainer->id }}">
                                         <div class="trainer-inner-content">
                                             <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
                                             <div>
                                                 <span>{{ $trainer->first_name }} {{ $trainer->last_name }}</span>
-                                                <p>{{ $trainer->gym ? $trainer->gym->name : 'no gym' }}</p>
+                                                <p>{{ $trainer->gym ? $trainer->gym->name : '' }}</p>
                                             </div>
                                         </div>
                                     </label>
@@ -137,8 +137,8 @@ alt="prod">
                             </div> 
                               
                             <div class="v-voq">
-                                <input type="radio" value="0" id="tr4" name="marzich">
-                                <label for="tr4">Ոչ ոք</label>
+                                <input type="radio" value="0" id="tr4" name="trainer">
+                                <label for="tr4">@lang('global.nobody')</label>
                             </div> 
 
                             <button type="submit" {{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
