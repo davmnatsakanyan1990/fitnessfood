@@ -25,7 +25,7 @@
             </div>
             <div class="footer-nav">
                 <ul class="list-inline">
-                    <li><a href="#">@lang('global.products')</a></li>
+                    <li><a href="#">@lang('global.order')</a></li>
                     <li><a href="#">@lang('global.about us')</a></li>
                     <li><a href="#">@lang('global.I am trainer')</a></li>
                     <li><a href="#">@lang('global.contact')</a></li>

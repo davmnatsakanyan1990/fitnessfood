@@ -11,7 +11,7 @@
                         </ul>
                     </div>
                     <div class="col-sm-6 text-center">
-                        <p class="header-ship-p">Առաքումն անվճար 3000դր և ավել գնումների դեպքում</p>
+                        <p class="header-ship-p">@lang('global.free shipping text', ['amount' => $min_shipping_price] )</p>
                     </div>
                     
                 </div>      
