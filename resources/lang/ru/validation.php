@@ -78,7 +78,8 @@ return [
         'last_name' => 'Отчвство',
         'first_name' => 'Имя',
         'text' => 'Текст',
-        'amount' => 'Сумма'
+        'amount' => 'Сумма',
+        'trainer' => 'Тренер'
     ],
 
 ];
