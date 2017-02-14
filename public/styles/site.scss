@@ -286,6 +286,13 @@ footer, main:after{
 	}
 }
 
+.prd_title{
+	width: 245px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+}
+
 .modal-product-info{
 	color: $main-black;
 	h1{
