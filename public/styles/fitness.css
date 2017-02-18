@@ -353,30 +353,27 @@ footer, main:after {
 
 .heraxosner ul li {
   font-size: 16px;
-}
-
-.heraxosner ul li:first-child:before {
-  display: inline-block;
-  content: url(../images/beeline.png);
-  position: relative;
-  left: -10px;
-  top: 6px;
-}
-
-.heraxosner ul li:nth-child(2):before {
-  display: inline-block;
-  content: url(../images/viva.png);
-  position: relative;
-  left: -10px;
-  top: 6px;
-}
-
-.heraxosner ul li:last-child:before {
-  display: inline-block;
-  content: url(../images/orange.png);
-  position: relative;
-  left: -10px;
-  top: 6px;
+  /* &:first-child:before{
+				display: inline-block;
+				content: url(../images/beeline.png); 
+				position: relative;
+				left: -10px;
+				top: 6px;
+			}
+			&:nth-child(2):before{
+				display: inline-block;
+				content: url(../images/viva.png); 
+				position: relative;
+				left: -10px;
+				top: 6px;
+			}
+			&:last-child:before{
+				display: inline-block;
+				content: url(../images/orange.png); 
+				position: relative;
+				left: -10px;
+				top: 6px;
+			} */
 }
 
 .heraxosner ul li a {
