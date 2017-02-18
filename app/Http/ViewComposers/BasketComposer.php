@@ -2,6 +2,7 @@
 namespace App\Http\ViewComposers;
 
 use App\Models\Product;
+use App\Models\Setting;
 use Illuminate\Support\Facades\App;
 use Illuminate\View\View;
 
@@ -53,6 +54,8 @@ class BasketComposer
 
             }
         }
-        $view->with('basket_products', $basket_products);
+
+        $min_shipping_price = Setting::first()->min_amount_free_shipping;
+        $view->with(['basket_products' => $basket_products, 'min_shipping_price' => $min_shipping_price]);
     }
 }

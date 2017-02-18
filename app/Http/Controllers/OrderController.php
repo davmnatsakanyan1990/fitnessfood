@@ -41,7 +41,8 @@ class OrderController extends Controller
 //        dd($request->all());
         $this->validate($request, [
             'name' => 'required',
-            'phone' => 'required|numeric|digits:9'
+            'phone' => 'required|numeric|digits:9',
+            'trainer' => 'required'
         ]);
         
         $name = $request->name;

@@ -41,6 +41,7 @@ return [
     'per' => 'Յուր.',
     'nothing was found' => 'Արդյունք չի գտնվել',
     'trainer\'s name' => 'Մարզիչի Անունը',
-    'nobody' => 'Ոչ ոք'
+    'nobody' => 'Ոչ ոք',
+    'free shipping text' => 'Առաքումն անվճար :amount դր և ավել գնումների դեպքում'
 
 ];

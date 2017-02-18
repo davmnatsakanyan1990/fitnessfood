@@ -40,6 +40,7 @@ return [
     'per' => 'В',
     'nothing was found' => 'Результатов нет',
     'trainer\'s name' => 'Имя Тренера',
-    'nobody' => 'Никто'
+    'nobody' => 'Никто',
+    'free shipping text' => 'Бесплатная доставка при покупке :amount амд и более'
 
 ];

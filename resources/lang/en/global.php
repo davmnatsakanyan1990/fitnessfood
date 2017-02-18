@@ -41,6 +41,7 @@ return [
     'per' => 'Per',
     'nothing was found' => 'Nothing was found',
     'trainer\'s name' => 'Trainer\'s Name',
-    'nobody' => 'Nobody'
+    'nobody' => 'Nobody',
+    'free shipping text' => 'Delivery is free in case of :amount AMD and more'
 
 ];

@@ -73,7 +73,7 @@ alt="prod">
                     <tfoot>
                         <tr>
                             <td colspan="5" class="text-right">
-                                <span class="freeshipping" {{ $total >
+                                <span class="freeshipping" {{ $total >=
                                     $min_amount_free_shipping ? '' : 'hidden' }}>@lang('global.free_shipping')
                                 </span>
                                 <span class="shipping" {{ $total < $min_amount_free_shipping ? '' : 'hidden' }}>@lang('global.shipping'): {{ $shipping }}</span>
@@ -90,7 +90,7 @@ alt="prod">
                         <li>
                             <span id="total">{{ $total }}</span>
                             @lang('product.amd')
-                            <span {{ $total >
+                            <span {{ $total >=
                                 $min_amount_free_shipping ? 'hidden' : '' }} class="shipping_amount">+ {{ $shipping }}@lang('product.amd')
                             </span>
                         </li>

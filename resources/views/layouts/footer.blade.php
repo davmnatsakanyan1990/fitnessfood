@@ -25,7 +25,7 @@
             </div>
             <div class="footer-nav">
                 <ul class="list-inline">
-                    <li><a href="{{ url('/'.App::getLocale()) }}">@lang('global.products')</a></li>
+                    <li><a href="{{ url('/'.App::getLocale()) }}">@lang('global.order')</a></li>
                     <li><a href="{{ url('about/'.App::getLocale()) }}">@lang('global.about us')</a></li>
                     <li><a href="{{ url('trainer/login/'.App::getLocale()) }}">@lang('global.I am trainer')</a></li>
                     <li><a href="{{ url('contact/'.App::getLocale()) }}">@lang('global.contact')</a></li>
