@@ -1,5 +1,6 @@
 @extends('trainer.layouts.index')
 @section('content')
+    <div class="responsive-height-block"><!-- Important --></div>
     <main>
         <div class="container">
             <div class="row profile-row-main">

@@ -3,6 +3,7 @@
 
 @endsection
 @section('content')
+    <div class="responsive-height-block"><!-- Important --></div>
     <main>
         <div class="login-marzich">
             <h3>@lang('global.I am trainer')</h3>

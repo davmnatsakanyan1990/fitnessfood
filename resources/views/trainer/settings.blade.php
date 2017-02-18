@@ -1,5 +1,6 @@
 @extends('trainer.layouts.index')
 @section('content')
+    <div class="responsive-height-block"><!-- Important --></div>
     <main>
         <div class="settings-wrap">
             <form class="form-horizontal" id="profile-form" method="post" action="{{ url('trainer/settings/update') }}"

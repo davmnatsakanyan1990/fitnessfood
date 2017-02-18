@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+	<div class="responsive-height-block"><!-- Important --></div>
     <main class="register-main">
     	<div class="registration-block">
     		<p>@lang('auth.register')</p>

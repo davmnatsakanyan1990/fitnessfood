@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
 @endsection
 @section('content')
+<div class="responsive-height-block"><!-- Important --></div>
 <main class="basket-main">
     <div class="container">
         <h3 class="basket-title">@lang('global.basket')</h3>

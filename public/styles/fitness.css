@@ -149,6 +149,10 @@ body {
   background: #F5F5F5;
 }
 
+.responsive-height-block {
+  min-height: 132px;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -180,12 +184,33 @@ main {
   min-height: 100%;
 }
 
-.basket-main {
-  margin-top: 144px;
+.filter-navmenu-wrap ul {
+  display: flex;
+  justify-content: space-between;
 }
 
-.home-main {
-  margin-top: 94px;
+.filter-navmenu-wrap ul li a {
+  text-align: center;
+  transition: all 0.3s;
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #676767;
+  font-family: ArialAMU;
+}
+
+.filter-navmenu-wrap ul li a:hover {
+  color: #fff;
+  background: #892E6B;
+}
+
+.filter-active {
+  background: #892E6B;
+}
+
+.filter-active a {
+  color: #fff !important;
 }
 
 footer, main:after {
@@ -326,24 +351,32 @@ footer, main:after {
   line-height: 30px;
 }
 
-.heraxosner ul:before {
-  content: "\f095";
-  position: relative;
-  font-family: FontAwesome;
-  top: 3px;
-  padding-left: 5px;
-  font-size: 20px;
-}
-
 .heraxosner ul li {
   font-size: 16px;
-  /* &:before{
-				padding-right: 10px;
-				font-size: 18px;
-				content: "\f095";
-				font-family: FontAwesome;
-			
-			} */
+}
+
+.heraxosner ul li:first-child:before {
+  display: inline-block;
+  content: url(../images/beeline.png);
+  position: relative;
+  left: -10px;
+  top: 6px;
+}
+
+.heraxosner ul li:nth-child(2):before {
+  display: inline-block;
+  content: url(../images/viva.png);
+  position: relative;
+  left: -10px;
+  top: 6px;
+}
+
+.heraxosner ul li:last-child:before {
+  display: inline-block;
+  content: url(../images/orange.png);
+  position: relative;
+  left: -10px;
+  top: 6px;
 }
 
 .heraxosner ul li a {
@@ -397,7 +430,6 @@ footer, main:after {
 }
 
 .prd_title {
-  width: 245px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -464,6 +496,11 @@ footer, main:after {
 
 .product {
   cursor: pointer;
+}
+
+.home-product-cont h1 {
+  font-size: 30px;
+  color: #892E6B;
 }
 
 .home-product-cont .col-md-3 .tumb-wrap {
@@ -838,22 +875,30 @@ footer .all-rights {
 /* About page */
 .about-main > div {
   text-align: center;
-  margin-top: 139px;
 }
 
 .about-main p {
   max-width: 550px;
-  margin: 50px auto 0 auto;
+  margin: 25px auto 0 auto;
   line-height: 22px;
-  text-align: center;
+  text-align: left;
   font-size: 18px;
 }
 
-/* contact page  */
-.contact-main {
-  margin-top: 126px;
+.about-main h1 {
+  text-align: left;
+  color: #892E6B;
+  font-size: 30px;
 }
 
+.about-main .video-wrap {
+  margin-top: 55px;
+}
+
+/* contact page  */
+/* .contact-main{
+	margin-top: 126px;
+} */
 .cols-3-row .col-sm-4 {
   margin-top: 60px;
 }
@@ -1325,7 +1370,6 @@ footer .all-rights {
 /* Login */
 .registration-block {
   margin: 0 auto;
-  margin-top: 134px;
   max-width: 300px;
 }
 
@@ -1378,7 +1422,7 @@ footer .all-rights {
 
 .login-marzich {
   max-width: 300px;
-  margin: 144px auto 50px auto;
+  margin: 0 auto 50px auto;
 }
 
 .login-marzich h3 {
@@ -1862,6 +1906,18 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 1024px) {
+  .filter-navmenu-wrap ul {
+    display: block;
+    justify-content: inherit;
+    text-align: center;
+  }
+  .filter-navmenu-wrap ul li {
+    margin-top: 15px;
+  }
+  .filter-navmenu-wrap + .row {
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+  }
   .main-nav {
     padding-left: 40px;
   }
@@ -1879,6 +1935,9 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 991px) {
+  .responsive-height-block {
+    min-height: 167px;
+  }
   .navbar-header {
     float: none;
   }
@@ -2010,6 +2069,13 @@ footer .all-rights {
   .close-prod a {
     width: inherit;
   }
+  .about-main h1 {
+    text-align: center;
+    margin-top: 25px;
+  }
+  .about-main p {
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 640px) {
@@ -2055,6 +2121,18 @@ footer .all-rights {
   .header-ship-p {
     font-size: 14px;
     line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 444px) {
+  .responsive-height-block {
+    min-height: 215px;
+  }
+  .header-ship-p {
+    margin-bottom: 15px;
+  }
+  .heraxosner ul {
+    text-align: center;
   }
 }
 

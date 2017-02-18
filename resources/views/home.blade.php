@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+    <div class="responsive-height-block"><!-- Important --></div>
     <main class="home-main"><!-- Main section -->
         {{--<section><!-- Slider section -->
             <div class="container">
@@ -20,11 +20,21 @@
                 </div>
             </div>
         </section>--}}<!-- Slider section end-->
-
+        
         <section><!-- Products section -->
             @if(count($products) > 0)
             @foreach($products as $row)
                 <div class="container home-product-cont">
+                <!-- <h1>Ապրանքներ</h1> -->
+                    <div class="row filter-navmenu-wrap"> 
+                        <ul class="list-inline">
+                            <li class="filter-active"><a href="#">Բոլորը</a></li>
+                            <li><a href="#">Խմորեղեն Կտորով</a></li>
+                            <li><a href="#">Տորթեր Պատվերով </a></li>
+                            <li><a href="#">Անվանական տորթեր</a></li>
+                            <li><a href="#">Հաց</a></li>
+                        </ul> 
+                    </div>
                     <div class="row" style="margin-left: -30px; margin-right: -30px;">
                         @foreach($row as $product)
                         <!-- product -->

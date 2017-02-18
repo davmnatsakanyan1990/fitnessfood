@@ -6,6 +6,20 @@
 
 
 @media screen and(max-width: 1024px){
+	.filter-navmenu-wrap{
+			ul{
+				display: block;
+				justify-content: inherit;
+				text-align: center;
+				li{
+					margin-top: 15px;
+				}
+			}
+		& + .row{
+			margin-left: -15px !important;
+			margin-right: -15px !important;
+		}
+	}
 	.main-nav{
 		padding-left: 40px;
 	}
@@ -28,6 +42,9 @@
 }
  
 @media screen and(max-width: 991px){
+	.responsive-height-block{
+		min-height: 167px;
+	}
 	.navbar-header {
 	        float: none;
 	    }
@@ -187,6 +204,15 @@
 	.close-prod a{
 		width: inherit;
 	}
+	.about-main{
+		h1{
+			text-align: center;
+			margin-top: 25px;
+		}
+		p{
+			text-align: center;
+		}
+	}
 }
 
 
@@ -254,6 +280,19 @@
 	.header-ship-p{
 		font-size: 14px;
 		line-height: 20px;
+	}
+}
+@media screen and(max-width: 444px){
+	.responsive-height-block{
+		min-height: 215px;
+	}
+	.header-ship-p{
+		margin-bottom: 15px;
+	}
+	.heraxosner{
+		ul{
+			text-align: center;
+		}
 	}
 }
 

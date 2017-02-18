@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    <div class="responsive-height-block"><!-- Important --></div>
     <main>
         <div class="login-marzich">
             <h3>@lang('auth.forgot password')</h3>

@@ -1,6 +1,6 @@
 //
 // Site css
-// --------------------------------------------
+// -------------------------------------------- 
 
 /* font-family: "ArianAMURegular"; */
     @font-face {
@@ -28,6 +28,9 @@ body{
 	background: #F5F5F5;
 }
 
+.responsive-height-block{
+	min-height: 132px;
+}
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -61,12 +64,34 @@ main{
 	min-height: 100%; 
 }
 
-.basket-main{
-	margin-top: 144px;
+.filter-navmenu-wrap{
+	ul{
+		display: flex;
+		justify-content: space-between;
+		li{
+			a{ 
+				text-align: center;
+				transition: all 0.3s;
+				display: inline-block;
+				padding: 10px 15px;
+				text-decoration: none;
+				font-size: 18px;
+				color: $main-gray;
+				font-family: ArialAMU;
+				&:hover{
+					color: #fff;
+					background: $main-violet;
+				}
+			}
+		}
+	}
 }
 
-.home-main{
-	margin-top: 94px;
+.filter-active{
+	background: $main-violet;
+	a{
+		color: #fff !important;
+	}
 }
 
 footer, main:after{
@@ -211,24 +236,29 @@ footer, main:after{
 	min-height: 30px;
 	line-height: 30px;
 	ul{
-		&:before{
-			content: "\f095";
-			position: relative;
-			font-family: FontAwesome;
-			top: 3px;
-			padding-left: 5px;
-			font-size: 20px;
-
-		}
 		li{
 			font-size: 16px;
-			/* &:before{
-				padding-right: 10px;
-				font-size: 18px;
-				content: "\f095";
-				font-family: FontAwesome;
-			
-			} */
+			&:first-child:before{
+				display: inline-block;
+				content: url(../images/beeline.png); 
+				position: relative;
+				left: -10px;
+				top: 6px;
+			}
+			&:nth-child(2):before{
+				display: inline-block;
+				content: url(../images/viva.png); 
+				position: relative;
+				left: -10px;
+				top: 6px;
+			}
+			&:last-child:before{
+				display: inline-block;
+				content: url(../images/orange.png); 
+				position: relative;
+				left: -10px;
+				top: 6px;
+			}
 			a{
 				text-decoration: none;
 				color: $main-violet;
@@ -286,8 +316,7 @@ footer, main:after{
 	}
 }
 
-.prd_title{
-	width: 245px;
+.prd_title{ 
 	overflow:hidden;
 	white-space:nowrap;
 	text-overflow: ellipsis;
@@ -350,6 +379,10 @@ footer, main:after{
 
 
 .home-product-cont{
+	h1{
+		font-size: 30px;
+		color: $main-violet;
+	}
 	.col-md-3{
 		.tumb-wrap{
 			min-height: 270px;
@@ -699,23 +732,31 @@ footer{
 
 .about-main{
 	& > div{
-		text-align: center;
-		margin-top: 139px;
+		text-align: center; 
 	}
 	p{
 		max-width: 550px;
-		margin: 50px auto 0 auto;
+		margin: 25px auto 0 auto;
 		line-height: 22px;
-		text-align: center;
+		text-align: left;
 		font-size: 18px;
+	}
+	h1{
+		text-align: left;
+		color: $main-violet;
+		font-size: 30px;
+	}
+	.video-wrap{
+ 		margin-top: 55px;
 	}
 }
  
 
+
 /* contact page  */
-.contact-main{
+/* .contact-main{
 	margin-top: 126px;
-}
+} */
 .cols-3-row{
 	.col-sm-4{
 		margin-top: 60px;
@@ -1174,8 +1215,7 @@ footer{
 
 /* Login */
 .registration-block{
-	margin: 0 auto;
-	margin-top: 134px;
+	margin: 0 auto; 
 	max-width: 300px;
 	.d-of-birth{
 		color: $main-violet;
@@ -1223,7 +1263,7 @@ footer{
 
 .login-marzich{
 	max-width: 300px;
-	margin: 144px auto 50px auto; 
+	margin: 0 auto 50px auto; 
 	h3{
 		color: $main-violet;
 		text-align: center;

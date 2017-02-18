@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    <div class="responsive-height-block"><!-- Important --></div>
     <main class="contact-main">
         <div class="container"><!-- Container -->
             {{--<div class="row"><!-- Map Row -->--}}
