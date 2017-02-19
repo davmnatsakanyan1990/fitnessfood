@@ -16,6 +16,7 @@ class Product extends Model
         'fats',
         'calories',
         'weight',
+        'category_id',
         'price',
     ];
 
@@ -25,5 +26,9 @@ class Product extends Model
 
     public function thumb_image(){
         return $this->morphOne(Image::class, 'imageable')->where('role', 1);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 }

@@ -104,6 +104,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('gyms/update/{id}', 'GymController@update');
     Route::post('gyms/delete/{id}', 'GymController@delete');
 
+    Route::get('categories', 'CategoryController@index');
+    Route::post('categories/new', 'CategoryController@create');
+    Route::post('categories/update', 'CategoryController@update');
+    Route::post('categories/delete/{id}', 'CategoryController@delete');
+    Route::get('categories/get/{id}', 'CategoryController@getCategory');
+
 });
 
 Route::get('about/{locale}', function($locale){

@@ -36,6 +36,9 @@
             <li class="{{ url()->current() == url('admin/gyms') ? 'active' : ''  }}">
                 <a href="{{ url('admin/gyms') }}"><i class="fa fa-building"></i> <span class="nav-label">Gyms</span></a>
             </li>
+            <li class="{{ url()->current() == url('admin/categories') ? 'active' : ''  }}">
+                <a href="{{ url('admin/categories') }}"><i class="fa fa-building"></i> <span class="nav-label">Categories</span></a>
+            </li>
         </ul>
 
     </div>

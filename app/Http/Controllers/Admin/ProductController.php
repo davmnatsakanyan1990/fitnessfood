@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class ProductController extends AdminBaseController
 //        $product = Product::find(21);
 //        dd($product);
 //        dd(json_decode($product->description)->en);
-        $products = Product::with('thumb_image')->orderBy('created_at', 'desc')->get();
+        $products = Product::with('thumb_image', 'category')->orderBy('created_at', 'desc')->get();
 
         return view('admin.products.index', compact('products'));
     }
@@ -39,7 +40,9 @@ class ProductController extends AdminBaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(){
-        return view('admin.products.create');
+        $categories = Category::all();
+
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -50,7 +53,7 @@ class ProductController extends AdminBaseController
      */
     public function save(Request $request){
         $this->validate($request, [
-//            'name'=>'required',
+            'name.*'=>'required',
             'price'=>'required',
             'status'=>'required'
         ]);
@@ -65,6 +68,7 @@ class ProductController extends AdminBaseController
             'fats' => $request->fats,
             'calories' => $request->calories,
             'weight' => $request->weight,
+            'category_id' => $request->category,
             'status'=>$request->status
         ]);
 
@@ -79,8 +83,9 @@ class ProductController extends AdminBaseController
      */
     public function edit($product_id){
         $product = Product::with('images')->find($product_id);
+        $categories = Category::all();
         if($product)
-            return view('admin.products.edit', compact('product'));
+            return view('admin.products.edit', compact('product', 'categories'));
         else
             abort(404);
     }
@@ -94,7 +99,7 @@ class ProductController extends AdminBaseController
     public function update(Request $request){
 
         $this->validate($request, [
-//            'name'  => 'required',
+            'name.*'  => 'required',
             'price' =>'required',
             'status'=>'required'
         ]);
@@ -109,6 +114,7 @@ class ProductController extends AdminBaseController
             'fats' => $request->fats,
             'calories' => $request->calories,
             'weight' => $request->weight,
+            'category_id' => $request->category,
             'status'=>$request->status
         ]);
 

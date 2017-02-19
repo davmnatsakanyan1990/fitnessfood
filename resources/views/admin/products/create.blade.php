@@ -96,6 +96,17 @@
                                                               value="{{ old('weight') }}" placeholder="gram"></div>
                             </div>
                             <div class="form-group">
+                                <label class="col-sm-2 control-label">Category</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control m-b" name="category">
+                                        <option>Select Category</option>
+                                        @foreach($categories as $category)
+                                            <option {{ old('category') === 0 ? 'selected' : '' }} value="{{ $category->id }}">{{ json_decode($category->name)->en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-sm-2 control-label">Status</label>
                                 <div class="col-sm-10">
                                     <select class="form-control m-b" name="status">

@@ -139,6 +139,7 @@
                                                                           placeholder="gram">
                                             </div>
                                         </div>
+                                        <div class="hr-line-dashed"></div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Weight</label>
 
@@ -150,7 +151,19 @@
                                             </div>
                                         </div>
                                         <div class="hr-line-dashed"></div>
-                                        <div class="form-group"><label class="col-sm-2 control-label">Status:</label>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Category</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control m-b" name="category">
+                                                    <option>Select Category</option>
+                                                    @foreach($categories as $category)
+                                                        <option {{ old('category') && old('category') === $category->id ? 'selected' : $category->id == $product->category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ json_decode($category->name)->en }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="form-group"><label class="col-sm-2 control-label">Status</label>
                                             <div class="col-sm-10">
                                                 <select class="form-control m-b" name="status">
                                                     <option {{ $product->status === 0 ? 'selected' : '' }} value="0">

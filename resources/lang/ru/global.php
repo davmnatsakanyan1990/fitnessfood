@@ -41,6 +41,7 @@ return [
     'nothing was found' => 'Результатов нет',
     'trainer\'s name' => 'Имя Тренера',
     'nobody' => 'Никто',
-    'free shipping text' => 'Бесплатная доставка при покупке :amount амд и более'
+    'free shipping text' => 'Бесплатная доставка при покупке :amount амд и более',
+    'all' => 'Все'
 
 ];
