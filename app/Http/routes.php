@@ -12,11 +12,13 @@
 */
 
 
+use App\Models\PromoCode;
 use App\Models\Setting;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 Route::get('test1', function (){
-    //Share::facebook(route('post.show',1), 'dff', 'dfdf');
+    $d = \App\Models\Trainer::with('promoCode')->where('id', 5)->get();
+    dd($d->toArray());
 
 });
 Route::get('/{locale?}', 'HomeController@index');

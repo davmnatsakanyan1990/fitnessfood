@@ -43,6 +43,7 @@ return [
     'trainer\'s name' => 'Trainer\'s Name',
     'nobody' => 'Nobody',
     'free shipping text' => 'Delivery is free in case of :amount AMD and more',
-    'all' => 'All'
+    'all' => 'All',
+    'sale' => 'Sale'
 
 ];

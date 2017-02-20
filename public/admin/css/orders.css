@@ -11,3 +11,16 @@
     float: right;
 
 }
+
+.total_sum ul li span{
+    text-align: right;
+}
+.total_sum ul{
+    list-style: none;
+}
+.total_sum ul li span:last-child{
+    display: inline-block;
+    width: 110px;
+    text-align: left;
+    margin-left: 20px;
+}

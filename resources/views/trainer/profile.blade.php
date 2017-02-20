@@ -74,6 +74,7 @@
                             <th>@lang('global.date')</th>
                             <th>@lang('global.buyer')</th>
                             <th>@lang('global.phone')</th>
+                            <th>@lang('global.sale')</th>
                             <th class="text-center prod-percent-th">%</th>
                             <th class="text-center prod-count-th">@lang('product.count')</th>
                             <th class="text-right">@lang('product.total')</th>
@@ -85,6 +86,7 @@
                             <td>{{ date( "Y/m/d H:i", strtotime($order->created_at)) }}</td>
                             <td>{{ $order->customer_name }}</td>
                             <td>{{ $order->customer_phone}}</td>
+                            <td>{{ $order->sale}}%</td>
                             <td class="text-center prod-percent-th">{{ $order->trainer_percent }} %</td>
                             <td class="text-center prod-count-th">{{ $order->products_count }}</td>
                             <td class="text-right">{{ $order->amount }}@lang('product.amd')</td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Models\PromoCode;
 use App\Models\Setting;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
@@ -49,6 +50,13 @@ class OrderController extends AdminBaseController
             }
             if($order->counselor)
                 $order->counselor->name_is_json = $this->isJSON($order->counselor->first_name);
+
+            // purchase was made via promo code
+            if($order->promo_code)
+                $order->promo_percent = PromoCode::where('code', $order->promo_code)->first()->percent;
+            else{
+                $order->promo_percent = 0;
+            }
         }
 
         $trainers = Trainer::where('is_approved', 1)->get();
@@ -79,8 +87,19 @@ class OrderController extends AdminBaseController
         if($order->counselor)
             $order->counselor->name_is_json = $this->isJSON($order->counselor->first_name);
 
+        // purchase was made via promo code
+        if($order->promo_code)
+            $order->promo_percent = PromoCode::where('code', $order->promo_code)->first()->percent;
+        else{
+            $order->promo_percent = 0;
+        }
+
         $shipping = Setting::first()->shipping_price;
         $min_amount_free_shipping = Setting::first()->min_amount_free_shipping;
+        
+        if($min_amount_free_shipping <= $order->total){
+            $shipping = 0;
+        }
 
 
         if($order)

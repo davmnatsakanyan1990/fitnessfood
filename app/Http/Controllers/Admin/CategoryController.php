@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -44,6 +45,8 @@ class CategoryController extends AdminBaseController
     }
 
     public function delete($id){
+        Product::where('category_id', $id)->update(['category_id' => null]);
+
         Category::where('id', $id)->delete();
     }
 

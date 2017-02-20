@@ -26,6 +26,10 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::drop('categories');
+
+        Schema::enableForeignKeyConstraints();
     }
 }
