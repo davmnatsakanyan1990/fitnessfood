@@ -179,11 +179,11 @@ class TrainerController extends AdminBaseController
             }
             
             if($order->promo_code)
-                $promo_percent = PromoCode::where('code', $order->promo_code)->first()->percent;
+                $sale = PromoCode::where('code', $order->promo_code)->first()->percent;
             else
-                $promo_percent = 0;
+                $sale = 0;
 
-            $total_bonus += $order->amount * ($order->trainer_percent - $promo_percent)/100;
+            $total_bonus += $order->amount * ($order->trainer_percent - $sale)/100;
         }
         return $total_bonus;
     }

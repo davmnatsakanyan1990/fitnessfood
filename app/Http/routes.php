@@ -112,6 +112,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('categories/delete/{id}', 'CategoryController@delete');
     Route::get('categories/get/{id}', 'CategoryController@getCategory');
 
+    Route::get('pages/about_as', 'PagesController@editAboutUs');
+
 });
 
 Route::get('about/{locale}', function($locale){

@@ -73,7 +73,7 @@
                                             {{ $order->amount }}
                                         </td>
                                         <td>
-                                            {{ $order->promo_percent }}%
+                                            {{ $order->sale }}%
                                         </td>
                                         <td>
                                             {{ $order->created_at }}

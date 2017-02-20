@@ -139,6 +139,7 @@ alt="prod">
                               
                             <div class="v-voq">
                                 <input type="radio" value="0" id="tr4" name="trainer">
+                                {{--<input type="radio" value="s3ccE" id="tr" name="promo_code">--}}
                                 <label for="tr4">@lang('global.nobody')</label>
                             </div> 
 

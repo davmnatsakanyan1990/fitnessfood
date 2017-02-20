@@ -39,6 +39,12 @@
             <li class="{{ url()->current() == url('admin/categories') ? 'active' : ''  }}">
                 <a href="{{ url('admin/categories') }}"><i class="fa fa-building"></i> <span class="nav-label">Categories</span></a>
             </li>
+            <li>
+                <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Pages</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="#">About us</a></li>
+                </ul>
+            </li>
         </ul>
 
     </div>
