@@ -42,7 +42,7 @@
     {{-- Editor Russian --}}
     <div class="row russian">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
+            <div class="ibox collapsed float-e-margins">
                 <div class="ibox-title row" style="margin: 0">
                     <div style="display: inline-block; float: left">
                         <h5>Russian</h5>
@@ -69,7 +69,7 @@
     {{-- Editor English --}}
     <div class="row english">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
+            <div class="ibox collapsed float-e-margins">
                 <div class="ibox-title row" style="margin: 0">
                     <div style="display: inline-block; float: left">
                         <h5>English</h5>
