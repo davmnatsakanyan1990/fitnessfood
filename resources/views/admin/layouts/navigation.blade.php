@@ -42,7 +42,7 @@
             <li>
                 <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Pages</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="#">About us</a></li>
+                    <li><a href="{{ url('admin/pages/about_us') }}">About us</a></li>
                 </ul>
             </li>
         </ul>

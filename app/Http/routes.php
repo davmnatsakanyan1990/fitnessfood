@@ -112,13 +112,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('categories/delete/{id}', 'CategoryController@delete');
     Route::get('categories/get/{id}', 'CategoryController@getCategory');
 
-    Route::get('pages/about_as', 'PagesController@editAboutUs');
+    Route::get('pages/{title}', 'PagesController@edit');
+    Route::post('pages/update/{id}', 'PagesController@update');
 
 });
 
 Route::get('about/{locale}', function($locale){
     App::setLocale($locale);
-    return view('about');
+    $page = \App\Models\Page::where('title', 'about us')->first();
+    $page->content = json_decode($page->content)->$locale;
+    
+    return view('about', compact('page'));
 });
 Route::get('basket/{locale}', 'BasketController@index');
 Route::get('contact/{locale}', 'ContactUsController@index');
