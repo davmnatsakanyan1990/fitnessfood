@@ -41,7 +41,7 @@ class OrderController extends Controller
     public function create(Request $request){
         $this->validate($request, [
             'name' => 'required',
-            'phone' => 'required|numeric|digits:9',
+            'phone' => 'required|regex:/^\([0-9]{3}\)\ [0-9]{3}-[0-9]{3}$/',
 //            'trainer' => 'required'
         ]);
 

@@ -109,7 +109,7 @@ alt="prod">
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
                                 <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('auth.name')">
-                                <input name="phone" type="text" value="{{ old('phone') }}" placeholder="@lang('auth.tel')."></div>
+                                <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(999) 999-999" ></div>
 
                             <div class="check-box">
                             
@@ -179,4 +179,10 @@ var min_amount_free_shipping = '{{ $min_amount_free_shipping }}';
 var bsk_empty = '{{ trans('global.basket is empty') }}';
 </script>
 <script src="/js/basket.js"></script>
+
+<script src="/js/maskedinput.js" type="text/javascript"></script>
+
+    <script>
+        $("#phone").mask("(999) 999-999");
+    </script>
 @endsection

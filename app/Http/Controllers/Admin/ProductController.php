@@ -26,9 +26,7 @@ class ProductController extends AdminBaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
-//        $product = Product::find(21);
-//        dd($product);
-//        dd(json_decode($product->description)->en);
+        
         $products = Product::with('thumb_image', 'category')->orderBy('created_at', 'desc')->get();
 
         return view('admin.products.index', compact('products'));
