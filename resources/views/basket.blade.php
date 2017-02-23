@@ -128,23 +128,7 @@
                                 <div class="marzich-search">
                                     <input type="text" name="search" placeholder="@lang('global.trainer\'s name')">
                                 </div>
-                                <!-- <div class="trainer-select-main">
-                                    @foreach($trainers as $trainer)
-                                    Trainer
-                                    <div class="trainer-select">
-                                        <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="trainer" class="add-to-s">
-                                        <label for="tr{{ $trainer->id }}">
-                                            <div class="trainer-inner-content">
-                                                <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
-                                                <div>
-                                                    <span>{{ $trainer->first_name }} {{ $trainer->last_name }}</span>
-                                                    <p>{{ $trainer->gym ? $trainer->gym->name : '' }}</p>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    @endforeach
-                                </div>  -->
+
                                 <div class="v-voq">
                                     <input type="radio" value="0" id="tr4" name="trainer">
                                     <label for="tr4" id="tr4-cover"></label>
@@ -155,6 +139,7 @@
                     <!-- basket-form-div end --> </div>
                 <!-- basket-form --> </div>
                     <div class="row trainer-select-main">
+                        @foreach($trainers as $trainer)
                         <div class="col-sm-3">
                             <div class="trainer-select">
                                 <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="trainer" class="add-to-s">
@@ -169,64 +154,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="trainer-select">
-                                <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="trainer" class="add-to-s">
-                                <label for="tr{{ $trainer->id }}">
-                                    <div class="trainer-inner-content">
-                                        <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
-                                        <div>
-                                            <span>{{ $trainer->first_name }} {{ $trainer->last_name }}</span>
-                                            <p>{{ $trainer->gym ? $trainer->gym->name : '' }}</p>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="trainer-select">
-                                <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="trainer" class="add-to-s">
-                                <label for="tr{{ $trainer->id }}">
-                                    <div class="trainer-inner-content">
-                                        <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
-                                        <div>
-                                            <span>{{ $trainer->first_name }} {{ $trainer->last_name }}</span>
-                                            <p>{{ $trainer->gym ? $trainer->gym->name : '' }}</p>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="trainer-select">
-                                <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="trainer" class="add-to-s">
-                                <label for="tr{{ $trainer->id }}">
-                                    <div class="trainer-inner-content">
-                                        <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
-                                        <div>
-                                            <span>{{ $trainer->first_name }} {{ $trainer->last_name }}</span>
-                                            <p>{{ $trainer->gym ? $trainer->gym->name : '' }}</p>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="trainer-select">
-                                <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="trainer" class="add-to-s">
-                                <label for="tr{{ $trainer->id }}">
-                                    <div class="trainer-inner-content">
-                                        <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
-                                        <div>
-                                            <span>{{ $trainer->first_name }} {{ $trainer->last_name }}</span>
-                                            <p>{{ $trainer->gym ? $trainer->gym->name : '' }}</p>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </form>
             <!-- Row --> </div>
