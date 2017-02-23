@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Models\Order;
+use App\Models\PromoCode;
 use App\Models\Setting;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class ProfileController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
-        $trainer = Trainer::with('image')->find($this->trainer->id);
+        $trainer = Trainer::with('image', 'promoCode')->find($this->trainer->id);
 
         $orders = Order::with('products')->where('trainer_id', $this->trainer->id)->where('status', 1)->orderBy('created_at', 'desc')->simplePaginate(10);
 
@@ -47,7 +48,13 @@ class ProfileController extends Controller
                 $order->amount += $product->price * $product->pivot->count;
                 $order->products_count += $product->pivot->count;
             }
-            $total_bonus += ($order->amount * $order->trainer_percent)/100;
+
+            if($order->promo_code)
+                $order->sale = PromoCode::where('code', $order->promo_code)->first()->percent;
+            else
+                $order->sale = 0;
+
+            $total_bonus += $order->amount * ($order->trainer_percent - $order->sale)/100;
         }
 
         $paid = $this->getPaidAmount();

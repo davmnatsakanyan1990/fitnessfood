@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -26,22 +27,41 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(){
+    public function index(Request $request){
+        $cat = $request->cat;
+
         if($this->locale)
             $locale = $this->locale;
         else
             $locale = 'am';
 
-        $products = Product::with('images', 'thumb_image')->get();
+        if($cat){
+            $products = Product::with('images', 'thumb_image')->where('category_id', $cat)->get();
+        }
+        else {
+
+            $products = Product::with('images', 'thumb_image')->get();
+        }
+
         if(count($products)>0) {
             foreach ($products as $product) {
                 $product->description = json_decode($product->description)->$locale;
                 $product->title = json_decode($product->title)->$locale;
             }
-        }
-        $products = $products->chunk(4);
 
-        return view('home', compact('products'));
+            $products = $products->chunk(4);
+        }
+        else{
+            $products = [];
+        }
+
+        $categories = Category::all();
+        foreach($categories as $category){
+            $category->name = json_decode($category->name)->$locale;
+        }
+
+        return view('home', compact('products', 'categories'));
+
     }
 
     //Ajax call | Get single product info

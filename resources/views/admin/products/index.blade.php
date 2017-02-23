@@ -34,6 +34,7 @@
                             <tr>
                                 <th data-sort-ignore="true">Image</th>
                                 <th data-toggle="true">Product Name</th>
+                                <th data-toggle="true">Category</th>
                                 <th data-hide="phone, tablet" data-sort-ignore="true">Description</th>
                                 <th data-hide="phone" data-sort-ignore="true">Nutritional</th>
                                 <th data-hide="phone" data-sort-ignore="true">Proteins</th>
@@ -51,12 +52,17 @@
                                     <tr>
                                         <td>
                                             <img src="/images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif'}}"
-                                                 class="img-thumbnail img-responsive" width="100">
+                                                 class="img-thumbnail img-responsive" width="80">
                                         </td>
                                         <td>
                                             {{ $product->title ? json_decode($product->title)->am : '' }}<br>
                                             {{ $product->title ? json_decode($product->title)->ru : '' }}<br>
                                             {{ $product->title ? json_decode($product->title)->en : '' }}<br>
+                                        </td>
+                                        <td>
+                                            {{ $product->category ? json_decode($product->category->name)->am : '' }}<br>
+                                            {{ $product->category ? json_decode($product->category->name)->ru : '' }}<br>
+                                            {{ $product->category ? json_decode($product->category->name)->en : '' }}
                                         </td>
                                         <td class="description">
                                             {{$product->description ? json_decode($product->description)->am : '' }}

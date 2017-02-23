@@ -42,6 +42,8 @@ return [
     'nothing was found' => 'Nothing was found',
     'trainer\'s name' => 'Trainer\'s Name',
     'nobody' => 'Nobody',
-    'free shipping text' => 'Delivery is free in case of :amount AMD and more'
+    'free shipping text' => 'Delivery is free in case of :amount AMD and more',
+    'all' => 'All',
+    'sale' => 'Sale'
 
 ];

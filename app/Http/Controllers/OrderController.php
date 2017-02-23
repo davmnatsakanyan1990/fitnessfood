@@ -7,6 +7,7 @@ use App\Events\NewOrderEvent;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\PromoCode;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -38,24 +39,34 @@ class OrderController extends Controller
      * @return $this
      */
     public function create(Request $request){
-//        dd($request->all());
         $this->validate($request, [
             'name' => 'required',
-            'phone' => 'required|numeric|digits:9',
-            'trainer' => 'required'
+            'phone' => 'required|regex:/^\([0-9]{3}\)\ [0-9]{3}-[0-9]{3}$/',
+//            'trainer' => 'required'
         ]);
-        
-        $name = $request->name;
-        $phone = $request->phone;
-        $trainer = $request->trainer ? $request->trainer : null;
-        $trainer_percent  = $request->trainer ? Trainer::find($request->trainer)->percent : null;
+
+        // when trainer was choosen
+        if($request->trainer){
+            $trainer_id = $request->trainer;
+        }
+        // when promo code was inserted
+        elseif($request->promo_code){
+            $trainer_id = PromoCode::where('code', $request->promo_code)->first()->trainer_id;
+        }
+        // when no one was choosen
+        else{
+            $trainer_id = null;
+        }
+
+        $trainer_percent  = $trainer_id ? Trainer::find($trainer_id)->percent : null;
         $products = json_decode($_COOKIE['basket']);
 
         $order = DB::table('orders')->insertGetId([
-            'customer_name' => $name,
-            'customer_phone' => $phone,
-            'trainer_id' => $trainer,
+            'customer_name' => $request->name,
+            'customer_phone' => $request->phone,
+            'trainer_id' => $trainer_id,
             'trainer_percent' => $trainer_percent,
+            'promo_code' => $request->promo_code ? $request->promo_code : null,
             'created_at' => date("Y-m-d H:i:s")
         ]);
 

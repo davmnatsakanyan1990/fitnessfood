@@ -12,11 +12,13 @@
 */
 
 
+use App\Models\PromoCode;
 use App\Models\Setting;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 Route::get('test1', function (){
-    //Share::facebook(route('post.show',1), 'dff', 'dfdf');
+    $d = \App\Models\Trainer::with('promoCode')->where('id', 5)->get();
+    dd($d->toArray());
 
 });
 Route::get('/{locale?}', 'HomeController@index');
@@ -104,11 +106,23 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('gyms/update/{id}', 'GymController@update');
     Route::post('gyms/delete/{id}', 'GymController@delete');
 
+    Route::get('categories', 'CategoryController@index');
+    Route::post('categories/new', 'CategoryController@create');
+    Route::post('categories/update', 'CategoryController@update');
+    Route::post('categories/delete/{id}', 'CategoryController@delete');
+    Route::get('categories/get/{id}', 'CategoryController@getCategory');
+
+    Route::get('pages/{title}', 'PagesController@edit');
+    Route::post('pages/update/{id}', 'PagesController@update');
+
 });
 
 Route::get('about/{locale}', function($locale){
     App::setLocale($locale);
-    return view('about');
+    $page = \App\Models\Page::where('title', 'about us')->first();
+    $page->content = json_decode($page->content)->$locale;
+    
+    return view('about', compact('page'));
 });
 Route::get('basket/{locale}', 'BasketController@index');
 Route::get('contact/{locale}', 'ContactUsController@index');

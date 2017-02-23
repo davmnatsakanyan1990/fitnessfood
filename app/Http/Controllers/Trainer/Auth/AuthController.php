@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Trainer\Auth;
 
 use App\Events\NewTrainerEvent;
+use App\Models\PromoCode;
 use App\Models\Setting;
 use App\Models\Trainer;
 use App\User;
@@ -98,9 +99,26 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
+        $this->generatePromoCode($trainer->id);
+
         Event::fire(new NewTrainerEvent($trainer));
 
         return $trainer;
+    }
+
+    public function generatePromoCode($trainer_id){
+        $code = str_random(5);
+        $obj = PromoCode::where('code', $code)->first();
+        
+        if($obj){
+            $this->generatePromoCode($trainer_id);
+        }
+        else{
+            PromoCode::create([
+                'code' => $code,
+                'trainer_id' => $trainer_id
+            ]);
+        }
     }
 
 }

@@ -7,6 +7,7 @@ use App\Events\NewPaymentEvent;
 use App\Models\Message;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\PromoCode;
 use App\Models\Setting;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
@@ -94,7 +95,13 @@ class PaymentsController extends Controller
             foreach($order->products as $product){
                 $order->amount += $product->price * $product->pivot->count;
             }
-            $total_bonus += $order->amount * $order->trainer_percent/100;
+
+            if($order->promo_code)
+                $sale = PromoCode::where('code', $order->promo_code)->first()->percent;
+            else
+                $sale = 0;
+
+            $total_bonus += $order->amount * ($order->trainer_percent - $sale)/100;
         }
         return $total_bonus;
     }

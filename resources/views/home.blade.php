@@ -22,23 +22,26 @@
         </section>--}}<!-- Slider section end-->
         
         <section><!-- Products section -->
+            <!-- Sub menu -->
+            <div class="container">
+                <div class="row">
+                    <div>
+                        <img src="/images/araqum.png" alt="araqum">
+                    </div>
+                </div>
+                <div class="row filter-navmenu-wrap">
+                    <ul class="list-inline">
+                        <li  class="{{ request('cat') ? '' : 'filter-active' }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.all')</a></li>
+                        @foreach($categories as $category)
+                            <li class="{{ request('cat') == $category->id ? 'filter-active' : '' }}"><a href="{{ url('/'.App::getLocale().'?cat='.$category->id) }}">{{$category->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <!-- end menu -->
             @if(count($products) > 0)
             @foreach($products as $row)
                 <div class="container home-product-cont">
-                    <div class="row">
-                        <div>
-                            <img src="/images/araqum.png" alt="araqum">
-                        </div> 
-                    </div>
-                    <div class="row filter-navmenu-wrap"> 
-                        <ul class="list-inline">
-                            <li class="filter-active"><a href="#">Բոլորը</a></li>
-                            <li><a href="#">Խմորեղեն Կտորով</a></li>
-                            <li><a href="#">Տորթեր Պատվերով </a></li>
-                            <li><a href="#">Անվանական տորթեր</a></li>
-                            <li><a href="#">Հաց</a></li>
-                        </ul> 
-                    </div>
                     <div class="row" style="margin-left: -30px; margin-right: -30px;">
                         @foreach($row as $product)
                         <!-- product -->

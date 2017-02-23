@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('styles')
- 
+
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
 @endsection
 @section('content')
@@ -81,7 +81,6 @@
             </div>
             <div class="row">
                 <!-- basket-form row-->
-                <form action="{{ url('orders/new/'.App::getLocale()) }}" method="post">
                 <div class="basket-form">
                     <ul class="list-inline prc-ul">
                         <li>@lang('product.total')</li>
@@ -103,11 +102,11 @@
                         </div>
                         @endif
 
-                        
+
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
                                 <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('auth.name')">
-                                <input name="phone" type="text" value="{{ old('phone') }}" placeholder="@lang('auth.tel').">
+                                <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(999) 999-999" ></div>
                                 <input type="text" placeholder="12345">
                                 <ul class="list-inline prc-ul" style="margin-top: 20px;">
                                     <li>Զեղչված</li>
@@ -119,7 +118,7 @@
                                 <hr>
                             </div>
 
-                                                                       
+
                             <button type="submit" {{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
 
                             <div class="check-box">
@@ -150,7 +149,7 @@
                                     <input type="radio" value="0" id="tr4" name="trainer">
                                     <label for="tr4" id="tr4-cover"></label>
                                     <label for="tr4">@lang('global.nobody')</label>
-                                </div> 
+                                </div>
                             </div>
                     </div>
                     <!-- basket-form-div end --> </div>
@@ -182,7 +181,7 @@
                                         </div>
                                     </div>
                                 </label>
-                            </div>   
+                            </div>
                         </div>
 
                         <div class="col-sm-3">
@@ -197,7 +196,7 @@
                                         </div>
                                     </div>
                                 </label>
-                            </div>   
+                            </div>
                         </div>
 
                         <div class="col-sm-3">
@@ -212,7 +211,7 @@
                                         </div>
                                     </div>
                                 </label>
-                            </div>   
+                            </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="trainer-select">
@@ -226,7 +225,7 @@
                                         </div>
                                     </div>
                                 </label>
-                            </div>   
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -260,4 +259,10 @@ var min_amount_free_shipping = '{{ $min_amount_free_shipping }}';
 var bsk_empty = '{{ trans('global.basket is empty') }}';
 </script>
 <script src="/js/basket.js"></script>
+
+<script src="/js/maskedinput.js" type="text/javascript"></script>
+
+    <script>
+        $("#phone").mask("(999) 999-999");
+    </script>
 @endsection

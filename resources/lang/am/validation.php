@@ -14,7 +14,7 @@ return [
     */
 
 
-    'required'             => ':attribute դաշտը պարտադիր է',
+    'required'             => 'Խնդրում ենք նշել ձեր :attribute ',
     'unique'               => ':attribute արդեն օգտագործվում է.',
     'max'                  => [
         'numeric' => ':attribute չի կարող լինել ավել քան :max',
@@ -39,8 +39,9 @@ return [
         'string'  => ':attribute պետք է պարունակի :size նիշ',
         'array'   => ':attribute պետք է պարունակի :size տարր',
     ],
-    'min_amount' => 'Նվազագույն գումարի չափը :attribute դր է',
-    'amount_error' => 'Դուք չունեք բավականաչափ գումար ձեր հաշվի վրա',
+    'min_amount'            => 'Նվազագույն գումարի չափը :attribute դր է',
+    'amount_error'          => 'Դուք չունեք բավականաչափ գումար ձեր հաշվի վրա',
+    'regex'                 => 'Սխալ :attribute ձևաչափ',
 
 
     /*

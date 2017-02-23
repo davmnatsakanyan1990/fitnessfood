@@ -17,8 +17,8 @@
                                     <dd>{{ $order->customer_phone }}</dd>
                                     <dt>Counselor:</dt>
                                     <dd>{{ $order->counselor ? $order->counselor->first_name : 'NO'}} </dd>
-                                    <dt>Order ID:</dt>
-                                    <dd>{{ $order->id }}</dd>
+                                    <dt>Sale:</dt>
+                                    <dd>{{ $order->promo_percent }}%</dd>
                                 </dl>
                             </div>
                             <div class="col-md-6">
@@ -60,8 +60,14 @@
                             <tfoot>
                             <tr>
                                 <td class="text-right total_sum" colspan="6">
-                                    <strong>Total: </strong>{{ $min_amount_free_shipping > $order->total ? $order->total.' + '.$shipping.' = '.($order->total+$shipping) : $order->total }}
-                                    AMD
+                                    <ul>
+                                        <li><span>Amount:</span> <span>{{ $order->total }} AMD</span></li>
+                                        <li><span>Shipping:</span> <span>{{ $shipping }} AMD</span></li>
+                                        <li><span>Sale:</span> <span>{{ ($order->total * $order->promo_percent)/100 }} AMD</span></li>
+                                        <li><span><strong>Total: </strong></span><span>{{ $order->total - ($order->total * $order->promo_percent)/100 + $shipping  }} AMD</span></li>
+                                    </ul>
+                                    {{--{{ $min_amount_free_shipping > $order->total ? $order->total.' + '.$shipping.' = '.($order->total+$shipping) : $order->total }}--}}
+
                                 </td>
                             </tr>
                             </tfoot>

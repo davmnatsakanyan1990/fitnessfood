@@ -49,6 +49,7 @@
                                 <th>Customer Phone</th>
                                 <th>Counselor</th>
                                 <th data-hide="phone">Amount</th>
+                                <th data-hide="phone">Sale</th>
                                 <th data-hide="phone">Date added</th>
                                 <th data-hide="phone">Status</th>
                                 <th class="text-right">Action</th>
@@ -70,6 +71,9 @@
                                         </td>
                                         <td>
                                             {{ $order->amount }}
+                                        </td>
+                                        <td>
+                                            {{ $order->sale }}%
                                         </td>
                                         <td>
                                             {{ $order->created_at }}

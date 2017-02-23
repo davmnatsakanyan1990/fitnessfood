@@ -57,4 +57,8 @@ class Trainer extends Authenticatable
     public function gym(){
         return $this->belongsTo(Gym::class);
     }
+    
+    public function promoCode(){
+        return $this->hasOne(PromoCode::class);
+    }
 }

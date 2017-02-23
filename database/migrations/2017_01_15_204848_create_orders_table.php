@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
 
             $table->integer('trainer_id')->unsigned()->nullable();
             $table->double('trainer_percent')->nullable();
+            $table->string('promo_code')->nullable();
             $table->enum('is_seen', [0,1])->default(0);
             $table->timestamps();
 
