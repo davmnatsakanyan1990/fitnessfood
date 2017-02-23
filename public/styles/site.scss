@@ -1,7 +1,7 @@
 //
 // Site css
 // -------------------------------------------- 
-
+ 
 /* font-family: "ArianAMURegular"; */
     @font-face {
       font-family: 'ArialAMU'; 
@@ -66,9 +66,9 @@ main{
 
 .filter-navmenu-wrap{
 	ul{
-		
+		margin-left: 0;
 		li{
-			a{ 
+			a{  
 				text-align: center;
 				transition: all 0.3s;
 				display: inline-block;
@@ -237,6 +237,7 @@ footer, main:after{
 	ul{
 		li{
 			font-size: 16px;
+			border-right: 2px solid $main-violet;
 			/* &:first-child:before{
 				display: inline-block;
 				content: url(../images/beeline.png); 
@@ -251,13 +252,10 @@ footer, main:after{
 				left: -10px;
 				top: 6px;
 			}
-			&:last-child:before{
-				display: inline-block;
-				content: url(../images/orange.png); 
-				position: relative;
-				left: -10px;
-				top: 6px;
-			} */
+			*/
+			&:last-child{
+				border: none;
+			}  
 			a{
 				text-decoration: none;
 				color: $main-violet;
@@ -1438,7 +1436,7 @@ footer{
 	.basket-form-div{
 		.check-box{
 			position: relative;
-			margin-top: 20px;
+			margin-top: 50px;
 			padding-left: 10px;
 			input{
 				padding-right: 10px;
@@ -1481,8 +1479,9 @@ footer{
 	}
 
 	.basket-form{ 
+		max-width: 350px;
 		margin-top: 30px; 
-		float: right;
+		float: left;
 		hr{
 			margin-bottom: 10px;
 			border: 1px solid #ccc;
@@ -1495,6 +1494,7 @@ footer{
 		ul.prc-ul{
 			li{
 				&:last-child{
+					float: right;
 					font-size: 24px;
 					color: $main-violet;
 					font-family: ArialAMUbold;
@@ -1650,30 +1650,27 @@ footer{
 	}
 
 .trainer-inner-content{
-
+	text-align: center;
+	border-radius: 15px;
 	& > div{
 		padding-top: 15px;
 	}
 	img{ 
-		margin-right: 20px;
-		width: 75px;
-		height: 75px;
-		border-radius: 100%; 
-		float: left;
+		border: 1px solid $main-violet;
+		width: 135px;
+		height: 135px;
+		border-radius: 100%;
 	}
 }
 
-.trainer-select-main{
-	border: 1px solid $light-gray;
-	background: #fff;
-	border-top: none;
+.trainer-select-main{  
 }
 
 .add-to-s{
 	&:checked{
 		+ label{
-			background: $main-violet;
-			color: #fff;
+			background: #fff;
+			color: $main-black;
 		}
 	}
 }
@@ -1683,17 +1680,22 @@ footer{
 }
 
 .trainer-select{
+	margin-top: 50px;
 	label{
+		min-height: 250px;
+		border-radius: 15px;
 		cursor: pointer;
 		transition: all 0.3s;
 		width: 100%;
 		padding: 10px;
+		padding-top: 20px;
 		font-size: 18px;
 		color: $main-black;
 		line-height: 22px;
 		&:hover{
-			background: $main-violet;
-			color: #fff;
+			background: #fff;
+			color: $main-black;
+			box-shadow: 0px 2px 6px 2px lightgray;
 		}
 	}
 	input{
@@ -1712,17 +1714,44 @@ footer{
 .marzich-search{
 	position: relative;
 	input{
-		width: 100%;
+		display: block;
+		width: 150%;
 		padding: 15px 10px;
-		border: 1px solid $light-gray;
+		border: 1px solid #999999;
 	}
 	&:after{
 		content: '\f002';
-		position: absolute;
-		font-size: 24px;
-		color: $light-gray;
-		right: 15px;
-		top: 12px;
 		font-family: FontAwesome;
+		font-size: 24px;
+		float: right;
+		margin-right: -70px;
+		margin-top: -38px;
+		color: #999999;
+	}
+}
+
+.m-searchPlusCheck{
+	div{
+		display: inline-block;
+	}
+	div:nth-child(2){
+		float: right;
+	}
+}
+
+#tr4-cover{
+	border: 1px solid $main-violet;
+	width: 16px;
+	background: #fff;
+	margin-left: -20px;
+	height: 15px;
+	border-radius: 4px;
+}
+
+#tr4:checked{
+	& + label:before{
+		content: '✔';
+		font-family: FontAwesome;
+		color: $main-violet;
 	}
 }

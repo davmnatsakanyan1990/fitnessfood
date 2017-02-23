@@ -25,7 +25,11 @@
             @if(count($products) > 0)
             @foreach($products as $row)
                 <div class="container home-product-cont">
-                <!-- <h1>Ապրանքներ</h1> -->
+                    <div class="row">
+                        <div>
+                            <img src="/images/araqum.png" alt="araqum">
+                        </div> 
+                    </div>
                     <div class="row filter-navmenu-wrap"> 
                         <ul class="list-inline">
                             <li class="filter-active"><a href="#">Բոլորը</a></li>
