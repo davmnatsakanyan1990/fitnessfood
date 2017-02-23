@@ -350,6 +350,14 @@ footer, main:after {
   line-height: 30px;
 }
 
+.heraxosner ul:before {
+  content: url(../images/phone.png);
+  position: relative;
+  width: 20px;
+  top: 4px;
+  height: 21px;
+}
+
 .heraxosner ul li {
   font-size: 16px;
   border-right: 2px solid #892E6B;
@@ -1596,6 +1604,10 @@ footer .all-rights {
   color: #fff;
   border: none;
   font-family: ArialAMUbold;
+}
+
+.xorhurd {
+  margin-top: 70px;
 }
 
 .basket-form-div .check-box {

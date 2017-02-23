@@ -106,8 +106,10 @@
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
                                 <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('auth.name')">
-                                <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(999) 999-999" ></div>
+                                <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(999) 999-999" >
                                 <input type="text" placeholder="12345">
+                                </div>
+                                
                                 <ul class="list-inline prc-ul" style="margin-top: 20px;">
                                     <li>Զեղչված</li>
                                     <li>
@@ -121,7 +123,7 @@
 
                             <button type="submit" {{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
 
-                            <div class="check-box">
+                            <div class="check-box xorhurd">
                                 <span style="display:block; margin-bottom: 20px; font-size:18px;">@lang('global.advised by trainer')</span>
                             </div>
                             <div class="m-searchPlusCheck">
