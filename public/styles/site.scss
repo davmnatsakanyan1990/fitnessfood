@@ -234,7 +234,14 @@ footer, main:after{
 	color: $main-violet;
 	min-height: 30px;
 	line-height: 30px;
-	ul{
+	ul{ 
+		&:before{
+			content: url(../images/phone.png);
+			position: relative; 
+			width: 20px;
+			top: 4px;
+			height: 21px;
+		}
 		li{
 			font-size: 16px;
 			border-right: 2px solid $main-violet;
@@ -1431,7 +1438,9 @@ footer{
 	    font-family: ArialAMUbold;
 	}
 
-
+	.xorhurd{
+		margin-top: 70px;
+	}
 
 	.basket-form-div{
 		.check-box{
