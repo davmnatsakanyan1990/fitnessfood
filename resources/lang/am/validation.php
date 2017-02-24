@@ -42,6 +42,7 @@ return [
     'min_amount'            => 'Նվազագույն գումարի չափը :attribute դր է',
     'amount_error'          => 'Դուք չունեք բավականաչափ գումար ձեր հաշվի վրա',
     'regex'                 => 'Սխալ :attribute ձևաչափ',
+    'exists'               => 'Նման :attribute գոյություն չունի',
 
 
     /*
@@ -81,7 +82,8 @@ return [
         'first_name' => 'Անվան',
         'text' => 'Հաղորդագրություն',
         'amount' => 'Գումար',
-        'trainer' => 'Մարզիչ'
+        'trainer' => 'Մարզիչ',
+        'promo_code' => 'Պրոմո կոդ'
     ],
 
 ];

@@ -39,12 +39,14 @@ class OrderController extends Controller
      * @return $this
      */
     public function create(Request $request){
+
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required|regex:/^\([0-9]{3}\)\ [0-9]{3}-[0-9]{3}$/',
-//            'trainer' => 'required'
+            'promo_code' => 'exists:promo_codes,code',
+            'trainer' => 'required'
         ]);
-
+        dd($request->all());
         // when trainer was choosen
         if($request->trainer){
             $trainer_id = $request->trainer;

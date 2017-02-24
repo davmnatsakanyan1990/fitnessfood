@@ -42,6 +42,7 @@ return [
     'min_amount' => 'Минималная сумма :attribute амд',
     'amount_error' => 'У вас нет достаточно денги на вашом счете',
     'regex' => 'Неправилни :attribute формат.',
+    'exists'               => 'Такои :attribute не существует',
 
 
     /*
@@ -80,7 +81,8 @@ return [
         'first_name' => 'Имя',
         'text' => 'Текст',
         'amount' => 'Сумма',
-        'trainer' => 'Тренер'
+        'trainer' => 'Тренер',
+        'promo_code' => 'промо код'
     ],
 
 ];

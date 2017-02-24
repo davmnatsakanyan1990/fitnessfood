@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\PromoCode;
 use App\Models\Setting;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
@@ -57,10 +58,15 @@ class BasketController extends Controller
         $shipping = Setting::first()->shipping_price;
 
         $min_amount_free_shipping = Setting::first()->min_amount_free_shipping;
+        
+        if($total >= $min_amount_free_shipping)
+            $final_shipping = 0;
+        else
+            $final_shipping = $shipping;
 
-        $trainers = Trainer::with('image', 'gym')->where('is_approved', 1)->take(3)->get();
+        $trainers = Trainer::with('image', 'gym')->where('is_approved', 1)->take(8)->get();
 
-        return view('basket', compact('trainers', 'shipping', 'min_amount_free_shipping', 'products', 'total'));
+        return view('basket', compact('trainers', 'shipping', 'final_shipping', 'min_amount_free_shipping', 'products', 'total'));
     }
 
     // Ajax call
@@ -75,17 +81,46 @@ class BasketController extends Controller
         return $products;
     }
 
-    //Ajax call
+    /**
+     * Trainer search - Ajax call
+     * 
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function searchTrainer(Request $request){
         $text = $request->text;
         $trainers = Trainer::where('is_approved', 1)
-                            ->where(function($query) use ($text){
-                                                        $query->where('custom_first_name', 'like', '%'.$text.'%')
-                                                        ->orWhere('custom_last_name', 'like', '%'.$text.'%')
-                                                        ->orWhere('first_name', 'like', '%'.$text.'%')
-                                                        ->orWhere('last_name', 'like', '%'.$text.'%');
-                                                        })
-                                                        ->get();
+            ->where(function($query) use ($text){
+                $query->where('custom_first_name', 'like', '%'.$text.'%')
+                ->orWhere('custom_last_name', 'like', '%'.$text.'%')
+                ->orWhere('first_name', 'like', '%'.$text.'%')
+                ->orWhere('last_name', 'like', '%'.$text.'%');
+                })
+            ->get();
         return view('ajax.trainer_search', compact('trainers'));
+    }
+
+    /**
+     * Promo Code search - Ajax call
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchPromoCode(Request $request){
+        $code = $request->text;
+        $promo = PromoCode::with(['trainer' => function($trainer){
+            return $trainer->with('image');
+        }])->where('code', $code)->first();
+        if($promo){
+            $trainers[0] = $promo->trainer;
+        }
+        else{
+            $trainers = null;
+        }
+
+        $data['view'] = view('ajax.trainer_search', compact('trainers'))->render();
+        $data['promo'] = $promo;
+        
+        return $data;
     }
 }

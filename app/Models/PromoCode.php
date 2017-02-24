@@ -11,4 +11,8 @@ class PromoCode extends Model
         'trainer_id',
         'percent',
     ];
+    
+    public function trainer(){
+        return $this->belongsTo(Trainer::class);
+    }
 }

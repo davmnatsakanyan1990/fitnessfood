@@ -134,7 +134,11 @@ Route::post('basket/products/{locale}', 'BasketController@products');
 // Ajax call
 Route::get('products/get/{id}/{locale}', 'HomeController@getProduct');
 
-//Ajax call
+// Ajax call
 Route::get('trainers/search/{locale}', 'BasketController@searchTrainer');
+
+// Ajax call
+Route::get('promo/search/{locale}', 'BasketController@searchPromoCode');
+
 
 
