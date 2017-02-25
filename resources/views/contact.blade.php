@@ -43,23 +43,27 @@
                 <h2>@lang('global.contact us')</h2>
                 <div class="text-center">
                     <ul class="list-inline rrssb-buttonss">
-                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="popup">
+                        {{--<li><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="popup">--}}
+                                {{--<img src="/images/social/1.png" alt="social/1.png">--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li><a href="https://twitter.com/intent/tweet?text={{ url()->current() }}" class="popup">--}}
+                                {{--<img src="/images/social/2.png" alt="social/2.png">--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li><a  href="https://plus.google.com/share?url={{ url()->current() }}" class="popup">--}}
+                                {{--<img src="/images/social/3.png" alt="social/3.png">--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li><a  href="http://vk.com/share.php?url={{ url()->current() }}" class="popup">--}}
+                                {{--<img src="/images/social/4.png" alt="social/4.png">--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li><a href="http://instagram.com/dbox"><img src="/images/social/5.png" alt="social/4.png"></a></li>--}}
+                        <li><a href="https://www.facebook.com/fitnesspastry">
                                 <img src="/images/social/1.png" alt="social/1.png">
                             </a>
                         </li>
-                        <li><a href="https://twitter.com/intent/tweet?text={{ url()->current() }}" class="popup">
-                                <img src="/images/social/2.png" alt="social/2.png">
-                            </a>
-                        </li>
-                        <li><a  href="https://plus.google.com/share?url={{ url()->current() }}" class="popup">
-                                <img src="/images/social/3.png" alt="social/3.png">
-                            </a>
-                        </li>
-                        <li><a  href="http://vk.com/share.php?url={{ url()->current() }}" class="popup">
-                                <img src="/images/social/4.png" alt="social/4.png">
-                            </a>
-                        </li>
-                        <li><a href="http://instagram.com/dbox"><img src="/images/social/5.png" alt="social/4.png"></a></li>
                     </ul>
                 </div>
 

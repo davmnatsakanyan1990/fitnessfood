@@ -30,20 +30,20 @@
             <li class="{{ url()->current() == url('admin/payments') ? 'active' : ''  }}">
                 <a href="{{ url('admin/payments') }}"><i class="fa fa-money"></i> <span class="nav-label">Payments</span></a>
             </li>
-            <li class="{{ url()->current() == url('admin/settings') ? 'active' : ''  }}">
-                <a href="{{ url('admin/settings') }}"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span></a>
-            </li>
             <li class="{{ url()->current() == url('admin/gyms') ? 'active' : ''  }}">
                 <a href="{{ url('admin/gyms') }}"><i class="fa fa-building"></i> <span class="nav-label">Gyms</span></a>
             </li>
             <li class="{{ url()->current() == url('admin/categories') ? 'active' : ''  }}">
-                <a href="{{ url('admin/categories') }}"><i class="fa fa-building"></i> <span class="nav-label">Categories</span></a>
+                <a href="{{ url('admin/categories') }}"><i class="fa fa-tags"></i> <span class="nav-label">Categories</span></a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Pages</span> <span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-list-ul"></i> <span class="nav-label">Pages</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{ url('admin/pages/about_us') }}">About us</a></li>
                 </ul>
+            </li>
+            <li class="{{ url()->current() == url('admin/settings') ? 'active' : ''  }}">
+                <a href="{{ url('admin/settings') }}"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span></a>
             </li>
         </ul>
 

@@ -20,7 +20,9 @@
 
 
     <script>
-        var BASE_URL = '{{ url('/') }}'
+        var BASE_URL = '{{ url('/') }}';
+        var locale = '{{ App::getLocale() }}';
+        var token = '{{ csrf_token() }}';
     </script>
     <link rel="stylesheet" href="/rrssb-master/css/rrssb.css" />
     @yield('styles')

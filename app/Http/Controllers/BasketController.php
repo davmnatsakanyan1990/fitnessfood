@@ -112,7 +112,10 @@ class BasketController extends Controller
             return $trainer->with('image');
         }])->where('code', $code)->first();
         if($promo){
-            $trainers[0] = $promo->trainer;
+            if($promo->trainer->is_approved)
+                $trainers[0] = $promo->trainer;
+            else
+                $trainers = null;
         }
         else{
             $trainers = null;

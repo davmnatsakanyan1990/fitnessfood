@@ -28,7 +28,7 @@
 <body class="">
 
 <div id="wrapper">
-
+    <audio id="xyz" src="/admin/audio/alert.mp3" preload="auto"></audio>
     @include('admin.layouts.navigation')
 
     <div id="page-wrapper" class="gray-bg">

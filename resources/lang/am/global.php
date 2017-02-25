@@ -44,6 +44,7 @@ return [
     'nobody' => 'Ոչ ոք',
     'free shipping text' => 'Առաքումն անվճար :amount դր և ավել գնումների դեպքում',
     'all' => 'Բոլորը',
-    'sale' => 'Զեղչ'
+    'sale' => 'Զեղչ',
+    'discounted' => 'Զեղչված'
 
 ];

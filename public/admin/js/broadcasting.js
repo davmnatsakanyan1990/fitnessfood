@@ -8,6 +8,8 @@ var pusher = new Pusher('f099d8275bf3d94c6bf9', {
 // New Payment channel
 var channel = pusher.subscribe('new-payment');
 channel.bind('App\\Events\\NewPaymentEvent', function(data) {
+    // alert sound
+    document.getElementById('xyz').play();
     if(data.sender.image == null){
         var image = 'profile-icon.png';
     }
@@ -56,6 +58,9 @@ channel.bind('App\\Events\\NewPaymentEvent', function(data) {
 // New Order Channel
 var channel = pusher.subscribe('new-order');
 channel.bind('App\\Events\\NewOrderEvent', function(data) {
+
+    // alert sound
+    document.getElementById('xyz').play();
 
     if($('.order_alert .count').length > 0){
         var count = $(document).find('.order_alert .count')[0].innerText;
@@ -115,6 +120,10 @@ channel.bind('App\\Events\\NewOrderEvent', function(data) {
 // New Trainer Channel
 var channel = pusher.subscribe('new-trainer');
 channel.bind('App\\Events\\NewTrainerEvent', function(data) {
+    
+    // alert sound
+    document.getElementById('xyz').play();
+
     if($('.trainer_alert .count').length > 0){
 
         var count = $(document).find('.trainer_alert .count')[0].innerText;

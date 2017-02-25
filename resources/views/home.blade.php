@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="responsive-height-block"><!-- Important --></div>
-    <main class="home-main"><!-- Main section -->        
+    <main class="home-main"><!-- Main section -->
         <section><!-- Products section -->
             <!-- Sub menu -->
             <div class="container">

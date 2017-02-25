@@ -12,6 +12,7 @@
                         <div>
                             <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">
                             <h2>{{ $trainer->first_name.' '.$trainer->last_name }} </h2>
+                            <h4 style=" font-size: 16px; margin-top: 5px">Your promo code: <span style="color: #892E6B; font-weight: bold">{{ $trainer->promoCode->code }}</span></h4>
                         </div>
                         <a href="{{ url('trainer/logout/'.App::getLocale()) }}" class="profile-exit">@lang('auth.logout')</a>
                     </div><!-- Profile top end -->
