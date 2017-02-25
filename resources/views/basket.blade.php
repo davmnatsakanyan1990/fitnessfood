@@ -104,7 +104,7 @@
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
                                 <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('auth.name')">
-                                <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(999) 999-999" >
+                                <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
                                 <input name="promo_code" type="text" placeholder="12345">
                                 <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">
                                     <li>Զեղչված</li>

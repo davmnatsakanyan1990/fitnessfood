@@ -77,8 +77,13 @@ $(document).find('input[name="promo_code"]').on('input', function() {
                     var discounted = total - (total * sale_percent)/100 + parseInt(final_shipping);
 
                     // show discounted block
-                    $(document).find('#zexchvats').closest('.prc-ul').show();
-                    $(document).find('#zexchvats').html(discounted);
+
+                    if(data.promo) {
+                        if(data.promo.trainer.is_approved == 1) {
+                            $(document).find('#zexchvats').closest('.prc-ul').show();
+                            $(document).find('#zexchvats').html(discounted);
+                        }
+                    }
 
                     // fill trainers list
                     $(document).find('.trainer-select-main').html(data.view);

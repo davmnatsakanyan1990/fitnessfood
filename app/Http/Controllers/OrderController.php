@@ -46,7 +46,7 @@ class OrderController extends Controller
             'promo_code' => 'exists:promo_codes,code',
             'trainer' => 'required'
         ]);
-        dd($request->all());
+
         // when trainer was choosen
         if($request->trainer){
             $trainer_id = $request->trainer;

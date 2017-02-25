@@ -14,7 +14,7 @@ return [
     */
 
 
-    'required'             => 'Խնդրում ենք նշել ձեր :attribute ',
+    'required'             => 'Խնդրում ենք նշել ձեր :attributeը ',
     'unique'               => ':attribute արդեն օգտագործվում է.',
     'max'                  => [
         'numeric' => ':attribute չի կարող լինել ավել քան :max',
@@ -57,8 +57,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'trainer' => [
+            'required' => 'Խնդրում ենք նշել ձեզ խորհուրդ տվող մարզչի անունը, մուտքագրել ձեր պրոմո կոդը կամ նշել Ոչ Ոքի կոճակը',
         ],
     ],
 
