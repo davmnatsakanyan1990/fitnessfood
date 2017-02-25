@@ -1701,7 +1701,7 @@ footer .all-rights {
   display: block;
   position: absolute;
   top: 8px;
-  left: -2px;
+  left: -1px;
   transform: rotate(15deg);
   width: 100%;
   height: 1px;
@@ -1713,7 +1713,7 @@ footer .all-rights {
   display: block;
   position: absolute;
   top: 8px;
-  left: -2px;
+  left: -1px;
   transform: rotate(-15deg);
   width: 100%;
   height: 1px;
@@ -1983,8 +1983,11 @@ footer .all-rights {
 }
 
 .headerimg-div {
-  margin: 0 auto;
-  text-align: center;
+  background: url(../images/araqum.png);
+  min-height: 94px;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
 }
 
 @media screen and (max-width: 1199px) {
