@@ -86,37 +86,33 @@
                             <li>
                                 <span id="total">{{ $total + $final_shipping }}</span>
                                 @lang('product.amd')
-                                {{--<span {{ $total >=--}}
-                                    {{--$min_amount_free_shipping ? 'hidden' : '' }} class="shipping_amount">+ {{ $shipping }}@lang('product.amd')--}}
-                                {{--</span>--}}
                             </li>
                         </ul>
                         <hr>
-                        <div class="basket-form-div">
-                            @if(count($errors) > 0)
-                            <div class="alert alert-danger">
-                                @foreach($errors->all() as $error)
-                                <p>{{ $error }}</p>
-                                @endforeach
-                            </div>
-                            @endif
-    {{--                        <form action="{{ url('orders/new/'.App::getLocale()) }}" method="post">--}}
+                        <div class="basket-form-div" id="show_error">
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
                                 <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('auth.name')">
                                 <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
-                                <input name="promo_code" type="text" placeholder="12345">
+                                <input name="promo_code" type="text" value="{{ old('promo_code') }}" placeholder="12345">
                                 <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">
-                                    <li>Զեղչված</li>
-                                    <li class="old-price">7000</li>
+                                    <li>@lang('global.discounted')</li>
+                                    <li class="old-price"></li>
                                     <li>
                                         <span id="zexchvats"></span>
-                                        <span>դր</span>
+                                        <span>@lang('product.amd')</span>
                                     </li>
                                 </ul>
                                 <hr>
                             </div>
                             <button type="submit" {{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
+                            @if(count($errors) > 0)
+                                <div class="alert alert-danger" style="margin-top: 10px; background-color: #FF2036; color: #ffffff; border-radius: 15px">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            @endif
 
                             <div class="check-box">
                                 <span style="display:block; margin-bottom: 20px; font-size:18px;">@lang('global.advised by trainer')</span>
@@ -127,7 +123,7 @@
                                 </div>
 
                                 <div class="v-voq">
-                                    <input type="radio" value="0" id="tr4-na" name="trainer">
+                                    <input {{ old('trainer') == "0" ? 'checked' : '' }} type="checkbox" value="0" id="tr4-na" name="trainer">
                                     <label for="tr4-na" id="tr4-cover"></label>
                                     <label for="tr4-na">@lang('global.nobody')</label>
                                 </div>
@@ -185,6 +181,13 @@ var min_amount_free_shipping = '{{ $min_amount_free_shipping }}';
 var bsk_empty = '{{ trans('global.basket is empty') }}';
 var shipping = '{{ $shipping }}';
 </script>
+@if(count($errors) > 0)
+    <script>
+        $('html, body').animate({
+            scrollTop: $("#show_error").offset().top
+        }, 1000);
+    </script>
+@endif
 <script src="/js/basket.js"></script>
 
 <script src="/js/maskedinput.js" type="text/javascript"></script>

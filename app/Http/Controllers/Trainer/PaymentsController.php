@@ -74,6 +74,11 @@ class PaymentsController extends Controller
             return redirect()->back()->with('error', trans('validation.min_amount', ['attribute' => $min_payment_amount]));
         }
 
+        // case: inserted amount is less than min payment amount
+        if($request->amount < $min_payment_amount){
+            return redirect()->back()->with('error', trans('validation.min_amount', ['attribute' => $min_payment_amount]));
+        }
+
         $payment = Payment::create(['trainer_id' => $this->trainer->id, 'amount' => $request->amount]);
         $sender = Trainer::with('image')->find($this->trainer->id)->toArray();
 

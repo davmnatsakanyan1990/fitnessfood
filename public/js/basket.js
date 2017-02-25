@@ -1,6 +1,20 @@
 var sale_percent = 0;
 var timeout;
 var trainers_list = $(document).find('.trainer-select-main').html();
+
+$(document).ready(function(){
+    if($('#tr4-na').prop('checked')){
+        // disable trainer search field
+        $(document).find('input[name="search"]').prop("disabled", true);
+
+        // hide trainers
+        $(document).find('.trainer-select-main').hide();
+    }
+
+    if($(document).find('input[name="promo_code"]').val() != ''){
+        promo_inserted($(document).find('input[name="promo_code"]').val());
+    }
+});
 // Search for trainer
 $(document).find('input[name="search"]').on('input', function() {
     var value = $(this).val();
@@ -29,6 +43,10 @@ $(document).find('input[name="search"]').on('input', function() {
 // Inserting promo code
 $(document).find('input[name="promo_code"]').on('input', function() {
     var value = $(this).val();
+    promo_inserted(value);
+
+});
+function promo_inserted(value){
     if(value.length == 0){
         clearTimeout(timeout);
         // fill trainers list
@@ -41,6 +59,9 @@ $(document).find('input[name="promo_code"]').on('input', function() {
         $(document).find('.v-voq input[name="trainer"]').prop("disabled", false);
         $(document).find('.v-voq input[name="trainer"]').next('label').css("background", '#ffffff');
         $(document).find('.v-voq input[name="trainer"]').next('label').css("cursor", 'inherit');
+
+        $(document).find('input[name="search"]').val('');
+
     }
     else{
         // disable trainer search field
@@ -53,7 +74,7 @@ $(document).find('input[name="promo_code"]').on('input', function() {
 
         clearTimeout(timeout);
         // search promo code
-         timeout = setTimeout(function(){
+        timeout = setTimeout(function(){
             $.ajax({
                 url: BASE_URL + '/promo/search/'+locale,
                 type: 'get',
@@ -82,7 +103,14 @@ $(document).find('input[name="promo_code"]').on('input', function() {
                         if(data.promo.trainer.is_approved == 1) {
                             $(document).find('#zexchvats').closest('.prc-ul').show();
                             $(document).find('#zexchvats').html(discounted);
+                            $('.old-price').html(total + parseInt(final_shipping));
+
+                            $(document).find('input[name="search"]').val(data.promo.trainer.first_name+' '+data.promo.trainer.last_name);
                         }
+                    }
+                    else{
+                        $(document).find('input[name="search"]').val('');
+                        $(document).find('#zexchvats').closest('.prc-ul').hide();
                     }
 
                     // fill trainers list
@@ -92,8 +120,7 @@ $(document).find('input[name="promo_code"]').on('input', function() {
             })
         }, 1000);
     }
-});
-
+}
 // manually change count
 $(document).find('input[name="quantity"]').change(function(){
     var count = $(this).val();
@@ -150,17 +177,34 @@ $(document).find('table').on('click','.remove', function(){
 
     var total = getTotalAmount();
 
-    if(total >= min_amount_free_shipping){
-        $(document).find('.freeshipping').show();
-        $(document).find('.shipping').hide();
-        $(document).find('.shipping_amount').hide();
-    }
-    else{
+    //if(total >= min_amount_free_shipping){
+    //    $(document).find('.freeshipping').show();
+    //    $(document).find('.shipping').hide();
+    //    $(document).find('.shipping_amount').hide();
+    //}
+    //else{
+    //    $(document).find('.shipping').show();
+    //    $(document).find('.freeshipping').hide();
+    //    $(document).find('.shipping_amount').show();
+    //}
+
+    var discounted = total - (total * sale_percent)/100;
+
+    if(total < min_amount_free_shipping){
+        discounted = discounted + parseInt(shipping);
+        total = total + parseInt(shipping);
+
+        $('#zexchvats').html(discounted);
+        $('.old-price').html(total);
         $(document).find('.shipping').show();
         $(document).find('.freeshipping').hide();
-        $(document).find('.shipping_amount').show();
     }
-
+    else {
+        $('#zexchvats').html(discounted);
+        $('.old-price').html(total);
+        $(document).find('.freeshipping').show();
+        $(document).find('.shipping').hide();
+    }
     $('#total').html(total);
 });
 
@@ -201,17 +245,34 @@ $(document).find('.dropdown').on('click', '.remove', function(){
 
     var total = getTotalAmount();
 
-    if(total >= min_amount_free_shipping){
-        $(document).find('.freeshipping').show();
-        $(document).find('.shipping').hide();
-        $(document).find('.shipping_amount').hide();
-    }
-    else{
+    //if(total >= min_amount_free_shipping){
+    //    $(document).find('.freeshipping').show();
+    //    $(document).find('.shipping').hide();
+    //    $(document).find('.shipping_amount').hide();
+    //}
+    //else{
+    //    $(document).find('.shipping').show();
+    //    $(document).find('.freeshipping').hide();
+    //    $(document).find('.shipping_amount').show();
+    //}
+
+    var discounted = total - (total * sale_percent)/100;
+
+    if(total < min_amount_free_shipping){
+        discounted = discounted + parseInt(shipping);
+        total = total + parseInt(shipping);
+
+        $('#zexchvats').html(discounted);
+        $('.old-price').html(total);
         $(document).find('.shipping').show();
         $(document).find('.freeshipping').hide();
-        $(document).find('.shipping_amount').show();
     }
-
+    else {
+        $('#zexchvats').html(discounted);
+        $('.old-price').html(total);
+        $(document).find('.freeshipping').show();
+        $(document).find('.shipping').hide();
+    }
     $('#total').html(total);
 });
 
@@ -295,17 +356,37 @@ function updateCount(count, product_id, price){
         total = total + parseInt(shipping);
 
         $('#zexchvats').html(discounted);
+        $('.old-price').html(total);
         $(document).find('.shipping').show();
         $(document).find('.freeshipping').hide();
     }
     else{
         $('#zexchvats').html(discounted);
+        $('.old-price').html(total);
         $(document).find('.freeshipping').show();
         $(document).find('.shipping').hide();
     }
 
     $('#total').html(total);
 }
+
+// click to no one checkbox
+$(document).find('#tr4-na').on('click', function(){
+    if($('#tr4-na').prop('checked')){
+        // disable trainer search field
+        $(document).find('input[name="search"]').prop("disabled", true);
+
+        // hide trainers
+        $(document).find('.trainer-select-main').hide();
+    }
+    else{
+        // enable trainer search field
+        $(document).find('input[name="search"]').prop("disabled", false);
+
+        // show trainers
+        $(document).find('.trainer-select-main').show();
+    }
+});
 
 function getTotalAmount(){
     var total = 0;
