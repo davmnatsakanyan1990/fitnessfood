@@ -7,6 +7,11 @@
 <div class="responsive-height-block"><!-- Important --></div>
 <main class="basket-main">
     <div class="container">
+        <div class="row">
+            <div class="headerimg-div">
+                
+            </div>
+        </div>
         <h3 class="basket-title">@lang('global.basket')</h3>
         @if(count($products) > 0)
         <div class="not_empty">
