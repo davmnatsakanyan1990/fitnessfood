@@ -25,7 +25,7 @@
             <!-- Sub menu -->
             <div class="container">
                 <div class="row">
-                    <div>
+                    <div class="headerimg-div">
                         <img src="/images/araqum.png" alt="araqum">
                     </div>
                 </div>
