@@ -2,33 +2,14 @@
 @section('content')
     <div class="responsive-height-block"><!-- Important --></div>
     <main class="home-main"><!-- Main section -->
-        {{--<section><!-- Slider section -->
-            <div class="container">
-                <div class="row">
-                    <div id="main-slider" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="/images/slider/sl-1.png" alt="/images/slider/sl-1.png">
-                            </div>
-                            <div class="item">
-                                <img src="/images/slider/sl-1.png" alt="/images/slider/sl-1.png">
-                            </div>
-                        </div>
-                        <a class="left carousel-control" href="#main-slider" data-slide="prev"><span><img src="/images/slider/l-c.png" alt="lc"></span></a>
-                        <a class="right carousel-control" href="#main-slider" data-slide="next"><span><img src="/images/slider/r-c.png" alt=""></span></a>
-                    </div>
-                </div>
-            </div>
-        </section>--}}<!-- Slider section end-->
-        
         <section><!-- Products section -->
             <!-- Sub menu -->
             <div class="container">
-                {{--<div class="row">--}}
-                    {{--<div class="headerimg-div">--}}
-                        {{--<img src="/images/araqum.png" alt="araqum">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="row">
+                    <div class="headerimg-div">
+                        <!-- Don't remove this div this is for bg-img -->
+                    </div>
+                </div>
                 <div class="row filter-navmenu-wrap">
                     <ul class="list-inline">
                         <li  class="{{ request('cat') ? '' : 'filter-active' }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.all')</a></li>
@@ -42,7 +23,7 @@
             @if(count($products) > 0)
             @foreach($products as $row)
                 <div class="container home-product-cont">
-                    <div class="row" style="margin-left: -30px; margin-right: -30px;">
+                    <div class="row">
                         @foreach($row as $product)
                         <!-- product -->
                         <div class="col-sm-6 col-md-3" >
