@@ -108,6 +108,7 @@
                                 <input name="promo_code" type="text" placeholder="12345">
                                 <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">
                                     <li>Զեղչված</li>
+                                    <li class="old-price">7000</li>
                                     <li>
                                         <span id="zexchvats"></span>
                                         <span>դր</span>
@@ -126,9 +127,9 @@
                                 </div>
 
                                 <div class="v-voq">
-                                    <input type="radio" value="0" id="tr4" name="trainer">
-                                    <label for="tr4" id="tr4-cover"></label>
-                                    <label for="tr4">@lang('global.nobody')</label>
+                                    <input type="radio" value="0" id="tr4-na" name="trainer">
+                                    <label for="tr4-na" id="tr4-cover"></label>
+                                    <label for="tr4-na">@lang('global.nobody')</label>
                                 </div>
                             </div>
                             {{--</form>    --}}
