@@ -178,7 +178,6 @@
 @endsection
 
 @section('scripts')
-<script src="{{ url('select2-4.0.3/dist/js/select2.min.js') }}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 <script>
 var min_amount_free_shipping = '{{ $min_amount_free_shipping }}';
