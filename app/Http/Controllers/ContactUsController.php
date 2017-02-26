@@ -36,7 +36,7 @@ class ContactUsController extends Controller
             'text' => 'required'
         ]);
 
-        Mail::raw('Text to e-mail', function ($message) use ($request) {
+        Mail::raw($request->text, function ($message) use ($request) {
             $message->from($request->email, 'FitnessFood');
 
             $message->to(env('SUPPORT_MAIL'));

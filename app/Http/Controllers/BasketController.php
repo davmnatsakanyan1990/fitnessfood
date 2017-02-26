@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class BasketController extends Controller
 {
@@ -91,10 +92,8 @@ class BasketController extends Controller
         $text = $request->text;
         $trainers = Trainer::where('is_approved', 1)
             ->where(function($query) use ($text){
-                $query->where('custom_first_name', 'like', '%'.$text.'%')
-                ->orWhere('custom_last_name', 'like', '%'.$text.'%')
-                ->orWhere('first_name', 'like', '%'.$text.'%')
-                ->orWhere('last_name', 'like', '%'.$text.'%');
+                $query->where(DB::raw("CONCAT(`custom_first_name`, ' ', `custom_last_name`)"), 'like', '%'.$text.'%')
+                ->orWhere(DB::raw("CONCAT(`first_name`, ' ', `last_name`)"), 'like', '%'.$text.'%');
                 })
             ->get();
         return view('ajax.trainer_search', compact('trainers'));

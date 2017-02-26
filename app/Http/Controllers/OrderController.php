@@ -43,7 +43,7 @@ class OrderController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required|regex:/^\([0-9]{3}\)\ [0-9]{3}-[0-9]{3}$/',
-            'promo_code' => 'exists:promo_codes,code',
+            'promo_code' => 'exists:promo_codes,code|size:4',
             'trainer' => 'required'
         ]);
 

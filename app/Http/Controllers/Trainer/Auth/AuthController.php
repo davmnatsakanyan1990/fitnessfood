@@ -107,7 +107,7 @@ class AuthController extends Controller
     }
 
     public function generatePromoCode($trainer_id){
-        $code = str_random(5);
+        $code = str_random(4);
         $obj = PromoCode::where('code', $code)->first();
         
         if($obj){

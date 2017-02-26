@@ -4,7 +4,7 @@
             <div class="footer-social">
                 <ul class="list-inline rrssb-buttonss">
                     {{--<li><a href="#"><img src="/images/social/share.png" alt="share.png"></a></li>--}}
-                    <li><a href="https://www.facebook.com/fitnesspastry">
+                    <li><a target="_blank" href="https://www.facebook.com/fitnesspastry">
                             <img src="/images/social/1.png" alt="social/1.png">
                         </a>
                     </li>

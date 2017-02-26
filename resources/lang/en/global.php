@@ -20,6 +20,7 @@ return [
     'basket' => 'Basket',
     'contact us' => 'Contact Us',
     'name' => 'Name',
+    'your name' => 'Your Name',
     'message' => 'Message',
     'send' => 'Send',
     'buyer' => 'Buyer',
@@ -45,6 +46,8 @@ return [
     'free shipping text' => 'Delivery is free in case of :amount AMD and more',
     'all' => 'All',
     'sale' => 'Sale',
-    'discounted' => 'Discounted'
+    'discounted' => 'Discounted',
+    'wallet' => 'Wallet',
+    'your promo code' => 'Your Promo Code'
 
 ];

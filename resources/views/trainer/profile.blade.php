@@ -12,7 +12,7 @@
                         <div>
                             <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">
                             <h2>{{ $trainer->first_name.' '.$trainer->last_name }} </h2>
-                            <h4 style=" font-size: 16px; margin-top: 5px">Your promo code: <span style="color: #892E6B; font-weight: bold">{{ $trainer->promoCode->code }}</span></h4>
+                            <h4 style=" font-size: 16px; margin-top: 5px">@lang('global.your promo code'): <span style="color: #892E6B; font-weight: bold">{{ $trainer->promoCode->code }}</span></h4>
                         </div>
                         <a href="{{ url('trainer/logout/'.App::getLocale()) }}" class="profile-exit">@lang('auth.logout')</a>
                     </div><!-- Profile top end -->
@@ -21,7 +21,7 @@
                     <div class="stanal" id="info"><!-- Stanal row -->
                         <div class=" stanal-info"><!-- Stanal info -->
                             <ul class="list-inline">
-                                <li>@lang('product.bonus')</li>
+                                <li>@lang('global.wallet')</li>
                                 <li>{{ $active_bonus }}@lang('product.amd')</li>
                             </ul>
                             <hr>
@@ -75,10 +75,11 @@
                             <th>@lang('global.date')</th>
                             <th>@lang('global.buyer')</th>
                             <th>@lang('global.phone')</th>
+                            <th>@lang('product.total')</th>
+                            <th>%</th>
                             <th>@lang('global.sale')</th>
-                            <th class="text-center prod-percent-th">%</th>
-                            <th class="text-center prod-count-th">@lang('product.count')</th>
-                            <th class="text-right">@lang('product.total')</th>
+                            <th class="text-center prod-percent-th">Եկամուտ</th>
+                            <th class="text-center prod-count-th">Գումար</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -87,10 +88,11 @@
                             <td>{{ date( "Y/m/d H:i", strtotime($order->created_at)) }}</td>
                             <td>{{ $order->customer_name }}</td>
                             <td>{{ $order->customer_phone}}</td>
+                            <td>{{ $order->amount }}@lang('product.amd')</td>
+                            <td>{{ $order->trainer_percent }}%</td>
                             <td>{{ $order->sale}}%</td>
-                            <td class="text-center prod-percent-th">{{ $order->trainer_percent }} %</td>
-                            <td class="text-center prod-count-th">{{ $order->products_count }}</td>
-                            <td class="text-right">{{ $order->amount }}@lang('product.amd')</td>
+                            <td class="text-center prod-percent-th">{{ $order->trainer_percent - $order->sale }} %</td>
+                            <td class="text-center prod-count-th">{{ $order->amount*($order->trainer_percent - $order->sale)/100 }}@lang('product.amd')</td>
                           </tr>
                           @endforeach
                         </tbody>

@@ -20,6 +20,7 @@ return [
     'basket' => 'Զամբյուղ',
     'contact us' => 'ՄԻԱՑԵՔ ՄԵԶ',
     'name' => 'Անուն',
+    'your name' => 'Ձեր Անունը',
     'message' => 'Հաղորդագրություն',
     'send' => 'Ուղարկել',
     'buyer' => 'Գնորդի Անունը',
@@ -45,6 +46,8 @@ return [
     'free shipping text' => 'Առաքումն անվճար :amount դր և ավել գնումների դեպքում',
     'all' => 'Բոլորը',
     'sale' => 'Զեղչ',
-    'discounted' => 'Զեղչված'
+    'discounted' => 'Զեղչված',
+    'wallet' => 'Դրամապանակ',
+    'your promo code' => 'Ձեր Պրոմո Կոդը'
 
 ];

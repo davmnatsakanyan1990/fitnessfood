@@ -20,10 +20,9 @@ class Trainer extends Authenticatable
         'email',
         'address',
         'phone',
+        'percent',
         'gym_id',
-        'workplace',
         'date_of_birth',
-        'username',
         'password',
         'is_approved',
         'is_seen'

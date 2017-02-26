@@ -20,6 +20,7 @@ return [
     'basket' => 'Карзина',
     'contact us' => 'Связ С Нами',
     'name' => 'Имя',
+    'your name' => 'Ваше Имя',
     'message' => 'Текст',
     'send' => 'Отправить',
     'buyer' => 'Покупатель',
@@ -44,6 +45,7 @@ return [
     'free shipping text' => 'Бесплатная доставка при покупке :amount амд и более',
     'all' => 'Все',
     'sale' => 'Распродажа',
-    'discounted' => 'Скидкой'
+    'discounted' => 'Скидкой',
+    'your promo code' => 'Ваш Промо Код'
 
 ];

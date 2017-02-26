@@ -7,11 +7,11 @@
 <div class="responsive-height-block"><!-- Important --></div>
 <main class="basket-main">
     <div class="container">
-        <div class="row">
-            <div class="headerimg-div">
-                
-            </div>
-        </div>
+        {{--<div class="row">--}}
+            {{--<div class="headerimg-div">--}}
+
+            {{--</div>--}}
+        {{--</div>--}}
         <h3 class="basket-title">@lang('global.basket')</h3>
         @if(count($products) > 0)
         <div class="not_empty">
@@ -97,9 +97,9 @@
                         <div class="basket-form-div" id="show_error">
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
-                                <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('auth.name')">
+                                <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('global.your name')">
                                 <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
-                                <input name="promo_code" type="text" value="{{ old('promo_code') }}" placeholder="12345">
+                                <input name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') }}" placeholder="1234">
                                 <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">
                                     <li>@lang('global.discounted')</li>
                                     <li class="old-price"></li>

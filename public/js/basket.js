@@ -14,10 +14,22 @@ $(document).ready(function(){
     if($(document).find('input[name="promo_code"]').val() != ''){
         promo_inserted($(document).find('input[name="promo_code"]').val());
     }
+
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
 });
 // Search for trainer
 $(document).find('input[name="search"]').on('input', function() {
     var value = $(this).val();
+
+    searchTrainer(value);
+});
+
+function searchTrainer(value){
     if(value.length == 0){
         clearTimeout(timeout);
         $(document).find('.trainer-select-main').html(trainers_list);
@@ -35,11 +47,9 @@ $(document).find('input[name="search"]').on('input', function() {
                     $(document).find('.trainer-select-main').html(data);
                 }
             })
-        }, 1000);
+        }, 500);
     }
-
-});
-
+}
 // Inserting promo code
 $(document).find('input[name="promo_code"]').on('input', function() {
     var value = $(this).val();
@@ -47,7 +57,7 @@ $(document).find('input[name="promo_code"]').on('input', function() {
 
 });
 function promo_inserted(value){
-    if(value.length == 0){
+    if(value.length != 4){
         clearTimeout(timeout);
         // fill trainers list
         $(document).find('.trainer-select-main').html(trainers_list);
@@ -63,62 +73,64 @@ function promo_inserted(value){
         $(document).find('input[name="search"]').val('');
 
     }
-    else{
-        // disable trainer search field
-        $(document).find('input[name="search"]').prop("disabled", true);
-        // disable nobody box
-        $(document).find('.v-voq input[name="trainer"]').prop("disabled", true);
-        $(document).find('.v-voq input[name="trainer"]').next('label').css("background", '#ebebe4');
-        $(document).find('.v-voq input[name="trainer"]').next('label').css("cursor", 'not-allowed');
+    else {
+
+            // disable trainer search field
+            $(document).find('input[name="search"]').prop("disabled", true);
+            // disable nobody box
+            $(document).find('.v-voq input[name="trainer"]').prop("disabled", true);
+            $(document).find('.v-voq input[name="trainer"]').next('label').css("background", '#ebebe4');
+            $(document).find('.v-voq input[name="trainer"]').next('label').css("cursor", 'not-allowed');
 
 
-        clearTimeout(timeout);
-        // search promo code
-        timeout = setTimeout(function(){
-            $.ajax({
-                url: BASE_URL + '/promo/search/'+locale,
-                type: 'get',
-                data: {
-                    text: value
-                },
-                success: function (data) {
-                    var total = getTotalAmount();
+            clearTimeout(timeout);
+            // search promo code
+            timeout = setTimeout(function () {
+                $.ajax({
+                    url: BASE_URL + '/promo/search/' + locale,
+                    type: 'get',
+                    data: {
+                        text: value
+                    },
+                    success: function (data) {
+                        var total = getTotalAmount();
 
-                    if(data.promo)
-                        sale_percent = data.promo.percent;
+                        if (data.promo)
+                            sale_percent = data.promo.percent;
 
-                    if(total >= min_amount_free_shipping){
-                        var final_shipping = 0;
-                    }
-                    else{
-                        var final_shipping = shipping;
-                    }
-
-                    // get discounted amount
-                    var discounted = total - (total * sale_percent)/100 + parseInt(final_shipping);
-
-                    // show discounted block
-
-                    if(data.promo) {
-                        if(data.promo.trainer.is_approved == 1) {
-                            $(document).find('#zexchvats').closest('.prc-ul').show();
-                            $(document).find('#zexchvats').html(discounted);
-                            $('.old-price').html(total + parseInt(final_shipping));
-
-                            $(document).find('input[name="search"]').val(data.promo.trainer.first_name+' '+data.promo.trainer.last_name);
+                        if (total >= min_amount_free_shipping) {
+                            var final_shipping = 0;
                         }
-                    }
-                    else{
-                        $(document).find('input[name="search"]').val('');
-                        $(document).find('#zexchvats').closest('.prc-ul').hide();
-                    }
+                        else {
+                            var final_shipping = shipping;
+                        }
 
-                    // fill trainers list
-                    $(document).find('.trainer-select-main').html(data.view);
-                    $(document).find('.trainer-select-main input[name="trainer"]').prop("checked", true);
-                }
-            })
-        }, 1000);
+                        // get discounted amount
+                        var discounted = total - (total * sale_percent) / 100 + parseInt(final_shipping);
+
+                        // show discounted block
+
+                        if (data.promo) {
+                            if (data.promo.trainer.is_approved == 1) {
+                                $(document).find('#zexchvats').closest('.prc-ul').show();
+                                $(document).find('#zexchvats').html(discounted);
+                                $('.old-price').html(total + parseInt(final_shipping));
+
+                                $(document).find('input[name="search"]').val(data.promo.trainer.first_name + ' ' + data.promo.trainer.last_name);
+                            }
+                        }
+                        else {
+                            $(document).find('input[name="search"]').val('');
+                            $(document).find('#zexchvats').closest('.prc-ul').hide();
+                        }
+
+                        // fill trainers list
+                        $(document).find('.trainer-select-main').html(data.view);
+                        $(document).find('.trainer-select-main input[name="trainer"]').prop("checked", true);
+                    }
+                })
+            }, 100);
+
     }
 }
 // manually change count

@@ -5,11 +5,11 @@
         <section><!-- Products section -->
             <!-- Sub menu -->
             <div class="container">
-                <div class="row">
-                    <div class="headerimg-div">
-                        <!-- Don't remove this div this is for bg-img -->
-                    </div>
-                </div>
+                {{--<div class="row">--}}
+                    {{--<div class="headerimg-div">--}}
+                        {{--<!-- Don't remove this div this is for bg-img -->--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 <div class="row filter-navmenu-wrap">
                     <ul class="list-inline">
                         <li  class="{{ request('cat') ? '' : 'filter-active' }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.all')</a></li>
