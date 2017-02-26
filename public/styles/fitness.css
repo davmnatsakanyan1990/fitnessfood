@@ -1745,8 +1745,23 @@ footer .all-rights {
   margin-top: 10px;
   border: none;
   border-radius: 4px;
-  width: 100%;
+  width: 94%;
   padding: 15px 10px 10px;
+}
+
+.basket-first-inps input + span {
+  color: red;
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+.basket-first-inps .greencheck {
+  margin-top: -15px;
+  display: inline-block;
+}
+
+.basket-first-inps .greencheck img {
+  max-width: 10px;
 }
 
 .remove-trainer {
@@ -1902,6 +1917,7 @@ footer .all-rights {
 
 .v-voq {
   margin-top: 15px;
+  margin-left: 2px;
 }
 
 .trainer-select {
@@ -1940,31 +1956,57 @@ footer .all-rights {
 
 .marzich-search {
   position: relative;
+  display: block !important;
+  /* 	&:after{
+	content: '\f002';
+	display: inline-block;
+	cursor: pointer;
+	font-family: FontAwesome;
+	font-size: 24px;
+	float: right;
+	margin-right: -70px;
+	margin-top: -38px;
+	color: #999999;
+	&:hover{
+		color: $main-violet;
+		transform: scale(1.1);
+	}
+} */
 }
 
 .marzich-search input {
   display: block;
-  width: 150%;
+  width: 100%;
   padding: 15px 10px;
   border: 1px solid #999999;
 }
 
-.marzich-search:after {
-  content: '\f002';
-  font-family: FontAwesome;
+.marzich-search span {
+  transition: all 0.3s;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  height: 50px;
+  padding-top: 10px;
+  cursor: pointer;
   font-size: 24px;
-  float: right;
-  margin-right: -70px;
-  margin-top: -38px;
   color: #999999;
+}
+
+.marzich-search span:hover {
+  color: #892E6B;
+  transform: rotate(-15deg);
+  transform-origin: right;
+}
+
+.m-searchPlusCheck {
+  /* div:nth-child(2){
+		float: right;
+	} */
 }
 
 .m-searchPlusCheck div {
   display: inline-block;
-}
-
-.m-searchPlusCheck div:nth-child(2) {
-  float: right;
 }
 
 #tr4-cover {
@@ -2176,6 +2218,10 @@ footer .all-rights {
     max-width: 100%;
     width: 100%;
     height: 100%;
+  }
+  .v-voq {
+    display: block;
+    width: 100%;
   }
 }
 
