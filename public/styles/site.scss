@@ -1568,8 +1568,20 @@ footer{
 			margin-top: 10px;
 			border: none;
 			border-radius: 4px;
-			width: 100%;
+			width: 94%;
 			padding: 15px 10px 10px;
+			& + span{
+				color: red;
+				font-size: 22px;
+				vertical-align: middle;  
+			}
+		}
+		.greencheck{ 
+			margin-top: -15px;
+			display: inline-block;
+			img{
+				max-width: 10px; 
+			}
 		}
 	}
 
@@ -1706,9 +1718,6 @@ footer{
 	}
 }
 
-.trainer-select-main{  
-}
-
 .add-to-s{
 	&:checked{
 		+ label{
@@ -1720,6 +1729,7 @@ footer{
 
 .v-voq{
 	margin-top: 15px;
+	margin-left: 2px;
 }
 
 .trainer-select{
@@ -1756,20 +1766,43 @@ footer{
 
 .marzich-search{
 	position: relative;
+	display: block !important;
 	input{
 		display: block;
-		width: 150%;
+		width: 100%;
 		padding: 15px 10px;
 		border: 1px solid #999999;
 	}
-	&:after{
-		content: '\f002';
-		font-family: FontAwesome;
+/* 	&:after{
+	content: '\f002';
+	display: inline-block;
+	cursor: pointer;
+	font-family: FontAwesome;
+	font-size: 24px;
+	float: right;
+	margin-right: -70px;
+	margin-top: -38px;
+	color: #999999;
+	&:hover{
+		color: $main-violet;
+		transform: scale(1.1);
+	}
+} */
+	span{
+		transition: all 0.3s;
+		position: absolute;
+		top: 0;
+		right: 10px;
+		height: 50px;
+		padding-top: 10px;
+		cursor: pointer;
 		font-size: 24px;
-		float: right;
-		margin-right: -70px;
-		margin-top: -38px;
-		color: #999999;
+		color: $light-gray;
+		&:hover{
+			color: $main-violet;
+			transform: rotate(-15deg);
+			transform-origin: right;
+		}
 	}
 }
 
@@ -1777,9 +1810,9 @@ footer{
 	div{
 		display: inline-block;
 	}
-	div:nth-child(2){
+	/* div:nth-child(2){
 		float: right;
-	}
+	} */
 }
 
 #tr4-cover{
