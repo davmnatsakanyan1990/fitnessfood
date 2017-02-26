@@ -29,6 +29,11 @@ $(document).find('input[name="search"]').on('input', function() {
     searchTrainer(value);
 });
 
+$(document).find('input[name="search"]').next('span').on('click', function(){
+    var value = $(this).closest('.basket-form-div').find('input[name="search"]').val();
+    searchTrainer(value);
+});
+
 function searchTrainer(value){
     if(value.length == 0){
         clearTimeout(timeout);
@@ -58,6 +63,7 @@ $(document).find('input[name="promo_code"]').on('input', function() {
 });
 function promo_inserted(value){
     if(value.length != 4){
+        $('.greencheck').hide();
         clearTimeout(timeout);
         // fill trainers list
         $(document).find('.trainer-select-main').html(trainers_list);
@@ -74,7 +80,7 @@ function promo_inserted(value){
 
     }
     else {
-
+            $('.greencheck').show();
             // disable trainer search field
             $(document).find('input[name="search"]').prop("disabled", true);
             // disable nobody box

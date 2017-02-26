@@ -98,11 +98,11 @@
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
                                 <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('global.your name')">
-                                <span>*</span>
+                                <span class="star">*</span>
                                 <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
-                                <span>*</span>
+                                <span class="star">*</span>
                                 <input name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') }}" placeholder="1234">
-                                <span class="greencheck">
+                                <span class="greencheck" style="display: none">
                                     <img src="../images/greencheck.png" alt="green">
                                 </span>
                                 <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">
