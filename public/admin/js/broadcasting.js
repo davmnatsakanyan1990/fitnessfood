@@ -25,7 +25,7 @@ channel.bind('App\\Events\\NewPaymentEvent', function(data) {
                     '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/'+image+'">'+
                 '</a>'+
                 '<div class="media-body">'+
-                    '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
+                    '<strong>'+data.sender.name+'</strong> <br>'+
                     '<p>New Payment Request</p>'+
                     '<small class="text-muted">'+data.payment.created_at+'</small>'+
                 '</div>'+
@@ -42,7 +42,7 @@ channel.bind('App\\Events\\NewPaymentEvent', function(data) {
                         '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/'+image+'">'+
                     '</a>'+
                     '<div class="media-body">'+
-                        '<strong>'+data.sender.first_name+' '+data.sender.last_name+'</strong> <br>'+
+                        '<strong>'+data.sender.name+'</strong> <br>'+
                         '<p>New Payment Request</p>'+
                         '<small class="text-muted">'+data.payment.created_at+'</small>'+
                     '</div>'+
@@ -97,7 +97,7 @@ channel.bind('App\\Events\\NewOrderEvent', function(data) {
             var counselor = '';
         }
         else{
-            var counselor = data.order.counselor.first_name+' '+data.order.counselor.last_name ;
+            var counselor = data.order.counselor.name ;
         }
 
         $(document).find('.order-table tbody').prepend('<tr class="new_order">'+
@@ -134,7 +134,7 @@ channel.bind('App\\Events\\NewTrainerEvent', function(data) {
                     '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/profile-icon.png">'+
                 '</a>'+
                 '<div class="media-body">'+
-                    '<strong>'+data.trainer.first_name+' '+data.trainer.last_name+'</strong>'+
+                    '<strong>'+data.trainer.name+'</strong>'+
                     '<p>New Trainer</p>'+
                     '<small class="text-muted">'+data.trainer.created_at+'</small>'+
                 '</div>'+
@@ -151,7 +151,7 @@ channel.bind('App\\Events\\NewTrainerEvent', function(data) {
                             '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/profile-icon.png">'+
                         '</a>'+
                         '<div class="media-body">'+
-                            '<strong>'+data.trainer.first_name+' '+data.trainer.last_name+'</strong>'+
+                            '<strong>'+data.trainer.name+'</strong>'+
                             '<p>New Trainer</p>'+
                             '<small class="text-muted">'+data.trainer.created_at+'</small>'+
                         '</div>'+
@@ -175,7 +175,7 @@ channel.bind('App\\Events\\NewTrainerEvent', function(data) {
                         '</a>'+
                     '</div>'+
                     '<div class="col-sm-8">'+
-                        '<a href="'+BASE_URL+'/admin/trainers/show/'+data.trainer.id+'"><h3><strong>'+data.trainer.first_name+' '+data.trainer.last_name+'</strong></h3> </a>'+
+                        '<a href="'+BASE_URL+'/admin/trainers/show/'+data.trainer.id+'"><h3><strong>'+data.trainer.name+'</strong></h3> </a>'+
                         '<p><i class="fa fa-map-marker"></i>'+data.trainer.address+'</p>'+
                         '<address>'+
                             '<i class="fa fa-envelope"></i>'+data.trainer.email+'<br>'+

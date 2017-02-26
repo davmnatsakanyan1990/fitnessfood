@@ -24,7 +24,7 @@ $(document).ready(function(){
 });
 // Search for trainer
 $(document).find('input[name="search"]').on('input', function() {
-    var value = $(this).val();
+    var value = $(this).val().replace(/\s\s+/g, ' ');;
 
     searchTrainer(value);
 });
@@ -116,7 +116,7 @@ function promo_inserted(value){
                                 $(document).find('#zexchvats').html(discounted);
                                 $('.old-price').html(total + parseInt(final_shipping));
 
-                                $(document).find('input[name="search"]').val(data.promo.trainer.first_name + ' ' + data.promo.trainer.last_name);
+                                $(document).find('input[name="search"]').val(data.promo.trainer.name);
                             }
                         }
                         else {

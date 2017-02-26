@@ -49,16 +49,14 @@ class SettingsController extends Controller
 
         if(empty($request->current_password) && empty($request->password) && empty($request->password_conformation)){
             $this->validate($request, [
-                'first_name' => 'required',
-                'last_name' => 'required',
+                'name' => 'required',
                 'email' => 'required',
                 'phone' => 'required',
                 'image' => 'image'
             ]);
 
             Trainer::where('id', $this->trainer->id)->update([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
+                'name' => preg_replace('/\s\s+/', ' ', $request->name),
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'gym_id' => $request->gym
@@ -85,8 +83,7 @@ class SettingsController extends Controller
         }
         else{
             $this->validate($request, [
-                'first_name' => 'required',
-                'last_name' => 'required',
+                'name' => 'required',
                 'email' => 'required',
                 'image' => 'image',
                 'current_password' => 'required',
@@ -95,8 +92,7 @@ class SettingsController extends Controller
 
             if(Hash::check($request->current_password, $this->trainer->password)){
                 Trainer::where('id', $this->trainer->id)->update([
-                    'first_name' => $request->first_name,
-                    'last_name' => $request->last_name,
+                    'name' => preg_replace('/\s\s+/', ' ', $request->name),
                     'email' => $request->email,
                     'phone' => $request->phone,
                     'gym_id' => $request->gym,

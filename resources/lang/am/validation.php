@@ -74,12 +74,10 @@ return [
     */
 
     'attributes' => [
-        'name'=> 'Անուն',
         'phone' => 'Հեռախոս',
         'email' => 'Էլ-հասցե',
         'password' => 'Գաղտնաբառ',
-        'last_name' => 'Ազգանուն',
-        'first_name' => 'Անվան',
+        'name' => 'Անուն',
         'text' => 'Հաղորդագրություն',
         'amount' => 'Գումար',
         'trainer' => 'Մարզիչ',

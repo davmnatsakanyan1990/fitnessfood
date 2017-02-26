@@ -13,10 +13,8 @@ class Trainer extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name',
-        'custom_first_name',
-        'last_name',
-        'custom_last_name',
+        'name',
+        'custom_name',
         'email',
         'address',
         'phone',

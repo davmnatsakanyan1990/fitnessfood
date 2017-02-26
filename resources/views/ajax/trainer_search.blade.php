@@ -7,7 +7,7 @@
                 <div class="trainer-inner-content">
                     <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
                     <div>
-                        <span>{{ $trainer->first_name }} {{ $trainer->last_name }}</span>
+                        <span>{{ $trainer->name }}</span>
                         <p>{{ $trainer->gym ? $trainer->gym->name : '' }}</p>
                     </div>
                 </div>

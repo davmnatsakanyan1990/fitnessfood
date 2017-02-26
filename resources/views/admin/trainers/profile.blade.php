@@ -27,7 +27,7 @@
                                  src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'no-image.jpg' }}">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4><strong>{{ $trainer->first_name}} {{  $trainer->last_name }}</strong></h4>
+                            <h4><strong>{{ $trainer->name}}</strong></h4>
 
                             <p><i class="fa fa-map-marker"></i>{{ $trainer->address }}</p>
 
@@ -146,15 +146,9 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <label>Անուն</label>
-                                                        <input type="text" class="form-control" name="first_name[am]"
-                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_first_name)->am : $trainer->first_name }}"
+                                                        <input type="text" class="form-control" name="name[am]"
+                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_name)->am : $trainer->name }}"
                                                                placeholder="Անուն">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label>Ազգանուն</label>
-                                                        <input type="text" class="form-control" name="last_name[am]"
-                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_last_name)->am : $trainer->last_name }}"
-                                                               placeholder="Ազգանուն">
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,15 +156,9 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <label>Имя</label>
-                                                        <input class="form-control" type="text" name="first_name[ru]"
-                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_first_name)->ru : $trainer->first_name }}"
+                                                        <input class="form-control" type="text" name="name[ru]"
+                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_name)->ru : $trainer->name }}"
                                                                placeholder="Имя">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label>Фамилия</label>
-                                                        <input class="form-control" type="text" name="last_name[ru]"
-                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_last_name)->ru : $trainer->last_name }}"
-                                                               placeholder="Фамилия">
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,15 +166,9 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <label>Name</label>
-                                                        <input type="text" class="form-control" name="first_name[en]"
-                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_first_name)->en : $trainer->first_name }}"
-                                                               placeholder="First Name">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label>Surname</label>
-                                                        <input type="text" class="form-control" name="last_name[en]"
-                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_last_name)->en : $trainer->last_name }}"
-                                                               placeholder="Last Name">
+                                                        <input type="text" class="form-control" name="name[en]"
+                                                               value="{{ $trainer->name_is_configured ? json_decode($trainer->custom_name)->en : $trainer->name }}"
+                                                               placeholder="Name">
                                                     </div>
                                                 </div>
                                             </div>

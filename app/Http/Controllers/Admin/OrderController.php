@@ -49,7 +49,7 @@ class OrderController extends AdminBaseController
                 $order->amount += $product->price * $product->pivot->count;
             }
             if($order->counselor)
-                $order->counselor->name_is_json = $this->isJSON($order->counselor->first_name);
+                $order->counselor->name_is_json = $this->isJSON($order->counselor->name);
 
             // purchase was made via promo code
             if($order->promo_code)
@@ -85,7 +85,7 @@ class OrderController extends AdminBaseController
         $order->total = $total;
 
         if($order->counselor)
-            $order->counselor->name_is_json = $this->isJSON($order->counselor->first_name);
+            $order->counselor->name_is_json = $this->isJSON($order->counselor->name);
 
         // purchase was made via promo code
         if($order->promo_code)

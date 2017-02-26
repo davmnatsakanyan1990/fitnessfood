@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-sm-8">
                             <a href="{{ url('admin/trainers/show/'.$trainer->id) }}"><h3>
-                                    <strong>{{  $trainer->first_name }} {{  $trainer->last_name }}</strong></h3></a>
+                                    <strong>{{  $trainer->name }}</strong></h3></a>
 
                             <p><i class="fa fa-map-marker"></i> {{ $trainer->address }}</p>
                             <address>

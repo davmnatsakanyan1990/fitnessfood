@@ -46,15 +46,8 @@
                         <label for="name" class="control-label">@lang('auth.name')</label>
                         <div>
                             <input type="text"
-                                   value="{{ old('first_name') ? old('first_name') : $trainer->first_name }}"
-                                   class="form-control" name="first_name">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="" class="control-label">@lang('auth.surname')</label>
-                        <div>
-                            <input type="text" value="{{ old('last_name') ? old('last_name') : $trainer->last_name }}"
-                                   class="form-control" name="last_name" id="">
+                                   value="{{ old('name') ? old('name') : $trainer->name }}"
+                                   class="form-control" name="name">
                         </div>
                     </div>
                     <div>

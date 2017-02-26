@@ -74,11 +74,9 @@ return [
     */
 
     'attributes' => [
-        'name'=> 'Имя',
         'phone' => 'Телефон',
         'password' => 'Пароль',
-        'last_name' => 'Отчвство',
-        'first_name' => 'Имя',
+        'name' => 'Имя',
         'text' => 'Текст',
         'amount' => 'Сумма',
         'trainer' => 'Тренер',

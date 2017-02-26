@@ -120,7 +120,7 @@
                             @endif
 
                             <div class="check-box">
-                                <span style="display:block; margin-bottom: 20px; font-size:18px;">@lang('global.advised by trainer')</span>
+                                <span style="display:block; margin-bottom: 20px; font-size:18px;">@lang('global.choose counselor')</span>
                             </div>
                             <div class="m-searchPlusCheck">
                                 <div class="marzich-search">
@@ -146,7 +146,7 @@
                             <div class="trainer-inner-content">
                                 <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
                                 <div>
-                                    <span>{{ $trainer->first_name }} {{ $trainer->last_name }}</span>
+                                    <span>{{ $trainer->name }}</span>
                                     <p>{{ $trainer->gym ? $trainer->gym->name : '' }}</p>
                                 </div>
                             </div>

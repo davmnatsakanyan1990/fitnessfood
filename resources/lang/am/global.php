@@ -25,9 +25,8 @@ return [
     'send' => 'Ուղարկել',
     'buyer' => 'Գնորդի Անունը',
     'basket is empty' => 'Զամբյուղը դատարկ է',
-    'advised by trainer' => 'Ինձ խորհուրդ է տվել մարզիչը',
+    'choose counselor' => 'Նշեք Խորհուրդ Տվող Մասնագետին',
     'shipping' => 'Առաքում',
-    'order' => 'Պատվիրել',
     'success_order' => 'Ձեր պատվերը ուղարկված է',
     'free_shipping' => 'Անվճար առաքում',
     'gym' => 'Մարզասրահ',
@@ -48,6 +47,7 @@ return [
     'sale' => 'Զեղչ',
     'discounted' => 'Զեղչված',
     'wallet' => 'Դրամապանակ',
-    'your promo code' => 'Ձեր Պրոմո Կոդը'
+    'your promo code' => 'Ձեր Պրոմո Կոդը',
+    'your percent' => 'Ձեր տոկոսի չափը'
 
 ];

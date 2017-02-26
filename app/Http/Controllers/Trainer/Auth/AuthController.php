@@ -70,8 +70,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
+            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:trainers',
             'phone' => 'required',
             'password' => 'required|min:6|confirmed',
@@ -88,8 +87,7 @@ class AuthController extends Controller
     {
         $percent = Setting::first()->trainer_percent;
         $trainer = Trainer::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'name' => preg_replace('/\s\s+/', ' ', $data['name']),
             'email' => $data['email'],
             'address' => $data['address'],
             'phone' => $data['phone'],

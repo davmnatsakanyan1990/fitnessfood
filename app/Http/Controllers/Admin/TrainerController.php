@@ -88,7 +88,7 @@ class TrainerController extends AdminBaseController
         
         $trainer->gym = Gym::where('id', $trainer->gym_id)->first();
 
-        if($this->isJSON($trainer->custom_first_name)){
+        if($this->isJSON($trainer->custom_name)){
             $trainer->name_is_configured = true;
         }
 
@@ -116,11 +116,10 @@ class TrainerController extends AdminBaseController
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id){
-        $first_name = json_encode($request->first_name, JSON_UNESCAPED_UNICODE);
-        $last_name = json_encode($request->last_name, JSON_UNESCAPED_UNICODE);
+        $name = json_encode(preg_replace('/\s\s+/', ' ', $request->name), JSON_UNESCAPED_UNICODE);
         
         $percent = $request->percent;
-        Trainer::where('id', $id)->update(['percent' => $percent, 'custom_first_name' => $first_name, 'custom_last_name' => $last_name]);
+        Trainer::where('id', $id)->update(['percent' => $percent, 'custom_name' => $name]);
         
         return redirect()->back()->with('message', 'Data was successfully updated');
     }

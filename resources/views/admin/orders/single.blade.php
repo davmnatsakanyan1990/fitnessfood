@@ -16,7 +16,7 @@
                                     <dt>Phone:</dt>
                                     <dd>{{ $order->customer_phone }}</dd>
                                     <dt>Counselor:</dt>
-                                    <dd>{{ $order->counselor ? $order->counselor->first_name : 'NO'}} </dd>
+                                    <dd>{{ $order->counselor ? $order->counselor->name : 'NO'}} </dd>
                                     <dt>Sale:</dt>
                                     <dd>{{ $order->promo_percent }}%</dd>
                                 </dl>

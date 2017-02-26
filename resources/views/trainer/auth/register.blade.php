@@ -16,9 +16,7 @@
     		<form action="{{ url('trainer/register/'.App::getLocale()) }}" method="post">
 				{{ csrf_field() }}
 
-    			<input name="first_name" type="text" value="{{ old('first_name') }}" placeholder="@lang('auth.name')">
-
-    			<input name="last_name" type="text" value="{{ old('last_name') }}" placeholder="@lang('auth.surname')">
+    			<input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('auth.name')">
 
     			<input name="phone" type="tel" value="{{ old('phone') }}" placeholder=" @lang('auth.tel')։">
 

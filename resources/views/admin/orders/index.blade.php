@@ -21,7 +21,7 @@
                                     <select name="trainer" class="form-control">
                                         <option value="">Select Trainer</option>
                                         @foreach($trainers as $trainer)
-                                            <option {{ request('trainer') == $trainer->id ? 'selected' : '' }} value="{{ $trainer->id }}">{{ $trainer->first_name }} {{ $trainer->last_name }}</option>
+                                            <option {{ request('trainer') == $trainer->id ? 'selected' : '' }} value="{{ $trainer->id }}">{{ $trainer->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -66,8 +66,7 @@
                                             {{ $order->customer_phone }}
                                         </td>
                                         <td>
-                                            {{ $order->counselor ? $order->counselor->first_name  : '' }}
-                                            {{ $order->counselor ? $order->counselor->last_name  : '' }}
+                                            {{ $order->counselor ? $order->counselor->name  : '' }}
                                         </td>
                                         <td>
                                             {{ $order->amount }}

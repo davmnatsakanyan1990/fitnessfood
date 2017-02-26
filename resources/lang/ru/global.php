@@ -25,7 +25,7 @@ return [
     'send' => 'Отправить',
     'buyer' => 'Покупатель',
     'basket is empty' => 'Ваша корзина пуста',
-    'advised by trainer' => 'Мне посоветовал трейнер',
+    'choose counselor' => 'Выберите консультанту',
     'shipping' => 'Доставка',
     'order' => 'Заказывать',
     'success_order' => 'Заказ отправлен',
@@ -46,6 +46,7 @@ return [
     'all' => 'Все',
     'sale' => 'Распродажа',
     'discounted' => 'Скидкой',
-    'your promo code' => 'Ваш Промо Код'
+    'your promo code' => 'Ваш Промо Код',
+    'your percent' => 'Ваш процент'
 
 ];

@@ -11,8 +11,9 @@
                         </a>
                         <div>
                             <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">
-                            <h2>{{ $trainer->first_name.' '.$trainer->last_name }} </h2>
+                            <h2>{{ $trainer->name }} </h2>
                             <h4 style=" font-size: 16px; margin-top: 5px">@lang('global.your promo code'): <span style="color: #892E6B; font-weight: bold">{{ $trainer->promoCode->code }}</span></h4>
+                            <h4 style=" font-size: 16px; margin-top: 5px">@lang('global.your percent'): <span style="color: #892E6B; font-weight: bold">{{ $trainer->percent }}%</span></h4>
                         </div>
                         <a href="{{ url('trainer/logout/'.App::getLocale()) }}" class="profile-exit">@lang('auth.logout')</a>
                     </div><!-- Profile top end -->
@@ -76,7 +77,6 @@
                             <th>@lang('global.buyer')</th>
                             <th>@lang('global.phone')</th>
                             <th>@lang('product.total')</th>
-                            <th>%</th>
                             <th>@lang('global.sale')</th>
                             <th class="text-center prod-percent-th">Եկամուտ</th>
                             <th class="text-center prod-count-th">Գումար</th>
@@ -89,7 +89,6 @@
                             <td>{{ $order->customer_name }}</td>
                             <td>{{ $order->customer_phone}}</td>
                             <td>{{ $order->amount }}@lang('product.amd')</td>
-                            <td>{{ $order->trainer_percent }}%</td>
                             <td>{{ $order->sale}}%</td>
                             <td class="text-center prod-percent-th">{{ $order->trainer_percent - $order->sale }} %</td>
                             <td class="text-center prod-count-th">{{ $order->amount*($order->trainer_percent - $order->sale)/100 }}@lang('product.amd')</td>

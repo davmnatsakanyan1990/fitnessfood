@@ -29,7 +29,7 @@
                                 @foreach($payments as $payment)
                                     <tr>
                                         <td>{{ $payment->created_at }}</td>
-                                        <td>{{ $payment->trainer->first_name.' '.$payment->trainer->last_name }} </td>
+                                        <td>{{ $payment->trainer->name }} </td>
                                         <td>{{ $payment->amount }} AMD</td>
                                         <td>{!! is_null($payment->payment_date) ? '<div class="label label-warning">Pending</div>' : '<div class="label label-primary">Paid</div>' !!}</td>
                                         <td>

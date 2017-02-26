@@ -25,9 +25,8 @@ return [
     'send' => 'Send',
     'buyer' => 'Buyer',
     'basket is empty' => 'Your basket is empty',
-    'advised by trainer' => 'Advised by trainer',
+    'choose counselor' => 'Please Choose The Specialist Counselor',
     'shipping' => 'Shipping',
-    'order' => 'Order',
     'success_order' => 'Order was sent',
     'free_shipping' => 'Free shipping',
     'gym' => 'Gym',
@@ -48,6 +47,7 @@ return [
     'sale' => 'Sale',
     'discounted' => 'Discounted',
     'wallet' => 'Wallet',
-    'your promo code' => 'Your Promo Code'
+    'your promo code' => 'Your Promo Code',
+    'your percent' => 'Your percent'
 
 ];
