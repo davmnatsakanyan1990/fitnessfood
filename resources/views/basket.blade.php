@@ -91,7 +91,7 @@
                         </tfoot>
                     </table>
                 </div>
-                <div class="row">
+                <div class="row" id="show_error">
                     <!-- basket-form row-->
                     <div class="basket-form">
                         <ul class="list-inline prc-ul clearfix">
@@ -102,25 +102,25 @@
                             </li>
                         </ul>
                         <hr>
-                        <div class="basket-form-div" id="show_error">
+                        <div class="basket-form-div">
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
                                 
-                                <label for="Yname">Մուտքագրեք Ձեր Անունը </label>
-                                <input id="Yname" name="name" type="text" value="{{ old('name') }}" placeholder="@lang('global.your name')">
+                                <label for="Yname">@lang('global.insert your name')</label>
+                                <input class="{{ $errors->has('name') ? 'inputDanger' : '' }}" id="Yname" name="name" type="text" value="{{ old('name') }}" placeholder="@lang('global.your name')">
                                 <span class="star">*</span>
-                                <p>Անվան դաշտը պարտադիր է *</p>
-                                <label for="Yphone">Մուտքագրեք Ձեր Հեռախոսահամարը </label>
-                                <input id="Yphone" name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
+                                <p class="{{ $errors->has('name') ? 'show' : '' }}">{{ $errors->first('name') }}</p>
+                                <label for="Yphone">@lang('global.insert your phone')</label>
+                                <input class="{{ $errors->has('phone') ? 'inputDanger' : '' }}" id="Yphone" name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
                                 <span class="star">*</span>
-                                <p>Հեռախոսահամարը պարտադիր է *</p>
+                                <p class="{{ $errors->has('phone') ? 'show' : '' }}">{{ $errors->first('phone') }}</p>
                                 
-                                <label for="Ypromo"> Ունե՞ք Զեղչի Կոդ *</label>
-                                <input id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') }}" placeholder="1234">
+                                <label for="Ypromo"> @lang('global.Do you have a promo code?')</label>
+                                <input class="{{ $errors->has('promo_code') ? 'inputDanger' : '' }}" id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') }}" placeholder="1234">
                                 <span class="greencheck" style="display: none">
                                     <img src="../images/greencheck.png" alt="green">
                                 </span>
-                                <p>Սխալ կոդ *</p>
+                                <p class="{{ $errors->has('promo_code') ? 'show' : '' }}">{{ $errors->first('promo_code') }}</p>
                                 <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">
                                     <li>@lang('global.discounted')</li>
                                     <li class="old-price"></li>
@@ -132,11 +132,9 @@
                                 <hr>
                             </div>
                             <button type="submit" {{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
-                            @if(count($errors) > 0)
+                            @if($errors->has('trainer'))
                                 <div class="alert alert-danger" style="margin-top: 10px; background-color: #FF2036; color: #ffffff; border-radius: 15px">
-                                    @foreach($errors->all() as $error)
-                                        <p>{{ $error }}</p>
-                                    @endforeach
+                                    <p>{{ $errors->first('trainer') }}</p>
                                 </div>
                             @endif
 
@@ -163,7 +161,7 @@
                 @foreach($trainers as $trainer)
                 <div class="col-sm-3">
                     <div class="trainer-select">
-                        <input type="radio" value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="trainer" class="add-to-s">
+                        <input type="radio" {{ old('trainer') == $trainer->id ? 'checked' : '' }} value="{{ $trainer->id }}" id="tr{{ $trainer->id }}" name="trainer" class="add-to-s">
                         <label for="tr{{ $trainer->id }}">
                             <div class="trainer-inner-content">
                                 <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="">
@@ -220,6 +218,6 @@ var shipping = '{{ $shipping }}';
 <script src="/js/maskedinput.js" type="text/javascript"></script>
 
     <script>
-        $("#phone").mask("(999) 999-999");
+        $("#Yphone").mask("(999) 999-999");
     </script>
 @endsection

@@ -94,8 +94,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'trainer' => [
+            'required' => 'Please choose your trainer, insert promo code or click on NoBody button to continue',
         ],
     ],
 
