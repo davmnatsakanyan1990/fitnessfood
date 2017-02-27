@@ -105,20 +105,22 @@
                         <div class="basket-form-div" id="show_error">
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
-                                <p>Անվան դաշտը պարտադիր է *</p>
+                                
                                 <label for="Yname">Մուտքագրեք Ձեր Անունը </label>
                                 <input id="Yname" name="name" type="text" value="{{ old('name') }}" placeholder="@lang('global.your name')">
                                 <span class="star">*</span>
-                                <p>Հեռախոսահամարը պարտադիր է *</p>
+                                <p>Անվան դաշտը պարտադիր է *</p>
                                 <label for="Yphone">Մուտքագրեք Ձեր Հեռախոսահամարը </label>
                                 <input id="Yphone" name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
                                 <span class="star">*</span>
-                                <p>Սխալ կոդ *</p>
+                                <p>Հեռախոսահամարը պարտադիր է *</p>
+                                
                                 <label for="Ypromo"> Ունե՞ք Զեղչի Կոդ *</label>
                                 <input id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') }}" placeholder="1234">
                                 <span class="greencheck" style="display: none">
                                     <img src="../images/greencheck.png" alt="green">
                                 </span>
+                                <p>Սխալ կոդ *</p>
                                 <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">
                                     <li>@lang('global.discounted')</li>
                                     <li class="old-price"></li>

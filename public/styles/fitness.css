@@ -1353,6 +1353,8 @@ footer .all-rights {
 }
 
 .bfh-datepicker {
+  float: left;
+  width: 94%;
   cursor: pointer;
   margin-top: 10px;
 }
@@ -1375,6 +1377,12 @@ footer .all-rights {
   border-left: 0;
 }
 
+.bfh-datepicker + span.star {
+  margin-top: 28px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
 /* Login */
 .registration-block {
   margin: 0 auto;
@@ -1389,13 +1397,27 @@ footer .all-rights {
 }
 
 .registration-block input {
-  width: 100%;
+  width: 94%;
   margin-top: 10px;
   padding: 15px 10px 10px 10px;
   font-size: 18px;
   color: #333333;
   border: 1px solid #999999;
   border-radius: 4px;
+}
+
+.registration-block select {
+  width: 94%;
+}
+
+.registration-block span.star {
+  color: red;
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+.registration-block input[type="password"] {
+  display: inline-block;
 }
 
 .registration-block input[type="submit"] {
@@ -2332,6 +2354,9 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 320px) {
+  .basket-table {
+    margin-top: 20px;
+  }
   .modal-dialog {
     width: 98%;
   }

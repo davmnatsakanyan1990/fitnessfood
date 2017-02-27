@@ -1196,6 +1196,8 @@ footer{
 }
 
 .bfh-datepicker{
+	float: left;
+	width: 94%;
 	cursor: pointer;
 	margin-top: 10px;
 	&:hover{
@@ -1217,6 +1219,11 @@ footer{
 			border-left: 0;
 		}
 	}
+	& + span.star{
+		margin-top: 28px;
+		margin-left: 5px;
+		display: inline-block;
+	}
 }
 
 /* Login */
@@ -1229,8 +1236,8 @@ footer{
 		display: inline-block;
 		margin-top: 15px;
 	}
-	input{
-		width: 100%;
+	input{ 
+		width: 94%;
 		margin-top: 10px;
 		padding: 15px 10px 10px 10px;
 		font-size: 18px;
@@ -1238,6 +1245,19 @@ footer{
 		border: 1px solid #999999;
 		border-radius: 4px;
 	} 
+
+	select{
+		width: 94%;
+	}
+	span.star{
+		color: red;
+		font-size: 22px;
+		vertical-align: middle;
+	}
+	input[type="password"]{
+		display: inline-block;
+	}
+
 	input[type="submit"]{
 		text-transform: uppercase;
 		margin-top: 30px;
@@ -1258,6 +1278,7 @@ footer{
 		font-family: ArialAMUbold;
 		color: #333333;
 	}
+
 }
 
 .register-link{
