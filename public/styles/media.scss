@@ -213,6 +213,20 @@
 			text-align: center;
 		}
 	}
+	.header-forImages{
+		.col-sm-6{
+			img{
+				max-width: 100%;
+				display: block;
+				margin: 0 auto;
+			}
+			&:first-child{ 
+				margin-bottom: 15px;
+			}
+			&:last-child{  
+			}
+		}
+	}
 }
 
 
@@ -287,9 +301,9 @@
 	}
 }
 @media screen and(max-width: 444px){
-	.responsive-height-block{
+	/* .responsive-height-block{
 		min-height: 215px;
-	}
+	} */
 	.header-ship-p{
 		margin-bottom: 15px;
 	}

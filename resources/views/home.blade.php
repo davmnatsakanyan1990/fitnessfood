@@ -10,6 +10,14 @@
                         {{--<!-- Don't remove this div this is for bg-img -->--}}
                     {{--</div>--}}
                 {{--</div>--}}
+                <div class="row header-forImages">
+                    <div class="col-sm-6">
+                        <img src="images/header1.png" alt="ht">
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="images/header2.png" alt="ht">
+                    </div>
+                </div>
                 <div class="row filter-navmenu-wrap">
                     <ul class="list-inline">
                         <li  class="{{ request('cat') ? '' : 'filter-active' }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.all')</a></li>

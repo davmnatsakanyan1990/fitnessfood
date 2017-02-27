@@ -7,6 +7,14 @@
 <div class="responsive-height-block"><!-- Important --></div>
 <main class="basket-main">
     <div class="container">
+        <div class="row header-forImages">
+            <div class="col-sm-6">
+                <img src="../images/header1.png" alt="ht">
+            </div>
+            <div class="col-sm-6">
+                <img src="../images/header2.png" alt="ht">
+            </div>
+        </div>
         {{--<div class="row">--}}
             {{--<div class="headerimg-div">--}}
 
@@ -86,7 +94,7 @@
                 <div class="row">
                     <!-- basket-form row-->
                     <div class="basket-form">
-                        <ul class="list-inline prc-ul">
+                        <ul class="list-inline prc-ul clearfix">
                             <li>@lang('product.total')</li>
                             <li>
                                 <span id="total">{{ $total + $final_shipping }}</span>
@@ -97,11 +105,17 @@
                         <div class="basket-form-div" id="show_error">
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
-                                <input name="name" type="text" value="{{ old('name') }}" placeholder="@lang('global.your name')">
+                                <p>Անվան դաշտը պարտադիր է *</p>
+                                <label for="Yname">Մուտքագրեք Ձեր Անունը </label>
+                                <input id="Yname" name="name" type="text" value="{{ old('name') }}" placeholder="@lang('global.your name')">
                                 <span class="star">*</span>
-                                <input name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
+                                <p>Հեռախոսահամարը պարտադիր է *</p>
+                                <label for="Yphone">Մուտքագրեք Ձեր Հեռախոսահամարը </label>
+                                <input id="Yphone" name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
                                 <span class="star">*</span>
-                                <input name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') }}" placeholder="1234">
+                                <p>Սխալ կոդ *</p>
+                                <label for="Ypromo"> Ունե՞ք Զեղչի Կոդ *</label>
+                                <input id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') }}" placeholder="1234">
                                 <span class="greencheck" style="display: none">
                                     <img src="../images/greencheck.png" alt="green">
                                 </span>
