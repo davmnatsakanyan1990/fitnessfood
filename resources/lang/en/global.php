@@ -48,6 +48,9 @@ return [
     'discounted' => 'Discounted',
     'wallet' => 'Wallet',
     'your promo code' => 'Your Promo Code',
-    'your percent' => 'Your percent'
+    'your percent' => 'Your percent',
+    'insert your name' => 'Insert your name',
+    'insert your phone' => 'Insert your phone',
+    'Do you have a promo code?' => 'Do you have a promo code?',
 
 ];

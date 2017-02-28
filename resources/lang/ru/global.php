@@ -47,6 +47,9 @@ return [
     'sale' => 'Распродажа',
     'discounted' => 'Скидкой',
     'your promo code' => 'Ваш Промо Код',
-    'your percent' => 'Ваш процент'
+    'your percent' => 'Ваш процент',
+    'insert your name' => 'Введите свое имя',
+    'insert your phone' => 'Введите свой номер телефона',
+    'Do you have a promo code?' => 'У вас есть промо код?',
 
 ];
