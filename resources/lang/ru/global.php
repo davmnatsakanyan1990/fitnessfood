@@ -46,6 +46,7 @@ return [
     'all' => 'Все',
     'sale' => 'Распродажа',
     'discounted' => 'Скидкой',
+    'wallet' => 'Кошелек',
     'your promo code' => 'Ваш Промо Код',
     'your percent' => 'Ваш процент',
     'insert your name' => 'Введите свое имя',
