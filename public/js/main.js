@@ -1,8 +1,3 @@
-$(function() {
-    // Default
-    jQuery.scrollSpeed(100, 800);
-});
-
 $(document).ready(function(){
     if(checkCookie('basket') && (readCookie('basket')).length > 0) {
         var basket = JSON.parse(readCookie('basket'));
