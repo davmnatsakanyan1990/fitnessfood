@@ -21,7 +21,7 @@
             </div>
             <div class="row cols-3-row"><!-- 3 cols row -->
 
-                <div class="col-sm-4 text-center">
+                <div class="col-sm-12 text-center">
                     <div class="cont-for-img">
                         <img src="/images/contact/1.png" alt="">
                     </div>
@@ -32,23 +32,23 @@
                     
                 </div>
 
-                <div class="col-sm-4 text-center">
-                    <div class="cont-for-img">
-                        <img src="/images/contact/2.png" alt="">
-                    </div>
-                    <p>
-                        4/1 Автозаводский проезд 1,
-                        <br>
-                        Москва, Россия 115280
-                    </p>
-                </div>
+                {{--<div class="col-sm-4 text-center">--}}
+                    {{--<div class="cont-for-img">--}}
+                        {{--<img src="/images/contact/2.png" alt="">--}}
+                    {{--</div>--}}
+                    {{--<p>--}}
+                        {{--4/1 Автозаводский проезд 1,--}}
+                        {{--<br>--}}
+                        {{--Москва, Россия 115280--}}
+                    {{--</p>--}}
+                {{--</div>--}}
 
-                <div class="col-sm-4 text-center">
-                    <div class="cont-for-img">
-                        <img src="/images/contact/3.png" alt="">
-                    </div>
-                    <p>contact@fitnesscook.am</p>
-                </div>
+                {{--<div class="col-sm-4 text-center">--}}
+                    {{--<div class="cont-for-img">--}}
+                        {{--<img src="/images/contact/3.png" alt="">--}}
+                    {{--</div>--}}
+                    {{--<p>contact@fitnesscook.am</p>--}}
+                {{--</div>--}}
             </div><!-- 3 cols row -->
 
             <div class="row form-row"><!-- Form row -->
@@ -74,6 +74,10 @@
                         {{--<li><a href="http://instagram.com/dbox"><img src="/images/social/5.png" alt="social/4.png"></a></li>--}}
                         <li><a target="_blank" href="https://www.facebook.com/fitnesspastry">
                                 <img src="/images/social/1.png" alt="social/1.png">
+                            </a>
+                        </li>
+                        <li><a target="_blank" href="https://www.facebook.com/messages/t/user:195070217564690">
+                                <img src="/images/social/fb_messenger.png" alt="social/1.png">
                             </a>
                         </li>
                     </ul>

@@ -45,7 +45,8 @@ class TrainerController extends AdminBaseController
                     return $orders->with('products');
                 },
             'image',
-            'payments'
+            'payments',
+            'promoCode'
         ])->orderBy('created_at', 'desc')->get();
 
         foreach($trainers as $trainer){

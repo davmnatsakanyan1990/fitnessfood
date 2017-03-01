@@ -29,13 +29,15 @@
                         <div class="ibox-content profile-content">
                             <h4><strong>{{ $trainer->name}}</strong></h4>
 
-                            <p><i class="fa fa-map-marker"></i>{{ $trainer->address }}</p>
+                            <p><i class="fa fa-map-marker"></i> {{ $trainer->address }}</p>
 
                             <p><i class="fa fa-envelope"></i> {{ $trainer->email }}</p>
 
                             <p><i class="fa fa-phone"></i> {{ $trainer->phone }}</p>
 
                             <p><i class="fa fa-building"> </i> {{ $trainer->gym ? $trainer->gym->name : ''}}</p>
+
+                            <p>Promo Code: <span class="label label-default promo_code">{{ $trainer->promoCode->code }}</span></p>
 
                             <div class="row m-t-lg">
                                 <div class="col-md-3">

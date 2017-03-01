@@ -48,7 +48,7 @@ return [
     'discounted' => 'Զեղչված',
     'wallet' => 'Դրամապանակ',
     'your promo code' => 'Ձեր Պրոմո Կոդը',
-    'your percent' => 'Ձեր տոկոսի չափը',
+    'earning from each trade' => 'Եկամուտ ամեն գործարքից',
     'insert your name' => 'Մուտքագրեք Ձեր Անունը',
     'insert your phone' => 'Մուտքագրեք Ձեր Հեռախոսահամարը',
     'Do you have a promo code?' => 'Ունե՞ք Զեղչի Կոդ',

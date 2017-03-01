@@ -48,7 +48,7 @@ return [
     'discounted' => 'Скидкой',
     'wallet' => 'Кошелек',
     'your promo code' => 'Ваш Промо Код',
-    'your percent' => 'Ваш процент',
+    'earning from each trade' => 'Прибыль от каждой сделки',
     'insert your name' => 'Введите свое имя',
     'insert your phone' => 'Введите свой номер телефона',
     'Do you have a promo code?' => 'У вас есть промо код?',

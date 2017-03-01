@@ -28,7 +28,7 @@ class TrainersTableSeeder extends Seeder
     }
 
     public function generatePromoCode($trainer_id){
-        $code = str_random(5);
+        $code = rand(1000, 9999);
         $obj = PromoCode::where('code', $code)->first();
 
         if($obj){

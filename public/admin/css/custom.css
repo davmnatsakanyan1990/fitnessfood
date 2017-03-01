@@ -6,3 +6,9 @@
     background-color: #e6763e;
     border-color: #e6763e;
 }
+
+span.promo_code {
+    font-weight: 700;
+    font-size: small;
+    color: #892E6B;
+}
