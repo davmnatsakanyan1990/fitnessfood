@@ -49,7 +49,7 @@ class HomeController extends Controller
                 $product->title = json_decode($product->title)->$locale;
             }
 
-            $products = $products->chunk(4);
+            $products = $products->chunk(3);
         }
         else{
             $products = [];

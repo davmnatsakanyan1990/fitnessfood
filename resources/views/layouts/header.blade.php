@@ -1,23 +1,5 @@
 <header><!-- Header -->
     <nav class="navbar">
-        <div class="heraxosner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-inline">
-                            <li><a href="tel:091700323">(091) 700-323</a></li>
-                            <li><a href="tel:077700323">(077) 700-323</a></li>
-                            <li><a href="tel:044700323">(044) 700-323</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 text-center">
-                        <!-- <p class="header-ship-p">@lang('global.free shipping text', ['amount' => $min_shipping_price] )</p> -->
-                    </div>
-                    
-                </div>      
-            </div>
-        </div>
-        
         <div class="container">
             <div class="row">
                 <div class="navbar-header">
@@ -73,6 +55,13 @@
                              </ul>
                         </div>
                         @endif
+                    </div>
+                    <div class="heraxosner">
+                        <ul>
+                            <li><a href="tel:091700323">(091) 700-323</a></li>
+                            <li><a href="tel:077700323">(077) 700-323</a></li>
+                            <li><a href="tel:044700323">(044) 700-323</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>

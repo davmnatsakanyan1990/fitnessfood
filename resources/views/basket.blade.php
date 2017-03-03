@@ -7,14 +7,7 @@
 <div class="responsive-height-block"><!-- Important --></div>
 <main class="basket-main">
     <div class="container">
-        <div class="row header-forImages">
-            <div class="col-sm-6">
-                <img src="../images/header1.png" alt="ht">
-            </div>
-            <div class="col-sm-6">
-                <img src="../images/header2.png" alt="ht">
-            </div>
-        </div>
+        
         {{--<div class="row">--}}
             {{--<div class="headerimg-div">--}}
 

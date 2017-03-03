@@ -4,89 +4,118 @@
     <main class="home-main"><!-- Main section -->
         <section><!-- Products section -->
             <!-- Sub menu -->
-            <div class="container">
-                {{--<div class="row">--}}
-                    {{--<div class="headerimg-div">--}}
-                        {{--<!-- Don't remove this div this is for bg-img -->--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                <div class="row header-forImages">
-                    <div class="col-sm-6">
-                        <img src="images/header1.png" alt="ht">
-                    </div>
-                    <div class="col-sm-6">
-                        <img src="images/header2.png" alt="ht">
-                    </div>
-                </div>
-                <div class="row filter-navmenu-wrap">
-                    <ul class="list-inline">
-                        <li  class="{{ request('cat') ? '' : 'filter-active' }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.all')</a></li>
-                        @foreach($categories as $category)
-                            <li class="{{ request('cat') == $category->id ? 'filter-active' : '' }}"><a href="{{ url('/'.App::getLocale().'?cat='.$category->id) }}">{{$category->name }}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
+             
             <!-- end menu -->
-            @if(count($products) > 0)
-            @foreach($products as $row)
-                <div class="container home-product-cont">
+           
+                <div class="container-fluid home-product-cont">
                     <div class="row">
-                        @foreach($row as $product)
-                        <!-- product -->
-                        <div class="col-sm-6 col-md-3" >
-                            <div class="tumb-wrap" data-id="{{ $product->id }}">
-                                <div class="for-img">
-                                    <div class="prod-img product" data-toggle="modal" data-target="#productModal" style="background: url(images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }});" data-id="{{ $product->id }}" >
-                                    </div>
-                                    <div class="prod-inf">
-                                        <p class="prd_title">{{ $product->title }}</p>
-                                            <!-- Product info from_m -->
-                                        <div class="modal-product-info"> 
-                                            <h2>@lang('product.nutritional value')
-                                                <span>(@lang('global.per') <label class="nutritional_value">{{ $product->nutritional_value }}</label>@lang('product.g'))</span>
-                                            </h2>
-                                            
-                                            <hr>
-                                            <ul>
-                                                <li>@lang('product.proteins') <span><label class="proteins">{{ $product->proteins }}</label> @lang('product.g')</span></li>
-                                                <li>@lang('product.fats') <span><label class="fats">{{ $product->fats }}</label> @lang('product.g')</span></li>
-                                                <li>@lang('product.carbs') <span><label class="carbs">{{ $product->carbs }}</label> @lang('product.g')</span></li>
-                                                <li>@lang('product.calories') <span><label class="calories">{{ $product->calories }}</label> @lang('product.kkal')</span></li>
-                                                <li>@lang('product.weight') <span><label class="weight">{{ $product->weight }}</label> @lang('product.g')</span></li>
-                                            </ul>
-                                            <hr>
-                                            <p class="product-desc">
-                                                {{ $product->description }}
-                                            </p>
-                                        </div><!-- Product info from_m end -->
-                                        <div class="clearfix">
-                                            <div class="p-kkal">{{ $product->nutritional_value }} @lang('product.kkal') </div>
-                                            <div class="p-price"><span class="prd_price">{{ $product->price }}</span><sub>@lang('product.amd')</sub></div>
-                                        </div>
-                                        <div class="quantity-wrap clearfix">
-                                            <div>
-                                                <form class='quantity-form' method='POST' action='#'>
-                                                    <div>
-                                                        <input type='text' name='quantity' value='1' class='qty' />
-                                                    </div>
-                                                    <div >
-                                                        <input type='button' value='&#43;' class='qtyplus' field='quantity' />
-                                                        <input type='button' value='&#8722;' class='qtyminus' field='quantity' />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="add-to-card-wrap">
-                                                <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="col-md-3 side-bar">
+                            <div class="filter-navmenu-wrap">
+                                <ul>
+                                    <li  class="{{ request('cat') ? '' : 'filter-active' }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.all')</a></li>
+                                    @foreach($categories as $category)
+                                        <li class="{{ request('cat') == $category->id ? 'filter-active' : '' }}"><a href="{{ url('/'.App::getLocale().'?cat='.$category->id) }}">{{$category->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="delivery-block">
+                                <div class="car-bef">
+                                    <p>Առաքումն</p>
+                                    <span>Անվճար</span>
                                 </div>
-                               
+                                <article>3000 դրամ և ավելի գնումների դեպքում</article>
+                                
+                            </div>
+                            <div class="no-need-reg">
+                                <img src="images/girl.png" alt="girl.png">
+                                <p>
+                                    <span>Գրանցվելու</span>
+                                    <span>Կարիք</span>
+                                    <span>չկա</span>
+                                </p>
+                                <div class="clearfix"></div>
+                                <ul>
+                                    <li>
+                                        Ավելացրեք տեսականին 
+                                        զամբյուղ
+                                    </li>
+                                    <li>
+                                        Մուտքագրեք ձեր
+                                        անունը 
+                                    </li>
+                                    <li>
+                                        Մուտքագրեք ձեր
+                                        հեռախոսահամարը
+                                    </li>
+                                    <li>
+                                        Եվ մենք անմիջապես
+                                        կզանգահարենք ձեզ
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <!-- product end-->
+                        @if(count($products) > 0)
+                        @foreach($products as $row)
+                        <div class="col-md-9"> 
+                            @foreach($row as $product)
+                            <!-- product -->
+                            <div class="col-sm-6 col-md-4" >
+                                <div class="tumb-wrap" data-id="{{ $product->id }}">
+                                    <div class="for-img">
+                                        <div class="prod-img product" data-toggle="modal" data-target="#productModal" style="background: url(images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }});" data-id="{{ $product->id }}" >
+                                        </div>
+                                        <div class="prod-inf">
+                                            <p class="prd_title">{{ $product->title }}</p>
+                                                <!-- Product info from_m -->
+                                            <div class="modal-product-info"> 
+                                                <h2>@lang('product.nutritional value')
+                                                    <span>(@lang('global.per') <label class="nutritional_value">{{ $product->nutritional_value }}</label>@lang('product.g'))</span>
+                                                </h2>
+                                                
+                                                <hr>
+                                                <ul>
+                                                    <li>@lang('product.proteins') <span><label class="proteins">{{ $product->proteins }}</label> @lang('product.g')</span></li>
+                                                    <li>@lang('product.fats') <span><label class="fats">{{ $product->fats }}</label> @lang('product.g')</span></li>
+                                                    <li>@lang('product.carbs') <span><label class="carbs">{{ $product->carbs }}</label> @lang('product.g')</span></li>
+                                                    <li>@lang('product.calories') <span><label class="calories">{{ $product->calories }}</label> @lang('product.kkal')</span></li>
+                                                    <li>@lang('product.weight') <span><label class="weight">{{ $product->weight }}</label> @lang('product.g')</span></li>
+                                                </ul>
+                                                <hr>
+                                                <p class="product-desc">
+                                                    {{ $product->description }}
+                                                </p>
+                                            </div><!-- Product info from_m end -->
+                                            <div class="clearfix">
+                                                <div class="p-kkal">{{ $product->nutritional_value }} @lang('product.kkal') </div>
+                                                <div class="p-price"><span class="prd_price">{{ $product->price }}</span><sub>@lang('product.amd')</sub></div>
+                                            </div>
+                                            <div class="quantity-wrap clearfix">
+                                                <div>
+                                                    <form class='quantity-form' method='POST' action='#'>
+                                                        <div>
+                                                            <input type='text' name='quantity' value='1' class='qty' />
+                                                        </div>
+                                                        <div >
+                                                            <input type='button' value='&#43;' class='qtyplus' field='quantity' />
+                                                            <input type='button' value='&#8722;' class='qtyminus' field='quantity' />
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="add-to-card-wrap">
+                                                    <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <!-- product end-->
+                            @endforeach
+                        </div>
                         @endforeach
+                        @endif
+                        
                     </div><!-- Row end -->
                 </div><!-- home-product-cont end -->
                     {{--<div class="container opening-block"><!-- Opening Block -->--}}
@@ -159,8 +188,7 @@
                     {{--@endforeach--}}
                     {{--</div>--}}
                 {{--</div>--}}
-                @endforeach
-            @endif
+                
         </section><!-- Products section -->
 
         <!-- Modal -->
