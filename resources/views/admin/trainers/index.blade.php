@@ -23,10 +23,12 @@
                             </a>
                         </div>
                         <div class="col-sm-8">
-                            <a href="{{ url('admin/trainers/show/'.$trainer->id) }}"><h3>
-                                    <strong>{{  $trainer->name }}</strong></h3></a><br>
-                            <p>Promo Code: <span class="label label-default promo_code">{{ $trainer->promoCode->code }}</span></p>
-
+                            <a href="{{ url('admin/trainers/show/'.$trainer->id) }}">
+                                <h3>
+                                    <strong>{{  $trainer->name }}</strong>
+                                </h3>
+                            </a>
+                            <br>
                             <p><i class="fa fa-map-marker"></i> {{ $trainer->address }}</p>
                             <address>
                                 <i class="fa fa-envelope"></i> {{ $trainer->email }}<br>

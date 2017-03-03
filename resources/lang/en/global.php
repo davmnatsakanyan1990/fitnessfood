@@ -37,7 +37,7 @@ return [
     'paid' => 'Paid',
     'pendin' => 'Pending',
     'orders' => 'Orders',
-    'transactions' => 'Transactions',
+    'my payments' => 'My Payments',
     'per' => 'Per',
     'nothing was found' => 'Nothing was found',
     'trainer\'s name' => 'Trainer\'s Name',

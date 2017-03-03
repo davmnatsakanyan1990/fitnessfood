@@ -53,7 +53,7 @@ class OrderController extends AdminBaseController
 
             // purchase was made via promo code
             if($order->promo_code)
-                $order->sale = PromoCode::where('code', $order->promo_code)->first()->percent;
+                $order->sale = $order->promo_percent;
             else{
                 $order->sale = 0;
             }
@@ -88,9 +88,7 @@ class OrderController extends AdminBaseController
             $order->counselor->name_is_json = $this->isJSON($order->counselor->name);
 
         // purchase was made via promo code
-        if($order->promo_code)
-            $order->promo_percent = PromoCode::where('code', $order->promo_code)->first()->percent;
-        else{
+        if(! $order->promo_code){
             $order->promo_percent = 0;
         }
 

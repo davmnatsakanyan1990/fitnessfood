@@ -37,8 +37,6 @@
 
                             <p><i class="fa fa-building"> </i> {{ $trainer->gym ? $trainer->gym->name : ''}}</p>
 
-                            <p>Promo Code: <span class="label label-default promo_code">{{ $trainer->promoCode->code }}</span></p>
-
                             <div class="row m-t-lg">
                                 <div class="col-md-3">
                                     <span>Total Bonus</span>

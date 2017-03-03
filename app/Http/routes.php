@@ -115,6 +115,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('pages/{title}', 'PagesController@edit');
     Route::post('pages/update/{id}', 'PagesController@update');
 
+    Route::get('promo/all', 'PromoCodeController@index');
+//    Route::post('promo/create', 'PromoCodeController@create');
+//    Route::get('promo/get/{id}', 'PromoCodeController@getPromo');
+//    Route::post('promo/edit', 'PromoCodeController@edit');
+//    Route::post('promo/delete/{id}', 'PromoCodeController@delete');
+
 });
 
 Route::get('about/{locale}', function($locale){

@@ -102,7 +102,7 @@ class PaymentsController extends Controller
             }
 
             if($order->promo_code)
-                $sale = PromoCode::where('code', $order->promo_code)->first()->percent;
+                $sale = $order->promo_percent;
             else
                 $sale = 0;
 
