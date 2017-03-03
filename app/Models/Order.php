@@ -13,6 +13,8 @@ class Order extends Model
         'status',
         'trainer_id',
         'trainer_percent',
+        'promo_code',
+        'promo_percent',
         'is_seen'
     ];
     

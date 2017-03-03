@@ -37,7 +37,7 @@ return [
     'paid' => 'Վճարված է',
     'pending' => 'Հարցումն Ուղարկված է',
     'orders' => 'Պատվերներ',
-    'transactions' => 'Գործարքներ',
+    'my payments' => 'Իմ Վճարումները',
     'per' => 'Յուր.',
     'nothing was found' => 'Արդյունք չի գտնվել',
     'trainer\'s name' => 'Մարզիչի Անունը',

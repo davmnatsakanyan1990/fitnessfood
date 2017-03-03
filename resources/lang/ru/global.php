@@ -37,7 +37,7 @@ return [
     'status' => 'Статус',
     'paid' => 'оплачен',
     'pending' => 'В процессе',
-    'transactions' => 'Сделки',
+    'my payments' => 'Мои Платежи',
     'per' => 'В',
     'nothing was found' => 'Результатов нет',
     'trainer\'s name' => 'Имя Тренера',

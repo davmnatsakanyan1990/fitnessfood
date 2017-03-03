@@ -50,7 +50,7 @@ class ProfileController extends Controller
             }
 
             if($order->promo_code)
-                $order->sale = PromoCode::where('code', $order->promo_code)->first()->percent;
+                $order->sale = $order->promo_percent;
             else
                 $order->sale = 0;
 

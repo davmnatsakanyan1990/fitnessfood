@@ -21,6 +21,9 @@
             <li class="{{ url()->current() == url('admin/trainers') ? 'active' : ''  }}">
                 <a href="{{ url('admin/trainers') }}"><i class="fa fa-users"></i> <span class="nav-label">Trainers</span></a>
             </li>
+            <li class="{{ url()->current() == url('admin/promo/all') ? 'active' : ''  }}">
+                <a href="{{ url('admin/promo/all') }}"><i class="fa fa-users"></i> <span class="nav-label">Promo Codes</span></a>
+            </li>
             <li class="{{ url()->current() == url('admin/orders') ? 'active' : ''  }}">
                 <a href="{{ url('admin/orders') }}"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Orders</span></a>
             </li>

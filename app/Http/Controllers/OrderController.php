@@ -69,6 +69,7 @@ class OrderController extends Controller
             'trainer_id' => $trainer_id,
             'trainer_percent' => $trainer_percent,
             'promo_code' => $request->promo_code ? $request->promo_code : null,
+            'promo_percent' => $request->promo_code ? PromoCode::where('code', $request->promo_code)->first()->percent : null,
             'created_at' => date("Y-m-d H:i:s")
         ]);
 
