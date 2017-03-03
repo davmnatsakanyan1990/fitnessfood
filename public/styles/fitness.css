@@ -224,8 +224,8 @@ footer, main:after {
   padding-right: 0 !important;
 }
 
-.nav > li > a:focus, .nav > li > a:hover, .nav > li > a.active {
-  background: transparent;
+.nav > li > a:focus, .nav > li > a:hover, .nav > li.active a {
+  background: #892E6B;
   color: #fff;
   font-family: ArialAMUbold;
 }
@@ -2175,6 +2175,11 @@ footer .all-rights {
   background-repeat: no-repeat;
   width: 16px;
   height: 13px;
+}
+
+.shopping-cart a:hover {
+  background: transparent !important;
+  color: #892E6B !important;
 }
 
 @media screen and (max-width: 1199px) {
