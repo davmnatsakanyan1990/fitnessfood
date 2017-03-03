@@ -56,12 +56,16 @@
           <div class="row">
             <div role="tabpanel">
               <!-- Nav tabs -->
-              <ul class="nav nav-tabs" role="tablist">
+              <ul class="nav nav-tabs" id="tree-tabs" role="tablist">
                 <li role="presentation" class="active">
                   <a href="#hashiv" aria-controls="hashiv" role="tab" data-toggle="tab">@lang('global.orders')</a>
                 </li>
                 <li role="presentation">
                   <a href="#poxancum" aria-controls="tab" role="tab" data-toggle="tab">@lang('global.my payments')</a>
+                </li>
+
+                <li role="presentation">
+                  <a href="#third-tab" aria-controls="tab" role="tab" data-toggle="tab">@lang('global.my payments')</a>
                 </li>
               </ul>
             
@@ -127,6 +131,36 @@
                       </table>
                   </div><!-- Row For table end -->
                 </div>
+
+                <div role="tabpanel" class="tab-pane" id="third-tab">
+                  <div class="for-table"><!--Row For table -->           
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>@lang('global.date')</th>
+                            <th>@lang('product.amount')</th>
+                            <th>@lang('global.payment date')</th>
+                            <th class="text-center">@lang('global.status')</th>
+                            {{--<th class="text-center">@lang('product.count')</th>--}}
+                            {{--<th class="text-right">@lang('product.total')</th>--}}
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($payments as $payment)
+                          <tr>
+                            <td>{{ date( "Y/m/d H:i", strtotime($payment->created_at)) }}</td>
+                            <td>{{ $payment->amount }} @lang('product.amd')</td>
+                            <td>{{ $payment->payment_date ? date( "Y/m/d H:i", strtotime($payment->payment_date)) : ''  }}</td>
+                            <td class="text-center">{{ is_null($payment->payment_date) ? trans('global.pending') : trans('global.paid') }}</td>
+                            {{--<td class="text-center">{{ $order->products_count }}</td>--}}
+                            {{--<td class="text-right">{{ $order->amount }}@lang('product.amd')</td>--}}
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                  </div><!-- Row For table end -->
+                </div>
+
               </div>
             </div>
           </div>

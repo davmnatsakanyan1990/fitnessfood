@@ -539,10 +539,18 @@ footer, main:after{
 	margin-top: 10px;
 }
 
+#tree-tabs{
+	li.active{
+		a{
+			background-color: #fff !important;
+		}
+	}
+}
+
 .nav-tabs{
 	border: none;
 	li{
-		width: 50%;
+		width: calc(100% / 3); 
 		a{
 			margin: 0 5px;
 			border-radius: 0;
@@ -766,11 +774,27 @@ footer{
 		margin-top: 60px;
 	}
 	p{
+		display: inline-block;
 		font-family: arial;
 		font-size: 24px;
 		line-height: 28px;
 		margin-top: 30px;
 		color: $light-gray;
+		&:before{
+			content: url(../images/phone.png);
+			position: relative;
+			width: 20px;
+			top: 56px;
+			left: -90px;
+			height: 21px;
+		}
+		span{
+			display: block;
+			font-family: arial;
+			font-size: 24px;
+			line-height: 28px; 
+			color: #999999;
+		}
 	}
 }
 
@@ -1010,14 +1034,14 @@ footer{
 		}
 	}
 	a.astxik{
-		width: 16px;
-		height: 16px;
+		width: 24px;
+		height: 24px;
 		left: 20px;
 		top: 20px;
 		position: absolute;
 		transition: all 0.3s;
 		img{
-			 
+			width: 100%; 
 		}
 		&:hover{
 			transform: rotate(360deg);

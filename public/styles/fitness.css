@@ -672,12 +672,16 @@ footer, main:after {
   margin-top: 10px;
 }
 
+#tree-tabs li.active a {
+  background-color: #fff !important;
+}
+
 .nav-tabs {
   border: none;
 }
 
 .nav-tabs li {
-  width: 50%;
+  width: calc(100% / 3);
 }
 
 .nav-tabs li a {
@@ -912,10 +916,28 @@ footer .all-rights {
 }
 
 .cols-3-row p {
+  display: inline-block;
   font-family: arial;
   font-size: 24px;
   line-height: 28px;
   margin-top: 30px;
+  color: #999999;
+}
+
+.cols-3-row p:before {
+  content: url(../images/phone.png);
+  position: relative;
+  width: 20px;
+  top: 56px;
+  left: -90px;
+  height: 21px;
+}
+
+.cols-3-row p span {
+  display: block;
+  font-family: arial;
+  font-size: 24px;
+  line-height: 28px;
   color: #999999;
 }
 
@@ -1165,12 +1187,16 @@ footer .all-rights {
 }
 
 .profile-top a.astxik {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   left: 20px;
   top: 20px;
   position: absolute;
   transition: all 0.3s;
+}
+
+.profile-top a.astxik img {
+  width: 100%;
 }
 
 .profile-top a.astxik:hover {
@@ -2183,15 +2209,18 @@ footer .all-rights {
   color: #892E6B !important;
 }
 
+@media screen and (max-width: 1200px) {
+  .side-bar {
+    padding-left: 20px;
+  }
+}
+
 @media screen and (max-width: 1199px) {
   .main-nav {
     padding-left: 85px;
   }
   .navbar .container {
     width: 98%;
-  }
-  .side-bar {
-    padding-left: 20px;
   }
 }
 
@@ -2387,6 +2416,10 @@ footer .all-rights {
   .v-voq {
     display: block;
     width: 100%;
+  }
+  .nav-tabs li {
+    width: 100%;
+    margin-top: 5px;
   }
 }
 

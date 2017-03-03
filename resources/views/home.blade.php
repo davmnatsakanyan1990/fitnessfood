@@ -18,41 +18,42 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <div class="delivery-block">
-                                <div class="car-bef">
-                                    <p>Առաքումն</p>
-                                    <span>Անվճար</span>
+                            
+                                <div class="delivery-block">
+                                    <div class="car-bef">
+                                        <p>Առաքումն</p>
+                                        <span>Անվճար</span>
+                                    </div>
+                                    <article>3000 դրամ և ավելի գնումների դեպքում</article>
                                 </div>
-                                <article>3000 դրամ և ավելի գնումների դեպքում</article>
-                                
-                            </div>
-                            <div class="no-need-reg">
-                                <img src="images/girl.png" alt="girl.png">
-                                <p>
-                                    <span>Գրանցվելու</span>
-                                    <span>Կարիք</span>
-                                    <span>չկա</span>
-                                </p>
-                                <div class="clearfix"></div>
-                                <ul>
-                                    <li>
-                                        Ավելացրեք տեսականին 
-                                        զամբյուղ
-                                    </li>
-                                    <li>
-                                        Մուտքագրեք ձեր
-                                        անունը 
-                                    </li>
-                                    <li>
-                                        Մուտքագրեք ձեր
-                                        հեռախոսահամարը
-                                    </li>
-                                    <li>
-                                        Եվ մենք անմիջապես
-                                        կզանգահարենք ձեզ
-                                    </li>
-                                </ul>
-                            </div>
+                                <div class="no-need-reg">
+                                    <img src="images/girl.png" alt="girl.png">
+                                    <p>
+                                        <span>Գրանցվելու</span>
+                                        <span>Կարիք</span>
+                                        <span>չկա</span>
+                                    </p>
+                                    <div class="clearfix"></div>
+                                    <ul>
+                                        <li>
+                                            Ավելացրեք տեսականին 
+                                            զամբյուղ
+                                        </li>
+                                        <li>
+                                            Մուտքագրեք ձեր
+                                            անունը 
+                                        </li>
+                                        <li>
+                                            Մուտքագրեք ձեր
+                                            հեռախոսահամարը
+                                        </li>
+                                        <li>
+                                            Եվ մենք անմիջապես
+                                            կզանգահարենք ձեզ
+                                        </li>
+                                    </ul>
+                                </div>
+                             
                         </div>
                         @if(count($products) > 0)
                         @foreach($products as $row)
