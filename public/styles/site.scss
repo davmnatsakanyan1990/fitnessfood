@@ -64,24 +64,21 @@ main{
 	min-height: 100%; 
 }
 
-.filter-navmenu-wrap{
-	text-align: center;
+.filter-navmenu-wrap{ 
 	margin-top: 50px;
 	ul{
 		margin-left: 0;
 		li{
-			a{  
-				text-align: center;
+			a{   
 				transition: all 0.3s;
-				display: inline-block;
-				padding: 10px 15px;
+				display: block;
+				padding: 10px 0;
 				text-decoration: none;
 				font-size: 18px;
 				color: $main-gray;
 				font-family: ArialAMU;
 				&:hover{
-					color: #fff;
-					background: $main-violet;
+					color: $main-violet;
 				}
 			}
 		}
@@ -89,9 +86,10 @@ main{
 }
 
 .filter-active{
-	background: $main-violet;
+	color: $main-violet;
 	a{
-		color: #fff !important;
+		color: $main-violet !important;
+		font-family: ArialAMUbold !important;
 	}
 }
 
@@ -106,7 +104,7 @@ footer, main:after{
 
 .nav>li>a:focus, .nav>li>a:hover, .nav>li>a.active{
 	background: transparent;
-	color: $main-violet;
+	color: #fff;
 	font-family: ArialAMUbold;
 }
 
@@ -152,7 +150,7 @@ footer, main:after{
 
 .droshakner-parent{
 	border-radius: 2px;
-	margin-top: 20px;
+	margin-top: 40px;
 	margin-right: -15px;
 	float: right;
 	display: inline-block;
@@ -174,22 +172,29 @@ footer, main:after{
 	}
 } 
 
+.navbar-nav>li>a{
+	padding-bottom: 10px;
+
+}
 
 .main-nav{
-	padding-left: 160px;
-	margin-top: 3px;
+	padding-left: 50px;
+	margin-top: 35px;
 }
 
 .nav{
 	li{
 		a{
-			padding-top: 20px; 
+			padding-top: 15px; 
 			font-family: ArialAMUbold;
 			min-width: 140px;
 			transition: all 0.3s;
 			color: $main-gray;
 			font-size: 16px;
 			letter-spacing: 0.5px;
+			&:hover{
+				background: $main-violet;
+			}
 		}
 	} 
 }
@@ -231,37 +236,24 @@ footer, main:after{
     box-shadow: 0px 6px 12px -3px rgba(103, 103, 103, 0.52);
 }
 
-.heraxosner{
-	background: #F5F5F5;
+.heraxosner{ 
 	color: $main-violet;
-	min-height: 30px;
-	line-height: 30px;
+	display: inline-block;
+	padding-left: 50px;
+	&:before{
+		content: url(../images/phone.png);
+		position: relative; 
+		width: 20px;
+		top: 30px;
+		left: -30px;
+		height: 21px;
+	}
 	ul{ 
-		&:before{
-			content: url(../images/phone.png);
-			position: relative; 
-			width: 20px;
-			top: 4px;
-			height: 21px;
-		}
 		li{
-			font-size: 16px;
-			border-right: 2px solid $main-violet;
-			/* &:first-child:before{
-				display: inline-block;
-				content: url(../images/beeline.png); 
-				position: relative;
-				left: -10px;
-				top: 6px;
-			}
-			&:nth-child(2):before{
-				display: inline-block;
-				content: url(../images/viva.png); 
-				position: relative;
-				left: -10px;
-				top: 6px;
-			}
-			*/
+			border-bottom: 1px solid $main-violet;
+			font-size: 12px; 
+			margin-bottom: 5px;
+			padding-bottom: 1px;
 			&:last-child{
 				border: none;
 			}  
@@ -287,7 +279,7 @@ footer, main:after{
 
 .navbar-header{
 	img{
-		margin-top: 10px;
+		margin-top: 30px;
 	}
 }
 
@@ -386,10 +378,12 @@ footer, main:after{
 
 .home-product-cont{
 	h1{
+		font-family: ArialAMUbold;
+		text-align: center;
 		font-size: 30px;
 		color: $main-violet;
 	}
-	.col-md-3{
+	.col-md-4{
 		.tumb-wrap{
 			min-height: 270px;
 			transition: all 0.3s;
@@ -399,6 +393,9 @@ footer, main:after{
 			border-radius: 8px;
 			margin-top: 30px;
 			background: #fff;
+			&:hover{
+				border: 1px solid $main-violet;
+			}
 			.for-img{
 				& > img{
 					padding: 10px;
@@ -701,8 +698,9 @@ footer, main:after{
 	}
 } 
 
-footer{ 
-	margin-top: 100px;
+footer{
+	margin-top: 100px;  
+	border-top: 1px solid $main-violet;
 	padding-top: 60px;
 	background: #fff;
 	.footer-social{
@@ -1657,7 +1655,7 @@ footer{
 
 	.dropdown-content { 
 			background: #f9f9f9; 
-	    	margin-top: 62px;
+	    	margin-top: 52px;
 	        display: none;
 	        position: absolute; 
 	        max-width: 370px;
@@ -1672,9 +1670,10 @@ footer{
 	
 	 
 
-	.dropdown {
-		z-index: 900;
-		margin-bottom: -3px;
+	.dropdown {/* 
+		z-index: 900; */
+		margin-bottom: -8px;
+		padding-top: 20px;
 	    position: relative;
 	    display: inline-block;
 	    &:hover{
@@ -1684,6 +1683,7 @@ footer{
 			.dropdown-content{
 				ul{
 					border: 1px solid rgba(153, 153, 153, 0.37);
+					margin-left: -1px;
 					border-top: none;
 					max-height: 330px;
 					overflow-y: hidden;
@@ -1868,14 +1868,6 @@ footer{
 	}
 }
 
-.headerimg-div{
- 	background: url(../images/araqum.png);
- 	min-height: 94px;
- 	width: 100%;
- 	background-size: cover;
- 	background-position: center center;
-}
-
 .inputDanger{
 	border: 1px solid red !important;
 }
@@ -1887,6 +1879,97 @@ footer{
 		}
 		&:last-child{
 			text-align: right;
+		}
+	} 
+}
+
+.side-bar{
+	background: #fff; 
+	padding-bottom: 15px;
+	margin-top: -50px;
+	.delivery-block{
+		padding: 18px;
+		margin-top: 40px;
+		width: 100%;
+		height: 80px;
+		background: #5FB37F;
+		p{
+			line-height: 18px;
+			color: #fff;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			font-size: 15px;
+			
+		}
+		article{
+			color: #fff;
+			font-size: 10px;
+		}
+		div.car-bef{
+			margin-bottom: 5px;
+			&:before{
+				content: url(../images/car.png);
+				width: 49px;
+				height: 36px;
+				background-repeat: no-repeat;
+				position: relative;
+				float: left;
+				padding-top: 4px;
+				padding-right: 5px;
+			}
+			span{
+				text-transform: uppercase;
+				color: #fff;
+				margin-top: 5px;
+				font-family: ArialAMUbold;
+				letter-spacing: 6px;
+			}
+		}
+	}
+	.no-need-reg{
+		width: 100%;
+		padding-bottom: 16px;
+		margin-top: 40px;    
+		background: #E3ECFF;
+		img{
+			float: left;
+			vertical-align: middle;
+		}
+		p{
+			padding-top: 30px;
+			span{
+				text-transform: uppercase;
+				letter-spacing: 4px;
+				font-family: ArialAMUbold;
+				display: block;
+				text-align: center;
+				color: $main-gray;
+				font-size: 18px;
+			}
+		}
+		ul{
+			padding-left: 10px;
+			margin-top: 15px;
+			li{ 
+				color: $main-gray;
+				max-width: 250px;
+				margin-top: 15px;
+				font-family: ArialAMUbold;
+				font-size: 16px;
+				letter-spacing: 2px;
+				&:before{
+					padding-bottom: 20px;
+					margin-top: 8px;
+					margin-right: 10px;
+					float: left;
+					position: relative;
+					content: ""; 
+					background: url(../images/check-sm.png);
+					background-repeat: no-repeat;
+					width: 16px;
+					height: 13px;
+				}
+			}
 		}
 	}
 }

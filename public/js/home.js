@@ -239,6 +239,11 @@ $(document).ready(function(){
 
     })
 
+if(window.innerWidth > 992) {
+    var homeMainHeight = $(".home-main").height();
+    $(".side-bar").height(homeMainHeight + 100);
+}
+    
 });/*Document Ready*/
 
 
