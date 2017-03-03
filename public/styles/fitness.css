@@ -2077,6 +2077,7 @@ footer .all-rights {
 .side-bar {
   background: #fff;
   padding-bottom: 15px;
+  padding-left: 90px;
   margin-top: -50px;
 }
 
@@ -2160,7 +2161,7 @@ footer .all-rights {
   max-width: 250px;
   margin-top: 15px;
   font-family: ArialAMUbold;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 2px;
 }
 
@@ -2185,6 +2186,12 @@ footer .all-rights {
 @media screen and (max-width: 1199px) {
   .main-nav {
     padding-left: 85px;
+  }
+  .navbar .container {
+    width: 98%;
+  }
+  .side-bar {
+    padding-left: 20px;
   }
 }
 
