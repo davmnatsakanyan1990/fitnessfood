@@ -21,8 +21,12 @@
             <li class="{{ url()->current() == url('admin/trainers') ? 'active' : ''  }}">
                 <a href="{{ url('admin/trainers') }}"><i class="fa fa-users"></i> <span class="nav-label">Trainers</span></a>
             </li>
-            <li class="{{ url()->current() == url('admin/promo/all') ? 'active' : ''  }}">
-                <a href="{{ url('admin/promo/all') }}"><i class="fa fa-users"></i> <span class="nav-label">Promo Codes</span></a>
+            <li>
+                <a href="#"><i class="fa fa-credit-card"></i> <span class="nav-label">Promo Codes</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{ url('admin/promo/all') }}">All Codes</a></li>
+                    <li><a href="{{ url('admin/promo_card/orders') }}">Card Orders</a></li>
+                </ul>
             </li>
             <li class="{{ url()->current() == url('admin/orders') ? 'active' : ''  }}">
                 <a href="{{ url('admin/orders') }}"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Orders</span></a>

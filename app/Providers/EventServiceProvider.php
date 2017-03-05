@@ -16,11 +16,11 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NewOrderEvent' => [
             'App\Listeners\NewOrderListener',
         ],
-        'App\Events\NewMessageEvent' => [
-            'App\Listeners\NewMessageListener',
-        ],
         'App\Events\NewTrainerEvent' => [
             'App\Listeners\NewTrainerListener',
+        ],
+        'App\Events\NewCardOrderEvent' => [
+            'App\Listeners\NewCardOrderListener',
         ],
     ];
 

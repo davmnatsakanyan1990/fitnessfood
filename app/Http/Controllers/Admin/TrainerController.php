@@ -73,6 +73,7 @@ class TrainerController extends AdminBaseController
     public function show($trainer_id){
         $trainer = Trainer::with([
                 'image',
+                'promoCode',
                 'payments' => function($payments){
                         return $payments->orderBy('created_at', 'desc');
                     },
@@ -80,7 +81,7 @@ class TrainerController extends AdminBaseController
                         return $orders->with('products');
                     },
                 ])->find($trainer_id);
-        
+
         $trainer->total_bonus = $this->getBonus($trainer);
 
         $trainer->paid = $this->getPaidAmount($trainer);

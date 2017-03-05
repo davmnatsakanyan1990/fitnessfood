@@ -56,6 +56,6 @@ class Trainer extends Authenticatable
     }
     
     public function promoCode(){
-        return $this->hasOne(PromoCode::class);
+        return $this->hasMany(PromoCode::class);
     }
 }

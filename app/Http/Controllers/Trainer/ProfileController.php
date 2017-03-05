@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Trainer;
 
+use App\Events\NewCardOrderEvent;
+use App\Models\CardOrder;
 use App\Models\Order;
 use App\Models\PromoCode;
 use App\Models\Setting;
@@ -12,6 +14,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 
 class ProfileController extends Controller
 {
@@ -68,7 +71,19 @@ class ProfileController extends Controller
         // Minimum amount
         $min_payment_amount = Setting::first()->min_payment_amount;
 
-        return view('trainer.profile', compact('min_payment_amount', 'trainer', 'orders', 'total_bonus', 'active_bonus', 'pending', 'paid', 'payments'));
+        // All promo codes for current trainer
+        $promo_codes = PromoCode::where('trainer_id', $this->trainer->id)->get();
+
+        return view('trainer.profile', compact(
+            'min_payment_amount',
+            'trainer',
+            'orders',
+            'total_bonus',
+            'active_bonus',
+            'pending',
+            'paid',
+            'payments',
+            'promo_codes'));
     }
 
     /**
@@ -95,6 +110,20 @@ class ProfileController extends Controller
         $amount = collect($this->trainer->payments->toArray())->where('payment_date', null)->sum('amount');
 
         return $amount;
+    }
+
+    public function newCardOrder(Request $request){
+        $order = CardOrder::create(['promo_code_id' => $request->card_id, 'count' => $request->count]);
+
+        $card_order = CardOrder::with(['promo_code' => function($promo_code){
+            return $promo_code->with(['trainer' => function($trainer){
+                return $trainer->with('image');
+            }]);
+        }])->find($order->id)->toArray();
+
+        Event::fire(new NewCardOrderEvent($card_order));
+
+        return redirect()->back();
     }
 
     function isJSON($string){

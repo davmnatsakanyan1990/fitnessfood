@@ -12,3 +12,11 @@ span.promo_code {
     font-size: small;
     color: #892E6B;
 }
+
+#exportData .edit{
+    cursor: pointer;
+}
+
+#exportData .dl-horizontal{
+    font-size: 17px;
+}

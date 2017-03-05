@@ -52,5 +52,12 @@ return [
     'insert your name' => 'Insert your name',
     'insert your phone' => 'Insert your phone',
     'Do you have a promo code?' => 'Do you have a promo code?',
+    'promo codes' => 'Promo Codes',
+    'code' => 'Code',
+    'percent' => 'Percent',
+    'action' => 'Action',
+    'card order' => 'Card Order',
+    'count' => 'Count',
+    'Set your profile photo to order a card' => 'Set your profile photo to order a card'
 
 ];

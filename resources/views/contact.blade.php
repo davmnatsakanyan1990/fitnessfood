@@ -19,9 +19,9 @@
                         <img src="/images/contact/1.png" alt="">
                     </div>
                     <p> 
-                        <span>077 700 323</span>    
-                        <span>044 700 323</span>    
-                        <span>091 700 323</span>    
+                        <a href="tel:077700323"><span>077 700 323</span></a>
+                        <a href="tel:044700323"><span>044 700 323</span></a>
+                        <a href="tel:091700323"><span>091 700 323</span></a>
                     </p>
                     
                 </div>

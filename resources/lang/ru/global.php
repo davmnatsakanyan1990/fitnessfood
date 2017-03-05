@@ -52,5 +52,12 @@ return [
     'insert your name' => 'Введите свое имя',
     'insert your phone' => 'Введите свой номер телефона',
     'Do you have a promo code?' => 'У вас есть промо код?',
+    'promo codes' => 'промо коды',
+    'code' => 'Код',
+    'percent' => 'Процент',
+    'action' => 'Действие',
+    'card order' => 'Заказ Карты',
+    'count' => 'Количество',
+    'Set your profile photo to order a card' => 'Вставте ваш фото профиля'
 
 ];

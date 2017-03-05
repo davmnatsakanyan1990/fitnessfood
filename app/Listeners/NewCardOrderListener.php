@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\NewMessageEvent;
+use App\Events\NewCardOrderEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NewMessageListener
+class NewCardOrderListener
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class NewMessageListener
     /**
      * Handle the event.
      *
-     * @param  NewMessageEvent  $event
+     * @param  NewCardOrderEvent  $event
      * @return void
      */
-    public function handle(NewMessageEvent $event)
+    public function handle(NewCardOrderEvent $event)
     {
         //
     }

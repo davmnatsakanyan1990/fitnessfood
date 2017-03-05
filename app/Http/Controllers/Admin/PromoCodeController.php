@@ -23,6 +23,15 @@ class PromoCodeController extends AdminBaseController
         return view('admin.promo_codes.index', compact('promoCodes', 'trainers'));
     }
 
+    public function getCodeData($id){
+        $data = PromoCode::with(['trainer' => function($trainer){
+                return $trainer->with('image', 'gym');
+            }])
+            ->find($id);
+
+        return $data->toArray();
+    }
+
 //    public function create(Request $request){
 //        $code = $this->generatePromoCode();
 //

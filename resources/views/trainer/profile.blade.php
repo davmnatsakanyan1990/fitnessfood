@@ -65,7 +65,7 @@
                 </li>
 
                 <li role="presentation">
-                  <a href="#third-tab" aria-controls="tab" role="tab" data-toggle="tab">@lang('global.my payments')</a>
+                  <a href="#third-tab" aria-controls="tab" role="tab" data-toggle="tab">@lang('global.promo codes')</a>
                 </li>
               </ul>
             
@@ -122,7 +122,7 @@
                             <td>{{ date( "Y/m/d H:i", strtotime($payment->created_at)) }}</td>
                             <td>{{ $payment->amount }} @lang('product.amd')</td>
                             <td>{{ $payment->payment_date ? date( "Y/m/d H:i", strtotime($payment->payment_date)) : ''  }}</td>
-                            <td class="text-center">{{ is_null($payment->payment_date) ? trans('global.pending') : trans('global.paid') }}</td>
+                            <td class="text-center {{ is_null($payment->payment_date) ? '' : 'paid' }}">{{ is_null($payment->payment_date) ? trans('global.pending') : trans('global.paid') }}</td>
                             {{--<td class="text-center">{{ $order->products_count }}</td>--}}
                             {{--<td class="text-right">{{ $order->amount }}@lang('product.amd')</td>--}}
                           </tr>
@@ -131,36 +131,34 @@
                       </table>
                   </div><!-- Row For table end -->
                 </div>
-
+                <!-- promo codes -->
                 <div role="tabpanel" class="tab-pane" id="third-tab">
                   <div class="for-table"><!--Row For table -->           
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>@lang('global.date')</th>
-                            <th>@lang('product.amount')</th>
-                            <th>@lang('global.payment date')</th>
-                            <th class="text-center">@lang('global.status')</th>
-                            {{--<th class="text-center">@lang('product.count')</th>--}}
-                            {{--<th class="text-right">@lang('product.total')</th>--}}
+                            <th>@lang('global.code')</th>
+                            <th>@lang('global.percent')</th>
+                            <th>@lang('global.action')</th>
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach($payments as $payment)
+                        @foreach($promo_codes as $promo_code)
                           <tr>
-                            <td>{{ date( "Y/m/d H:i", strtotime($payment->created_at)) }}</td>
-                            <td>{{ $payment->amount }} @lang('product.amd')</td>
-                            <td>{{ $payment->payment_date ? date( "Y/m/d H:i", strtotime($payment->payment_date)) : ''  }}</td>
-                            <td class="text-center">{{ is_null($payment->payment_date) ? trans('global.pending') : trans('global.paid') }}</td>
-                            {{--<td class="text-center">{{ $order->products_count }}</td>--}}
-                            {{--<td class="text-right">{{ $order->amount }}@lang('product.amd')</td>--}}
+                            <td>{{ $promo_code->code }}</td>
+                            <td>{{ $promo_code->percent }} %</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button data-id="{{ $promo_code->id }}"  class="card_order btn btn-white btn-xs" data-toggle="modal" data-target="#newCardOrder">@lang('global.order')</button>
+                                </div>
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
                       </table>
                   </div><!-- Row For table end -->
                 </div>
-
+                <!-- Promo codes end -->
               </div>
             </div>
           </div>
@@ -170,5 +168,38 @@
 
            
         </div><!-- Container end -->
+
+        <!-- New card order -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="newCardOrder" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">@lang('global.card order')</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{{ url('trainer/card_order/create') }}" id="card_order">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="card_id">
+                            <div class="form-group has-error">
+                                <label for="count"></label>
+                                <input type="number" id="count" name="count" class="form-control" min="1" placeholder="@lang('global.count')">
+                                @if(!$trainer->image)
+                                <span class="help-block">@lang('global.Set your profile photo to order a card')</span>
+                                @endif
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('auth.cancel')</button>
+                        <button type="submit" form="card_order" class="btn btn-primary" {{ $trainer->image ? '' : 'disabled'}}>@lang('global.order')</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+@endsection
+
+@section('scripts')
+    <script src="/js/trainer_profile.js"></script>
 @endsection

@@ -4,6 +4,31 @@
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
+
+            <!-- New Card Order -->
+            <li class="dropdown card_order_alert">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-credit-card"></i>{!! count($new_card_orders) > 0 ?   '<span class="label label-primary count">'. count($new_card_orders).'</span>' : '' !!}
+                </a>
+                @if(count($new_card_orders) > 0)
+                    <ul class="dropdown-menu dropdown-messages" style="overflow-y: scroll; max-height: 300px" >
+                        @foreach($new_card_orders as $card_order)
+                            <li id="card_order_{{ $card_order->id }}">
+                                <a href="{{ url('admin/promo_card/orders') }}" class="pull-left">
+                                    <img alt="image" width="30" class="img-circle" src="/images/trainerImages/{{ $card_order->promo_code->trainer->image ? $card_order->promo_code->trainer->image->name :  'profile-icon.png'}}">
+                                </a>
+                                <div class="media-body">
+                                    <strong>{{ $card_order->promo_code->trainer->name }}</strong> <br>
+                                    <p>New Card Order</p>
+                                    <small class="text-muted">{{ $card_order->created_at }}</small>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                        @endforeach
+                    </ul>
+                @endif
+            </li>
+
             {{-- New Trainers  --}}
             <li class="dropdown trainer_alert">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -17,7 +42,7 @@
                                     <img alt="image" width="30" class="img-circle" src="/images/trainerImages/profile-icon.png">
                                 </a>
                                 <div class="media-body">
-                                    <strong>{{ $trainer->first_name }} {{ $trainer->last_name }}</strong> <br>
+                                    <strong>{{ $trainer->name }}</strong> <br>
                                     <p>New Trainer</p>
                                     <small class="text-muted">{{ $trainer->created_at }}</small>
                                 </div>

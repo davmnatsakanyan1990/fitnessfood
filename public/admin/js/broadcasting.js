@@ -5,6 +5,59 @@ var pusher = new Pusher('f099d8275bf3d94c6bf9', {
     encrypted: true
 });
 
+// New Card Order channel
+var channel = pusher.subscribe('new-card-order');
+channel.bind('App\\Events\\NewCardOrderEvent', function(data) {
+console.log(data);
+
+    // alert sound
+    document.getElementById('xyz').play();
+    if(data.card_order.promo_code.trainer.image == null){
+        var image = 'profile-icon.png';
+    }
+    else{
+        var image = data.card_order.promo_code.trainer.image.name;
+    }
+
+    if($('.card_order_alert .count').length > 0){
+        var count = $(document).find('.card_order_alert .count')[0].innerText;
+        $(document).find('.card_order_alert .count').text(parseInt(count)+1);
+        $(document).find('.card_order_alert ul').prepend('<li id="card_order_'+data.card_order.id+'">'+
+            '<a href="/admin/promo_card/orders" class="pull-left">'+
+            '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/'+image+'">'+
+            '</a>'+
+            '<div class="media-body">'+
+            '<strong>'+data.card_order.promo_code.trainer.name+'</strong> <br>'+
+            '<p>New Card Order</p>'+
+            '<small class="text-muted">'+data.card_order.created_at+'</small>'+
+            '</div>'+
+            '</li>'+
+            '<li class="divider"></li>'
+        );
+    }
+    else{
+        $(document).find('.card_order_alert .count-info').append('<span class="label label-primary count">1</span>');
+
+        $(document).find('.card_order_alert').append('<ul class="dropdown-menu dropdown-messages">'+
+            '<li id="card_order_'+data.card_order.id+'">'+
+            '<a href="/admin/promo_card/orders" class="pull-left">'+
+            '<img alt="image" width="30" class="img-circle" src="/images/trainerImages/'+image+'">'+
+            '</a>'+
+            '<div class="media-body">'+
+            '<strong>'+data.card_order.promo_code.trainer.name+'</strong> <br>'+
+            '<p>New Card Order</p>'+
+            '<small class="text-muted">'+data.card_order.created_at+'</small>'+
+            '</div>'+
+
+            '</li>'+
+            '<li class="divider"></li>'+
+            '</ul>'
+        )
+    }
+
+});
+
+
 // New Payment channel
 var channel = pusher.subscribe('new-payment');
 channel.bind('App\\Events\\NewPaymentEvent', function(data) {

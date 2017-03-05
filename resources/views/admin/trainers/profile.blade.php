@@ -79,6 +79,7 @@
                             <ul class="nav nav-tabs">
                                 <li class="active tab" id="tab1"><a data-toggle="tab" href="#tab-1">Payments</a></li>
                                 <li class="tab" id="tab2"><a data-toggle="tab" href="#tab-2">Settings</a></li>
+                                <li class="tab" id="tab3"><a data-toggle="tab" href="#tab-3">Promo Codes</a></li>
                             </ul>
                             <div class="tab-content">
                                 {{-- Payments Tab --}}
@@ -189,7 +190,52 @@
                                         </form>
                                     </div>
                                 </div>
-
+                                {{-- Promo Codes Tab--}}
+                                <div id="tab-3" class="tab-pane">
+                                    <div class="panel-body">
+                                        <table class="footable table table-stripped toggle-arrow-tiny"
+                                                        data-page-size="8">
+                                            <thead>
+                                            <tr>
+                                                <th data-toggle="true">Code</th>
+                                                <th>Percent</th>
+                                                <th data-sort-ignore="true">Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if(count($trainer->promoCode) > 0)
+                                                @foreach($trainer->promoCode as $code)
+                                                    <tr>
+                                                        <td>{{ $code->code }}</td>
+                                                        <td>{{ $code->percent }}%</td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <button
+                                                                        data-id="{{ $code->id }}"
+                                                                        data-toggle="modal"
+                                                                        data-target="#exportData"
+                                                                        class="btn-white btn btn-xs export" {{ $trainer->image ? '' : 'disabled' }}>Export
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td class="text-center" colspan="4">There aren't any codes</td>
+                                                </tr>
+                                            @endif
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <ul class="pagination pull-right"></ul>
+                                                </td>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -197,6 +243,62 @@
             </div>
         </div>
     </div>
+
+    {{-- Trainer data export Modal --}}
+    <div id="exportData" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Card Info</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form method="post" action="{{ url('admin/card_data/export') }}" id="form_export">
+                            {{ csrf_field() }}
+                            <div class="col-sm-8">
+                                <dl class="dl-horizontal">
+
+                                    <dt>Trainer :</dt>
+                                    <dd class="trainer_name"><span class="trainer"></span> <i class="fa fa-pencil edit"></i></dd>
+                                    <input name="trainer" type="hidden">
+
+                                    <dt>Phone :</dt>
+                                    <dd class="trainer_phone"><span class="phone"></span> <i class="fa fa-pencil edit"></i> </dd>
+                                    <input name="phone" type="hidden">
+
+                                    <dt>Gym :</dt>
+                                    <dd class="trainer_gym"><span class="gym"></span> </dd>
+                                    <input name="gym" type="hidden">
+
+                                    <dt>Promo Code :</dt>
+                                    <dd class="promo_code"></dd>
+                                    <input name="promo_code" type="hidden">
+
+                                    <dt>Percent :</dt>
+                                    <dd class="promo_percent"><span class="percent"></span>%</dd>
+                                    <input name="percent" type="hidden">
+
+                                </dl>
+                            </div>
+                            <div class="col-sm-4">
+                                <img class="trainer_img" width="150" height="150" src="">
+                                <input name="image_name" type="hidden">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" form="form_export" class="btn btn-primary">Export</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Edit Payment Modal -->
     <div class="modal fade" id="editPaymentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-md" style="max-width: 400px" role="document">

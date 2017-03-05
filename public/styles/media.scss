@@ -54,8 +54,16 @@
 }
  
 @media screen and(max-width: 991px){
+  .home-product-cont {
+	.col-md-9 {
+	  padding-right: 15px;
+	}
+  }
+  .filter-navmenu-wrap{
+	margin-top: 5px;
+  }
 	.responsive-height-block{
-		min-height: 167px;
+		min-height: 124px;
 	}
 	.navbar-header {
 	        float: none;
@@ -138,11 +146,13 @@
 				padding-right: 22px;
 			}
 		}
-	}  
-	.modal-dialog{
+	}
+	#productModal {
+	  .modal-dialog {
 		width: 85%;
 		margin-left: auto;
 		margin-right: auto;
+	  }
 	}
 }
 
@@ -371,9 +381,11 @@
 	.basket-table{
 		margin-top: 20px;
 	}
-	.modal-dialog{
-		width: 98%;
+  #productModal {
+	.modal-dialog {
+	  width: 98%;
 	}
+  }
 	.carousel-control.left span{ 
 		padding-left: 2px;
 		padding-right: 2px;

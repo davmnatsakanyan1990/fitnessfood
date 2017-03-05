@@ -19,14 +19,14 @@
                                 </ul>
                             </div>
                             
-                                <div class="delivery-block">
-                                    <div class="car-bef">
-                                        <p>Առաքումն</p>
-                                        <span>Անվճար</span>
-                                    </div>
-                                    <article>3000 դրամ և ավելի գնումների դեպքում</article>
+                            <div class="delivery-block">
+                                <div class="car-bef">
+                                    <p>Առաքումն</p>
+                                    <span>Անվճար</span>
                                 </div>
-                                <div class="no-need-reg">
+                                <article>3000 դրամ և ավելի գնումների դեպքում</article>
+                            </div>
+                            <div class="no-need-reg">
                                     <img src="images/girl.png" alt="girl.png">
                                     <p>
                                         <span>Գրանցվելու</span>
@@ -53,11 +53,11 @@
                                         </li>
                                     </ul>
                                 </div>
-                             
+
                         </div>
                         @if(count($products) > 0)
                         @foreach($products as $row)
-                        <div class="col-md-9"> 
+                        <div class="col-md-9 product-section">
                             @foreach($row as $product)
                             <!-- product -->
                             <div class="col-sm-6 col-md-4" >

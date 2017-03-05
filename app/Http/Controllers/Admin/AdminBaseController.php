@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\CardOrder;
 use App\Models\Message;
 use App\Models\Order;
 use App\Models\Payment;
@@ -17,6 +18,14 @@ class AdminBaseController extends Controller
     public function __construct()
     {
         App::setLocale('en');
+
+        $new_card_orders = CardOrder::with(['promo_code' => function($promo_code){
+            return $promo_code->with(['trainer' => function($trainer){
+                $trainer->with('image');
+            }]);
+        }])->where('is_seen', 0)->get();
+        view()->share('new_card_orders', $new_card_orders);
+
         $new_orders = Order::where('is_seen', 0)->get();
         view()->share('new_orders', $new_orders);
 

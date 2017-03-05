@@ -14,11 +14,16 @@
 
 use App\Models\PromoCode;
 use App\Models\Setting;
+use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 Route::get('test1', function (){
-    $d = \App\Models\Trainer::with('promoCode')->where('id', 5)->get();
-    dd($d->toArray());
+//    unlink(public_path('mydir\card_data.zip'));
+    $files = glob(public_path('card_exports/*'));
+    Zipper::make('mydir/card_data.zip')->add($files)->close();
+
+
+    return response()->download(public_path('mydir/card_data.zip'));
 
 });
 Route::get('/{locale?}', 'HomeController@index');
@@ -48,6 +53,8 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
     Route::post('payments/new/{locale}', 'PaymentsController@create');
 
     Route::get('payments/{locale}', 'PaymentsController@index');
+
+    Route::post('card_order/create', 'ProfileController@newCardOrder');
 
 });
 
@@ -120,6 +127,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 //    Route::get('promo/get/{id}', 'PromoCodeController@getPromo');
 //    Route::post('promo/edit', 'PromoCodeController@edit');
 //    Route::post('promo/delete/{id}', 'PromoCodeController@delete');
+
+    Route::get('promo_card/orders', 'CardOrderController@index');
+    Route::get('promo_card/orders/seen', 'CardOrderController@ordersSeen');
+    Route::get('promo_card/{id}', 'PromoCodeController@getCodeData');
+    Route::post('card_data/export', 'CardOrderController@cardDataExport');
 
 });
 

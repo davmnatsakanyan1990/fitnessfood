@@ -300,18 +300,39 @@ footer, main:after{
 		}	
 	}
 }
-
-.modal-dialog{
+#productModal {
+  .modal-dialog {
 	width: 848px;
-}
- 
-.modal-header{
+  }
+
+  .modal-header {
 	padding: 0;
 	border-bottom: 0;
-	button.close{
-		padding: 15px 15px 0 0;
-		font-size: 30px;
+	button.close {
+	  padding: 15px 15px 0 0;
+	  font-size: 30px;
 	}
+  }
+}
+
+.card_order{
+  background-color: #892E6B;
+  border-color: #892E6B;
+  color: #ffffff;
+}
+.card_order:focus{
+  color: #ffffff;
+}
+
+.card_order:hover{
+  color: #ffffff;
+}
+
+#newCardOrder {
+  .btn-primary{
+	background-color: #892E6B;
+	border-color: #892E6B;
+  }
 }
 
 .prd_title{ 
@@ -377,6 +398,10 @@ footer, main:after{
 
 
 .home-product-cont{
+	.col-md-9 {
+		padding-right: 70px;
+	}
+
 	h1{
 		font-family: ArialAMUbold;
 		text-align: center;
@@ -1111,6 +1136,10 @@ footer{
 				max-width: 25px;
 			}
 		}
+
+	  .paid{
+		color: #08cc60;
+	  }
 	}
 }
 
