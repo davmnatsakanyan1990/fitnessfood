@@ -112,7 +112,7 @@ class ProductController extends AdminBaseController
             'fats' => $request->fats,
             'calories' => $request->calories,
             'weight' => $request->weight,
-            'category_id' => $request->category,
+            'category_id' => $request->category ? $request->category : null,
             'status'=>$request->status
         ]);
 
