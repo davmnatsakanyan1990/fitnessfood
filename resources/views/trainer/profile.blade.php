@@ -12,7 +12,7 @@
                         <div>
                             <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">
                             <h2>{{ $trainer->name }} </h2>
-                            <h4 style=" font-size: 16px; margin-top: 5px">@lang('global.earning from each trade'): <span style="color: #892E6B; font-weight: bold">{{ $trainer->percent }}%</span></h4>
+                            <h4 style=" font-size: 16px; margin-top: 5px">@lang('global.your percent'): <span style="color: #892E6B; font-weight: bold">{{ $trainer->percent }}%</span></h4>
                         </div>
                         <a href="{{ url('trainer/logout/'.App::getLocale()) }}" class="profile-exit">@lang('auth.logout')</a>
                     </div><!-- Profile top end -->

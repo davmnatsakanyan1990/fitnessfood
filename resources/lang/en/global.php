@@ -58,6 +58,7 @@ return [
     'action' => 'Action',
     'card order' => 'Card Order',
     'count' => 'Count',
-    'Set your profile photo to order a card' => 'Set your profile photo to order a card'
+    'Set your profile photo to order a card' => 'Set your profile photo to order a card',
+    'your percent' => 'Your percent'
 
 ];

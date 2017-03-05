@@ -58,6 +58,7 @@ return [
     'action' => 'Действие',
     'card order' => 'Заказ Карты',
     'count' => 'Количество',
-    'Set your profile photo to order a card' => 'Вставте ваш фото профиля'
+    'Set your profile photo to order a card' => 'Вставте ваш фото профиля',
+    'your percent' => 'Ваш процент'
 
 ];
