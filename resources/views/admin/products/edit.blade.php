@@ -155,7 +155,7 @@
                                             <label class="col-sm-2 control-label">Category</label>
                                             <div class="col-sm-10">
                                                 <select class="form-control m-b" name="category">
-                                                    <option>Select Category</option>
+                                                    <option value="0">Select Category</option>
                                                     @foreach($categories as $category)
                                                         <option {{ old('category') && old('category') === $category->id ? 'selected' : $category->id == $product->category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ json_decode($category->name)->en }}</option>
                                                     @endforeach
