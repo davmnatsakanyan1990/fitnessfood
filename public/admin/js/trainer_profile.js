@@ -276,10 +276,10 @@ $(document).find('.export').on('click', function(){
         type: 'get',
         success: function(data){
 
-            $('#exportData').find('.trainer').html(data.trainer.name);
+            $('#exportData').find('.trainer_name span').html(data.trainer.name);
             $('#exportData').find('input[name="trainer"]').val(data.trainer.name);
 
-            $('#exportData').find('.phone').html(data.trainer.phone);
+            $('#exportData').find('.trainer_phone span').html(data.trainer.phone);
             $('#exportData').find('input[name="phone"]').val(data.trainer.phone);
 
             if(data.trainer.gym) {

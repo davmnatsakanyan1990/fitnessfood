@@ -19,13 +19,28 @@
 
                         <div style="border-top: none; border-bottom: 1px dashed #e7eaec; height: 25px"
                              class="hr-line-dashed"></div>
+
+                        <div class="row">
+                            <form method="get" action="{{ url('admin/promo/all') }}" class="form-inline">
+                                <div class="col-md-4 col-sm-3">
+                                    <label for="trainer">Search By </label>
+                                    <input value="{{ request('trainer') ? request('trainer') : '' }}" type="search" id="trainer" name="trainer" placeholder="Trainer Name" class="form-control">
+                                </div>
+                                <div class="col-md-8 col-sm-9">
+                                    <button class="btn btn-primary btn-sm" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div style="border-top: none; border-bottom: 1px dashed #e7eaec; height: 25px"
+                             class="hr-line-dashed"></div>
                         @if(session('message'))
                             <div class="alert alert-success alert-dismissable">
                                 <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
                                 <p>{{ session('message') }}</p>
                             </div>
                         @endif
-                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="6"
+                        <table class="footable table table-stripped toggle-arrow-tiny codes" data-page-size="6"
                                data-filter=#filter>
                             <thead>
                             <tr>
@@ -50,10 +65,7 @@
                                         </td>
                                         <td class="text-right action">
                                             <div class="btn-group">
-                                                {{--<button class="btn-white btn btn-xs edit" data-id="{{ $code->id }}" data-toggle="modal" data-target="#editPromoCode">Edit</button>--}}
-                                                {{--<button style="color: #337ab7" data-id="{{ $code->id }}"--}}
-                                                        {{--class=" delete btn-white btn btn-xs">Delete--}}
-                                                {{--</button>--}}
+                                                <button {{ $code->trainer->image ? '' : 'disabled' }} class="btn-white btn btn-xs export" data-toggle="modal" data-target="#exportData" data-id="{{ $code->id }}"><i class="fa fa-upload"></i> Export</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -75,6 +87,61 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    {-- Trainer data export Modal --}}
+    <div id="exportData" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Card Info</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form method="post" action="{{ url('admin/card_data/export') }}" id="form_export">
+                            {{ csrf_field() }}
+                            <div class="col-sm-8">
+                                <dl class="dl-horizontal">
+
+                                    <dt>Trainer :</dt>
+                                    <dd class="trainer_name"><span></span> <i class="fa fa-pencil edit"></i></dd>
+                                    <input name="trainer" type="hidden">
+
+                                    <dt>Phone :</dt>
+                                    <dd class="trainer_phone"><span></span> <i class="fa fa-pencil edit"></i> </dd>
+                                    <input name="phone" type="hidden">
+
+                                    <dt>Gym :</dt>
+                                    <dd class="trainer_gym"><span class="gym"></span> </dd>
+                                    <input name="gym" type="hidden">
+
+                                    <dt>Promo Code :</dt>
+                                    <dd class="promo_code"></dd>
+                                    <input name="promo_code" type="hidden">
+
+                                    <dt>Percent :</dt>
+                                    <dd class="promo_percent"><span class="percent"></span>%</dd>
+                                    <input name="percent" type="hidden">
+
+                                </dl>
+                            </div>
+                            <div class="col-sm-4">
+                                <img class="trainer_img" width="150" height="150" src="">
+                                <input name="image_name" type="hidden">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" form="form_export" class="btn btn-primary">Export</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
