@@ -126,6 +126,20 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * requests from FB
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function fbShareResponse(Request $request){
+        if($request->has('promo_code')){
+            setcookie("promo_code", $request->promo_code, time()+3600, '/basket/');
+
+            return redirect('/');
+        }
+    }
+
     function isJSON($string){
         return is_string($string) && is_array(json_decode($string, true)) ? true : false;
     }

@@ -49,12 +49,15 @@ Route::group(['prefix' => 'trainer', 'namespace' => 'Trainer'], function(){
 
     Route::get('settings/{locale}', 'SettingsController@index');
     Route::post('settings/update', 'SettingsController@update');
+    Route::post('image/update', 'SettingsController@updateImage');
 
     Route::post('payments/new/{locale}', 'PaymentsController@create');
 
     Route::get('payments/{locale}', 'PaymentsController@index');
 
     Route::post('card_order/create', 'ProfileController@newCardOrder');
+
+    Route::get('promo_code/share', 'ProfileController@fbShareResponse');
 
 });
 

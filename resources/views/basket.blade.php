@@ -109,7 +109,7 @@
                                 <p class="{{ $errors->has('phone') ? 'show' : '' }}">{{ $errors->first('phone') }}</p>
                                 
                                 <label for="Ypromo"> @lang('global.Do you have a promo code?')</label>
-                                <input class="{{ $errors->has('promo_code') ? 'inputDanger' : '' }}" id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') }}" placeholder="1234">
+                                <input class="{{ $errors->has('promo_code') ? 'inputDanger' : '' }}" id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') ? old('promo_code') : isset($_COOKIE['promo_code']) ? $_COOKIE['promo_code'] : '' }}" placeholder="1234">
                                 <span class="greencheck" style="display: none">
                                     <img src="../images/greencheck.png" alt="green">
                                 </span>
