@@ -17,10 +17,36 @@ class CardOrderController extends AdminBaseController
         parent::__construct();
     }
 
-    public function index(){
-        $orders = CardOrder::with(['promo_code' => function($promo_code){
-            return $promo_code->with('trainer');
-        }])->orderBy('created_at', 'desc')->get();
+    public function index(Request $request){
+
+        if($request->ajax()){
+            if($request->has('trainer')){
+                $orders = CardOrder::with(['promo_code' => function($promo_code) use ($request){
+                    $promo_code->with('trainer');
+                }])->whereHas('promo_code.trainer', function($query) use ($request){
+                    $query->where('name', 'like', '%' . $request->trainer . '%');
+                })->orderBy('created_at', 'desc')->get();;
+            }
+            else{
+                $orders = CardOrder::with(['promo_code' => function($promo_code){
+                    return $promo_code->with('trainer');
+                }])->orderBy('created_at', 'desc')->get();
+            }
+
+            return view('ajax.card_orders_search', compact('orders'));
+        }
+        if($request->has('trainer')){
+            $orders = CardOrder::with(['promo_code' => function($promo_code) use ($request){
+                 $promo_code->with('trainer');
+            }])->whereHas('promo_code.trainer', function($query) use ($request){
+                $query->where('name', 'like', '%' . $request->trainer . '%');
+            })->orderBy('created_at', 'desc')->get();;
+        }
+        else{
+            $orders = CardOrder::with(['promo_code' => function($promo_code){
+                return $promo_code->with('trainer');
+            }])->orderBy('created_at', 'desc')->get();
+        }
 
         $new_card_orders_array = collect($orders->toArray())->where('is_seen', '0')->pluck('id')->all();
 
@@ -68,13 +94,12 @@ class CardOrderController extends AdminBaseController
         copy(public_path('images/trainerImages/'.$request->image_name), public_path('card_exports').'/'.$request->image_name);
 
         $files = glob(public_path('card_exports/*'));
+
         // remove existing zip
         if(is_file(public_path('mydir/card_data.zip')))
             unlink(public_path('mydir/card_data.zip'));
 
         Zipper::make('mydir/card_data.zip')->add($files)->close();
-
-
 
         $files = glob(public_path('card_exports/*')); // get all file names
         foreach($files as $file){ // iterate files

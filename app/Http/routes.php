@@ -132,6 +132,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('promo_card/orders/seen', 'CardOrderController@ordersSeen');
     Route::get('promo_card/{id}', 'PromoCodeController@getCodeData');
     Route::post('card_data/export', 'CardOrderController@cardDataExport');
+    Route::get('card_card/search', 'PromoCodeController@search');
 
 });
 

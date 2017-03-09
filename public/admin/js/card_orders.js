@@ -20,10 +20,10 @@ $(document).find('.export').on('click', function(){
         type: 'get',
         success: function(data){
 
-            $('#exportData').find('.trainer').html(data.trainer.name);
+            $('#exportData').find('.trainer_name span').html(data.trainer.name);
             $('#exportData').find('input[name="trainer"]').val(data.trainer.name);
 
-            $('#exportData').find('.phone').html(data.trainer.phone);
+            $('#exportData').find('.trainer_phone span').html(data.trainer.phone);
             $('#exportData').find('input[name="phone"]').val(data.trainer.phone);
 
             if(data.trainer.gym) {
@@ -67,3 +67,17 @@ $(document).find('#exportData').on('focus', 'input', function() {
     parent.next('input').val(value);
 
 });
+
+$(document).find('input[name="trainer"]').on('input', function(){
+    var trainer = $(this).val();
+
+    $.ajax({
+        url: BASE_URL+'/admin/promo_card/orders',
+        data: {
+            trainer: trainer
+        },
+        success: function(data){
+            $(document).find('.card_orders tbody').html(data);
+        }
+    })
+})

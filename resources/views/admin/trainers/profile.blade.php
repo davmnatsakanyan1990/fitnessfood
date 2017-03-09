@@ -262,11 +262,11 @@
                                 <dl class="dl-horizontal">
 
                                     <dt>Trainer :</dt>
-                                    <dd class="trainer_name"><span class="trainer"></span> <i class="fa fa-pencil edit"></i></dd>
+                                    <dd class="trainer_name"><span></span> <i class="fa fa-pencil edit"></i></dd>
                                     <input name="trainer" type="hidden">
 
                                     <dt>Phone :</dt>
-                                    <dd class="trainer_phone"><span class="phone"></span> <i class="fa fa-pencil edit"></i> </dd>
+                                    <dd class="trainer_phone"><span></span> <i class="fa fa-pencil edit"></i> </dd>
                                     <input name="phone" type="hidden">
 
                                     <dt>Gym :</dt>

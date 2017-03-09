@@ -16,9 +16,29 @@ class PromoCodeController extends AdminBaseController
         parent::__construct();
     }
 
-    public function index(){
-        $promoCodes = PromoCode::with('trainer')->get();
-        $trainers = Trainer::all();
+    public function index(Request $request){
+
+        if($request->ajax()){
+            if($request->has('trainer')){
+                $promoCodes = PromoCode::with('trainer')->whereHas('trainer', function($trainer) use ($request){
+                    $trainer->where('name', 'like', '%'.$request->trainer.'%');
+                })->get();
+            }
+            else{
+                $promoCodes = PromoCode::with('trainer')->get();
+            }
+            return view('ajax.promo_code_search', compact('promoCodes'));
+        }
+        // search by trainer name
+        if($request->has('trainer')){
+            $promoCodes = PromoCode::with('trainer')->whereHas('trainer', function($trainer) use ($request){
+                $trainer->where('name', 'like', '%'.$request->trainer.'%');
+            })->get();
+        }
+        else{
+            $promoCodes = PromoCode::with('trainer')->get();
+        }
+//        $trainers = Trainer::all();
 
         return view('admin.promo_codes.index', compact('promoCodes', 'trainers'));
     }

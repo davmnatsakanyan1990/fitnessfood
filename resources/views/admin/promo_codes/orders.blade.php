@@ -24,7 +24,21 @@
                                 <p>{{ session('message') }}</p>
                             </div>
                         @endif
-                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="6"
+                        <div class="row">
+                            <form method="get" action="{{ url('admin/promo_card/orders') }}" class="form-inline">
+                                <div class="col-md-4 col-sm-3">
+                                    <label for="trainer">Search By </label>
+                                    <input value="{{ request('trainer') ? request('trainer') : '' }}" type="search" id="trainer" name="trainer" placeholder="Trainer Name" class="form-control">
+                                </div>
+                                <div class="col-md-8 col-sm-9">
+                                    <button class="btn btn-primary btn-sm" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div style="border-top: none; border-bottom: 1px dashed #e7eaec; height: 25px"
+                             class="hr-line-dashed"></div>
+                        <table class="footable table table-stripped toggle-arrow-tiny card_orders" data-page-size="6"
                                data-filter=#filter>
                             <thead>
                             <tr>
@@ -100,11 +114,11 @@
                             <dl class="dl-horizontal">
 
                                 <dt>Trainer :</dt>
-                                <dd class="trainer_name"><span class="trainer"></span> <i class="fa fa-pencil edit"></i></dd>
+                                <dd class="trainer_name"><span></span> <i class="fa fa-pencil edit"></i></dd>
                                 <input name="trainer" type="hidden">
 
                                 <dt>Phone :</dt>
-                                <dd class="trainer_phone"><span class="phone"></span> <i class="fa fa-pencil edit"></i> </dd>
+                                <dd class="trainer_phone"><span></span> <i class="fa fa-pencil edit"></i> </dd>
                                 <input name="phone" type="hidden">
 
                                 <dt>Gym :</dt>
