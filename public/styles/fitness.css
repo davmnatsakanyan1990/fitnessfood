@@ -298,6 +298,7 @@ footer, main:after {
 
 .navbar-nav > li > a {
   padding-bottom: 10px;
+  text-align: center;
 }
 
 .main-nav {
@@ -950,12 +951,17 @@ footer .all-rights {
   color: #999999;
 }
 
-.cols-3-row p:before {
-  content: url(../images/phone.png);
+.cols-3-row p a {
   position: relative;
+  display: block;
+}
+
+.cols-3-row p a:before {
+  content: url(../images/phone.png);
+  position: absolute;
   width: 20px;
-  top: 56px;
-  left: -90px;
+  top: 2px;
+  left: -30px;
   height: 21px;
 }
 
@@ -2379,6 +2385,9 @@ footer .all-rights {
   }
   .droshakner-parent {
     margin-right: 5px;
+  }
+  .home-product-cont .col-md-9 {
+    float: left;
   }
 }
 
