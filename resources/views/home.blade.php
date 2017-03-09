@@ -7,26 +7,29 @@
              
             <!-- end menu -->
            
-                <div class="container-fluid home-product-cont">
+                <div class="container home-product-cont">
                     <div class="row">
                         <div class="col-md-3 side-bar">
-                            <div class="filter-navmenu-wrap">
-                                <ul>
-                                    <li  class="{{ request('cat') ? '' : 'filter-active' }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.all')</a></li>
-                                    @foreach($categories as $category)
-                                        <li class="{{ request('cat') == $category->id ? 'filter-active' : '' }}"><a href="{{ url('/'.App::getLocale().'?cat='.$category->id) }}">{{$category->name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            
-                            <div class="delivery-block">
-                                <div class="car-bef">
-                                    <p>Առաքումն</p>
-                                    <span>Անվճար</span>
+                            <div class="side-bar-cont">
+                                <div class="filter-navmenu-wrap">
+                                    <ul>
+                                        <li  class="{{ request('cat') ? '' : 'filter-active' }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.all')</a></li>
+                                        @foreach($categories as $category)
+                                            <li class="{{ request('cat') == $category->id ? 'filter-active' : '' }}"><a href="{{ url('/'.App::getLocale().'?cat='.$category->id) }}">{{$category->name }}</a></li>
+                                        @endforeach
+
+                                    </ul>
                                 </div>
-                                <article>3000 դրամ և ավելի գնումների դեպքում</article>
-                            </div>
-                            <div class="no-need-reg">
+
+                                <div class="delivery-block">
+                                    <div class="car-bef">
+                                        <p>Առաքումն</p>
+                                        <span>Անվճար</span>
+                                    </div>
+                                    <article>3000 դրամ և ավելի գնումների դեպքում</article>
+                                </div>
+
+                                <div class="no-need-reg">
                                     <img src="images/girl.png" alt="girl.png">
                                     <p>
                                         <span>Գրանցվելու</span>
@@ -36,12 +39,12 @@
                                     <div class="clearfix"></div>
                                     <ul>
                                         <li>
-                                            Ավելացրեք տեսականին 
+                                            Ավելացրեք տեսականին
                                             զամբյուղում
                                         </li>
                                         <li>
                                             Մուտքագրեք ձեր
-                                            անունը 
+                                            անունը
                                         </li>
                                         <li>
                                             Մուտքագրեք ձեր
@@ -53,7 +56,7 @@
                                         </li>
                                     </ul>
                                 </div>
-
+                            </div>
                         </div>
                         @if(count($products) > 0)
                         @foreach($products as $row)
