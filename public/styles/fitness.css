@@ -2397,6 +2397,9 @@ footer .all-rights {
 }
 
 @media screen and (max-width: 767px) {
+  .home-product-cont .col-md-9 {
+    float: none;
+  }
   .home-product-cont .tumb-wrap .for-img > img {
     margin: 0 auto;
   }
@@ -2547,9 +2550,6 @@ footer .all-rights {
   }
   .for-table table * {
     font-size: 11px !important;
-  }
-  .home-product-cont .col-md-9 {
-    float: none;
   }
   .side-bar {
     padding-left: 15px;
