@@ -1,7 +1,7 @@
 @extends('trainer.layouts.index')
 @section('content')
     <!-- <div class="responsive-height-block">Important</div> -->
-    <main>
+    <main style="overflow: hidden;">
         <div class="container">
             <div class="row profile-row-main">
                 <div class="col-sm-6">

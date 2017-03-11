@@ -359,14 +359,15 @@ footer, main:after {
   color: #892E6B;
   display: inline-block;
   padding-left: 50px;
+  position: relative;
 }
 
 .heraxosner:before {
   content: url(../images/phone.png);
-  position: relative;
+  position: absolute;
   width: 20px;
-  top: 30px;
-  left: -30px;
+  top: 15px;
+  left: 20px;
   height: 21px;
 }
 
@@ -520,6 +521,7 @@ footer, main:after {
 }
 
 .home-product-cont .col-md-9 {
+  float: right;
   /*padding-right: 70px;*/
 }
 
@@ -2280,9 +2282,9 @@ footer .all-rights {
     padding-left: 40px;
   }
   .prod-inf .quantity-wrap .addToCard-button {
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 14px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 12px;
   }
   .prod-inf .quantity-wrap .qtyplus {
     font-size: 14px;
@@ -2375,15 +2377,22 @@ footer .all-rights {
     margin-left: auto;
     margin-right: auto;
   }
+  .navbar-header img {
+    margin-top: 10px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .basket-form {
-    float: none;
+    /* float: none; */
     margin: 30px auto 0 auto;
   }
   .droshakner-parent {
     margin-right: 5px;
+  }
+  .side-bar-cont {
+    max-width: 480px;
+    margin: 0 auto;
   }
 }
 
@@ -2476,10 +2485,10 @@ footer .all-rights {
     font-size: 14px !important;
   }
   .for-table thead tr th:first-child {
-    padding-left: 15px;
+    padding-left: 10px;
   }
   .for-table thead tr th:last-child {
-    padding-right: 15px;
+    padding-right: 10px;
   }
   .for-table tbody td:first-child {
     padding-left: 15px;
@@ -2537,7 +2546,13 @@ footer .all-rights {
     padding-left: 15px;
   }
   .for-table table * {
-    font-size: 12px !important;
+    font-size: 11px !important;
+  }
+  .home-product-cont .col-md-9 {
+    float: none;
+  }
+  .side-bar {
+    padding-left: 15px;
   }
 }
 

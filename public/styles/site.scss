@@ -240,12 +240,13 @@ footer, main:after {
   color: $main-violet;
   display: inline-block;
   padding-left: 50px;
+  position: relative;
   &:before {
     content: url(../images/phone.png);
-    position: relative;
+    position: absolute;
     width: 20px;
-    top: 30px;
-    left: -30px;
+    top: 15px;
+    left: 20px;
     height: 21px;
   }
   ul {
@@ -398,6 +399,7 @@ footer, main:after {
 
 .home-product-cont {
   .col-md-9 {
+    float: right;
     /*padding-right: 70px;*/
     
   }
@@ -2049,4 +2051,3 @@ footer {
     }
   }
 }
- 

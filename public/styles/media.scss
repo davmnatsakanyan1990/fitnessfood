@@ -39,9 +39,9 @@
 	.prod-inf{
 		.quantity-wrap{
 			.addToCard-button{
-				padding-left: 10px;
-				padding-right: 10px;
-				font-size: 14px;
+				padding-left: 8px;
+				padding-right: 8px;
+				font-size: 12px;
 			}
 			.qtyplus{
 				font-size: 14px;
@@ -51,6 +51,8 @@
 			}
 		} 
 	} 
+	
+
 }
  
 @media screen and(max-width: 991px){
@@ -154,11 +156,16 @@
 		margin-right: auto;
 	  }
 	}
+	.navbar-header{
+		img{
+			margin-top: 10px;
+		}
+	}
 }
 
 @media screen and(max-width: 768px){ 
 	.basket-form{
-		float: none;
+		/* float: none; */
 		margin: 30px auto 0 auto; 
 	}
 	.droshakner-parent{
@@ -168,6 +175,10 @@
 	  .col-md-9 {
 	 
 	  }
+	}
+	.side-bar-cont{
+		max-width: 480px;
+		margin: 0 auto;
 	}
 }
 
@@ -298,10 +309,10 @@
 			tr{
 				th{
 					&:first-child{
-						padding-left: 15px;
+						padding-left: 10px;
 					}
 					&:last-child{
-						padding-right: 15px;
+						padding-right: 10px;
 					}
 				}
 			}
@@ -376,9 +387,17 @@
 	.for-table{
 		table{
 			& *{
-				font-size: 12px !important;
+				font-size: 11px !important;
 			}
 		}
+	}
+	.home-product-cont{
+		.col-md-9{
+			float: none;
+		}
+	}
+	.side-bar{
+		padding-left: 15px;
 	}
 }
 
@@ -453,7 +472,6 @@
 			width: 100%;
 		}
 	}
-
 }
 
 
