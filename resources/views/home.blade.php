@@ -60,6 +60,7 @@
                         </div>
                         @if(count($products) > 0)
                         @foreach($products as $row)
+
                         <div class="col-md-9 product-section">
                             @foreach($row as $product)
                             <!-- product -->

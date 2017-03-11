@@ -521,7 +521,6 @@ footer, main:after {
 
 .home-product-cont .col-md-9 {
   /*padding-right: 70px;*/
-  float: right;
 }
 
 .home-product-cont h1 {
@@ -2385,9 +2384,6 @@ footer .all-rights {
   }
   .droshakner-parent {
     margin-right: 5px;
-  }
-  .home-product-cont .col-md-9 {
-    float: left;
   }
 }
 
