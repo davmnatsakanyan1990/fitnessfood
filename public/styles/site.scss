@@ -1801,7 +1801,10 @@ footer {
     }
   }
 }
-
+.fb-share-button>span{
+  height: 24px !important;
+  margin-left: 10px;
+}
 .trainer-inner-content {
   text-align: center;
   border-radius: 15px;
