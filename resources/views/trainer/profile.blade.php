@@ -10,7 +10,19 @@
                             <img src="/images/profile/astxik.png" alt="profile/astxik.png">
                         </a>
                         <div>
-                            <img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">
+                            <form id="profile-form" method="post" action="{{ url('trainer/image/update') }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="user-prof">
+                                    <div class="user-prof-inner">
+                                        <input type="file" name="image" id="imgInp">
+                                        <label for="imgInp" id="uplod-img-label"></label>
+                                        <img id="blah"
+                                             src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}"
+                                             alt="settings/face.png">
+                                    </div>
+                                </div>
+                            </form>
+                            {{--<img src="/images/trainerImages/{{ $trainer->image ? $trainer->image->name : 'profile-icon.png' }}" alt="profile/face.png">--}}
                             <h2>{{ $trainer->name }} </h2>
                             <h4 style=" font-size: 16px; margin-top: 5px">@lang('global.your percent'): <span style="color: #892E6B; font-weight: bold">{{ $trainer->percent }}%</span></h4>
                         </div>
@@ -150,6 +162,12 @@
                             <td>
                                 <div class="btn-group">
                                     <button data-id="{{ $promo_code->id }}"  class="card_order btn btn-white btn-xs" data-toggle="modal" data-target="#newCardOrder">@lang('global.order')</button>
+                                    <div class="fb-share-button"
+                                         data-href="{{ url('trainer/promo_code/share?promo_code='.$promo_code->code) }}"
+                                         data-layout="button_count"
+                                         data-size="small">Share
+                                    </div>
+{{--<button data-code="{{ $promo_code->code }}"  class="shareBtn btn btn-white btn-xs" >share</button>--}}
                                 </div>
                             </td>
                           </tr>
@@ -198,6 +216,7 @@
             </div>
         </div>
     </main>
+<div id="fb-root"></div>
 @endsection
 
 @section('scripts')

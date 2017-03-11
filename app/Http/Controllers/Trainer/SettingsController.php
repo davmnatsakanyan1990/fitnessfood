@@ -120,6 +120,28 @@ class SettingsController extends Controller
 
     }
 
+    public function updateImage(Request $request)
+    {
+        if($request->hasFile('image')){
+
+            $destinationPath = 'images/trainerImages';
+            $ext = $request->file('image')->clientExtension();
+            $fileName = time().'.'.$ext;
+
+            $request->file('image')->move($destinationPath, $fileName);
+
+            if($this->trainer->image) {
+                unlink('images/trainerImages/' . $this->trainer->image->name);
+                $this->trainer->image->update(['name' => $fileName]);
+            }
+            else {
+                Image::create(['name' => $fileName, 'imageable_type' => 'trainers', 'imageable_id' => $this->trainer->id, 'role' => 0]);
+            }
+        }
+
+        return redirect()->back();
+    }
+
     function isJSON($string){
         return is_string($string) && is_array(json_decode($string, true)) ? true : false;
     }

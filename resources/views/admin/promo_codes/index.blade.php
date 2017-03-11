@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    {-- Trainer data export Modal --}}
+    {{-- Trainer data export Modal --}}
     <div id="exportData" class="modal fade" role="dialog">
         <div class="modal-dialog">
 

@@ -59,10 +59,10 @@
                             </div>
                         </div>
                         @if(count($products) > 0)
-                        @foreach($products as $row)
 
                         <div class="col-md-9 product-section">
-                            @foreach($row as $product)
+                            @foreach($products as $product)
+{{--                            @foreach($row as $product)--}}
                             <!-- product -->
                             <div class="col-sm-6 col-md-4" >
                                 <div class="tumb-wrap" data-id="{{ $product->id }}">
@@ -116,9 +116,10 @@
                                 </div>
                             </div>
                             <!-- product end-->
+                            {{--@endforeach--}}
                             @endforeach
                         </div>
-                        @endforeach
+
                         @endif
                         
                     </div><!-- Row end -->

@@ -13,10 +13,7 @@
             </td>
             <td class="text-right action">
                 <div class="btn-group">
-                    {{--<button class="btn-white btn btn-xs edit" data-id="{{ $code->id }}" data-toggle="modal" data-target="#editPromoCode">Edit</button>--}}
-                    {{--<button style="color: #337ab7" data-id="{{ $code->id }}"--}}
-                    {{--class=" delete btn-white btn btn-xs">Delete--}}
-                    {{--</button>--}}
+                    <button {{ $code->trainer->image ? '' : 'disabled' }} class="btn-white btn btn-xs export" data-toggle="modal" data-target="#exportData" data-id="{{ $code->id }}"><i class="fa fa-upload"></i> Export</button>
                 </div>
             </td>
         </tr>

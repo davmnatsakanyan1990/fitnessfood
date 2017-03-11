@@ -12,7 +12,7 @@ $(document).ready(function(){
     })
 });
 
-$(document).find('.export').on('click', function(){
+$(document).on('click', '.export', function(){
     var id = $(this).data('id');
 
     $.ajax({

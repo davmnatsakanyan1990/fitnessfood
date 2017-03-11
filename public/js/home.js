@@ -283,7 +283,6 @@ $(document).ready(function () {
 
         function scrollBarFunction() {
             if (winWidth >= 990) {
-                console.log("texum enq");
                 if (winHeight - filterNavmenuWrap >= leftBarHeight) {
                     if ($(window).scrollTop() >= leftBarBlockOffTop && scrollFlag == false && footerScrollFlag == false) {
                         scrollFlag = true;

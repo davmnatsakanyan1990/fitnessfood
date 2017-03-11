@@ -49,12 +49,12 @@ class HomeController extends Controller
                 $product->title = json_decode($product->title)->$locale;
             }
 
-            $products = $products->chunk(3);
+//            $products = $products->chunk(3);
         }
         else{
             $products = [];
         }
-
+//dd($products);
         $categories = Category::all();
         foreach($categories as $category){
             $category->name = json_decode($category->name)->$locale;
