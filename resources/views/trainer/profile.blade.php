@@ -162,7 +162,12 @@
                             <td>
                                 <div class="btn-group">
                                     <button data-id="{{ $promo_code->id }}"  class="card_order btn btn-white btn-xs" data-toggle="modal" data-target="#newCardOrder">@lang('global.order')</button>
-                                    <button data-code="{{ $promo_code->code }}"  class="shareBtn btn btn-white btn-xs" >share</button>
+                                    <div class="fb-share-button"
+                                         data-href="{{ url('trainer/promo_code/share?promo_code='.$promo_code->code) }}"
+                                         data-layout="button_count"
+                                         data-size="small">Share
+                                    </div>
+{{--<button data-code="{{ $promo_code->code }}"  class="shareBtn btn btn-white btn-xs" >share</button>--}}
                                 </div>
                             </td>
                           </tr>
@@ -211,6 +216,7 @@
             </div>
         </div>
     </main>
+<div id="fb-root"></div>
 @endsection
 
 @section('scripts')
