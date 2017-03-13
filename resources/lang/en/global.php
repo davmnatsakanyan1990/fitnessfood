@@ -15,7 +15,7 @@ return [
 
     'order' => 'Order',
     'about us' => 'About Us',
-    'I am trainer' => 'I Am Trainer',
+    'our partners' => 'Our Partners',
     'contact' => 'Contact',
     'basket' => 'Basket',
     'contact us' => 'Contact Us',

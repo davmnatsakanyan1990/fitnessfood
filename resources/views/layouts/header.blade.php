@@ -17,7 +17,7 @@
 
                         <li class="{{ url()->current() == url('/', App::getLocale()) ? 'active' : ''  }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.order')</a></li>
                         <li class="{{ url()->current() == url('about', App::getLocale()) ? 'active' : ''  }}"><a href="{{ url('about/'.App::getLocale()) }}">@lang('global.about us')</a></li>
-                        <li class="{{ url()->current() == url('trainer/login', App::getLocale()) ? 'active' : ''  }}"><a href="{{ url('trainer/login/'.App::getLocale()) }}">@lang('global.I am trainer')</a></li>
+                        <li class="{{ url()->current() == url('trainer/login', App::getLocale()) ? 'active' : ''  }}"><a href="{{ url('trainer/login/'.App::getLocale()) }}">@lang('global.our partners')</a></li>
                         <li class="{{ url()->current() == url('contact', App::getLocale()) ? 'active' : ''  }}"><a href="{{ url('contact/'.App::getLocale()) }}">@lang('global.contact')</a></li>
                     </ul>
                     <div class="droshakner-parent">

@@ -15,7 +15,7 @@ return [
 
     'order' => 'Заказывать',
     'about us' => 'О Нас',
-    'I am trainer' => 'Я Тренер',
+    'our partners' => 'Наши Партнеры',
     'contact' => 'Связ',
     'basket' => 'Карзина',
     'contact us' => 'Связ С Нами',
