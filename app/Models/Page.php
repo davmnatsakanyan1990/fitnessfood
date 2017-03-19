@@ -10,4 +10,8 @@ class Page extends Model
         'title',
         'content'
     ];
+
+    public function subPages(){
+        return $this->hasMany(SubPage::class);
+    }
 }

@@ -24,19 +24,19 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input name="name[am]" value="{{ old('name[am]') }}" type="text"
+                                    <input name="name[am]" value="{{ old('name.am') }}" type="text"
                                            class="form-control" placeholder="Հայերեն">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input name="name[ru]" value="{{ old('name[ru]') }}" type="text"
+                                    <input name="name[ru]" value="{{ old('name.ru') }}" type="text"
                                            class="form-control" placeholder="Русский">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input name="name[en]" value="{{ old('name[en]') }}" type="text"
+                                    <input name="name[en]" value="{{ old('name.en') }}" type="text"
                                            class="form-control" placeholder="English">
                                 </div>
                             </div>
@@ -49,19 +49,19 @@
                                 <label class="col-sm-2 control-label">Description</label>
                                 <div class="col-sm-10">
                                     <textarea rows="5" name="description[am]" class="form-control"
-                                              placeholder="Հայերեն">{{ old('description[am]') }}</textarea>
+                                              placeholder="Հայերեն">{{ old('description.am') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <textarea rows="5" name="description[ru]" class="form-control"
-                                              placeholder="Русский">{{ old('description[ru]') }}</textarea>
+                                              placeholder="Русский">{{ old('description.ru') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <textarea rows="5" name="description[en]" class="form-control"
-                                              placeholder="English">{{ old('description[en]') }}</textarea>
+                                              placeholder="English">{{ old('description.en') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">

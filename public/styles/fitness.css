@@ -688,23 +688,8 @@ footer {
     margin-top: 40px; }
 
 /* About page */
-.about-main > div {
-  text-align: center; }
-
-.about-main p {
-  max-width: 550px;
-  margin: 25px auto 0 auto;
-  line-height: 22px;
-  text-align: left;
-  font-size: 18px; }
-
-.about-main h1 {
-  text-align: left;
-  color: #892E6B;
-  font-size: 30px; }
-
-.about-main .video-wrap {
-  margin-top: 55px; }
+.about-main .content {
+  float: right; }
 
 /* contact page  */
 /* .contact-main{
@@ -1622,6 +1607,9 @@ footer {
   .side-bar.fixed-side-bar {
     position: fixed;
     z-index: 99; }
+  .side-bar .active a {
+    color: #892E6B;
+    font-family: ArialAMUbold !important; }
   .side-bar .delivery-block {
     padding: 18px;
     margin-top: 40px;

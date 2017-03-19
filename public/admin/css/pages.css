@@ -39,6 +39,14 @@
 }
 
 .edit_page .save{
-    width: 150px;
     display: inline-block;
+}
+
+.tabs-container .panel-body{
+    background: none;
+}
+
+.title{
+    margin-left: 15px ;
+    margin-top: 10px ;
 }

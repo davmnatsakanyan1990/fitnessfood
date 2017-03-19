@@ -772,24 +772,27 @@ footer {
 /* About page */
 
 .about-main {
-  & > div {
-    text-align: center;
+  .content{
+    float: right;
   }
-  p {
-    max-width: 550px;
-    margin: 25px auto 0 auto;
-    line-height: 22px;
-    text-align: left;
-    font-size: 18px;
-  }
-  h1 {
-    text-align: left;
-    color: $main-violet;
-    font-size: 30px;
-  }
-  .video-wrap {
-    margin-top: 55px;
-  }
+  //& > div {
+  //  text-align: center;
+  //}
+  //p {
+  //  max-width: 550px;
+  //  margin: 25px auto 0 auto;
+  //  line-height: 22px;
+  //  text-align: left;
+  //  font-size: 18px;
+  //}
+  //h1 {
+  //  text-align: left;
+  //  color: $main-violet;
+  //  font-size: 30px;
+  //}
+  //.video-wrap {
+  //  margin-top: 55px;
+  //}
 }
 
 /* contact page  */
@@ -1956,6 +1959,11 @@ footer {
   &.fixed-side-bar {
     position: fixed;
     z-index: 99;
+  }
+
+  .active a{
+    color: #892E6B;
+    font-family: ArialAMUbold !important;
   }
 
   .delivery-block {

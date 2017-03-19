@@ -123,7 +123,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::get('categories/get/{id}', 'CategoryController@getCategory');
 
     Route::get('pages/{title}', 'PagesController@edit');
-    Route::post('pages/update/{id}', 'PagesController@update');
+    Route::post('sub_pages/update/{id}', 'SubPageController@update');
+    Route::post('sub_pages/create', 'SubPageController@create');
+    Route::get('sub_pages/delete/{id}', 'SubPageController@delete');
 
     Route::get('promo/all', 'PromoCodeController@index');
 //    Route::post('promo/create', 'PromoCodeController@create');
@@ -137,14 +139,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::post('card_data/export', 'CardOrderController@cardDataExport');
     Route::get('card_card/search', 'PromoCodeController@search');
 
+    Route::get('recipes/all', 'RecipeController@index');
+    Route::get('recipes/edit/{id}', 'RecipeController@edit');
+    Route::post('recipes/update/{id}', 'RecipeController@update');
+    Route::get('recipes/new', 'RecipeController@create');
+    Route::post('recipes/save', 'RecipeController@save');
+    Route::get('recipes/delete/{id}', 'RecipeController@delete');
+
 });
 
 Route::get('about/{locale}', function($locale){
     App::setLocale($locale);
-    $page = \App\Models\Page::where('title', 'about us')->first();
-    $page->content = json_decode($page->content)->$locale;
-    
-    return view('about', compact('page'));
+    $page = \App\Models\Page::with('subPages')->where('title', 'about us')->first();
+
+    return view('about', compact('page', 'locale'));
 });
 Route::get('basket/{locale}', 'BasketController@index');
 Route::get('contact/{locale}', 'ContactUsController@index');

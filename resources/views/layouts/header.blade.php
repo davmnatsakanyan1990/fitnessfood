@@ -20,13 +20,13 @@
                         <li class="{{ url()->current() == url('trainer/login', App::getLocale()) ? 'active' : ''  }}"><a href="{{ url('trainer/login/'.App::getLocale()) }}">@lang('global.our partners')</a></li>
                         <li class="{{ url()->current() == url('contact', App::getLocale()) ? 'active' : ''  }}"><a href="{{ url('contact/'.App::getLocale()) }}">@lang('global.contact')</a></li>
                     </ul>
-                    <div class="droshakner-parent">
-                        <select name="lang" id="">
-                            <option {{ App::getLocale() == 'am' ? 'selected' : '' }} value="am">AM</option>
-                            <option {{ App::getLocale() == 'ru' ? 'selected' : '' }} value="ru">RU</option>
-                            <option {{ App::getLocale() == 'en' ? 'selected' : '' }} value="en">EN</option>
-                        </select>
-                    </div>
+                    {{--<div class="droshakner-parent">--}}
+                        {{--<select name="lang" id="">--}}
+                            {{--<option {{ App::getLocale() == 'am' ? 'selected' : '' }} value="am">AM</option>--}}
+                            {{--<option {{ App::getLocale() == 'ru' ? 'selected' : '' }} value="ru">RU</option>--}}
+                            {{--<option {{ App::getLocale() == 'en' ? 'selected' : '' }} value="en">EN</option>--}}
+                        {{--</select>--}}
+                    {{--</div>--}}
                     <div class="dropdown">
                         <ul class="nav navbar-nav dropbtn">
                             <li class="shopping-cart ">

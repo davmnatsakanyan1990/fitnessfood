@@ -49,17 +49,17 @@
                                     <fieldset class="form-horizontal">
                                         <div class="form-group"><label class="col-sm-2 control-label">Անվանում:</label>
                                             <div class="col-sm-10"><input name="name[am]"
-                                                                          value="{{ $product->title ? json_decode($product->title)->am : ''}}"
+                                                                          value="{{ old('name.am') ? old('name.am') : json_decode($product->title)->am }}"
                                                                           type="text" class="form-control"></div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Имя:</label>
                                             <div class="col-sm-10"><input name="name[ru]"
-                                                                          value="{{ $product->title ? json_decode($product->title)->ru : '' }}"
+                                                                          value="{{ old('name.ru') ? old('name.ru') : json_decode($product->title)->ru }}"
                                                                           type="text" class="form-control"></div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Name:</label>
                                             <div class="col-sm-10"><input name="name[en]"
-                                                                          value="{{ $product->title ? json_decode($product->title)->en : '' }}"
+                                                                          value="{{ old('name.en') ? old('name.en') : json_decode($product->title)->en }}"
                                                                           type="text" class="form-control"></div>
                                         </div>
                                         <div class="hr-line-dashed"></div>
@@ -72,19 +72,19 @@
                                         <div class="form-group"><label class="col-sm-2 control-label">Բնութագիր:</label>
                                             <div class="col-sm-10">
                                                 <textarea rows="8" class="form-control" name="description[am]"
-                                                          placeholder="Հայերեն">{{$product->description ? json_decode($product->description)->am : '' }}</textarea>
+                                                          placeholder="Հայերեն">{{ old('description.am') ? old('description.am') : json_decode($product->description)->am }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Описание:</label>
                                             <div class="col-sm-10">
                                                 <textarea rows="8" class="form-control" name="description[ru]"
-                                                          placeholder="Русский">{{$product->description ?  json_decode($product->description)->ru : '' }}</textarea>
+                                                          placeholder="Русский">{{old('description.ru') ? old('description.ru') :  json_decode($product->description)->ru }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Description:</label>
                                             <div class="col-sm-10">
                                                 <textarea rows="8" class="form-control" name="description[en]"
-                                                          placeholder="English">{{$product->description ? json_decode($product->description)->en : '' }}</textarea>
+                                                          placeholder="English">{{old('description.en') ? old('description.en') : json_decode($product->description)->en }}</textarea>
                                             </div>
                                         </div>
                                         <div class="hr-line-dashed"></div>

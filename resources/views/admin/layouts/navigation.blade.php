@@ -49,6 +49,9 @@
                     <li><a href="{{ url('admin/pages/about_us') }}">About us</a></li>
                 </ul>
             </li>
+            <li class="{{ url()->current() == url('admin/recipes/all') ? 'active' : ''  }}">
+                <a href="{{ url('admin/recipes/all') }}"><i class="fa fa-cogs"></i> <span class="nav-label">Recipes</span></a>
+            </li>
             <li class="{{ url()->current() == url('admin/settings') ? 'active' : ''  }}">
                 <a href="{{ url('admin/settings') }}"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span></a>
             </li>
