@@ -32,7 +32,7 @@ class RecipeController extends AdminBaseController
         Recipe::where('id', $id)->update(['title' => json_encode($request->title), 'text' => json_encode($request->text)]);
 
         if($request->profile_image){
-            $this->update_image($request->profile_image, $id);
+            $this->update_image($request->file('profile_image'), $id);
         }
 
         return redirect()->back();
@@ -43,13 +43,17 @@ class RecipeController extends AdminBaseController
 
         $image = Recipe::find($id)->profile_image;
 
-        $destinationPath = '/images/recipes';
+        $destinationPath = 'images/recipes';
 
         $fileName = time().'.'.$profile_image->getClientOriginalExtension();
 
         $profile_image->move($destinationPath, $fileName);
 
         if($image){
+
+            if(file_exists(asset('images/recipes/'.$image->name)))
+                unlink(asset('images/recipes/'.$image->name));
+
             $image->update(['name' => $fileName]);
         }
         else{
@@ -65,7 +69,7 @@ class RecipeController extends AdminBaseController
         $recipe = Recipe::create(['title' => json_encode($request->title), 'text' => json_encode($request->text)]);
 
         if($request->profile_image){
-            $this->update_image($request->profile_image, $recipe->id);
+            $this->update_image($request->file('profile_image'), $recipe->id);
         }
 
         return redirect('admin/recipes/all')->send();
@@ -79,7 +83,8 @@ class RecipeController extends AdminBaseController
 
             $image->delete();
 
-            unlink('/images/recipes/'.$image_name);
+            if(file_exists(asset('images/recipes/'.$image_name)))
+                unlink('/images/recipes/'.$image_name);
         }
 
         Recipe::find($id)->delete();

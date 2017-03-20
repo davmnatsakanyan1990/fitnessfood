@@ -4,12 +4,7 @@
     <link href="/template/css/plugins/summernote/summernote.css" rel="stylesheet">
     <link href="/template/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
 
-    <style>
-        .title{
-            margin-left: 15px ;
-            margin-top: 10px ;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('admin/css/recipes.css') }}">
 @endsection
 
 @section('content')
@@ -23,12 +18,25 @@
             <form id="create_form" action="{{ url('admin/recipes/save') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="row ibox">
-                    <div class="col-lg-6">
-                        <input type="file" name="profile_image">
+                    <div class="col-lg-4">
+                        <a href="{{ url('admin/recipes/all') }}">
+                            <button class="btn btn-warning btn-sm m-l-sm delete" type="button"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Cancel</button>
+                        </a>
                     </div>
-                    <div class="col-lg-6">
-                        <button class="pull-right btn btn-warning btn-sm m-l-sm save" type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-                        <button class="pull-right btn btn-danger btn-sm m-l-sm delete" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                    <div class="col-lg-4">
+                        <div class="user-prof">
+                            <div class="user-prof-inner">
+                                <input type="file" name="profile_image" id="imgInp">
+                                <label for="imgInp" id="uplod-img-label"></label>
+                                <img id="blah"
+                                     src="/images/products/noimage.gif"
+                                     alt="settings/face.png">
+                                <p class="text-center">Thumbnail</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <button class="pull-right btn btn-primary btn-sm m-l-sm save" type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
                     </div>
                 </div>
                 {{-- Editor Armenian --}}
@@ -148,8 +156,8 @@
 
                 <div class="row ibox">
                     <div class="col-lg-12">
-                        <button class=" pull-right btn btn-warning btn-sm m-l-sm save" type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-                        <button class="pull-right btn btn-danger btn-sm m-l-sm delete" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <a href="{{ url('admin/recipes/all') }}"> <button class=" pull-right btn btn-primary btn-sm m-l-sm save" type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button></a>
+                        <button class="pull-left btn btn-warning btn-sm m-l-sm delete" type="button"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Cancel</button>
                     </div>
                 </div>
             </form>
@@ -179,5 +187,26 @@
 
             $('#create_form').submit();
         })
+
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+
+
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+                $('#profile-form').submit();
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
     </script>
 @endsection
