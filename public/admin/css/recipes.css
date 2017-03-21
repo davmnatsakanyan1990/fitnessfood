@@ -82,3 +82,6 @@
     -webkit-box-orient: vertical;
 }
 
+ul.notes li div a {
+    position: inherit !important;
+}

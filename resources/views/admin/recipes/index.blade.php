@@ -30,8 +30,8 @@
                             <small>{{ date("F j, Y, g:i a", strtotime($recipe->created_at))  }}</small>
                             <h4>{{ json_decode($recipe->title)->en }}</h4>
                             <p class="text">{{ json_decode($recipe->text)->en }}</p>
-                            <a title="Edit" href="{{ url('admin/recipes/delete/'.$recipe->id) }}"><i class="fa fa-trash-o "></i></a>
-                            <a title="Remove" class="edit" href="{{ url('admin/recipes/edit/'. $recipe->id) }}"><i class="fa fa-pencil "></i></a>
+                            <a title="Remove" href="{{ url('admin/recipes/delete/'.$recipe->id) }}"><i class="fa fa-trash-o "></i></a>
+                            <a title="Edit" class="edit" href="{{ url('admin/recipes/edit/'. $recipe->id) }}"><i class="fa fa-pencil "></i></a>
                         </div>
                     </li>
                     @endforeach
