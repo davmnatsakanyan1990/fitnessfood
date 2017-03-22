@@ -156,8 +156,8 @@
 
                 <div class="row ibox">
                     <div class="col-lg-12">
-                        <a href="{{ url('admin/recipes/all') }}"> <button class=" pull-right btn btn-primary btn-sm m-l-sm save" type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button></a>
-                        <button class="pull-left btn btn-warning btn-sm m-l-sm delete" type="button"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Cancel</button>
+                        <button class=" pull-right btn btn-primary btn-sm m-l-sm save" type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                        <a href="{{ url('admin/recipes/all') }}"> <button class="pull-left btn btn-warning btn-sm m-l-sm delete" type="button"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Cancel</button></a>
                     </div>
                 </div>
             </form>

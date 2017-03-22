@@ -51,8 +51,8 @@ class RecipeController extends AdminBaseController
 
         if($image){
 
-            if(file_exists(asset('images/recipes/'.$image->name)))
-                unlink(asset('images/recipes/'.$image->name));
+            if(file_exists('images/recipes/'.$image->name))
+                unlink('images/recipes/'.$image->name);
 
             $image->update(['name' => $fileName]);
         }
@@ -83,7 +83,7 @@ class RecipeController extends AdminBaseController
 
             $image->delete();
 
-            if(file_exists(asset('images/recipes/'.$image_name)))
+            if(file_exists('images/recipes/'.$image_name))
                 unlink('/images/recipes/'.$image_name);
         }
 

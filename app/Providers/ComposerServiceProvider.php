@@ -20,7 +20,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         // Using class based composers...
         view()->composer(
-            ['home', 'about', 'basket', 'contact', 'trainer.auth.*'], 'App\Http\ViewComposers\BasketComposer'
+            ['recipes', 'home', 'about', 'basket', 'contact', 'trainer.auth.*'], 'App\Http\ViewComposers\BasketComposer'
         );
     }
 

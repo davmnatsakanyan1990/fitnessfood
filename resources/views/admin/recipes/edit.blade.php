@@ -26,9 +26,9 @@
                 {{ csrf_field() }}
                 <div class="row ibox">
                     <div class="col-lg-4">
-                        <a href="{{ url('admin/recipes/all') }}">
-                            <a href="{{ url('admin/recipes/delete/'.$recipe->id) }}"> <button class="btn btn-danger btn-sm m-l-sm delete" data-id="{{ $recipe->id }}" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button></a>
-                        </a>
+
+                        <a href="{{ url('admin/recipes/delete/'.$recipe->id) }}"> <button class="btn btn-danger btn-sm m-l-sm delete" data-id="{{ $recipe->id }}" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button></a>
+
                     </div>
                     <div class="col-lg-4">
                         <div class="user-prof">
@@ -165,7 +165,9 @@
                 <div class="row ibox">
                     <div class="col-lg-12">
                         <button class=" pull-right btn btn-warning btn-sm m-l-sm save" data-id="{{ $recipe->id }}" type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-                        <button class="pull-right btn btn-danger btn-sm m-l-sm delete" data-id="{{ $recipe->id }}" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <a href="{{ url('admin/recipes/delete/'.$recipe->id) }}">
+                            <button class="pull-right btn btn-danger btn-sm m-l-sm delete" data-id="{{ $recipe->id }}" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        </a>
                     </div>
                 </div>
             </form>

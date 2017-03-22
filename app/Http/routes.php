@@ -17,13 +17,8 @@ use App\Models\Setting;
 use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
-Route::get('test1', function (){
-//    unlink(public_path('mydir\card_data.zip'));
-    $files = glob(public_path('card_exports/*'));
-    Zipper::make('mydir/card_data.zip')->add($files)->close();
-
-
-    return response()->download(public_path('mydir/card_data.zip'));
+Route::get('recipes', function (){
+    return view('recipes');
 
 });
 Route::get('/{locale?}', 'HomeController@index');
