@@ -2062,3 +2062,36 @@ footer {
     }
   }
 }
+
+.recp-wrap{
+  margin-top: 30px;
+  box-shadow: 0 0 8px 2px $main-gray;
+  text-align: center;
+  padding: 10px 10px 20px;
+  background: #fff;
+  hr{
+    margin: 10px 0;
+    padding: 0;
+  }
+  .for-reciep-img{
+    margin: auto;
+    background: url(../images/recept.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 250px;
+    max-width: 100%;
+    & + h3{ 
+      font-size: 20px;
+      margin-top: 15px; 
+      & + p{
+        color: $main-gray;
+        line-height: 1.2rem;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+
