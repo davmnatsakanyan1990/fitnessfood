@@ -60,7 +60,7 @@ return [
     'action' => 'Գործողություն',
     'card order' => 'Քարտի Պատվեր',
     'count' => 'Քանակը',
-    'Set your profile photo to order a card' => 'Խնդրոմ ենք տեղադրեք ձեր անձնական էջի լուսանկարը',
+    'Set your profile photo to order a card' => 'Պատվիրելու համար խնդրոմ ենք տեղադրեք ձեր անձնական էջի լուսանկարը',
     'your percent' => 'Ձեր տոկոսի չափը'
 
 ];

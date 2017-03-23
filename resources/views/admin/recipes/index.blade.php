@@ -30,7 +30,7 @@
                             <img src="{{ $recipe->profile_image ? '/images/recipes/'.$recipe->profile_image->name : '/images/products/noimage.gif' }}">
                             <small>{{ date("F j, Y, g:i a", strtotime($recipe->created_at))  }}</small>
                             <h4>{{ json_decode($recipe->title)->en }}</h4>
-                            <p class="text">{{ strip_tags(json_decode($recipe->text)->en) }}</p>
+                            <p class="text">{{ strip_tags(json_decode($recipe->text)->am) }}</p>
                             <a title="Remove" href="{{ url('admin/recipes/delete/'.$recipe->id) }}"><i class="fa fa-trash-o "></i></a>
                             <a title="Edit" class="edit" href="{{ url('admin/recipes/edit/'. $recipe->id) }}"><i class="fa fa-pencil "></i></a>
                         </div>
