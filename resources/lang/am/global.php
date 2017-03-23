@@ -15,6 +15,7 @@ return [
 
     'order' => 'Պատվիրել',
     'about us' => 'Մեր Մասին',
+    'recipes' => 'Բաղադրատոմսեր',
     'our partners' => 'Գործընկերներ',
     'I am trainer' => 'Ես մարզիչ եմ',
     'contact' => 'Կապ',

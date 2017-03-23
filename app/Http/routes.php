@@ -12,15 +12,8 @@
 */
 
 
-use App\Models\PromoCode;
-use App\Models\Setting;
-use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Event;
-Route::get('recipes', function (){
-    return view('recipes');
 
-});
 Route::get('/{locale?}', 'HomeController@index');
 Route::post('orders/new/{locale}','OrderController@create');
 
@@ -152,6 +145,18 @@ Route::get('about/{locale}', function($locale){
 Route::get('basket/{locale}', 'BasketController@index');
 Route::get('contact/{locale}', 'ContactUsController@index');
 Route::post('contact/send/{locale}', 'ContactUsController@send');
+Route::get('recipes/{locale}', function (){
+
+    $recipes = \App\Models\Recipe::with('profile_image')->get();
+    $locale = App::getLocale();
+    foreach($recipes as $recipe){
+        $recipe->title = json_decode($recipe->title)->$locale;
+        $recipe->text = str_limit(strip_tags(json_decode($recipe->text)->$locale), 112);
+    }
+
+    return view('recipes', compact('recipes'));
+
+});
 
 // Ajax call
 Route::post('basket/products/{locale}', 'BasketController@products');

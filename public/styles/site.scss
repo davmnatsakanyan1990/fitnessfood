@@ -2069,16 +2069,26 @@ footer {
   text-align: center;
   padding: 10px 10px 20px;
   background: #fff;
+  .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;     /* fallback */
+    max-height: 64px;      /* fallback */
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+
   hr{
     margin: 10px 0;
     padding: 0;
   }
   .for-reciep-img{
     margin: auto;
-    background: url(../images/recept.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    //background: url(../images/recept.jpg);
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
     min-height: 250px;
     max-width: 100%;
     & + h3{ 
