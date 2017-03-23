@@ -177,13 +177,13 @@
         $('.save').on('click', function(e){
 
             var text_am = $(document).find('.armenian .click2edit').code();
-            $('input[name="text[am]"]').val(text_am);
+            $('input[name="text[am]"]').val(text_am.trim());
 
             var text_ru = $(document).find('.russian .click2edit').code();
-            $('input[name="text[ru]"]').val(text_ru);
+            $('input[name="text[ru]"]').val(text_ru.trim());
 
             var text_en = $(document).find('.english .click2edit').code();
-            $('input[name="text[en]"]').val(text_en);
+            $('input[name="text[en]"]').val(text_en.trim());
 
             $('#create_form').submit();
         })

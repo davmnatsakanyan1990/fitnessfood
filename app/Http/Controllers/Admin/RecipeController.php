@@ -30,7 +30,7 @@ class RecipeController extends AdminBaseController
 
     public function update(Request $request, $id){
         Recipe::where('id', $id)->update(['title' => json_encode($request->title), 'text' => json_encode($request->text)]);
-
+//dd($request->all());
         if($request->profile_image){
             $this->update_image($request->file('profile_image'), $id);
         }
