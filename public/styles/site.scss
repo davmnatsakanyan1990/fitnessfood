@@ -424,6 +424,16 @@ footer, main:after {
         border: 1px solid $main-violet;
       }
       .for-img {
+        p {
+          margin-bottom: 5px;
+          text-align: center;
+          text-transform: capitalize;
+          font-family: ArialAMUbold;
+          font-size: 16px;
+          letter-spacing: 0.5px;
+          color: $main-violet;
+          padding-top: 5px;
+        }
         & > img {
           padding: 10px;
           background: #fff;
@@ -607,15 +617,7 @@ footer, main:after {
 
 .prod-inf {
   padding: 0 10px;
-  p {
-    margin-bottom: 10px;
-    text-align: center;
-    text-transform: capitalize;
-    font-family: ArialAMUbold;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    color: $main-violet;
-  }
+
   .p-kkal {
     color: $main-black;
     line-height: 33px;

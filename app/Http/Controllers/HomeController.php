@@ -40,7 +40,7 @@ class HomeController extends Controller
         }
         else {
 
-            $products = Product::with('images', 'thumb_image')->get();
+            $products = Product::with('images', 'thumb_image')->where('first_page', 1)->get();
         }
 
         if(count($products)>0) {

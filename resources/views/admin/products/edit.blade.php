@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="hr-line-dashed"></div>
                                         <div class="form-group"><label class="col-sm-2 control-label">Price: </label>
-                                            <div class="col-sm-10"><input name="price" value="{{ $product->price }}"
+                                            <div class="col-sm-10"><input name="price" value="{{ old('price') ? old('price') :  $product->price }}"
                                                                           type="text" class="form-control"
                                                                           placeholder="AMD"></div>
                                         </div>
@@ -163,16 +163,10 @@
                                             </div>
                                         </div>
                                         <div class="hr-line-dashed"></div>
-                                        <div class="form-group"><label class="col-sm-2 control-label">Status</label>
+                                        <div class="form-group">
+                                            <label style="padding-top: 0" class="col-sm-2 control-label">Show On First Page</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control m-b" name="status">
-                                                    <option {{ $product->status === 0 ? 'selected' : '' }} value="0">
-                                                        Available
-                                                    </option>
-                                                    <option {{ $product->status === 1 ? 'selected' : '' }} value="1">
-                                                        Not Available
-                                                    </option>
-                                                </select>
+                                                <input {{ old('first_page') ? 'checked' : $product->first_page == 1 ? 'checked' : '' }} type="checkbox" name="first_page">
                                             </div>
                                         </div>
                                     </fieldset>

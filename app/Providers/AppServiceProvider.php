@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
@@ -12,8 +13,13 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
+        if(env('APP_ENV') !== 'local')
+        {
+            $url->forceSchema('https');
+        }
+
         Relation::morphMap([
             'products' => \App\Models\Product::class,
             'trainers' => \App\Models\Trainer::class,

@@ -37,9 +37,9 @@ $(document).find('.save').on('click', function(){
     data.content = {};
     data.title = {};
 
-    data.content.am = $(this).closest('.tab-pane').find('.armenian .click2edit').code();
-    data.content.ru = $(this).closest('.tab-pane').find('.russian .click2edit').code();
-    data.content.en = $(this).closest('.tab-pane').find('.english .click2edit').code();
+    data.content.am = ($(this).closest('.tab-pane').find('.armenian .click2edit').code()).trim();
+    data.content.ru = ($(this).closest('.tab-pane').find('.russian .click2edit').code()).trim();
+    data.content.en = ($(this).closest('.tab-pane').find('.english .click2edit').code()).trim();
 
     data.title.am = $(this).closest('.tab-pane').find('.armenian input[name="title[am]"]').val();
     data.title.ru = $(this).closest('.tab-pane').find('.russian input[name="title[ru]"]').val();

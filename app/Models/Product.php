@@ -18,6 +18,7 @@ class Product extends Model
         'weight',
         'category_id',
         'price',
+        'first_page'
     ];
 
     public function images(){

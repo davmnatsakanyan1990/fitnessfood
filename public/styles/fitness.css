@@ -429,6 +429,15 @@ footer, main:after {
   background: #fff; }
   .home-product-cont .col-md-4 .tumb-wrap:hover {
     border: 1px solid #892E6B; }
+  .home-product-cont .col-md-4 .tumb-wrap .for-img p {
+    margin-bottom: 5px;
+    text-align: center;
+    text-transform: capitalize;
+    font-family: ArialAMUbold;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: #892E6B;
+    padding-top: 5px; }
   .home-product-cont .col-md-4 .tumb-wrap .for-img > img {
     padding: 10px;
     background: #fff;
@@ -558,14 +567,6 @@ footer, main:after {
 
 .prod-inf {
   padding: 0 10px; }
-  .prod-inf p {
-    margin-bottom: 10px;
-    text-align: center;
-    text-transform: capitalize;
-    font-family: ArialAMUbold;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    color: #892E6B; }
   .prod-inf .p-kkal {
     color: #333333;
     line-height: 33px;
