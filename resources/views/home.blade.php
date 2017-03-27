@@ -13,7 +13,6 @@
                             <div class="side-bar-cont">
                                 <div class="filter-navmenu-wrap">
                                     <ul>
-                                        <li  class="{{ request('cat') ? '' : 'filter-active' }}"><a href="{{ url('/'.App::getLocale()) }}">@lang('global.all')</a></li>
                                         @foreach($categories as $category)
                                             <li class="{{ request('cat') == $category->id ? 'filter-active' : '' }}"><a href="{{ url('/'.App::getLocale().'?cat='.$category->id) }}">{{$category->name }}</a></li>
                                         @endforeach

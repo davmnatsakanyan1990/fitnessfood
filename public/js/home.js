@@ -63,7 +63,7 @@ $(document).ready(function () {
         var url_start = str.indexOf('(');
         var url_end = str.indexOf(');');
         var image = '/' + str.slice(url_start + 1, url_end);
-        var title = $($(this).closest('.for-img').find('.prod-inf .prd_title'))[0].innerText;
+        var title = $($(this).closest('.for-img').find('.prd_title'))[0].innerText;
         var price = $($(this).closest('.for-img').find(' .prd_price'))[0].innerText;
 
         // determine the product exist or not
