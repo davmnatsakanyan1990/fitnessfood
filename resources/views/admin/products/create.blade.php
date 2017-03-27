@@ -107,14 +107,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Status</label>
+                                <label style="padding-top: 0" class="col-sm-2 control-label">Show On First Page</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control m-b" name="status">
-                                        <option>Select Status</option>
-                                        <option {{ old('status') === 0 ? 'selected' : '' }} value="0">Available</option>
-                                        <option {{ old('status') === 1 ? 'selected' : '' }} value="1">Not Available
-                                        </option>
-                                    </select>
+                                    <input type="checkbox" name="first_page">
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>

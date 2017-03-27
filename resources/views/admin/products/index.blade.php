@@ -35,14 +35,14 @@
                                 <th data-sort-ignore="true">Image</th>
                                 <th data-toggle="true">Product Name</th>
                                 <th data-toggle="true">Category</th>
+                                <th data-hide="phone" data-sort-ignore="true">On First Page</th>
                                 <th data-hide="phone, tablet" data-sort-ignore="true">Description</th>
-                                <th data-hide="phone" data-sort-ignore="true">Nutritional</th>
-                                <th data-hide="phone" data-sort-ignore="true">Proteins</th>
-                                <th data-hide="phone" data-sort-ignore="true">Carbs</th>
-                                <th data-hide="phone" data-sort-ignore="true">Fats</th>
-                                <th data-hide="phone" data-sort-ignore="true">Calories</th>
+                                {{--<th data-hide="phone" data-sort-ignore="true">Proteins</th>--}}
+                                {{--<th data-hide="phone" data-sort-ignore="true">Carbs</th>--}}
+                                {{--<th data-hide="phone" data-sort-ignore="true">Fats</th>--}}
+                                {{--<th data-hide="phone" data-sort-ignore="true">Calories</th>--}}
                                 <th data-hide="phone">Price</th>
-                                <th data-hide="phone">Weight</th>
+                                {{--<th data-hide="phone">Weight</th>--}}
                                 <th class="text-right" data-sort-ignore="true">Action</th>
                             </tr>
                             </thead>
@@ -64,6 +64,9 @@
                                             {{ $product->category ? json_decode($product->category->name)->ru : '' }}<br>
                                             {{ $product->category ? json_decode($product->category->name)->en : '' }}
                                         </td>
+                                        <td>
+                                            {{ $product->first_page ? 'Yes' : 'No' }}
+                                        </td>
                                         <td class="description">
                                             {{$product->description ? json_decode($product->description)->am : '' }}
                                             <br>
@@ -72,27 +75,24 @@
                                             {{$product->description ? json_decode($product->description)->en : '' }}
                                             <br>
                                         </td>
-                                        <td>
-                                            {{ $product->nutritional_value }}
-                                        </td>
-                                        <td>
-                                            {{ $product->proteins }}
-                                        </td>
-                                        <td>
-                                            {{ $product->carbs }}
-                                        </td>
-                                        <td>
-                                            {{ $product->fats }}
-                                        </td>
-                                        <td>
-                                            {{ $product->calories }}
-                                        </td>
+                                        {{--<td>--}}
+                                            {{--{{ $product->proteins }}--}}
+                                        {{--</td>--}}
+                                        {{--<td>--}}
+                                            {{--{{ $product->carbs }}--}}
+                                        {{--</td>--}}
+                                        {{--<td>--}}
+                                            {{--{{ $product->fats }}--}}
+                                        {{--</td>--}}
+                                        {{--<td>--}}
+                                            {{--{{ $product->calories }}--}}
+                                        {{--</td>--}}
                                         <td>
                                             {{ $product->price }}
                                         </td>
-                                        <td>
-                                            {{ $product->weight }}
-                                        </td>
+                                        {{--<td>--}}
+                                            {{--{{ $product->weight }}--}}
+                                        {{--</td>--}}
                                         <td class="text-right action">
                                             <div class="btn-group">
                                                 <a href="{{ url('admin/products/edit/'.$product->id) }}">

@@ -50,10 +50,11 @@ class ProductController extends AdminBaseController
      * @return \Illuminate\Http\RedirectResponse'
      */
     public function save(Request $request){
+//        dd($request->all());
         $this->validate($request, [
             'name.*'=>'required',
             'price'=>'required',
-            'status'=>'required'
+            'first_page' => 'required_if:category, 0'
         ]);
 
         Product::create([
@@ -67,7 +68,7 @@ class ProductController extends AdminBaseController
             'calories' => $request->calories,
             'weight' => $request->weight,
             'category_id' => $request->category ? $request->category : null,
-            'status'=>$request->status
+            'first_page'=>$request->first_page ? 1 : 0
         ]);
 
         return redirect('admin/products')->with('message', 'Product was created successfully');
@@ -99,7 +100,6 @@ class ProductController extends AdminBaseController
         $this->validate($request, [
             'name.*'  => 'required',
             'price' =>'required',
-            'status'=>'required'
         ]);
 
         Product::find($request->product_id)->update([
@@ -113,7 +113,7 @@ class ProductController extends AdminBaseController
             'calories' => $request->calories,
             'weight' => $request->weight,
             'category_id' => $request->category ? $request->category : null,
-            'status'=>$request->status
+            'first_page'=>$request->first_page ? 1 : 0
         ]);
 
         return redirect()->back()->with('message', 'Product was successfully updated');

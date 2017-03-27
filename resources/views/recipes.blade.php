@@ -7,73 +7,18 @@
     <main>
     	<div class="container">
     		<div class="row">
+                @foreach($recipes as $recipe)
     			<div class="col-sm-3">
     				<div class="recp-wrap">
-	    				<div class="for-reciep-img"><!-- For img bg --></div>
-	    				<h3>Award Winning Soft Chocolate Chip </h3>
+	    				<div class="for-reciep-img" style="background: url( '{{ $recipe->profile_image ? "../images/recipes/".$recipe->profile_image->name : "../images/products/noimage.gif" }}')"><!-- For img bg --></div>
+	    				<h3>{{ $recipe->title }}</h3>
 	    				<hr>
-	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptatibus fugit, quos harum quibusdam ex.</p>
-    				</div>
+	    				<p>{{ $recipe->text }}</p>
+                    </div>
     			</div>
-    			<div class="col-sm-3">
-    				<div class="recp-wrap">
-	    				<div class="for-reciep-img"><!-- For img bg --></div>
-	    				<h3>Award Winning Soft Chocolate Chip </h3>
-	    				<hr>
-	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptatibus fugit, quos harum quibusdam ex.</p>
-    				</div>
-    			</div>
-    			<div class="col-sm-3">
-    				<div class="recp-wrap">
-	    				<div class="for-reciep-img"><!-- For img bg --></div>
-	    				<h3>Award Winning Soft Chocolate Chip </h3>
-	    				<hr>
-	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptatibus fugit, quos harum quibusdam ex.</p>
-    				</div>
-    			</div>
-    			<div class="col-sm-3">
-    				<div class="recp-wrap">
-	    				<div class="for-reciep-img"><!-- For img bg --></div>
-	    				<h3>Award Winning Soft Chocolate Chip </h3>
-	    				<hr>
-	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptatibus fugit, quos harum quibusdam ex.</p>
-    				</div>
-    			</div>
+    			@endforeach
     		</div>
-    		    		<div class="row">
-    		    			<div class="col-sm-3">
-    		    				<div class="recp-wrap">
-    			    				<div class="for-reciep-img"><!-- For img bg --></div>
-    			    				<h3>Award Winning Soft Chocolate Chip </h3>
-    			    				<hr>
-    			    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptatibus fugit, quos harum quibusdam ex.</p>
-    		    				</div>
-    		    			</div>
-    		    			<div class="col-sm-3">
-    		    				<div class="recp-wrap">
-    			    				<div class="for-reciep-img"><!-- For img bg --></div>
-    			    				<h3>Award Winning Soft Chocolate Chip </h3>
-    			    				<hr>
-    			    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptatibus fugit, quos harum quibusdam ex.</p>
-    		    				</div>
-    		    			</div>
-    		    			<div class="col-sm-3">
-    		    				<div class="recp-wrap">
-    			    				<div class="for-reciep-img"><!-- For img bg --></div>
-    			    				<h3>Award Winning Soft Chocolate Chip </h3>
-    			    				<hr>
-    			    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptatibus fugit, quos harum quibusdam ex.</p>
-    		    				</div>
-    		    			</div>
-    		    			<div class="col-sm-3">
-    		    				<div class="recp-wrap">
-    			    				<div class="for-reciep-img"><!-- For img bg --></div>
-    			    				<h3>Award Winning Soft Chocolate Chip </h3>
-    			    				<hr>
-    			    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptatibus fugit, quos harum quibusdam ex.</p>
-    		    				</div>
-    		    			</div>
-    		    		</div>
+
     	</div>
     </main>
 @endsection

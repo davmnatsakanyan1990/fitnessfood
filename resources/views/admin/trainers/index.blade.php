@@ -11,7 +11,7 @@
                         <div class="col-sm-4">
                             <a href="{{ url('admin/trainers/show/'.$trainer->id) }}">
                                 <div class="text-center">
-                                    <img alt="image" style="margin-bottom: 10px"
+                                    <img alt="image" style="margin-bottom: 10px; height: 55px; width: 55px"
                                          class="img-circle m-t-xs img-responsive center-block"
                                          src="{{ $trainer->image ? '/images/trainerImages/'.$trainer->image->name : '/images/profile-icon.png' }}">
                                     @if($trainer->is_approved)

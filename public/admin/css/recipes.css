@@ -85,3 +85,7 @@
 ul.notes li div a {
     position: inherit !important;
 }
+
+.note-editable, .note-codable{
+    min-height: 380px;
+}

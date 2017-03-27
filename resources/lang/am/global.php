@@ -15,6 +15,7 @@ return [
 
     'order' => 'Պատվիրել',
     'about us' => 'Մեր Մասին',
+    'recipes' => 'Բաղադրատոմսեր',
     'our partners' => 'Գործընկերներ',
     'I am trainer' => 'Ես մարզիչ եմ',
     'contact' => 'Կապ',
@@ -59,7 +60,7 @@ return [
     'action' => 'Գործողություն',
     'card order' => 'Քարտի Պատվեր',
     'count' => 'Քանակը',
-    'Set your profile photo to order a card' => 'Խնդրոմ ենք տեղադրեք ձեր անձնական էջի լուսանկարը',
+    'Set your profile photo to order a card' => 'Պատվիրելու համար խնդրոմ ենք տեղադրեք ձեր անձնական էջի լուսանկարը',
     'your percent' => 'Ձեր տոկոսի չափը'
 
 ];
