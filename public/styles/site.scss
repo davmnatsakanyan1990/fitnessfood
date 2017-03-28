@@ -742,6 +742,25 @@ footer {
   background: #fff;
   position: relative;
   z-index: 999;
+  .phone-numbers{
+
+      a{
+        position: relative;
+        color: #333333;
+        text-decoration: none;
+        font-size: 16px;
+
+        :before {
+          content: url(../images/phone.png);
+          position: absolute;
+          width: 20px;
+          top: -3px;
+          left: -30px;
+          height: 21px;
+        }
+      }
+
+  }
   .footer-social {
     img {
       vertical-align: middle;
@@ -758,7 +777,7 @@ footer {
       li {
         a {
           text-decoration: none;
-          color: $main-violet;
+          color: #676767;
           font-family: ArialAMUbold;
         }
       }
