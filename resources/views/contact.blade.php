@@ -23,6 +23,9 @@
                         <a href="tel:044700323"><span>044 700 323</span></a>
                         <a href="tel:091700323"><span>091 700 323</span></a>
                     </p>
+                    <p class="email">
+                        <a><span>contact@fitnesscook.am</span></a>
+                    </p>
                     
                 </div>
 

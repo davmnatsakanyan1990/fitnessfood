@@ -824,7 +824,23 @@ footer {
   .col-sm-4 {
     margin-top: 60px;
   }
+
   p {
+    &.email{
+
+      display: block;
+
+      a{
+        display: inline-block;
+        text-decoration: none;
+        &:before {
+          font-size: 20px;
+          font-family: FontAwesome;
+          content: "\f003";
+          color: #892e6b;
+        }
+      }
+    }
     display: inline-block;
     font-family: arial;
     font-size: 24px;
@@ -838,7 +854,7 @@ footer {
         content: url(../images/phone.png);
         position: absolute;
         width: 20px;
-        top: 2px;
+        top: 0px;
         left: -30px;
         height: 21px;
       }

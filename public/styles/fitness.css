@@ -717,6 +717,16 @@ footer {
   line-height: 28px;
   margin-top: 30px;
   color: #999999; }
+  .cols-3-row p.email {
+    display: block; }
+    .cols-3-row p.email a {
+      display: inline-block;
+      text-decoration: none; }
+      .cols-3-row p.email a:before {
+        font-size: 20px;
+        font-family: FontAwesome;
+        content: "\f003";
+        color: #892e6b; }
   .cols-3-row p a {
     position: relative;
     display: block; }
@@ -724,7 +734,7 @@ footer {
       content: url(../images/phone.png);
       position: absolute;
       width: 20px;
-      top: 2px;
+      top: 0px;
       left: -30px;
       height: 21px; }
   .cols-3-row p span {
