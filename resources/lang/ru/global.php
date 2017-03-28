@@ -41,7 +41,7 @@
 //    'my payments' => 'Мои Платежи',
 //    'per' => 'В',
 //    'nothing was found' => 'Результатов нет',
-//    'trainer\'s name' => 'Имя Тренера',
+//    'counselor name' => 'Имя Тренера',
 //    'nobody' => 'Никто',
 //    'free shipping text' => 'Бесплатная доставка при покупке :amount амд и более',
 //    'all' => 'Все',

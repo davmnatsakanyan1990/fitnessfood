@@ -14,10 +14,9 @@ class DatabaseSeeder extends Seeder
 //         $this->call(TrainersTableSeeder::class);
 //         $this->call(ProductsTableSeeder::class);
          $this->call(AdminsTableSeeder::class);
-//         $this->call(OrdersTableSeeder::class);
-         $this->call(SettingsTableSeeder::class);
-        // $this->call(GymTableSeeder::class);
-         $this->call(PagesTableSeeder::class);
-         $this->call(SubPagesSeeder::class);
+//         $this->call(SettingsTableSeeder::class);
+//         $this->call(GymTableSeeder::class);
+//         $this->call(PagesTableSeeder::class);
+//         $this->call(SubPagesSeeder::class);
     }
 }

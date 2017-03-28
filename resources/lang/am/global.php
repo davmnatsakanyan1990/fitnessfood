@@ -42,7 +42,7 @@ return [
     'my payments' => 'Իմ Վճարումները',
     'per' => 'Յուր.',
     'nothing was found' => 'Արդյունք չի գտնվել',
-    'trainer\'s name' => 'Մարզիչի Անունը',
+    'counselor name' => 'Մասնագետի Անունը',
     'nobody' => 'Ոչ ոք',
     'free shipping text' => 'Առաքումն անվճար :amount դր և ավել գնումների դեպքում',
     'all' => 'Բոլորը',

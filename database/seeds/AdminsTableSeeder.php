@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class AdminsTableSeeder extends Seeder
 {
@@ -12,10 +12,15 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('admins')->insert([
-            'name'=>'admin 1',
-            'username'=>'admin1',
-            'password'=>bcrypt('123456')
-        ]);
+        $admin = Admin::first();
+
+        if($admin){
+
+            Admin::where('id', $admin->id)->update(['username' => env('ADMIN_USERNAME'), 'password' => bcrypt(env('ADMIN_PASSWORD'))]);
+        }
+        else{
+
+            Admin::create(['name' => 'Admin', 'username' => env('ADMIN_USERNAME'), 'password' => bcrypt(env('ADMIN_PASSWORD'))]);
+        }
     }
 }

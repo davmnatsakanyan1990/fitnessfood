@@ -136,7 +136,7 @@
                             </div>
                             <div class="m-searchPlusCheck">
                                 <div class="marzich-search">
-                                    <input type="text" name="search" placeholder="@lang('global.trainer\'s name')">
+                                    <input type="text" name="search" placeholder="@lang('global.counselor name')">
                                     <span><i class="fa fa-search" aria-hidden="true"></i></span>
                                 </div>
 
