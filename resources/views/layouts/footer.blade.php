@@ -4,10 +4,14 @@
             <div class="footer-social">
                 <ul class="list-inline rrssb-buttonss">
                     {{--<li><a href="#"><img src="/images/social/share.png" alt="share.png"></a></li>--}}
+                    @if(url()->current() == url('contact', App::getLocale()))
+
+                    @else
                     <li><a target="_blank" href="https://www.facebook.com/fitnesspastry">
                             <img src="/images/social/1.png" alt="social/1.png">
                         </a>
                     </li>
+                    @endif
                     {{--<li><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="popup">--}}
                             {{--<img src="/images/social/1.png" alt="social/1.png">--}}
                         {{--</a>--}}

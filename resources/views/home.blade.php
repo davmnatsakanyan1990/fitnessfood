@@ -4,197 +4,179 @@
     <main class="home-main"><!-- Main section -->
         <section><!-- Products section -->
             <!-- Sub menu -->
-             
             <!-- end menu -->
-           
-                <div class="container home-product-cont">
-                    <div class="row">
-                        <div class="col-md-3 side-bar">
-                            <div class="side-bar-cont">
-                                <div class="filter-navmenu-wrap">
-                                    <ul>
-                                        @foreach($categories as $category)
-                                            <li class="{{ request('cat') == $category->id ? 'filter-active' : '' }}"><a href="{{ url('/'.App::getLocale().'?cat='.$category->id) }}">{{$category->name }}</a></li>
-                                        @endforeach
+            <div class="container home-product-cont">
+                <div class="row">
+                    <div class="col-md-3 side-bar">
+                        <div class="side-bar-cont">
+                            <div class="filter-navmenu-wrap">
+                                <ul>
+                                    @foreach($categories as $category)
+                                        <li class="{{ request('cat') == $category->id ? 'filter-active' : '' }}"><a href="{{ url('/'.App::getLocale().'?cat='.$category->id) }}">{{$category->name }}</a></li>
+                                    @endforeach
 
-                                    </ul>
-                                </div>
+                                </ul>
+                            </div>
 
-                                <div class="delivery-block">
-                                    <div class="car-bef">
-                                        <p>Առաքումն</p>
-                                        <span>Անվճար</span>
-                                    </div>
-                                    <article>3000 դրամ և ավելի գնումների դեպքում</article>
+                            <div class="delivery-block">
+                                <div class="car-bef">
+                                    <p>Առաքումն</p>
+                                    <span>Անվճար</span>
                                 </div>
+                                <article>3000 դրամ և ավելի գնումների դեպքում</article>
+                            </div>
 
-                                <div class="no-need-reg">
-                                    <img src="images/girl.png" alt="girl.png">
-                                    <p>
-                                        <span>Գրանցվելու</span>
-                                        <span>Կարիք</span>
-                                        <span>չկա</span>
-                                    </p>
-                                    <div class="clearfix"></div>
-                                    <ul>
-                                        <li>
-                                            Ավելացրեք տեսականին
-                                            զամբյուղում
-                                        </li>
-                                        <li>
-                                            Մուտքագրեք ձեր
-                                            անունը
-                                        </li>
-                                        <li>
-                                            Մուտքագրեք ձեր
-                                            հեռախոսահամարը
-                                        </li>
-                                        <li>
-                                            Եվ մենք անմիջապես
-                                            կզանգահարենք ձեզ
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="no-need-reg">
+                                <img src="images/girl.png" alt="girl.png">
+                                <p>
+                                    <span>Գրանցվելու</span>
+                                    <span>Կարիք</span>
+                                    <span>չկա</span>
+                                </p>
+                                <div class="clearfix"></div>
+                                <ul>
+                                    <li>
+                                        Ավելացրեք տեսականին
+                                        զամբյուղում
+                                    </li>
+                                    <li>
+                                        Մուտքագրեք ձեր
+                                        անունը
+                                    </li>
+                                    <li>
+                                        Մուտքագրեք ձեր
+                                        հեռախոսահամարը
+                                    </li>
+                                    <li>
+                                        Եվ մենք անմիջապես
+                                        կզանգահարենք ձեզ
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        @if(count($products) > 0)
+                    </div>
+                    @if(count($products) > 0)
 
-                        <div class="col-md-9 product-section">
-                            @foreach($products as $product)
-{{--                            @foreach($row as $product)--}}
-                            <!-- product -->
-                            <div class="col-sm-6 col-md-4" >
-                                <div class="tumb-wrap" data-id="{{ $product->id }}">
-                                    <div class="for-img">
-                                        <p class="prd_title">{{ $product->title }}</p>
-                                        <div class="prod-img product" data-toggle="modal" data-target="#productModal" style="background: url(images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }});" data-id="{{ $product->id }}" >
+                    <div class="col-md-9 product-section">
+                        <div class="icons-block">
+                            <div class="col-md-12">
+                                <div class="icon-parent">
+                                    <div class="img_circle dropdown">
+
+                                        <img src="{{ asset('images/icons/Icons_1_'.App::getLocale().'.gif') }}" >
+
+                                        <div class="dropdown-menu">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
                                         </div>
-                                        <div class="prod-inf">
 
-                                                <!-- Product info from_m -->
-                                            <div class="modal-product-info"> 
-                                                <h2>@lang('product.nutritional value')
-                                                    <span>(@lang('global.per') <label class="nutritional_value">{{ $product->nutritional_value }}</label>@lang('product.g'))</span>
-                                                </h2>
-                                                
-                                                <hr>
-                                                <ul>
-                                                    <li>@lang('product.proteins') <span><label class="proteins">{{ $product->proteins }}</label> @lang('product.g')</span></li>
-                                                    <li>@lang('product.fats') <span><label class="fats">{{ $product->fats }}</label> @lang('product.g')</span></li>
-                                                    <li>@lang('product.carbs') <span><label class="carbs">{{ $product->carbs }}</label> @lang('product.g')</span></li>
-                                                    <li>@lang('product.calories') <span><label class="calories">{{ $product->calories }}</label> @lang('product.kkal')</span></li>
-                                                    <li>@lang('product.weight') <span><label class="weight">{{ $product->weight }}</label> @lang('product.g')</span></li>
-                                                </ul>
-                                                <hr>
-                                                <p class="product-desc">
-                                                    {{ $product->description }}
-                                                </p>
-                                            </div><!-- Product info from_m end -->
-                                            <div class="clearfix">
-                                                <div class="p-kkal">{{ $product->nutritional_value }} @lang('product.kkal') </div>
-                                                <div class="p-price"><span class="prd_price">{{ $product->price }}</span><sub>@lang('product.amd')</sub></div>
+                                    </div>
+                                </div>
+                                <div class="icon-parent">
+                                    <div class="img_circle dropdown">
+
+                                        <img src="{{ asset('images/icons/Icons_2_'.App::getLocale().'.gif') }}" >
+
+                                        <div class="dropdown-menu">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="icon-parent">
+                                    <div class="img_circle dropdown">
+
+                                        <img src="{{ asset('images/icons/Icons_3_'.App::getLocale().'.gif') }}" >
+
+                                        <div class="dropdown-menu">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="icon-parent">
+                                    <div class="img_circle dropdown">
+
+                                        <img src="{{ asset('images/icons/Icons_4_'.App::getLocale().'.gif') }}" >
+
+                                        <div class="dropdown-menu">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="icon-parent">
+                                    <div class="img_circle dropdown">
+
+                                        <img src="{{ asset('images/icons/Icons_5_'.App::getLocale().'.gif') }}" >
+
+                                        <div class="dropdown-menu">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        @foreach($products as $product)
+                        <div class="col-sm-6 col-md-4" >
+                            <div class="tumb-wrap" data-id="{{ $product->id }}">
+                                <div class="for-img">
+                                    <p class="prd_title">{{ $product->title }}</p>
+                                    <div class="prod-img product" data-toggle="modal" data-target="#productModal" style="background: url(images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }});" data-id="{{ $product->id }}" >
+                                    </div>
+                                    <div class="prod-inf">
+
+                                            <!-- Product info from_m -->
+                                        <div class="modal-product-info">
+                                            <h2>@lang('product.nutritional value')
+                                                <span>(@lang('global.per') <label class="nutritional_value">{{ $product->nutritional_value }}</label>@lang('product.g'))</span>
+                                            </h2>
+
+                                            <hr>
+                                            <ul>
+                                                <li>@lang('product.proteins') <span><label class="proteins">{{ $product->proteins }}</label> @lang('product.g')</span></li>
+                                                <li>@lang('product.fats') <span><label class="fats">{{ $product->fats }}</label> @lang('product.g')</span></li>
+                                                <li>@lang('product.carbs') <span><label class="carbs">{{ $product->carbs }}</label> @lang('product.g')</span></li>
+                                                <li>@lang('product.calories') <span><label class="calories">{{ $product->calories }}</label> @lang('product.kkal')</span></li>
+                                                <li>@lang('product.weight') <span><label class="weight">{{ $product->weight }}</label> @lang('product.g')</span></li>
+                                            </ul>
+                                            <hr>
+                                            <p class="product-desc">
+                                                {{ $product->description }}
+                                            </p>
+                                        </div><!-- Product info from_m end -->
+                                        <div class="clearfix">
+                                            <div class="p-kkal">{{ $product->nutritional_value }} @lang('product.kkal') </div>
+                                            <div class="p-price"><span class="prd_price">{{ $product->price }}</span><sub>@lang('product.amd')</sub></div>
+                                        </div>
+                                        <div class="quantity-wrap clearfix">
+                                            <div>
+                                                <form class='quantity-form' method='POST' action='#'>
+                                                    <div>
+                                                        <input type='text' name='quantity' value='1' class='qty' />
+                                                    </div>
+                                                    <div >
+                                                        <input type='button' value='&#43;' class='qtyplus' field='quantity' />
+                                                        <input type='button' value='&#8722;' class='qtyminus' field='quantity' />
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class="quantity-wrap clearfix">
-                                                <div>
-                                                    <form class='quantity-form' method='POST' action='#'>
-                                                        <div>
-                                                            <input type='text' name='quantity' value='1' class='qty' />
-                                                        </div>
-                                                        <div >
-                                                            <input type='button' value='&#43;' class='qtyplus' field='quantity' />
-                                                            <input type='button' value='&#8722;' class='qtyminus' field='quantity' />
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="add-to-card-wrap">
-                                                    <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>
-                                                </div>
+                                            <div class="add-to-card-wrap">
+                                                <button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>
                                             </div>
                                         </div>
                                     </div>
-                                   
                                 </div>
+
                             </div>
-                            <!-- product end-->
-                            {{--@endforeach--}}
-                            @endforeach
                         </div>
-
-                        @endif
-                        
-                    </div><!-- Row end -->
-                </div><!-- home-product-cont end -->
-                    {{--<div class="container opening-block"><!-- Opening Block -->--}}
-                        {{--<div class="row">--}}
-                    {{--@foreach($row as $product)--}}
-                        {{--<div class="reapeating-block" id="{{ $product->id }}"><!-- * 1 * -->--}}
-                            {{--<div class="col-md-4">--}}
-                                {{--<div class="gall-big">--}}
-                                    {{--<img src="images/products/{{ $product->thumb_image ? $product->thumb_image->name : 'noimage.gif' }}" class="img-responsive" alt="">--}}
-                                {{--</div>--}}
-                                {{--<ul class="sm-gallery-ul list-inline text-center">--}}
-                                    {{--@if(count($product->images) > 0)--}}
-                                        {{--@foreach($product->images as $image)--}}
-                                        {{--<li><a href="javascript:;"><img src="images/products/{{ $image->name }}" data-big-src="images/products/{{ $image->name }}" alt=""></a></li>--}}
-                                        {{--@endforeach--}}
-                                    {{--@endif--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                            {{--<div class="col-sm-8">--}}
-                                {{--<h2>{{ $product->title }}</h2>--}}
-                                {{--<p>{{ $product->description }}</p>--}}
-                                {{--<h3>@lang('product.nutritional value') - {{ $product->nutritional_value }}@lang('product.g').</h3>--}}
-                                {{--<div class="sp-ch-k">--}}
-                                    {{--<div>--}}
-                                        {{--<p>@lang('product.proteins')<span>{{ $product->proteins }}@lang('product.g')</span></p>--}}
-                                        {{--<p>@lang('product.carbs')<span>{{ $product->carbs }}@lang('product.g')</span></p>--}}
-                                    {{--</div>--}}
-                                    {{--<div>--}}
-                                        {{--<p>@lang('product.fats')<span>{{ $product->fats }}@lang('product.g')</span></p>--}}
-                                        {{--<p>@lang('product.calories')<span>{{ $product->calories }}@lang('product.g')</span></p>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-
-                                {{--<div class="social-wrap clearfix"><!-- Social block -->--}}
-                                    {{--<div>--}}
-                                        {{--<ul class="list-inline">--}}
-                                            {{--<li><a href="#"><img src="images/social/share.png" alt="share.png"></a></li>--}}
-                                            {{--<li><a href="#"><img src="images/social/1.png" alt="social/1.png"></a></li>--}}
-                                            {{--<li><a href="#"><img src="images/social/2.png" alt="social/2.png"></a></li>--}}
-                                            {{--<li><a href="#"><img src="images/social/3.png" alt="social/3.png"></a></li>--}}
-                                            {{--<li><a href="#"><img src="images/social/4.png" alt="social/4.png"></a></li>--}}
-                                        {{--</ul>--}}
-                                    {{--</div>--}}
-                                    {{--<div class="sided-to-social">--}}
-                                        {{--<div class="prod-inf">--}}
-                                            {{--<div class="clearfix">--}}
-                                                {{--<div class="p-price">{{ $product->price }}<sub>@lang('product.amd')</sub></div>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="quantity-wrap clearfix">--}}
-                                                {{--<div>--}}
-                                                    {{--<form class="quantity-form" method="POST" action="#">--}}
-                                                        {{--<div>--}}
-                                                            {{--<input type="text" name="quantity" value="1" class="qty">--}}
-                                                        {{--</div>--}}
-                                                        {{--<div>--}}
-                                                            {{--<input type="button" value="+" class="qtyplus" field="quantity">--}}
-                                                            {{--<input type="button" value="−" class="qtyminus" field="quantity">--}}
-                                                        {{--</div>--}}
-                                                    {{--</form>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="add-to-card-wrap">--}}
-                                                    {{--<button data-id="{{ $product->id }}" class="addToCard-button"><span><img src="images/zambyux-sm.png" alt="images/zambyux.png"></span>@lang('product.add to cart')</button>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                        {{--</div><!-- prod-info end in opening block -->--}}
-                                    {{--</div><!-- Sided to social -->--}}
-                                {{--</div><!-- Social block -->--}}
-                            {{--</div><!-- col-sm-8 end-->--}}
-                        {{--</div><!-- reapiting-block end-->--}}
-                    {{--@endforeach--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                
+                        @endforeach
+                    </div>
+                    @endif
+                </div><!-- Row end -->
+            </div>
         </section><!-- Products section -->
 
         <!-- Modal -->

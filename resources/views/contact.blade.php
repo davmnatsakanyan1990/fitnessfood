@@ -23,6 +23,9 @@
                         <a href="tel:044700323"><span>044 700 323</span></a>
                         <a href="tel:091700323"><span>091 700 323</span></a>
                     </p>
+                    <p class="email">
+                        <a><span>contact@fitnesscook.am</span></a>
+                    </p>
                     
                 </div>
 
@@ -89,23 +92,23 @@
                         @endforeach
                     </div>
                 @endif
-                <form class="contact-page-form" method="post" action="{{ url('contact/send/'.App::getLocale()) }}">
-                    {{ csrf_field() }}
-                    <div class="col-sm-6">
-                        <input name="name" value="{{ old('name') }}" class="form-control" type="text" placeholder="@lang('global.name')">
-                    </div>
+                {{--<form class="contact-page-form" method="post" action="{{ url('contact/send/'.App::getLocale()) }}">--}}
+                    {{--{{ csrf_field() }}--}}
+                    {{--<div class="col-sm-6">--}}
+                        {{--<input name="name" value="{{ old('name') }}" class="form-control" type="text" placeholder="@lang('global.name')">--}}
+                    {{--</div>--}}
 
-                    <div class="col-sm-6">
-                        <input name="email" value="{{ old('email') }}" class="form-control" type="text" placeholder="@lang('auth.email')">
-                    </div>
+                    {{--<div class="col-sm-6">--}}
+                        {{--<input name="email" value="{{ old('email') }}" class="form-control" type="text" placeholder="@lang('auth.email')">--}}
+                    {{--</div>--}}
 
-                    <div class="col-sm-12">
-                        <textarea name="text" id="" placeholder="@lang('global.message')">{{ old('text') }}</textarea>
-                    </div>
-                    <div class="submit-div col-sm-12">
-                        <button type="submit">@lang('global.send')<span class="fa fa-envelope"></span></button>
-                    </div>
-                </form>
+                    {{--<div class="col-sm-12">--}}
+                        {{--<textarea name="text" id="" placeholder="@lang('global.message')">{{ old('text') }}</textarea>--}}
+                    {{--</div>--}}
+                    {{--<div class="submit-div col-sm-12">--}}
+                        {{--<button type="submit">@lang('global.send')<span class="fa fa-envelope"></span></button>--}}
+                    {{--</div>--}}
+                {{--</form>--}}
             </div><!-- Form row end-->
         </div><!-- Container end -->
     </main>

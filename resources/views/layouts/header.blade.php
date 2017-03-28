@@ -9,7 +9,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a href="{{ url('/'.App::getLocale()) }}">
-                        <img src="/images/logo.png" alt="/images/logo.png">
+                        <img src="/images/logo_new.png" alt="/images/logo_new.png">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
