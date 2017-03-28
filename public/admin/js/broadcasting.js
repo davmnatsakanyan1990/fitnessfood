@@ -1,7 +1,7 @@
 // Enable pusher logging - don't include this in production
 Pusher.logToConsole = true;
 
-var pusher = new Pusher('3230f3f47c09953e1b4f', {
+var pusher = new Pusher(pusher_key, {
     encrypted: true
 });
 

@@ -20,6 +20,7 @@
         var BASE_URL = '{{ url('/') }}';
         var token = '{{ csrf_token() }}';
         var current = '{{ url()->current() }}';
+        var pusher_key = '{{ env('PUSHER_KEY') }}'
     </script>
 
     @yield('styles')
