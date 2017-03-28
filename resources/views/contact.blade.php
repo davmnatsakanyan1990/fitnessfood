@@ -89,23 +89,23 @@
                         @endforeach
                     </div>
                 @endif
-                <form class="contact-page-form" method="post" action="{{ url('contact/send/'.App::getLocale()) }}">
-                    {{ csrf_field() }}
-                    <div class="col-sm-6">
-                        <input name="name" value="{{ old('name') }}" class="form-control" type="text" placeholder="@lang('global.name')">
-                    </div>
+                {{--<form class="contact-page-form" method="post" action="{{ url('contact/send/'.App::getLocale()) }}">--}}
+                    {{--{{ csrf_field() }}--}}
+                    {{--<div class="col-sm-6">--}}
+                        {{--<input name="name" value="{{ old('name') }}" class="form-control" type="text" placeholder="@lang('global.name')">--}}
+                    {{--</div>--}}
 
-                    <div class="col-sm-6">
-                        <input name="email" value="{{ old('email') }}" class="form-control" type="text" placeholder="@lang('auth.email')">
-                    </div>
+                    {{--<div class="col-sm-6">--}}
+                        {{--<input name="email" value="{{ old('email') }}" class="form-control" type="text" placeholder="@lang('auth.email')">--}}
+                    {{--</div>--}}
 
-                    <div class="col-sm-12">
-                        <textarea name="text" id="" placeholder="@lang('global.message')">{{ old('text') }}</textarea>
-                    </div>
-                    <div class="submit-div col-sm-12">
-                        <button type="submit">@lang('global.send')<span class="fa fa-envelope"></span></button>
-                    </div>
-                </form>
+                    {{--<div class="col-sm-12">--}}
+                        {{--<textarea name="text" id="" placeholder="@lang('global.message')">{{ old('text') }}</textarea>--}}
+                    {{--</div>--}}
+                    {{--<div class="submit-div col-sm-12">--}}
+                        {{--<button type="submit">@lang('global.send')<span class="fa fa-envelope"></span></button>--}}
+                    {{--</div>--}}
+                {{--</form>--}}
             </div><!-- Form row end-->
         </div><!-- Container end -->
     </main>
