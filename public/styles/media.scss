@@ -61,6 +61,12 @@
 }
  
 @media screen and(max-width: 991px){
+	.side-bar{
+		.partner-block{
+			text-align: left;
+		}
+	}
+
   .home-product-cont {
 	.col-md-9 {
 	  	padding-right: 15px;
@@ -325,6 +331,11 @@
 }	
 
 @media screen and(max-width: 480px){
+	.side-bar{
+		.partner-block{
+			text-align: center;
+		}
+	}
   .fb-share-button>span{
 	height: 18px !important;
   }

@@ -18,6 +18,7 @@
                                 </ul>
                             </div>
 
+                            <!-- Delivery Banner -->
                             <div class="delivery-block">
                                 <div class="car-bef">
                                     <p>Առաքումն</p>
@@ -26,6 +27,14 @@
                                 <article>3000 դրամ և ավելի գնումների դեպքում</article>
                             </div>
 
+                            <!-- Partner Banner -->
+                            <div class="partner-block">
+                                <p><span>ԱՌԱՔՄԱՆ</span><span>ՊԱՇՏՈՆԱԿԱՆ ԳՈՐԾԸՆԿԵՐ</span></p>
+                                <img src="{{ asset('images/menuam.png') }}">
+
+                            </div>
+
+                            <!-- No Need Registration Banner -->
                             <div class="no-need-reg">
                                 <img src="images/girl.png" alt="girl.png">
                                 <p>

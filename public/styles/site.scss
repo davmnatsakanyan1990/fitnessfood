@@ -499,6 +499,8 @@ footer, main:after {
           letter-spacing: 0.5px;
           color: $main-violet;
           padding-top: 5px;
+          padding-left: 10px;
+          padding-right: 10px;
         }
         & > img {
           padding: 10px;
@@ -2069,6 +2071,25 @@ footer {
     font-family: ArialAMUbold !important;
   }
 
+  .partner-block{
+    width: 100%;
+    padding: 16px;
+    margin-top: 20px;
+    height: 107px;
+    background-color: #4c4c4c;
+    font-family: ArialAMUbold;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    span{
+      display:block;
+      line-height: 15px;
+    }
+    img{
+      margin-top: 5px;
+    }
+  }
+
   .delivery-block {
     padding: 18px;
     margin-top: 40px;
@@ -2112,7 +2133,7 @@ footer {
   .no-need-reg {
     width: 100%;
     padding-bottom: 16px;
-    margin-top: 40px;
+    margin-top: 20px;
     background: #E3ECFF;
     img {
       float: left;

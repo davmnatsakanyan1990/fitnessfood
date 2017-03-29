@@ -25,6 +25,13 @@
                             </div>
                             <article>3000 դրամ և ավելի գնումների դեպքում</article>
                         </div>
+
+                        <!-- Partner Banner -->
+                        <div class="partner-block">
+                            <p><span>ԱՌԱՔՄԱՆ</span><span>ՊԱՇՏՈՆԱԿԱՆ ԳՈՐԾԸՆԿԵՐ</span></p>
+                            <img src="{{ asset('images/menuam.png') }}">
+
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-9 content">
