@@ -174,7 +174,7 @@
         <div class="empty">
             @if(session('success'))
             <div class="col-md-offset-4 col-md-4">
-                <div class="alert alert-success" style="margin-top: 30px">
+                <div class="alert alert-success" style="margin-top: 30px; text-align: center">
                     <p>{{ trans(session('success')) }}</p>
                 </div>
             </div>
