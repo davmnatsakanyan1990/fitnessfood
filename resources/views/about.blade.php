@@ -28,9 +28,8 @@
 
                         <!-- Partner Banner -->
                         <div class="partner-block">
-                            <p><span>ԱՌԱՔՄԱՆ</span><span>ՊԱՇՏՈՆԱԿԱՆ ԳՈՐԾԸՆԿԵՐ</span></p>
                             <img src="{{ asset('images/menuam.png') }}">
-
+                            <p>Առաքման պաշտոնական գործընկեր</p>
                         </div>
                     </div>
                 </div>

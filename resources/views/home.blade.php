@@ -27,13 +27,6 @@
                                 <article>3000 դրամ և ավելի գնումների դեպքում</article>
                             </div>
 
-                            <!-- Partner Banner -->
-                            <div class="partner-block">
-                                <p><span>ԱՌԱՔՄԱՆ</span><span>ՊԱՇՏՈՆԱԿԱՆ ԳՈՐԾԸՆԿԵՐ</span></p>
-                                <img src="{{ asset('images/menuam.png') }}">
-
-                            </div>
-
                             <!-- No Need Registration Banner -->
                             <div class="no-need-reg">
                                 <img src="images/girl.png" alt="girl.png">
@@ -62,6 +55,13 @@
                                     </li>
                                 </ul>
                             </div>
+
+                            <!-- Partner Banner -->
+                            <div class="partner-block">
+                                <img src="{{ asset('images/menuam.png') }}">
+                                <p>Առաքման պաշտոնական գործընկեր</p>
+
+                            </div>
                         </div>
                     </div>
                     @if(count($products) > 0)
@@ -75,7 +75,7 @@
                                         <img src="{{ asset('images/icons/Icons_1_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                            <p>Շաքարի փոխարեն մենք օգտագործում ենք Սուկրալոզա և ֆրուկտոզա, որոնք անվնաս են և կալորիականությամբ՝ ցածր։</p>
                                         </div>
 
                                     </div>
@@ -86,7 +86,7 @@
                                         <img src="{{ asset('images/icons/Icons_2_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                            <p>Վարսակի Թեփը չի պարունակում գլյուտեն և լայն կիրառում ունի գլյուտեն ֆրի արտադրանքում։</p>
                                         </div>
 
                                     </div>
@@ -97,7 +97,7 @@
                                         <img src="{{ asset('images/icons/Icons_3_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                            <p>Մենք չենք օգտագործում որևէ քիմիական հավելանյութեր, արհեստական յուղեր և թթխմորներ։</p>
                                         </div>
 
                                     </div>
@@ -108,7 +108,7 @@
                                         <img src="{{ asset('images/icons/Icons_4_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                            <p>Մեր ամբողջ արտադրանքը պատրաստվում է 100% Վարսակի թեփից, չի օգտագործվում որևէ այլ տեսակի հացահատիկ կամ հավելում։</p>
                                         </div>
 
                                     </div>
@@ -119,7 +119,7 @@
                                         <img src="{{ asset('images/icons/Icons_5_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                                            <p> Մեր խորհուրդն է՝ Ֆիթնես և Առողջ սնունդ, Սնվեք բնական, բացառեք թթխմորներ, շաքար, քիմիական հավելանյութեր և արհեստական յուղեր պարունակող ցանկացած սնունդ։</p>
                                         </div>
 
                                     </div>

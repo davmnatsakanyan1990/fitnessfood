@@ -24,6 +24,7 @@ class TrainerController extends AdminBaseController
 
     public function __construct(Request $request)
     {
+        $this->middleware('auth:admin');
         parent::__construct();
 
 //        if($request->route()->parameter('locale')){

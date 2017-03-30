@@ -109,9 +109,16 @@
                                 <p class="{{ $errors->has('phone') ? 'show' : '' }}">{{ $errors->first('phone') }}</p>
                                 
                                 <label for="Ypromo"> @lang('global.Do you have a promo code?')</label>
-                                <input class="{{ $errors->has('promo_code') ? 'inputDanger' : '' }}" id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') ? old('promo_code') : isset($_COOKIE['promo_code']) ? $_COOKIE['promo_code'] : '' }}" placeholder="1234">
+                                @if(isset($_COOKIE['promo_code']))
+                                    <input class="{{ $errors->has('promo_code') ? 'inputDanger' : '' }}" id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ $_COOKIE['promo_code'] }}" placeholder="1234">
+                                @else
+                                    <input class="{{ $errors->has('promo_code') ? 'inputDanger' : '' }}" id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ old('promo_code') ? old('promo_code') : '' }}" placeholder="1234">
+                                @endif
                                 <span class="greencheck" style="display: none">
                                     <img src="../images/greencheck.png" alt="green">
+                                </span>
+                                <span class="redcross" style="display: none">
+                                    <img src="../images/redcross.png" alt="green">
                                 </span>
                                 <p class="{{ $errors->has('promo_code') ? 'show' : '' }}">{{ $errors->first('promo_code') }}</p>
                                 <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">

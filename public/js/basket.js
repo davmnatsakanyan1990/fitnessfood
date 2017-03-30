@@ -64,6 +64,7 @@ $(document).find('input[name="promo_code"]').on('input', function() {
 function promo_inserted(value){
     if(value.length != 4){
         $('.greencheck').hide();
+        $('.redcross').hide();
         clearTimeout(timeout);
         // fill trainers list
         $(document).find('.trainer-select-main').html(trainers_list);
@@ -80,7 +81,7 @@ function promo_inserted(value){
 
     }
     else {
-            $('.greencheck').show();
+
             // disable trainer search field
             $(document).find('input[name="search"]').prop("disabled", true);
             // disable nobody box
@@ -101,8 +102,13 @@ function promo_inserted(value){
                     success: function (data) {
                         var total = getTotalAmount();
 
-                        if (data.promo)
+                        if (data.promo) {
+                            $('.greencheck').show();
                             sale_percent = data.promo.percent;
+                        }
+                        else{
+                            $('.redcross').show();
+                        }
 
                         if (total >= min_amount_free_shipping) {
                             var final_shipping = 0;

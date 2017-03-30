@@ -121,7 +121,10 @@ class BasketController extends Controller
         }
 
         $data['view'] = view('ajax.trainer_search', compact('trainers'))->render();
-        $data['promo'] = $promo;
+        if($promo && $promo->trainer->is_approved == 1)
+            $data['promo'] = $promo;
+       else
+           $data['promo'] = null;
         
         return $data;
     }

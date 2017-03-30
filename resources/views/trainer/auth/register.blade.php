@@ -34,10 +34,8 @@
 						<option {{ old('gym') && old('gym') == $gym->id ? 'selected' : '' }} value="{{ $gym->id }}">{{ $gym->name }}</option>
 					@endforeach
 				</select>
-				{{--<span class="star">*</span>--}}
     			<input name="address" type="text" value="{{ old('address') }}" placeholder="@lang('auth.address')">
-				<span class="star">*</span>
-				<div class="bfh-datepicker" data-name="date_of_birth" data-format="y-m-d" data-placeholder="Date of birthday" style="display: inline-block;"></div>
+				{{--<div class="bfh-datepicker" data-name="date_of_birth" data-format="y-m-d" data-placeholder="Date of birthday" style="display: inline-block;"></div>--}}
 				{{--<span class="star">*</span>--}}
 
     			<input name="password" type="password" placeholder="@lang('auth.password')">

@@ -83,7 +83,7 @@ class PaymentsController extends Controller
         $sender = Trainer::with('image')->find($this->trainer->id)->toArray();
 
         Event::fire(new NewPaymentEvent($sender, $payment));
-        return redirect()->back()->with('message', 'Ձեզ հետ կկապնվի մեր օպերատորը գումարի փոախանցման հարցով');
+        return redirect()->back()->with('message', trans('global.success_payment_message'));
     }
 
 
