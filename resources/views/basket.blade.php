@@ -127,7 +127,8 @@
                                 <p class="{{ $errors->has('promo_code') ? 'show' : '' }}">{{ $errors->first('promo_code') }}</p>
 
                                 <!-- Trainer search field -->
-                                <label>@lang('global.choose counselor')</label>
+                                <label>Շնորհակա՞լ եք Առողջ Խորհուրդի Համար։</br>
+                                    Նշեք Ձեր Խորհրդատուին և Պարգևեք Անակնկալ Ձեր Անունից :)</label>
                                 <div class="marzich-search">
                                     <input type="text" name="search" placeholder="@lang('global.counselor name')">
                                     <span><i class="fa fa-search" aria-hidden="true"></i></span>

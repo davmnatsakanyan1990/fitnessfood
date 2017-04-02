@@ -1,5 +1,16 @@
 $(document).ready(function () {
 
+    // hover on 5 icons
+    $(document).find('.icon-parent .dropdown').mouseover(function(){
+       var height = $(this).find('.dropdown-menu').height();
+
+        $(document).find('.icons-block .col-md-12').css('margin-bottom', height+15);
+    });
+
+    $(document).find('.icon-parent .dropdown').mouseout(function(){
+        $(document).find('.icons-block .col-md-12').css("margin-bottom", 0);
+    });
+
     // This button will increment the value
     $('.qtyplus').click(function (e) {
         // Stop acting like a button

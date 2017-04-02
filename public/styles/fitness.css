@@ -417,7 +417,11 @@ footer, main:after {
   margin-top: -26px; }
   .home-product-cont .icons-block .col-md-12 {
     padding: 0 45px;
-    margin-bottom: 64px; }
+    -webkit-transition: all .8s ease;
+    -moz-transition: all .8s ease;
+    -ms-transition: all .8s ease;
+    -o-transition: all .8s ease;
+    transition: all .8s ease; }
     .home-product-cont .icons-block .col-md-12:hover .icon-parent:last-child .dropdown-menu {
       right: -75px;
       left: auto; }

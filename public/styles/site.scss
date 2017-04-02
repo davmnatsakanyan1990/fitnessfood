@@ -407,8 +407,12 @@ footer, main:after {
   .icons-block{
     margin-top: -26px;
     .col-md-12{
-      padding: 0 45px;
-      margin-bottom: 64px;
+       padding: 0 45px;
+      -webkit-transition: all .8s ease;
+      -moz-transition: all .8s ease;
+      -ms-transition: all .8s ease;
+      -o-transition: all .8s ease;
+      transition: all .8s ease;
       &:hover .icon-parent:last-child .dropdown-menu{
         right: -75px;
         left: auto;
