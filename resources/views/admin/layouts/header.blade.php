@@ -89,7 +89,7 @@
                             <a href="{{ url('admin/orders/show/'.$order->id) }}">
                                 <div>
                                     <i class="fa fa-envelope fa-fw"></i> New order
-                                    <span class="pull-right text-muted small">{{ date('H:m:s', strtotime($order->created_at)) }}</span>
+                                    <span class="pull-right text-muted small">{{ date('H:i:s', strtotime($order->created_at)) }}</span>
                                 </div>
                             </a>
                         </li>

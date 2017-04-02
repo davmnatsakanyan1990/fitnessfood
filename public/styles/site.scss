@@ -1682,6 +1682,8 @@ footer {
 .basket-form {
   max-width: 350px;
   margin-top: 30px;
+  padding-right: 5px;
+  padding-left: 5px;
   float: left;
   hr {
     margin-bottom: 10px;
@@ -1939,6 +1941,16 @@ footer {
 .v-voq {
   margin-top: 15px;
   margin-left: 2px;
+  input[type="checkbox"]{
+    width: inherit;
+    display: none;
+  }
+  label{
+    cursor: pointer;
+  }
+  #tr4-cover{
+    margin-left: 0;
+  }
 }
 
 .trainer-select {
@@ -1978,9 +1990,9 @@ footer {
   display: block !important;
   input {
     display: block;
-    width: 100%;
-    padding: 15px 10px;
-    border: 1px solid #999999;
+    //width: 100%;
+    //padding: 15px 10px;
+    //border: 1px solid #999999;
   }
   /* 	&:after{
       content: '\f002';
@@ -2000,13 +2012,13 @@ footer {
   span {
     transition: all 0.3s;
     position: absolute;
-    top: 0;
-    right: 10px;
+    top: 5px;
+    right: 10%;
     height: 50px;
     padding-top: 10px;
     cursor: pointer;
     font-size: 24px;
-    color: $light-gray;
+    color: $light-gray !important;
     &:hover {
       color: $main-violet;
       transform: rotate(-15deg);

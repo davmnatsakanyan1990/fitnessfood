@@ -98,16 +98,20 @@
                         <div class="basket-form-div">
                             {{ csrf_field() }}
                             <div class="basket-first-inps">
-                                
+
+                                <!-- Name Field -->
                                 <label for="Yname">@lang('global.insert your name')</label>
                                 <input class="{{ $errors->has('name') ? 'inputDanger' : '' }}" id="Yname" name="name" type="text" value="{{ old('name') }}" placeholder="@lang('global.your name')">
                                 <span class="star">*</span>
                                 <p class="{{ $errors->has('name') ? 'show' : '' }}">{{ $errors->first('name') }}</p>
+
+                                <!-- Phone Field -->
                                 <label for="Yphone">@lang('global.insert your phone')</label>
                                 <input class="{{ $errors->has('phone') ? 'inputDanger' : '' }}" id="Yphone" name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
                                 <span class="star">*</span>
                                 <p class="{{ $errors->has('phone') ? 'show' : '' }}">{{ $errors->first('phone') }}</p>
-                                
+
+                                <!-- Promo Field -->
                                 <label for="Ypromo"> @lang('global.Do you have a promo code?')</label>
                                 @if(isset($_COOKIE['promo_code']))
                                     <input class="{{ $errors->has('promo_code') ? 'inputDanger' : '' }}" id="Ypromo" name="promo_code" maxlength="4" minlength="4" type="text" value="{{ $_COOKIE['promo_code'] }}" placeholder="1234">
@@ -121,27 +125,9 @@
                                     <img src="../images/redcross.png" alt="green">
                                 </span>
                                 <p class="{{ $errors->has('promo_code') ? 'show' : '' }}">{{ $errors->first('promo_code') }}</p>
-                                <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">
-                                    <li>@lang('global.discounted')</li>
-                                    <li class="old-price"></li>
-                                    <li>
-                                        <span id="zexchvats"></span>
-                                        <span>@lang('product.amd')</span>
-                                    </li>
-                                </ul>
-                                <hr>
-                            </div>
-                            <button type="submit" {{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
-                            @if($errors->has('trainer'))
-                                <div class="alert alert-danger" style="margin-top: 10px; background-color: #FF2036; color: #ffffff; border-radius: 15px">
-                                    <p>{{ $errors->first('trainer') }}</p>
-                                </div>
-                            @endif
 
-                            <div class="check-box">
-                                <span style="display:block; margin-bottom: 20px; font-size:18px;">@lang('global.choose counselor')</span>
-                            </div>
-                            <div class="m-searchPlusCheck">
+                                <!-- Trainer search field -->
+                                <label>@lang('global.choose counselor')</label>
                                 <div class="marzich-search">
                                     <input type="text" name="search" placeholder="@lang('global.counselor name')">
                                     <span><i class="fa fa-search" aria-hidden="true"></i></span>
@@ -152,8 +138,26 @@
                                     <label for="tr4-na" id="tr4-cover"></label>
                                     <label for="tr4-na">@lang('global.nobody')</label>
                                 </div>
+
+                                <!-- Sale amount -->
+                                <ul class="list-inline prc-ul" style="margin-top: 20px; display: none">
+                                    <li>@lang('global.discounted')</li>
+                                    <li class="old-price"></li>
+                                    <li>
+                                        <span id="zexchvats"></span>
+                                        <span>@lang('product.amd')</span>
+                                    </li>
+                                </ul>
+
+                                <hr>
+
                             </div>
-                            {{--</form>    --}}
+                            <button type="submit" {{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
+                            @if($errors->has('trainer'))
+                                <div class="alert alert-danger" style="margin-top: 10px; background-color: #FF2036; color: #ffffff; border-radius: 15px">
+                                    <p>{{ $errors->first('trainer') }}</p>
+                                </div>
+                            @endif
                         </div> <!-- basket-form-div end -->
                     </div> <!-- basket-form -->
                 </div>

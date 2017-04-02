@@ -186,7 +186,8 @@
 @media screen and(max-width: 768px){ 
 	.basket-form{
 		/* float: none; */
-		margin: 30px auto 0 auto; 
+		margin: 30px auto 0 auto;
+	  	max-width: 100%;
 	}
 	.droshakner-parent{
 		margin-right: 5px;
@@ -216,6 +217,11 @@
 		max-width: 480px;
 		margin: 0 auto;
 	}
+  //.marzich-search {
+	//span{
+	//  right: 56px;
+	//}
+  //}
 }
 
 @media screen and(max-width: 767px){
@@ -435,9 +441,7 @@
 			font-size: 14px;
 		}
 	}
-	.v-voq{
-		padding-left: 15px;
-	}
+
 	.for-table{
 		table{
 			& *{
