@@ -93,7 +93,6 @@ class AuthController extends Controller
             'phone' => $data['phone'],
             'percent' => $percent,
             'gym_id' => $data['gym'] == "" ? null : $data['gym'],
-            'date_of_birth' => $data['date_of_birth'],
             'password' => bcrypt($data['password']),
         ]);
 

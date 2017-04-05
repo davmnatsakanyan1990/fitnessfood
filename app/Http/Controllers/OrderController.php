@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\PromoCode;
+use App\Models\Setting;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -80,9 +81,12 @@ class OrderController extends Controller
             $amount += $prd->price * $product->count;
         }
 
-        $obj = Order::with('counselor')->find($order)->toArray();
+        $obj = Order::with('counselor', 'products')->find($order)->toArray();
         $obj['amount'] = $amount;
-        
+
+        $settings = Setting::first();
+        $obj['shipping'] = $amount >=$settings->min_amount_free_shipping ? 0 : $settings->shipping_price;
+
         Event::fire(new NewOrderEvent($obj));
 
        return redirect()->back()->with('success', 'global.success_order')->cookie('basket', '', -1);
