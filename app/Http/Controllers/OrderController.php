@@ -67,6 +67,7 @@ class OrderController extends Controller
         $order = DB::table('orders')->insertGetId([
             'customer_name' => $request->name,
             'customer_phone' => $request->phone,
+            'customer_address' => $request->address,
             'trainer_id' => $trainer_id,
             'trainer_percent' => $trainer_percent,
             'promo_code' => $request->promo_code ? $request->promo_code : null,
@@ -82,7 +83,19 @@ class OrderController extends Controller
         }
 
         $obj = Order::with('counselor', 'products')->find($order)->toArray();
-        $obj['amount'] = $amount;
+        if($request->promo_code){
+            $promo_code_percent = PromoCode::where('code', $request->promo_code)->first()->percent;
+
+        }
+        else{
+            $promo_code_percent = 0;
+        }
+
+
+        $sale = $amount * $promo_code_percent/100;
+
+        $obj['amount'] = $amount - $sale;
+
 
         $settings = Setting::first();
         $obj['shipping'] = $amount >=$settings->min_amount_free_shipping ? 0 : $settings->shipping_price;

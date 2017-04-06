@@ -47,6 +47,7 @@
                             <tr>
                                 <th data-hide="phone">Customer Name</th>
                                 <th>Customer Phone</th>
+                                <th>Address</th>
                                 <th>Counselor</th>
                                 <th data-hide="phone">Amount</th>
                                 <th data-hide="phone">Sale</th>
@@ -64,6 +65,9 @@
                                         </td>
                                         <td>
                                             {{ $order->customer_phone }}
+                                        </td>
+                                        <td>
+                                            {{ $order->customer_address }}
                                         </td>
                                         <td>
                                             {{ $order->counselor ? $order->counselor->name  : '' }}

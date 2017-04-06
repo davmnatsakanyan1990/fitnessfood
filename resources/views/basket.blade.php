@@ -16,7 +16,7 @@
         <h3 class="basket-title">@lang('global.basket')</h3>
         @if(count($products) > 0)
         <div class="not_empty">
-            <form action="{{ url('orders/new/'.App::getLocale()) }}" method="post">
+            <form action="{{ url('orders/new/'.App::getLocale()) }}" method="post" id="form_order">
                 <div class="row for-table basket-table">
                     <!--Row For table -->
                     <table class="table">
@@ -107,9 +107,15 @@
 
                                 <!-- Phone Field -->
                                 <label for="Yphone">@lang('global.insert your phone')</label>
-                                <input class="{{ $errors->has('phone') ? 'inputDanger' : '' }}" id="Yphone" name="phone" id="phone" type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
+                                <input class="{{ $errors->has('phone') ? 'inputDanger' : '' }}" id="Yphone" name="phone"  type="text" value="{{ old('phone') }}" placeholder="(099) 999-999" >
                                 <span class="star">*</span>
                                 <p class="{{ $errors->has('phone') ? 'show' : '' }}">{{ $errors->first('phone') }}</p>
+
+                                <!-- Address Field -->
+                                <label class="address" for="Yaddress">@lang('global.insert your address')</label>
+                                <input class="{{ $errors->has('address') ? 'inputDanger' : '' }}" id="Yaddress" name="address" type="text" value="{{ old('address') }}" placeholder="" >
+                                <span class="star"></span>
+                                <p class="{{ $errors->has('address') ? 'show' : '' }}">{{ $errors->first('address') }}</p>
 
                                 <!-- Promo Field -->
                                 <label for="Ypromo"> @lang('global.Do you have a promo code?')</label>
@@ -154,6 +160,7 @@
 
                             </div>
                             <button type="submit" {{ count($products) == 0 ? 'disabled' : '' }} class="submit universal-buton">@lang('global.order')</button>
+                            <p class="text-center">@lang('global.order_hours', ['from'=>date("H:i", strtotime($wrk_hr_from)),  'to'=>date("H:i", strtotime($wrk_hr_to))])</p>
                             @if($errors->has('trainer'))
                                 <div class="alert alert-danger" style="margin-top: 10px; background-color: #FF2036; color: #ffffff; border-radius: 15px">
                                     <p>{{ $errors->first('trainer') }}</p>
@@ -161,6 +168,8 @@
                             @endif
                         </div> <!-- basket-form-div end -->
                     </div> <!-- basket-form -->
+                    <!-- google map -->
+                    <div id="map_canvas"></div>
                 </div>
                 <div class="row trainer-select-main">
                 @foreach($trainers as $trainer)
@@ -201,6 +210,24 @@
     </div>
     <!-- Container -->
 </main>
+<!-- Order Warning Modal -->
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <p>@lang('global.order_warning', ['to' => date("H:i", strtotime($wrk_hr_to))])</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary order_tomorrow">@lang('global.order tomorrow')</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('auth.cancel')</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('scripts')
@@ -210,6 +237,8 @@ var min_amount_free_shipping = '{{ $min_amount_free_shipping }}';
 {{--var total = '{{ $total }}';--}}
 var bsk_empty = '{{ trans('global.basket is empty') }}';
 var shipping = '{{ $shipping }}';
+var wrk_hr_from = '{{ $wrk_hr_from }}';
+var wrk_hr_to = '{{ $wrk_hr_to }}';
 </script>
 @if(count($errors) > 0)
     <script>
@@ -218,6 +247,9 @@ var shipping = '{{ $shipping }}';
         }, 1000);
     </script>
 @endif
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBE2xcoD4xQkPTViw_p4AmgUpdg2K3vEII"></script>
+
 <script src="/js/basket.js"></script>
 
 <script src="/js/maskedinput.js" type="text/javascript"></script>

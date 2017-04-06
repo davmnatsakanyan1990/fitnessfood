@@ -15,6 +15,8 @@
                                     <dd>{{ $order->customer_name }}</dd>
                                     <dt>Phone:</dt>
                                     <dd>{{ $order->customer_phone }}</dd>
+                                    <dt>Address:</dt>
+                                    <dd>{{ $order->customer_address ? $order->customer_address : 'NO'}}</dd>
                                     <dt>Counselor:</dt>
                                     <dd>{{ $order->counselor ? $order->counselor->name : 'NO'}} </dd>
                                     <dt>Sale:</dt>

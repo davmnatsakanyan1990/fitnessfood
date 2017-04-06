@@ -23,19 +23,19 @@ class AdminBaseController extends Controller
             return $promo_code->with(['trainer' => function($trainer){
                 $trainer->with('image');
             }]);
-        }])->where('is_seen', 0)->get();
+        }])->where('is_seen', 0)->orderBy('created_at', 'desc')->get();
         view()->share('new_card_orders', $new_card_orders);
 
-        $new_orders = Order::where('is_seen', 0)->get();
+        $new_orders = Order::where('is_seen', 0)->orderBy('created_at', 'desc')->get();
         view()->share('new_orders', $new_orders);
 
-        $new_trainers = Trainer::where('is_seen', 0)->get();
+        $new_trainers = Trainer::where('is_seen', 0)->orderBy('created_at', 'desc')->get();
         view()->share('new_trainers', $new_trainers);
 
 
         $new_payments = Payment::with(['sender' => function($sender){
                 return $sender->with('image');
-            }])->where('is_seen', 0)->get();
+            }])->where('is_seen', 0)->orderBy('created_at', 'desc')->get();
 
         view()->share('new_payments', $new_payments);
     }

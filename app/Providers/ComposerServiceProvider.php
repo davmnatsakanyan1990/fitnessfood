@@ -22,6 +22,10 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(
             ['recipes', 'home', 'about', 'basket', 'contact', 'trainer.auth.*'], 'App\Http\ViewComposers\BasketComposer'
         );
+
+        view()->composer(
+            ['home',  'basket', 'about'], 'App\Http\ViewComposers\MainComposer'
+        );
     }
 
     /**

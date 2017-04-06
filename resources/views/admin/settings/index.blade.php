@@ -1,6 +1,7 @@
 @extends('admin.layouts.index')
 @section('styles')
     <link href="/template/css/plugins/touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+    <link href="/template/css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="middle-box text-center animated fadeInRightBig">
@@ -33,6 +34,21 @@
                         <input class="touchspin3" type="text" value="{{ $data ? $data->min_payment_amount : '' }}"
                                name="min_payment_amount">
                     </div>
+                    <label>Working Hours</label>
+                    <div class="form-group input-group clockpicker" data-autoclose="true">
+                         <span class="input-group-addon">From</span>
+                        <input type="text" class="form-control" name="wrk_hr_from" value="{{ date("H:i", strtotime($data->wrk_hr_from) ) }}" >
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                    </div>
+                     <div class="form-group input-group clockpicker" data-autoclose="true">
+                         <span class="input-group-addon">To</span>
+                        <input type="text" class="form-control" name="wrk_hr_to" value="{{ date("H:i", strtotime($data->wrk_hr_to) ) }}" >
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                    </div>
                     <div class="form-group">
                         <button class="btn btn-primary">Save</button>
                     </div>
@@ -44,7 +60,11 @@
     @section('scripts')
     <!-- TouchSpin -->
     <script src="/template/js/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
-
+    <!-- Clock picker -->
+    <script src="/template/js/plugins/clockpicker/clockpicker.js"></script>
+    <script>
+        $('.clockpicker').clockpicker();
+    </script>
     <!-- Custom scripts -->
     <script src="/admin/js/settings.js"></script>
 @endsection

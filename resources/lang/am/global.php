@@ -20,6 +20,7 @@ return [
     'I am trainer' => 'Ես մարզիչ եմ',
     'contact' => 'Կապ',
     'basket' => 'Զամբյուղ',
+    'order tomorrow' => 'Առաքել Վաղը',
     'contact us' => 'ՄԻԱՑԵՔ ՄԵԶ',
     'name' => 'Անուն',
     'your name' => 'Ձեր Անունը',
@@ -55,6 +56,7 @@ return [
     'earning from each trade' => 'Եկամուտ ամեն գործարքից',
     'insert your name' => 'Մուտքագրեք Ձեր Անունը',
     'insert your phone' => 'Մուտքագրեք Ձեր Հեռախոսահամարը',
+    'insert your address' => 'Մուտքագրեք Ձեր Հասցեն',
     'Do you have a promo code?' => 'Ունե՞ք Զեղչի Կոդ',
     'promo codes' => 'Զեղչի Կոդեր',
     'code' => 'Կոդ',
@@ -63,6 +65,8 @@ return [
     'card order' => 'Քարտի Պատվեր',
     'count' => 'Քանակը',
     'Set your profile photo to order a card' => 'Պատվիրելու համար խնդրոմ ենք տեղադրեք ձեր անձնական էջի լուսանկարը',
-    'your percent' => 'Ձեր տոկոսի չափը'
+    'your percent' => 'Ձեր տոկոսի չափը',
+    'order_hours' => 'Առաքում ենք ամեն օր՝ :from - :to',
+    'order_warning' => 'Ժամը :to ից հետո՝ պատվերները կառաքվեն վաղը'
 
 ];

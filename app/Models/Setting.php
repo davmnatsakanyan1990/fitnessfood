@@ -10,6 +10,8 @@ class Setting extends Model
         'trainer_percent',
         'min_amount_free_shipping',
         'shipping_price',
-        'min_payment_amount'
+        'min_payment_amount',
+        'wrk_hr_from',
+        'wrk_hr_to'
     ];
 }

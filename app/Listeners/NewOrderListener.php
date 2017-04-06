@@ -80,7 +80,7 @@ class NewOrderListener
         }
 
         $data_string = '{
-            "text": "*New Order* | <!date^'.time().'^{time_secs} | 00:00 AM> \n *Tel:* <tel:098765124|098765124> \n *Name:* '.$order['customer_name'].' \n _*Addr:* Yerevan Adonc 2_ \n *Sum:* '.($order['amount']+$order['shipping']).' AMD",
+            "text": "*New Order* | <!date^'.time().'^{time_secs} | 00:00 AM> \n *Tel:* <tel:098765124|098765124> \n *Name:* '.$order['customer_name'].' \n *Addr:* '.$order['customer_address'].' \n *Sum:* '.($order['amount']+$order['shipping']).' AMD",
              "attachments":
                 '.json_encode($products).'
          }';

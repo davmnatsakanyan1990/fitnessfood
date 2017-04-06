@@ -16,7 +16,9 @@ class SettingsTableSeeder extends Seeder
             'trainer_percent' => 7,
             'shipping_price' => 600,
             'min_payment_amount' => 5000,
-            'min_amount_free_shipping' => 3000
+            'min_amount_free_shipping' => 3000,
+            'wrk_hr_from' => '08:00:00',
+            'wrk_hr_to' => '18:00:00',
         ]);
     }
 }

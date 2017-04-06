@@ -25,6 +25,7 @@
                                     <span>Անվճար</span>
                                 </div>
                                 <article>3000 դրամ և ավելի գնումների դեպքում</article>
+                                <article>Առաքում ենք ամեն օր՝ {{ date("H:i", strtotime($wrk_hr_from)) }} - {{ date("H:i", strtotime($wrk_hr_to)) }}</article>
                             </div>
 
                             <!-- No Need Registration Banner -->

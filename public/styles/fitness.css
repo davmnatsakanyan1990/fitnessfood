@@ -1336,6 +1336,15 @@ footer {
 .xorhurd {
   margin-top: 70px; }
 
+#warningModal .btn-primary {
+  background-color: #892E6B;
+  border-color: #892E6B; }
+
+#map_canvas {
+  height: 460px;
+  max-width: 100%;
+  top: 127px; }
+
 .basket-form-div .check-box {
   position: relative;
   margin-top: 50px;
@@ -1372,7 +1381,8 @@ footer {
   text-transform: uppercase;
   min-width: 250px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-bottom: 10px; }
 
 .basket-form {
   max-width: 350px;
@@ -1713,7 +1723,7 @@ footer {
     padding: 18px;
     margin-top: 40px;
     width: 100%;
-    height: 80px;
+    height: 100px;
     background: #5FB37F; }
     .side-bar .delivery-block p {
       line-height: 18px;
@@ -1723,7 +1733,8 @@ footer {
       font-size: 15px; }
     .side-bar .delivery-block article {
       color: #fff;
-      font-size: 12px; }
+      font-size: 12px;
+      line-height: 18px; }
     .side-bar .delivery-block div.car-bef {
       margin-bottom: 5px; }
       .side-bar .delivery-block div.car-bef:before {

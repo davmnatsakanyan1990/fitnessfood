@@ -40,7 +40,9 @@ class SettingsController extends AdminBaseController
             'trainer_percent' => $request->trainer_percent,
             'shipping_price' => $request->shipping_price,
             'min_amount_free_shipping' => $request->min_amount_free_shipping,
-            'min_payment_amount' => $request->min_payment_amount
+            'min_payment_amount' => $request->min_payment_amount,
+            'wrk_hr_from' => $request->wrk_hr_from,
+            'wrk_hr_to' => $request->wrk_hr_to
         ]);
         return redirect()->back()->with('message', 'Data was successfully updated');
     }

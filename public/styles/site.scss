@@ -1638,6 +1638,19 @@ footer {
   margin-top: 70px;
 }
 
+#warningModal{
+  .btn-primary{
+    background-color: #892E6B;
+    border-color: #892E6B;
+  }
+}
+
+#map_canvas{
+  height: 460px;
+  max-width: 100%;
+  top: 127px;
+}
+
 .basket-form-div {
   .check-box {
     position: relative;
@@ -1679,6 +1692,7 @@ footer {
     min-width: 250px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
 
   }
 }
@@ -1770,6 +1784,18 @@ footer {
     margin-top: 15px;
     font-size: 16px;
     color: $main-black;
+    //&.address{
+      //&:after{
+      //  background-image: url('../images/red-icon.png');
+      //  background-size: 20px 20px;
+      //  display: inline-block;
+      //  width: 20px;
+      //  height: 20px;
+      //  content:"";
+      //  //cursor: pointer;
+      //  margin-left: 25px;
+      //}
+    //}
   }
   input {
     font-size: 24px;
@@ -2106,7 +2132,7 @@ footer {
     padding: 18px;
     margin-top: 40px;
     width: 100%;
-    height: 80px;
+    height: 100px;
     background: #5FB37F;
     p {
       line-height: 18px;
@@ -2119,6 +2145,7 @@ footer {
     article {
       color: #fff;
       font-size: 12px;
+      line-height: 18px;
     }
     div.car-bef {
       margin-bottom: 5px;
