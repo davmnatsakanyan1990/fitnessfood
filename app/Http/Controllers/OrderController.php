@@ -48,6 +48,21 @@ class OrderController extends Controller
             'trainer' => 'required'
         ]);
 
+        //When address is filled
+        $address = '';
+        if($request->has("address.street")){
+
+            if($request->has('address.flat')){
+                $address.=$request->address['flat'].' Flat, ';
+            }
+            if($request->has('address.house')){
+                $address.=$request->address['house'].' House, ';
+            }
+
+            $address.= $request->address['street'];
+
+        }
+
         // when trainer was choosen
         if($request->trainer){
             $trainer_id = $request->trainer;
@@ -67,7 +82,8 @@ class OrderController extends Controller
         $order = DB::table('orders')->insertGetId([
             'customer_name' => $request->name,
             'customer_phone' => $request->phone,
-            'customer_address' => $request->address,
+            'customer_address' => $address,
+            'additional_info' => $request->address['additional_info'],
             'trainer_id' => $trainer_id,
             'trainer_percent' => $trainer_percent,
             'promo_code' => $request->promo_code ? $request->promo_code : null,
@@ -102,7 +118,18 @@ class OrderController extends Controller
 
         Event::fire(new NewOrderEvent($obj));
 
-       return redirect()->back()->with('success', 'global.success_order')->cookie('basket', '', -1);
+        //when address should be remembered
+        if($request->has('remember_address')){
+            return redirect()->back()->with('success', 'global.success_order')
+                ->cookie('basket', '', -1)
+                ->cookie('customer_street', $request->address['street'])
+                ->cookie('customer_flat', $request->address['flat'])
+                ->cookie('customer_house', $request->address['house']);
+        }
+        else{
+            return redirect()->back()->with('success', 'global.success_order')
+                ->cookie('basket', '', -1);
 
+        }
     }
 }

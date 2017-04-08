@@ -4,7 +4,10 @@ $(document).ready(function () {
     $(document).find('.icon-parent .dropdown').mouseover(function(){
        var height = $(this).find('.dropdown-menu').height();
 
-        $(document).find('.icons-block .col-md-12').css('margin-bottom', height+15);
+        if($(window).width()<480)
+            $(document).find('.icons-block .col-md-12').css('margin-bottom', height+55);
+        else
+            $(document).find('.icons-block .col-md-12').css('margin-bottom', height+15);
     });
 
     $(document).find('.icon-parent .dropdown').mouseout(function(){

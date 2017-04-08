@@ -1646,9 +1646,10 @@ footer {
 }
 
 #map_canvas{
-  height: 460px;
+  height: 230px;
+
   max-width: 100%;
-  top: 127px;
+  top: 20px;
 }
 
 .basket-form-div {
@@ -1697,8 +1698,49 @@ footer {
   }
 }
 
+.right-fields{
+  label{
+
+    margin-top: 15px;
+    font-size: 16px;
+    color: #333333;
+  }
+  input{
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 10px 7px;
+    margin-top: 10px;
+  }
+  .street{
+    input{
+      width: 100%;
+    }
+  }
+
+  .flat, .house{
+    width: 50%;
+    float: left;
+    input{
+      width: 100%;
+    }
+  }
+  .house{
+    padding-right: 10px;
+  }
+  .flat{
+    padding-left: 10px;
+  }
+
+  .notes{
+    input{
+      width: 100%;
+    }
+  }
+}
+
 .basket-form {
-  max-width: 350px;
+  width: 100%;
   margin-top: 30px;
   padding-right: 5px;
   padding-left: 5px;
@@ -1798,12 +1840,12 @@ footer {
     //}
   }
   input {
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 10px;
     border: none;
     border-radius: 4px;
     width: 94%;
-    padding: 15px 10px 10px;
+    padding: 7px 10px 7px;
     & + span {
       color: red;
       font-size: 22px;
@@ -1968,6 +2010,33 @@ footer {
   }
 }
 
+.remember_address{
+  margin-top: 5px;
+  input{
+    width: inherit;
+    display: none;
+  }
+  label{
+    cursor: pointer;
+  }
+  #checkbox_cover{
+    border: 1px solid #892E6B;
+    width: 16px;
+    background: #fff;
+    margin-left: 0;
+    height: 15px;
+    border-radius: 4px;
+  }
+
+  #remember_address:checked {
+    & + label:before {
+      content: '✔';
+      font-family: FontAwesome;
+      color: $main-violet;
+    }
+  }
+}
+
 .v-voq {
   margin-top: 15px;
   margin-left: 2px;
@@ -2042,7 +2111,7 @@ footer {
   span {
     transition: all 0.3s;
     position: absolute;
-    top: 5px;
+    top: -2px;
     right: 10%;
     height: 50px;
     padding-top: 10px;

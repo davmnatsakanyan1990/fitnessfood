@@ -10,6 +10,7 @@ class Order extends Model
         'customer_name',
         'customer_email',
         'customer_address',
+        'additional_info',
         'customer_phone',
         'status',
         'trainer_id',

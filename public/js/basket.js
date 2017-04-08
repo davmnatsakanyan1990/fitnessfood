@@ -4,11 +4,11 @@ var trainers_list = $(document).find('.trainer-select-main').html();
 
 $(document).ready(function(){
 
-    var map;
-    var geocoder;
-    var mapOptions = { center: new google.maps.LatLng(0.0, 0.0), zoom: 8, mapTypeId: google.maps.MapTypeId.ROADMAP };
+    function initAutocomplete() {
 
-    function initialize() {
+        var geocoder;
+        var marker;
+
         var myOptions = {
             center: new google.maps.LatLng(40.17651248103691, 44.514713287353516 ),
             zoom: 15,
@@ -19,16 +19,16 @@ $(document).ready(function(){
         geocoder = new google.maps.Geocoder();
         var map = new google.maps.Map(document.getElementById("map_canvas"),
             myOptions);
+
         google.maps.event.addListener(map, 'click', function(event) {
             placeMarker(event.latLng);
         });
 
-        var marker;
         function placeMarker(location) {
-            if(marker){ //on vérifie si le marqueur existe
-                marker.setPosition(location); //on change sa position
+            if(marker){
+                marker.setPosition(location);
             }else{
-                marker = new google.maps.Marker({ //on créé le marqueur
+                marker = new google.maps.Marker({
                     position: location,
                     map: map
                 });
@@ -53,8 +53,47 @@ $(document).ready(function(){
                     }
                 });
         }
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('Yaddress');
+        var searchBox = new google.maps.places.SearchBox(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+            searchBox.setBounds(map.getBounds());
+        });
+
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+                return;
+            }
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+
+                placeMarker(place.geometry.location);
+
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            map.fitBounds(bounds);
+        });
     }
-    google.maps.event.addDomListener(window, 'load', initialize);
+
+    google.maps.event.addDomListener(window, 'load', initAutocomplete);
 
 
     if($('#tr4-na').prop('checked')){

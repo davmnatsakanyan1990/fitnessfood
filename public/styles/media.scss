@@ -183,7 +183,44 @@
 	}
 }
 
-@media screen and(max-width: 768px){ 
+@media screen and(max-width: 768px){
+  .all_fields{
+	display: flex;
+	flex-flow: column;
+	padding-left: 10px;
+  }
+  .left-fields {
+	order: 2;
+  }
+  .right-fields {
+	order: 1;
+  }
+
+
+  .right-fields {
+	display: flex;
+	flex-flow: column;
+	width: 94%;
+
+  }
+  #map_canvas{
+	order: 1;
+  }
+  .row{
+	order: 2;
+  }
+
+  #map_canvas{
+	margin-bottom: 52px;
+  }
+
+  .left-fields {
+	.universal-buton{
+	  width: 94%;
+	  margin-left: 0;
+	}
+  }
+
 	.basket-form{
 		/* float: none; */
 		margin: 30px auto 0 auto;
@@ -194,23 +231,24 @@
 	}
 	.home-product-cont {
 		.icons-block{
-			.icon-parent {
-				float: none !important;
-				margin: 35px auto;
-				width: inherit !important;
-				text-align: center;
-				.img_circle{
-					width: 200px;
-					height: 200px;
-					padding: 10px;
-					.dropdown-menu{
-						left: -57px !important;
-						&:before{
-							left: 141px !important;
-						}
-					}
-				}
-			}
+		  margin-bottom: 25px;
+		//	.icon-parent {
+		//		float: none !important;
+		//		margin: 35px auto;
+		//		width: inherit !important;
+		//		text-align: center;
+		//		.img_circle{
+		//			width: 200px;
+		//			height: 200px;
+		//			padding: 10px;
+		//			.dropdown-menu{
+		//				left: -57px !important;
+		//				&:before{
+		//					left: 141px !important;
+		//				}
+		//			}
+		//		}
+		//	}
 		}
 	}
 	.side-bar-cont{
@@ -316,6 +354,27 @@
 
 
 @media screen and(max-width: 640px){
+  .home-product-cont{
+	.icons-block {
+	  .col-md-12 {
+		.img_circle{
+		  width: 100%;
+		  height: auto;
+		}
+		.icon-parent{
+		  padding-left: 2px;
+		  padding-right: 2px;
+		}
+	  }
+	}
+	.col-md-9{
+	  .col-md-4 {
+		.tumb-wrap {
+			margin-top: 40px;
+		}
+	  }
+	}
+  }
 	.modal-product-info{
 		top: 0;
 		left: 0;
@@ -337,6 +396,33 @@
 }	
 
 @media screen and(max-width: 480px){
+  .home-product-cont {
+	.icons-block{
+	  .col-md-12{
+		&:hover .icon-parent:last-child .dropdown-menu{
+		  right: 0;
+		  left: 0;
+		  &:before{
+			left: 187px;
+		  }
+		}
+	  }
+	  	.icon-parent {
+			.dropdown{
+			  position: inherit !important;
+			}
+	  		.img_circle{
+	  			.dropdown-menu{
+					left: 0;
+				  	top: 58px;
+	  				&:before{
+	  					display: none !important;
+	  				}
+	  			}
+	  		}
+	  	}
+	}
+  }
 	.side-bar{
 		.partner-block{
 			text-align: center;

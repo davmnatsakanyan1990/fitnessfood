@@ -45,7 +45,7 @@ return [
     'my payments' => 'Իմ Վճարումները',
     'per' => 'Յուր.',
     'nothing was found' => 'Արդյունք չի գտնվել',
-    'counselor name' => 'Մասնագետի Անունը',
+    'counselor name' => 'Խորհրդատուի Անունը',
     'nobody' => 'Ոչ ոք',
     'free shipping text' => 'Առաքումն անվճար :amount դր և ավել գնումների դեպքում',
     'all' => 'Բոլորը',

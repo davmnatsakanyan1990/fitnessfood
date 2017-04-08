@@ -58,22 +58,22 @@
                             </div>
 
                             <!-- Partner Banner -->
-                            <div class="partner-block">
-                                <img src="{{ asset('images/menuam.png') }}">
-                                <p>Առաքման պաշտոնական գործընկեր</p>
+                            {{--<div class="partner-block">--}}
+                                {{--<img src="{{ asset('images/menuam.png') }}">--}}
+                                {{--<p>Առաքման պաշտոնական գործընկեր</p>--}}
 
-                            </div>
+                            {{--</div>--}}
                         </div>
                     </div>
                     @if(count($products) > 0)
 
                     <div class="col-md-9 product-section">
-                        <div class="icons-block">
+                        <div class="icons-block row">
                             <div class="col-md-12">
                                 <div class="icon-parent">
                                     <div class="img_circle dropdown">
 
-                                        <img src="{{ asset('images/icons/Icons_1_'.App::getLocale().'.gif') }}" >
+                                        <img class="img-responsive" src="{{ asset('images/icons/Icons_1_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
                                             <p>Շաքարի փոխարեն մենք օգտագործում ենք Սուկրալոզա և ֆրուկտոզա, որոնք անվնաս են և կալորիականությամբ՝ ցածր։</p>
@@ -84,7 +84,7 @@
                                 <div class="icon-parent">
                                     <div class="img_circle dropdown">
 
-                                        <img src="{{ asset('images/icons/Icons_2_'.App::getLocale().'.gif') }}" >
+                                        <img class="img-responsive" src="{{ asset('images/icons/Icons_2_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
                                             <p>Վարսակի Թեփը չի պարունակում գլյուտեն և լայն կիրառում ունի գլյուտեն ֆրի արտադրանքում։</p>
@@ -95,7 +95,7 @@
                                 <div class="icon-parent">
                                     <div class="img_circle dropdown">
 
-                                        <img src="{{ asset('images/icons/Icons_3_'.App::getLocale().'.gif') }}" >
+                                        <img class="img-responsive" src="{{ asset('images/icons/Icons_3_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
                                             <p>Մենք չենք օգտագործում որևէ քիմիական հավելանյութեր, արհեստական յուղեր և թթխմորներ։</p>
@@ -106,7 +106,7 @@
                                 <div class="icon-parent">
                                     <div class="img_circle dropdown">
 
-                                        <img src="{{ asset('images/icons/Icons_4_'.App::getLocale().'.gif') }}" >
+                                        <img class="img-responsive" src="{{ asset('images/icons/Icons_4_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
                                             <p>Մեր ամբողջ արտադրանքը պատրաստվում է 100% Վարսակի թեփից, չի օգտագործվում որևէ այլ տեսակի հացահատիկ կամ հավելում։</p>
@@ -117,7 +117,7 @@
                                 <div class="icon-parent">
                                     <div class="img_circle dropdown">
 
-                                        <img src="{{ asset('images/icons/Icons_5_'.App::getLocale().'.gif') }}" >
+                                        <img class="img-responsive" src="{{ asset('images/icons/Icons_5_'.App::getLocale().'.gif') }}" >
 
                                         <div class="dropdown-menu">
                                             <p> Մեր խորհուրդն է՝ Ֆիթնես և Առողջ սնունդ, Սնվեք բնական, բացառեք թթխմորներ, շաքար, քիմիական հավելանյութեր և արհեստական յուղեր պարունակող ցանկացած սնունդ։</p>
