@@ -409,6 +409,17 @@ footer, main:after {
 .product {
   cursor: pointer; }
 
+.smile_icon {
+  height: 25px;
+  margin-bottom: -7px;
+  margin-left: 12px; }
+
+.for_smile {
+  display: inline-block; }
+
+.label_for_smile {
+  line-height: 25px; }
+
 .home-product-cont .col-md-9 {
   float: right;
   /*padding-right: 70px;*/ }
@@ -430,6 +441,10 @@ footer, main:after {
     .home-product-cont .icons-block .col-md-12 .icon-parent {
       float: left;
       width: calc(100% / 5); }
+    .home-product-cont .icons-block .col-md-12 .show_dropdown {
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.5); }
+      .home-product-cont .icons-block .col-md-12 .show_dropdown .dropdown-menu {
+        display: block; }
     .home-product-cont .icons-block .col-md-12 .img_circle {
       background-color: #ffffff;
       border-radius: 50%;
@@ -437,10 +452,6 @@ footer, main:after {
       height: 100px;
       padding: 5px;
       cursor: pointer; }
-      .home-product-cont .icons-block .col-md-12 .img_circle:hover {
-        box-shadow: 0 0 7px rgba(0, 0, 0, 0.5); }
-        .home-product-cont .icons-block .col-md-12 .img_circle:hover .dropdown-menu {
-          display: block; }
       .home-product-cont .icons-block .col-md-12 .img_circle .dropdown-menu {
         min-width: 325px;
         border-radius: 7px;
@@ -1339,6 +1350,9 @@ footer {
 #warningModal .btn-primary {
   background-color: #892E6B;
   border-color: #892E6B; }
+
+#warningModal .modal-body p {
+  line-height: 25px; }
 
 #map_canvas {
   height: 230px;

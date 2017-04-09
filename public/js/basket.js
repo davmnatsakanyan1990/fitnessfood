@@ -56,39 +56,43 @@ $(document).ready(function(){
 
         // Create the search box and link it to the UI element.
         var input = document.getElementById('Yaddress');
-        var searchBox = new google.maps.places.SearchBox(input);
 
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-            searchBox.setBounds(map.getBounds());
-        });
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+
+        var autocomplete;
+
+        var defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(-33.8902, 151.1759),
+            new google.maps.LatLng(-33.8474, 151.2631));
+
+        autocomplete = new google.maps.places.Autocomplete((input), {
+                componentRestrictions: {country: 'am'},
+                types: ['geocode']
+            });
 
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
-        searchBox.addListener('places_changed', function() {
-            var places = searchBox.getPlaces();
-
-            if (places.length == 0) {
-                return;
-            }
+        autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
 
             // For each place, get the icon, name and location.
             var bounds = new google.maps.LatLngBounds();
-            places.forEach(function(place) {
-                if (!place.geometry) {
-                    console.log("Returned place contains no geometry");
-                    return;
-                }
 
-                placeMarker(place.geometry.location);
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
 
-                if (place.geometry.viewport) {
-                    // Only geocodes have viewport.
-                    bounds.union(place.geometry.viewport);
-                } else {
-                    bounds.extend(place.geometry.location);
-                }
-            });
+            placeMarker(place.geometry.location);
+
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
+
             map.fitBounds(bounds);
         });
     }
@@ -116,11 +120,6 @@ $(document).ready(function(){
     });
 });
 
-//// click on maps icon
-//$(document).find('.address').on('click', function(){
-//    $('#map_canvas').children('div').toggle();
-//});
-
 // click on order button
 $(document).find('.submit').on('click', function(e){
     e.preventDefault();
@@ -140,6 +139,7 @@ $(document).find('.submit').on('click', function(e){
     }
 
 });
+
 // Search for trainer
 $(document).find('input[name="search"]').on('input', function() {
     var value = $(this).val().replace(/\s\s+/g, ' ');

@@ -122,9 +122,9 @@ class OrderController extends Controller
         if($request->has('remember_address')){
             return redirect()->back()->with('success', 'global.success_order')
                 ->cookie('basket', '', -1)
-                ->cookie('customer_street', $request->address['street'])
-                ->cookie('customer_flat', $request->address['flat'])
-                ->cookie('customer_house', $request->address['house']);
+                ->cookie('customer_street', $request->address['street'], time() + (10 * 365 * 24 * 60 * 60))
+                ->cookie('customer_flat', $request->address['flat'], time() + (10 * 365 * 24 * 60 * 60))
+                ->cookie('customer_house', $request->address['house'], time() + (10 * 365 * 24 * 60 * 60));
         }
         else{
             return redirect()->back()->with('success', 'global.success_order')

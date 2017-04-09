@@ -1,18 +1,54 @@
 $(document).ready(function () {
 
     // hover on 5 icons
-    $(document).find('.icon-parent .dropdown').mouseover(function(){
-       var height = $(this).find('.dropdown-menu').height();
+    if($(document).width() >= 1024) {
+        $(document).find('.icon-parent .dropdown').mouseover(function () {
+            $(this).addClass('show_dropdown');
 
-        if($(window).width()<480)
-            $(document).find('.icons-block .col-md-12').css('margin-bottom', height+55);
-        else
-            $(document).find('.icons-block .col-md-12').css('margin-bottom', height+15);
-    });
+            var height = $(this).find('.dropdown-menu').height();
 
-    $(document).find('.icon-parent .dropdown').mouseout(function(){
-        $(document).find('.icons-block .col-md-12').css("margin-bottom", 0);
-    });
+            if ($(window).width() < 480)
+                $(document).find('.icons-block .col-md-12').css('margin-bottom', height + 55);
+            else
+                $(document).find('.icons-block .col-md-12').css('margin-bottom', height + 15);
+        });
+
+        $(document).find('.icon-parent .dropdown').mouseout(function () {
+            $(this).removeClass('show_dropdown');
+
+            $(document).find('.icons-block .col-md-12').css("margin-bottom", 0);
+        });
+    }
+    else{
+        //open dropdown by click, on mobile devices
+        $(document).find('.icon-parent .dropdown').click(function () {
+            if($(this).hasClass('show_dropdown')){
+
+                $(this).removeClass('show_dropdown');
+
+                $(document).find('.icons-block .col-md-12').css("margin-bottom", 0);
+            }
+            else{
+                // remove all dropdowns
+                var icons = $(document).find('.icon-parent .dropdown');
+                $.each(icons, function(index, value){
+                    if($(value).hasClass('show_dropdown')) {
+
+                        $(this).removeClass('show_dropdown');
+                    }
+                });
+
+                $(this).addClass('show_dropdown');
+
+                var height = $(this).find('.dropdown-menu').height();
+
+                if ($(window).width() < 480)
+                    $(document).find('.icons-block .col-md-12').css('margin-bottom', height + 55);
+                else
+                    $(document).find('.icons-block .col-md-12').css('margin-bottom', height + 15);
+            }
+        });
+    }
 
     // This button will increment the value
     $('.qtyplus').click(function (e) {

@@ -154,8 +154,8 @@
                                             <p class="{{ $errors->has('promo_code') ? 'show' : '' }}">{{ $errors->first('promo_code') }}</p>
 
                                             <!-- Trainer search field -->
-                                            <label>Շնորհակա՞լ եք Առողջ Խորհուրդի Համար։</br>
-                                                Նշեք Ձեր Խորհրդատուին և Պարգևեք Անակնկալ Ձեր Անունից :)</label>
+                                            <label class="label_for_smile">Շնորհակա՞լ եք Առողջ Խորհուրդի Համար։</br>
+                                                Նշեք Ձեր Խորհրդատուին և Պարգևեք</br> Անակնկալ Ձեր Անունից <img class="smile_icon" src="/images/Smile-PNG.png"></label>
 
                                             <div class="marzich-search">
                                                 <input type="text" name="search"
@@ -341,7 +341,7 @@
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
-                    <p>@lang('global.order_warning', ['to' => date("H:i", strtotime($wrk_hr_to))])</p>
+                    <p class="for_smile">@lang('global.order_warning', ['to' => date("H:i", strtotime($wrk_hr_to))])</p><img class="smile_icon" src="/images/Smile-PNG.png">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary order_tomorrow">@lang('global.order tomorrow')</button>
@@ -371,9 +371,7 @@
     @endif
     <script src="/js/basket.js"></script>
     <script type="text/javascript"
-            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBE2xcoD4xQkPTViw_p4AmgUpdg2K3vEII&libraries=places"></script>
-
-
+            src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places"></script>
 
     <script src="/js/maskedinput.js" type="text/javascript"></script>
 
