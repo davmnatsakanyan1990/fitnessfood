@@ -12,11 +12,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/css/bootstrap-formhelpers.min.css">
     <link rel="stylesheet" href="/styles/fitness.css">
 
+    <meta property="fb:app_id"        content="{{ env('FB_APP_ID') }}" />
     <meta property="og:url"           content="{{ url()->current() }}" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Fitness Cook" />
-    <meta property="og:description"   content="Your description" />
-    <meta property="og:image"         content="{{ url('/').'/images/logo.png' }}" />
+    <meta property="og:description"   content="Պատվիրեք Առանց Ալյուրի և Շաքարի Քաղցրավենիքներ Ֆիթնես Քուքից" />
+    <meta property="og:image"         content="{{ url('/').'/images/for_share_1.png' }}" />
+    <meta property="og:image"         content="{{ url('/').'/images/for_share_2.png' }}" />
+    <meta property="og:image"         content="{{ url('/').'/images/for_share_3.png' }}" />
 
     <meta name="title" content="Fitness Cook">
     <meta name="description" content="Your description">
@@ -40,7 +43,7 @@
         var locale = '{{ App::getLocale() }}';
     </script>
 
-    <link rel="stylesheet" href="/rrssb-master/css/rrssb.css" />
+    {{--<link rel="stylesheet" href="/rrssb-master/css/rrssb.css" />--}}
     @yield('styles')
 </head>
 <body>
@@ -61,7 +64,7 @@
 
 <!-- Custom script -->
 <script src="/js/main.js"></script>
-<script src="/rrssb-master/js/rrssb.js"></script>
+{{--<script src="/rrssb-master/js/rrssb.js"></script>--}}
 @yield('scripts')
 </body>
 </html>

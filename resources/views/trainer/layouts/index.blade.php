@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/css/bootstrap-formhelpers.min.css">
     <link rel="stylesheet" href="/styles/fitness.css">
 
+    <meta property="fb:app_id"           content="{{ env('FB_APP_ID') }}" />
     <meta property="og:url"           content="{{ url()->current() }}" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Fitness Cook" />
-    <meta property="og:description"   content="Your description" />
-    <meta property="og:image"         content="{{ url('/').'/images/logo.png' }}" />
+    <meta property="og:description"   content="Պատվիրեք Առանց Ալյուրի և Շաքարի Քաղցրավենիքներ Ֆիթնես Քուքից" />
+    <meta property="og:image"         content="{{ url('/').'/images/for_share_1.png' }}" />
 
 
     <script>
@@ -24,7 +25,7 @@
         var locale = '{{ App::getLocale() }}';
         var token = '{{ csrf_token() }}';
     </script>
-    <link rel="stylesheet" href="/rrssb-master/css/rrssb.css" />
+
     @yield('styles')
 </head>
 <body>
@@ -42,7 +43,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.min.js"></script>
 <script src="{{ url('lib/jQuery.scrollSpeed.js')}}"></script>
 <script src="/js/main.js"></script>
-<script src="/rrssb-master/js/rrssb.js"></script>
 <script>
     $(document).ready(function(){
         if(localStorage.getItem('basket'))
@@ -54,52 +54,39 @@
     });
 </script>
 
-{{--<script>--}}
-    {{--$(document).ready(function(){--}}
-        {{--window.fbAsyncInit = function() {--}}
-            {{--FB.init({--}}
-                {{--appId      : '{{ env('FB_APP_ID') }}',--}}
-                {{--xfbml      : true,--}}
-                {{--version    : 'v2.8'--}}
-            {{--});--}}
+<script>
+    $(document).ready(function(){
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '{{ env('FB_APP_ID') }}',
+                xfbml      : true,
+                version    : 'v2.8'
+            });
 
-            {{--FB.AppEvents.logPageView();--}}
-        {{--};--}}
+            FB.AppEvents.logPageView();
+        };
 
-        {{--(function(d, s, id){--}}
-            {{--var js, fjs = d.getElementsByTagName(s)[0];--}}
-            {{--if (d.getElementById(id)) {return;}--}}
-            {{--js = d.createElement(s); js.id = id;--}}
-            {{--js.src = "//connect.facebook.net/en_US/sdk.js";--}}
-            {{--fjs.parentNode.insertBefore(js, fjs);--}}
-        {{--}(document, 'script', 'facebook-jssdk'));--}}
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
 
-        {{--$('.fbShare').on('click', function(){--}}
-            {{--FB.ui({--}}
-                {{--method: 'share',--}}
-                {{--display: 'iframe',--}}
-                {{--href: '{{ url()->current() }}'--}}
-            {{--}, function(response){});--}}
-        {{--})--}}
-    {{--});--}}
-{{--</script>--}}
+        $('.fbShare').on('click', function(){
+            FB.ui({
+                method: 'share_open_graph',
+                action_type: 'og.share',
+                action_properties: JSON.stringify({
+                    object:'{{ url()->current() }}'
+                })
 
-{{--<script>window.twttr = (function(d, s, id) {--}}
-        {{--var js, fjs = d.getElementsByTagName(s)[0],--}}
-                {{--t = window.twttr || {};--}}
-        {{--if (d.getElementById(id)) return t;--}}
-        {{--js = d.createElement(s);--}}
-        {{--js.id = id;--}}
-        {{--js.src = "https://platform.twitter.com/widgets.js";--}}
-        {{--fjs.parentNode.insertBefore(js, fjs);--}}
+            }, function(response){});
+        })
+    });
+</script>
 
-        {{--t._e = [];--}}
-        {{--t.ready = function(f) {--}}
-            {{--t._e.push(f);--}}
-        {{--};--}}
-
-        {{--return t;--}}
-    {{--}(document, "script", "twitter-wjs"));</script>--}}
 <script>
     $(document).find('select[name="lang"]').change(function(){
         var lang = $(this).val();

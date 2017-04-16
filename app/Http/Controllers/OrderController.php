@@ -43,7 +43,7 @@ class OrderController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'phone' => 'required|regex:/^\([0-9]{3}\)\ [0-9]{3}-[0-9]{3}$/',
+            'phone' => 'required|digits:8',
             'promo_code' => 'exists:promo_codes,code|size:4',
             'trainer' => 'required'
         ]);
@@ -81,7 +81,7 @@ class OrderController extends Controller
 
         $order = DB::table('orders')->insertGetId([
             'customer_name' => $request->name,
-            'customer_phone' => $request->phone,
+            'customer_phone' => '+374'.$request->phone,
             'customer_address' => $address,
             'additional_info' => $request->address['additional_info'],
             'trainer_id' => $trainer_id,
@@ -118,13 +118,16 @@ class OrderController extends Controller
 
         Event::fire(new NewOrderEvent($obj));
 
-        //when address should be remembered
+        //when data should be remembered
         if($request->has('remember_address')){
             return redirect()->back()->with('success', 'global.success_order')
                 ->cookie('basket', '', -1)
+                ->cookie('promo_code',      $request->promo_code ? $request->promo_code : '', time() + (10 * 365 * 24 * 60 * 60))
+                ->cookie('customer_phone',  $request->phone, time() + (10 * 365 * 24 * 60 * 60))
+                ->cookie('customer_name',   $request->name, time() + (10 * 365 * 24 * 60 * 60))
                 ->cookie('customer_street', $request->address['street'], time() + (10 * 365 * 24 * 60 * 60))
-                ->cookie('customer_flat', $request->address['flat'], time() + (10 * 365 * 24 * 60 * 60))
-                ->cookie('customer_house', $request->address['house'], time() + (10 * 365 * 24 * 60 * 60));
+                ->cookie('customer_flat',   $request->address['flat'], time() + (10 * 365 * 24 * 60 * 60))
+                ->cookie('customer_house',  $request->address['house'], time() + (10 * 365 * 24 * 60 * 60));
         }
         else{
             return redirect()->back()->with('success', 'global.success_order')

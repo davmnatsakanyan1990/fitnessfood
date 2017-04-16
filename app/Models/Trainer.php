@@ -23,7 +23,8 @@ class Trainer extends Authenticatable
         'date_of_birth',
         'password',
         'is_approved',
-        'is_seen'
+        'is_seen',
+        'on_first_page'
 
     ];
 

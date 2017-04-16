@@ -122,7 +122,11 @@ class TrainerController extends AdminBaseController
         $name = json_encode(preg_replace('/\s\s+/', ' ', $request->name), JSON_UNESCAPED_UNICODE);
         
         $percent = $request->percent;
-        Trainer::where('id', $id)->update(['percent' => $percent, 'custom_name' => $name]);
+        Trainer::where('id', $id)->update([
+            'percent' => $percent,
+            'custom_name' => $name,
+            'on_first_page' => $request->on_first_page ? 1 : 0
+        ]);
         
         return redirect()->back()->with('message', 'Data was successfully updated');
     }

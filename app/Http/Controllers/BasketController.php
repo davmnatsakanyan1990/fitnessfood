@@ -65,7 +65,7 @@ class BasketController extends Controller
         else
             $final_shipping = $shipping;
 
-        $trainers = Trainer::with('image', 'gym')->where('is_approved', 1)->take(8)->get();
+        $trainers = Trainer::with('image', 'gym')->where('is_approved', 1)->where('on_first_page', 1)->take(8)->get();
 
         return view('basket', compact('trainers', 'shipping', 'final_shipping', 'min_amount_free_shipping', 'products', 'total'));
     }

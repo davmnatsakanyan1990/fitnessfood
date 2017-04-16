@@ -77,7 +77,7 @@ class NewOrderListener
             array_push($products, $pr);
         }
 
-        $phone = str_replace([')', '(', ' ', '-'], '', $order['customer_phone']);
+        $phone = $order['customer_phone'];
 
         $data_string = '{
             "text": "*New Order* | <!date^'.time().'^{time_secs} | 00:00 AM> \n *Tel:* <tel:'.$phone.'|'.$phone.'> \n *Name:* '.$order['customer_name'].' \n *Addr:* '.$order['customer_address'].'\n *More Info:* '.$order['additional_info'].' \n *Sum:* '.($order['amount']+$order['shipping']).' AMD",

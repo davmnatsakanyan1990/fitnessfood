@@ -339,10 +339,15 @@ footer, main:after {
   }
 }
 
-.prd_title {
+//.prd_title {
+//  overflow: hidden;
+//  white-space: nowrap;
+//  text-overflow: ellipsis;
+//}
+
+.prd_header{
+  height: 195px;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .modal-product-info {
@@ -494,7 +499,7 @@ footer, main:after {
   }
   .col-md-4 {
     .tumb-wrap {
-      min-height: 270px;
+      height: 455px;
       transition: all 0.3s;
       border: 1px solid transparent;
       padding: 2px;
@@ -692,7 +697,7 @@ footer, main:after {
 }
 
 .prod-img {
-  height: 150px;
+  height: 100%;
   margin: 8px;
   background-size: cover !important;
   background-position: center center !important;
@@ -1650,6 +1655,12 @@ footer {
   margin-top: 70px;
 }
 
+.empty{
+  .success_message{
+    line-height: 23px;
+  }
+}
+
 #warningModal{
   .btn-primary{
     background-color: #892E6B;
@@ -1663,13 +1674,28 @@ footer {
 }
 
 #map_canvas{
-  height: 230px;
+  height: 330px;
 
   max-width: 100%;
   top: 20px;
 }
 
 .basket-form-div {
+  .for_phone{
+    position: relative;
+    margin-top: 10px;
+    input{
+      margin-top: 0 !important;
+      padding-left: 55px;
+    }
+    .country_code{
+      position: absolute;
+      top: 8px;
+      left: 5px;
+      font-size: 20px;
+      color: #757575;
+    }
+  }
   .check-box {
     position: relative;
     margin-top: 50px;
@@ -1756,7 +1782,7 @@ footer {
   }
 }
 
-.basket-form {
+.basket-form-div {
   width: 100%;
   margin-top: 30px;
   padding-right: 5px;

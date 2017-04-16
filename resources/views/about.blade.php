@@ -27,10 +27,10 @@
                         </div>
 
                         <!-- Partner Banner -->
-                        {{--<div class="partner-block">--}}
-                            {{--<img src="{{ asset('images/menuam.png') }}">--}}
-                            {{--<p>Առաքման պաշտոնական գործընկեր</p>--}}
-                        {{--</div>--}}
+                        <div class="partner-block">
+                            <img src="{{ asset('images/menuam.png') }}">
+                            <p>Առաքման պաշտոնական գործընկեր</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-9 content">

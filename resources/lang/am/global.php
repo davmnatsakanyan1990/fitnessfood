@@ -30,7 +30,7 @@ return [
     'basket is empty' => 'Զամբյուղը դատարկ է',
     'choose counselor' => 'Նշեք Խորհուրդ Տվող Մասնագետին',
     'shipping' => 'Առաքում',
-    'success_order' => 'Շնորհակալություն Պատվերի Համար :)
+    'success_order' => 'Շնորհակալություն Պատվերի Համար <img class="smile_icon" src="/images/Smile-PNG.png">
     Մենք կզանգահարնեք ձեզ կարՃ ժամանակում:',
     'success_payment_message' => 'Շնորհակալություն, սպասեք մեր զանգին :)',
     'free_shipping' => 'Անվճար առաքում',

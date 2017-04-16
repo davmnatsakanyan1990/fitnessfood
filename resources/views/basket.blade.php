@@ -114,19 +114,60 @@
 
                                             <!-- Name Field -->
                                             <label for="Yname">@lang('global.insert your name')</label>
-                                            <input class="{{ $errors->has('name') ? 'inputDanger' : '' }}" id="Yname"
-                                                   name="name" type="text" value="{{ old('name') }}"
-                                                   placeholder="@lang('global.your name')">
+                                            @if(old('name'))
+                                                <input class="{{ $errors->has('name') ? 'inputDanger' : '' }}"
+                                                       id="Yname"
+                                                       name="name"
+                                                       type="text"
+                                                       value="{{ old('name') }}"
+                                                       placeholder="@lang('global.your name')">
+                                            @elseif(isset($_COOKIE['customer_name']))
+                                                <input class="{{ $errors->has('name') ? 'inputDanger' : '' }}"
+                                                       id="Yname"
+                                                       name="name"
+                                                       type="text"
+                                                       value="{{ Crypt::decrypt($_COOKIE['customer_name']) }}"
+                                                       placeholder="@lang('global.your name')">
+                                            @else
+                                                <input class="{{ $errors->has('name') ? 'inputDanger' : '' }}"
+                                                       id="Yname"
+                                                       name="name"
+                                                       type="text"
+                                                       value=""
+                                                       placeholder="@lang('global.your name')">
+                                            @endif
                                             <span class="star">*</span>
 
                                             <p class="{{ $errors->has('name') ? 'show' : '' }}">{{ $errors->first('name') }}</p>
 
                                             <!-- Phone Field -->
                                             <label for="Yphone">@lang('global.insert your phone')</label>
-                                            <input class="{{ $errors->has('phone') ? 'inputDanger' : '' }}" id="Yphone"
-                                                   name="phone" type="text" value="{{ old('phone') }}"
-                                                   placeholder="(099) 999-999">
-                                            <span class="star">*</span>
+                                            <div class="for_phone">
+                                                @if(old('phone'))
+                                                    <input class="{{ $errors->has('phone') ? 'inputDanger' : '' }}"
+                                                           id="Yphone"
+                                                           name="phone"
+                                                           type="number"
+                                                           value="{{ old('phone') }}"
+                                                           placeholder="99000000">
+                                                @elseif(isset($_COOKIE['customer_phone']))
+                                                    <input class="{{ $errors->has('phone') ? 'inputDanger' : '' }}"
+                                                           id="Yphone"
+                                                           name="phone"
+                                                           type="number"
+                                                           value="{{ Crypt::decrypt($_COOKIE['customer_phone']) }}"
+                                                           placeholder="99000000">
+                                                @else
+                                                    <input class="{{ $errors->has('phone') ? 'inputDanger' : '' }}"
+                                                           id="Yphone"
+                                                           name="phone"
+                                                           type="number"
+                                                           value=""
+                                                           placeholder="99000000">
+                                                @endif
+                                                <span class="star">*</span>
+                                                <span class="country_code">+374</span>
+                                            </div>
 
                                             <p class="{{ $errors->has('phone') ? 'show' : '' }}">{{ $errors->first('phone') }}</p>
 
@@ -145,11 +186,11 @@
                                                        placeholder="1234">
                                             @endif
                                             <span class="greencheck" style="display: none">
-                                    <img src="../images/greencheck.png" alt="green">
-                                </span>
-                                <span class="redcross" style="display: none">
-                                    <img src="../images/redcross.png" alt="green">
-                                </span>
+                                                <img src="../images/greencheck.png" alt="green">
+                                            </span>
+                                            <span class="redcross" style="display: none">
+                                                <img src="../images/redcross.png" alt="green">
+                                            </span>
 
                                             <p class="{{ $errors->has('promo_code') ? 'show' : '' }}">{{ $errors->first('promo_code') }}</p>
 
@@ -279,7 +320,7 @@
                                         <div class="col-lg-12 remember_address">
                                             <input type="checkbox" id="remember_address" name="remember_address">
                                             <label for="remember_address" id="checkbox_cover"></label>
-                                            <label for="remember_address">Հիշել այս հասցեն</label>
+                                            <label for="remember_address">Հիշել իմ տվյալները</label>
                                         </div>
                                     </div>
                                     <!-- google map -->
@@ -317,7 +358,7 @@
                     @if(session('success'))
                         <div class="col-md-offset-4 col-md-4">
                             <div class="alert alert-success" style="margin-top: 30px; text-align: center">
-                                <p>{{ trans(session('success')) }}</p>
+                                <p class="success_message">{!!  trans(session('success'))  !!}</p>
                             </div>
                         </div>
                     @endif
@@ -375,7 +416,7 @@
 
     <script src="/js/maskedinput.js" type="text/javascript"></script>
 
-    <script>
-        $("#Yphone").mask("(999) 999-999");
-    </script>
+    {{--<script>--}}
+        {{--$("#Yphone").mask("(999) 999-999");--}}
+    {{--</script>--}}
 @endsection

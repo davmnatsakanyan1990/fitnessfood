@@ -363,10 +363,9 @@ footer, main:after {
   background-color: #892E6B;
   border-color: #892E6B; }
 
-.prd_title {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; }
+.prd_header {
+  height: 195px;
+  overflow: hidden; }
 
 .modal-product-info {
   color: #333333; }
@@ -487,7 +486,7 @@ footer, main:after {
   color: #892E6B; }
 
 .home-product-cont .col-md-4 .tumb-wrap {
-  min-height: 270px;
+  height: 455px;
   transition: all 0.3s;
   border: 1px solid transparent;
   padding: 2px;
@@ -629,7 +628,7 @@ footer, main:after {
       color: #892E6B !important; }
 
 .prod-img {
-  height: 150px;
+  height: 100%;
   margin: 8px;
   background-size: cover !important;
   background-position: center center !important;
@@ -1347,6 +1346,9 @@ footer {
 .xorhurd {
   margin-top: 70px; }
 
+.empty .success_message {
+  line-height: 23px; }
+
 #warningModal .btn-primary {
   background-color: #892E6B;
   border-color: #892E6B; }
@@ -1355,9 +1357,22 @@ footer {
   line-height: 25px; }
 
 #map_canvas {
-  height: 230px;
+  height: 330px;
   max-width: 100%;
   top: 20px; }
+
+.basket-form-div .for_phone {
+  position: relative;
+  margin-top: 10px; }
+  .basket-form-div .for_phone input {
+    margin-top: 0 !important;
+    padding-left: 55px; }
+  .basket-form-div .for_phone .country_code {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    font-size: 20px;
+    color: #757575; }
 
 .basket-form-div .check-box {
   position: relative;
@@ -1428,32 +1443,32 @@ footer {
 .right-fields .notes input {
   width: 100%; }
 
-.basket-form {
+.basket-form-div {
   width: 100%;
   margin-top: 30px;
   padding-right: 5px;
   padding-left: 5px;
   float: left; }
-  .basket-form hr {
+  .basket-form-div hr {
     margin-bottom: 10px;
     border: 1px solid #ccc; }
-  .basket-form ul li {
+  .basket-form-div ul li {
     font-size: 18px; }
-  .basket-form ul.prc-ul {
+  .basket-form-div ul.prc-ul {
     text-align: center; }
-    .basket-form ul.prc-ul li:last-child {
+    .basket-form-div ul.prc-ul li:last-child {
       float: right;
       font-size: 24px;
       color: #892E6B;
       font-family: ArialAMUbold; }
-    .basket-form ul.prc-ul li:first-child {
+    .basket-form-div ul.prc-ul li:first-child {
       float: left; }
-    .basket-form ul.prc-ul .old-price {
+    .basket-form-div ul.prc-ul .old-price {
       color: #676767;
       position: relative;
       right: -50px;
       top: 4px; }
-      .basket-form ul.prc-ul .old-price:before {
+      .basket-form-div ul.prc-ul .old-price:before {
         content: "";
         display: block;
         position: absolute;
@@ -1465,7 +1480,7 @@ footer {
         width: 100%;
         height: 1px;
         border: 1px solid rgba(255, 0, 0, 0.67); }
-      .basket-form ul.prc-ul .old-price:after {
+      .basket-form-div ul.prc-ul .old-price:after {
         content: "";
         display: block;
         position: absolute;

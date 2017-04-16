@@ -184,6 +184,15 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="checkbox" {{ $trainer->on_first_page ? 'checked' : '' }} id="on_first_page" name="on_first_page">
+                                                        <label for="on_first_page">Show on first page</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <button class="btn btn-primary" type="submit">Update</button>
                                             </div>

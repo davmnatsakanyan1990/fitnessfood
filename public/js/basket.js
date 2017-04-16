@@ -97,8 +97,14 @@ $(document).ready(function(){
         });
     }
 
-    google.maps.event.addDomListener(window, 'load', initAutocomplete);
+    // when basket is not empty
+    if($(document).find('.not_empty').length != 0) {
+        google.maps.event.addDomListener(window, 'load', initAutocomplete);
 
+        if($(document).find('input[name="promo_code"]').val() != ''){
+            promo_inserted($(document).find('input[name="promo_code"]').val());
+        }
+    }
 
     if($('#tr4-na').prop('checked')){
         // disable trainer search field
@@ -106,10 +112,6 @@ $(document).ready(function(){
 
         // hide trainers
         $(document).find('.trainer-select-main').hide();
-    }
-
-    if($(document).find('input[name="promo_code"]').val() != ''){
-        promo_inserted($(document).find('input[name="promo_code"]').val());
     }
 
     $(window).keydown(function(event){

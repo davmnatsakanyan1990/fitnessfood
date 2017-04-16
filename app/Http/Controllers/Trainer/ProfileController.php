@@ -35,7 +35,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Shoe trainer profile
+     * Show trainer profile
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
