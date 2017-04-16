@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
+use Crypt;
 
 class ProfileController extends Controller
 {
@@ -134,7 +135,7 @@ class ProfileController extends Controller
      */
     public function fbShareResponse(Request $request){
         if($request->has('promo_code')){
-            setcookie("promo_code", $request->promo_code, time()+3600, '/basket/');
+            setcookie("promo_code", Crypt::encrypt($request->promo_code), time()+3600, '/basket/');
 
             return redirect('/');
         }

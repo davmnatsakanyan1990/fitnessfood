@@ -175,12 +175,19 @@
                                             <label for="Ypromo"> @lang('global.Do you have a promo code?')</label>
                                             @if(isset($_COOKIE['promo_code']))
                                                 <input class="{{ $errors->has('promo_code') ? 'inputDanger' : '' }}"
-                                                       id="Ypromo" name="promo_code" maxlength="4" minlength="4"
-                                                       type="text" value="{{ $_COOKIE['promo_code'] }}"
+                                                       id="Ypromo"
+                                                       name="promo_code"
+                                                       maxlength="4"
+                                                       minlength="4"
+                                                       type="text"
+                                                       value="{{ Crypt::decrypt($_COOKIE['promo_code']) }}"
                                                        placeholder="1234">
                                             @else
                                                 <input class="{{ $errors->has('promo_code') ? 'inputDanger' : '' }}"
-                                                       id="Ypromo" name="promo_code" maxlength="4" minlength="4"
+                                                       id="Ypromo"
+                                                       name="promo_code"
+                                                       maxlength="4"
+                                                       minlength="4"
                                                        type="text"
                                                        value="{{ old('promo_code') ? old('promo_code') : '' }}"
                                                        placeholder="1234">
