@@ -224,6 +224,7 @@ function promo_inserted(value){
 
                         if (data.promo) {
                             $('.greencheck').show();
+                            $('.redcross').hide();
                             sale_percent = data.promo.percent;
                         }
                         else{
