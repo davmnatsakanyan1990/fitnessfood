@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/styles/fitness.css">
 
     <meta property="fb:app_id"           content="{{ env('FB_APP_ID') }}" />
-    <meta property="og:url"           content="{{ url()->current() }}" />
+    <meta property="og:url"           content="{{ url('/') }}" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Fitness Cook" />
     <meta property="og:description"   content="Պատվիրեք Առանց Ալյուրի և Շաքարի Քաղցրավենիքներ Ֆիթնես Քուքից" />

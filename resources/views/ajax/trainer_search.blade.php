@@ -16,5 +16,5 @@
     </div>
 @endforeach
 @else
-<p class="text-center" style="padding: 7px">@lang('global.nothing was found')</p>
+<p class="text-center" style="padding: 7px; margin-top: 70px">@lang('global.nothing was found')</p>
 @endif

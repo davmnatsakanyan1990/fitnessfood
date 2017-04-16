@@ -414,7 +414,7 @@
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places"></script>
 
-    <script src="/js/maskedinput.js" type="text/javascript"></script>
+    {{--<script src="/js/maskedinput.js" type="text/javascript"></script>--}}
 
     {{--<script>--}}
         {{--$("#Yphone").mask("(999) 999-999");--}}
