@@ -21,20 +21,20 @@
     <meta property="og:image"         content="{{ url('/').'/images/for_share_2.png' }}" />
     <meta property="og:image"         content="{{ url('/').'/images/for_share_3.png' }}" />
 
-    <meta name="title" content="Fitness Cook">
-    <meta name="description" content="Your description">
-    <link rel="image_src" href="{{ url('/').'/images/logo.png' }}">
-    <link rel="canonical" href="{{ url()->current() }}">
+    {{--<meta name="title" content="Fitness Cook">--}}
+    {{--<meta name="description" content="Your description">--}}
+    {{--<link rel="image_src" href="{{ url('/').'/images/logo.png' }}">--}}
+    {{--<link rel="canonical" href="{{ url()->current() }}">--}}
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Fitness Cook">
-    <meta name="twitter:image" content="{{ url('/').'/images/logo.png' }}">
-    <meta name="twitter:description" content="Tour description">
-    <meta name="twitter:site" content="user">
+    {{--<meta name="twitter:card" content="summary">--}}
+    {{--<meta name="twitter:title" content="Fitness Cook">--}}
+    {{--<meta name="twitter:image" content="{{ url('/').'/images/logo.png' }}">--}}
+    {{--<meta name="twitter:description" content="Tour description">--}}
+    {{--<meta name="twitter:site" content="user">--}}
 
-    <meta itemprop="name" content="Fitness Cook">
-    <meta itemprop="description" content="Your description">
-    <meta itemprop="image" content="{{ url('/').'/images/logo.png' }}">
+    {{--<meta itemprop="name" content="Fitness Cook">--}}
+    {{--<meta itemprop="description" content="Your description">--}}
+    {{--<meta itemprop="image" content="{{ url('/').'/images/logo.png' }}">--}}
 
 
     <script>
