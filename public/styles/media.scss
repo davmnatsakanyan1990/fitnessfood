@@ -184,6 +184,12 @@
 }
 
 @media screen and(max-width: 768px){
+  .about-main .answers-questions .section {
+	width: 100%;
+	p{
+	  text-align: left;
+	}
+  }
   .all_fields{
 	display: flex;
 	flex-flow: column;

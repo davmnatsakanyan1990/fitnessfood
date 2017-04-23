@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 content">
+                <div class="col-md-9 content editable">
                     <div class="tab-content">
                         @foreach($page->subpages as $k=>$subPage)
                         <div role="tabpanel" class="tab-pane {{ $k == 0 ? 'active' : '' }}" id="tab{{ $k }}">

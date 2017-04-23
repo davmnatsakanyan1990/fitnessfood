@@ -10,6 +10,83 @@ a, abbr, acronym, address, applet, article, aside, audio, big, blockquote, body,
 	vertical-align: baseline;
 	outline: 0 !important;
 }
+
+.editable{
+  address{
+	margin-bottom: 20px;
+	font-style: normal;
+  }
+
+  blockquote {
+	padding: 10px 20px;
+	margin: 0 0 20px;
+	font-size: 17.5px;
+	border-left: 5px solid #eee;
+  }
+
+  dl {
+	margin-top: 0;
+	margin-bottom: 20px;
+  }
+
+  dt {
+	font-weight: 700;
+  }
+  h1, h2, h3, h4, h5, h6 {
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+  }
+  h1, h2, h3 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+  }
+  h1 {
+	font-size: 36px;
+  }
+  h2 {
+	font-size: 30px;
+  }
+  h3 {
+	font-size: 24px;
+  }
+  h4 {
+	font-size: 18px;
+  }
+  h5 {
+	font-size: 14px;
+  }
+  h5 {
+	font-size: 12px;
+  }
+
+  iframe {
+	border-width: 2px;
+	border-style: inset;
+	border-color: initial;
+	border-image: initial;
+  }
+  label {
+	margin-bottom: 5px;
+	font-weight: 700;
+  }
+
+  ol, ul {
+	margin-top: 0;
+	margin-bottom: 10px;
+  }
+
+  p {
+	margin: 0 0 10px;
+  }
+  b, strong {
+	font-weight: 700;
+  }
+  code {
+	padding: 2px 4px;
+	font-size: 90%;
+  }
+}
  
 * {
 	-webkit-text-size-adjust: auto !important;

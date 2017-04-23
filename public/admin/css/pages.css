@@ -1,8 +1,51 @@
 /* About page */
+
+/* font-family: "ArianAMURegular"; */
+@font-face {
+    font-family: 'ArialAMU';
+    src: url("../../fonts/ArialAMU/ArialAMU.eot");
+    src: url("../../fonts/ArialAMU/ArialAMU.ttf");
+    src: url("../../fonts/ArialAMU/ArialAMU.woff") format("woff"), url("../../fonts/ArialAMU/ArialAMU.eot?#iefix") format("embedded-opentype"); }
+
+@font-face {
+    font-family: 'ArialAMUbold';
+    src: url("../../fonts/ArialAMU/ArialAMUbold.eot");
+    src: url("../../fonts/ArialAMU/ArialAMUbold.ttf");
+    src: url("../../fonts/ArialAMU/ArialAMUbold.woff") format("woff"), url("../../fonts/ArialAMU/ArialAMU-bold.eot?#iefix") format("embedded-opentype"); }
+
 .about-main > div {
     text-align: center;
 }
-
+.note-editable .answers-questions {
+    margin-top: 70px; }
+.note-editable .answers-questions .section {
+    margin-bottom: 60px;
+    width: 50%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px; }
+.note-editable .answers-questions .question {
+    position: relative;
+    padding-left: 31px;
+    margin-bottom: 20px;
+    font-family: ArialAMUbold; }
+.note-editable .answers-questions .question i {
+    position: absolute;
+    font-size: 23px;
+    top: 0;
+    left: 0;
+    color: #787878;
+    margin-top: -3px; }
+.note-editable .answers-questions .answer {
+    position: relative;
+    padding-left: 31px; }
+.note-editable .answers-questions .answer i {
+    position: absolute;
+    font-size: 23px;
+    top: 0;
+    left: 0;
+    color: #69bd5c;
+    margin-top: -3px; }
 .about-main p {
     max-width: 550px;
     margin: 25px auto 0 auto;

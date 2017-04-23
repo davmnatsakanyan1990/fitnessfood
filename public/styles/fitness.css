@@ -7,6 +7,74 @@ a, abbr, acronym, address, applet, article, aside, audio, big, blockquote, body,
   vertical-align: baseline;
   outline: 0 !important; }
 
+.editable address {
+  margin-bottom: 20px;
+  font-style: normal; }
+
+.editable blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+  border-left: 5px solid #eee; }
+
+.editable dl {
+  margin-top: 0;
+  margin-bottom: 20px; }
+
+.editable dt {
+  font-weight: 700; }
+
+.editable h1, .editable h2, .editable h3, .editable h4, .editable h5, .editable h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1; }
+
+.editable h1, .editable h2, .editable h3 {
+  margin-top: 20px;
+  margin-bottom: 10px; }
+
+.editable h1 {
+  font-size: 36px; }
+
+.editable h2 {
+  font-size: 30px; }
+
+.editable h3 {
+  font-size: 24px; }
+
+.editable h4 {
+  font-size: 18px; }
+
+.editable h5 {
+  font-size: 14px; }
+
+.editable h5 {
+  font-size: 12px; }
+
+.editable iframe {
+  border-width: 2px;
+  border-style: inset;
+  border-color: initial;
+  border-image: initial; }
+
+.editable label {
+  margin-bottom: 5px;
+  font-weight: 700; }
+
+.editable ol, .editable ul {
+  margin-top: 0;
+  margin-bottom: 10px; }
+
+.editable p {
+  margin: 0 0 10px; }
+
+.editable b, .editable strong {
+  font-weight: 700; }
+
+.editable code {
+  padding: 2px 4px;
+  font-size: 90%; }
+
 * {
   -webkit-text-size-adjust: auto !important; }
 
@@ -769,6 +837,37 @@ footer {
     margin-top: 40px; }
 
 /* About page */
+.about-main .answers-questions {
+  margin-top: 70px; }
+  .about-main .answers-questions .section {
+    margin-bottom: 60px;
+    width: 50%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px; }
+  .about-main .answers-questions .question {
+    position: relative;
+    padding-left: 31px;
+    margin-bottom: 20px;
+    font-family: ArialAMUbold; }
+    .about-main .answers-questions .question i {
+      position: absolute;
+      font-size: 23px;
+      top: 0;
+      left: 0;
+      color: #787878;
+      margin-top: -3px; }
+  .about-main .answers-questions .answer {
+    position: relative;
+    padding-left: 31px; }
+    .about-main .answers-questions .answer i {
+      position: absolute;
+      font-size: 23px;
+      top: 0;
+      left: 0;
+      color: #69bd5c;
+      margin-top: -3px; }
+
 .about-main .content {
   float: right; }
 
@@ -2028,6 +2127,10 @@ footer {
     margin-top: 10px; } }
 
 @media screen and (max-width: 768px) {
+  .about-main .answers-questions .section {
+    width: 100%; }
+    .about-main .answers-questions .section p {
+      text-align: left; }
   .all_fields {
     display: -webkit-flex;
     display: -ms-flexbox;

@@ -882,6 +882,42 @@ footer {
 /* About page */
 
 .about-main {
+  .answers-questions{
+    margin-top: 70px;
+    .section{
+      margin-bottom: 60px;
+      width: 50%;
+      float: left;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    .question{
+      position: relative;
+      padding-left: 31px;
+      margin-bottom: 20px;
+      font-family: ArialAMUbold;
+      i{
+        position: absolute;
+        font-size: 23px;
+        top: 0;
+        left: 0;
+        color: #787878;
+        margin-top: -3px;
+      }
+    }
+    .answer{
+      position: relative;
+      padding-left: 31px;
+      i{
+        position: absolute;
+        font-size: 23px;
+        top: 0;
+        left: 0;
+        color: #69bd5c;
+        margin-top: -3px;
+      }
+    }
+  }
   .content{
     float: right;
   }
